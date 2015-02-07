@@ -6,7 +6,15 @@
 - markdown 써보기 
   - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
   - Table of contents를 만들어주는 tool ?
+  - 한 페이지에서 다른 페이지로 link하기
 - org2blog와 wordpress연동하기. -> Github에도 가능할까?
+- jekyll로 만들어보기
+- Ruby Version Manager (https://rvm.io/rvm/basics)
+
+
+### 2015.2.7 jekyll test하기
+***
+설치가 잘 안됨. Ruby는 처음 써본다. 
 
 ### 2015.2.7 Markdown으로 code listing을 나타내기
 ***
@@ -16,6 +24,7 @@ echo "hello world"
 ```
 
 * DILLINGER에서 GITHUB로 연동은 왜 안되는걸까? 혹시 유료? 
+* 버튼을 눌러도 저장이 안되는 것처럼 보임.
 
 ### 2015.2.7 Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode
 ***
