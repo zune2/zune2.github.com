@@ -11,7 +11,6 @@
 - jekyll로 만들어보기
 - Ruby Version Manager (https://rvm.io/rvm/basics)
 
-
 ### 2015.2.7 jekyll test하기
 ***
 설치가 잘 안됨. Ruby는 처음 써본다. 
@@ -37,10 +36,7 @@ org모드로 일정관리와 노트정리를 하고, 프로그래밍은 Tmux에�
 
 ### 2015.2.7 http://dillinger.io/ Web기반 markdown에디터
 ***
-1. 이보다 완벽할 수 있을까? 내가 바라는 스타일이 그대로 녹아 있다.
-2. Web browser만 있으면, 미리보기가 되면서 문서를 쓸 수 있다.
-3. Java script로 만든 것일까? 예술이다. 정말
-
+Web browser만 있으면, 미리보기가 되면서 문서를 쓸 수 있다.
 
 ### 2015.2.6 Emacs에서 IRC를 해보다.
 ***
