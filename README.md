@@ -5,6 +5,18 @@
 - markdown 써보기 (http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram)
 - org2blog와 wordpress연동하기. -> Github에도 가능할까?
 
+### 2015.2.7 Emacs기반 markdown 에디터
+***
+- https://www.youtube.com/watch?v=qnoMo0ynyZo
+- websocket과 web framework를 엮어서 Preview가 지원되는 Emacs기반 markdown 에디터
+
+### 2015.2.7 http://dillinger.io/ Web기반 markdown에디터
+***
+1. 이보다 완벽할 수 있을까? 내가 바라는 스타일이 그대로 녹아 있다.
+2. Web browser만 있으면, 미리보기가 되면서 문서를 쓸 수 있다.
+3. Java script로 만든 것일까? 예술이다. 정말
+
+
 ### 2015.2.6 Emacs에서 IRC를 해보다.
 ***
 재미난 시도. 이맥스의 끝은 어디인가?
@@ -62,5 +74,3 @@ docbook으로 info만드는 방법이 있다. bash commands 설명이 info가 ma
 ### 2014.12.22 vim script Hello World 해보기
 ***
 vim script와 Emacs lisp와 어떤 차이가 있는지 감으로 파악하기.
-
-
