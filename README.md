@@ -1,9 +1,14 @@
 ### Github놀이터
 ***
 - vim, emacs conf 올려놓기
+- tmux conf 올려놓기
 - Emacs org-mode사용한 것 기록하기
-- markdown 써보기 (http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram)
+- markdown 써보기 
+  - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
 - org2blog와 wordpress연동하기. -> Github에도 가능할까?
+
+### 2015.2.7 Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode
+org모드로 일정관리와 노트정리를 하고, 프로그래밍은 Tmux에서 vim으로 하고있다. 0~9까지 10개의 가상 터미널이 하나의 terminal에서 동작하므로 모니터 하나만 봐도 다양한 작업을 할 수 있어서 좋다.
 
 ### 2015.2.7 Emacs기반 markdown 에디터
 ***
