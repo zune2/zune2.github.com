@@ -11,6 +11,26 @@
 - jekyll로 만들어보기
 - Ruby Version Manager (https://rvm.io/rvm/basics)
 
+### 2015.2.11 jekyll test하기
+***
+이런 에러가 나옴. rvm을 깔아도 뭘해도 남.
+```
+$ sudo gem install jekyll
+ERROR:  Error installing jekyll:
+	redcarpet requires Ruby version >= 1.9.2.
+```
+- 루비 code를 받아서 빌드
+  - https://www.ruby-lang.org/en/documentation/installation/#building-from-source
+  - Ruby를 소스로 빌드하면, jekyll을 받을 수 있음. (Ubuntu 14.04)
+  - nodejs도 설치해야 함.
+```
+sudo apt-get install nodejs
+```
+
+### 2015.2.10 Emacs + magit으로 Git 조작하기
+***
+command line으로 먼저 익힌 후, emacs에서 조작하면 편리하다.
+
 ### 2015.2.7 jekyll test하기
 ***
 설치가 잘 안됨. Ruby는 처음 써본다. 
