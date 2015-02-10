@@ -26,6 +26,7 @@ ERROR:  Error installing jekyll:
 ```
 sudo apt-get install nodejs
 ```
+- 이후 local test 성공. 그럭저럭 simple하고 괜찮다.
 
 ### 2015.2.10 Emacs + magit으로 Git 조작하기
 ***
