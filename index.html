@@ -4,27 +4,37 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Zune2 by zune2</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/zune2">View On GitHub</a></li>
+        </nav>
+      </div><!-- end header -->
+
     <div class="wrapper">
-      <header>
-        <h1>Zune2</h1>
-        <p>Vim, Tmux, Emacs</p>
-        <p class="view"><a href="https://github.com/zune2">View the Project on GitHub <small>zune2</small></a></p>
-        <ul>
-          <li class="single"><a href="https://github.com/zune2/zune2.github.com">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
+
       <section>
+        <div id="title">
+          <h1>Zune2</h1>
+          <p>Vim, Tmux, Emacs</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/zune2">zune2</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
         <h3>
 <a id="github놀이터" class="anchor" href="#github%EB%86%80%EC%9D%B4%ED%84%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Github놀이터</h3>
 
@@ -46,6 +56,24 @@
 <li>jekyll로 만들어보기</li>
 <li>Ruby Version Manager (<a href="https://rvm.io/rvm/basics">https://rvm.io/rvm/basics</a>)</li>
 </ul>
+
+<h3>
+<a id="2015212-man-page만들어봄" class="anchor" href="#2015212-man-page%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B4%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015.2.12 man page만들어봄</h3>
+
+<hr>
+
+<p>7번에 들어가도록 manpage를 만들어봤다. 리눅스를 쓰면서, 요즘은 인터넷으로 찾아볼 수 있지만, 
+vim에서 K로 찾아들어가는 manpage가 빠르고, 더 편리하다.</p>
+
+<pre><code>man 7 항목
+</code></pre>
+
+<h3>
+<a id="2015211-org-mode에-plantuml을-이용해서-uml-다이어그램-그리기" class="anchor" href="#2015211-org-mode%EC%97%90-plantuml%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-uml-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015.2.11 org-mode에 plantuml을 이용해서 UML 다이어그램 그리기</h3>
+
+<hr>
+
+<p>그림을 그리지 않고, textual description으로 diagram을 생성할 수 있어서, 유용했다.</p>
 
 <h3>
 <a id="2015211-jekyll-test하기" class="anchor" href="#2015211-jekyll-test%ED%95%98%EA%B8%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015.2.11 jekyll test하기</h3>
@@ -228,10 +256,8 @@ defun, mapcar, car, prog등을 배울 수 있다.</p>
 
 <p>vim script와 Emacs lisp와 어떤 차이가 있는지 감으로 파악하기.</p>
       </section>
+
     </div>
-    <footer>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
