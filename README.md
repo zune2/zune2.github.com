@@ -11,6 +11,19 @@
 - jekyll로 만들어보기
 - Ruby Version Manager (https://rvm.io/rvm/basics)
 
+### 2015.2.12 man page만들어봄
+***
+7번에 들어가도록 manpage를 만들어봤다. 리눅스를 쓰면서, 요즘은 인터넷으로 찾아볼 수 있지만, 
+vim에서 K로 찾아들어가는 manpage가 빠르고, 더 편리하다.
+```
+man 7 항목
+```
+
+
+### 2015.2.11 org-mode에 plantuml을 이용해서 UML 다이어그램 그리기
+***
+그림을 그리지 않고, textual description으로 diagram을 생성할 수 있어서, 유용했다.
+
 ### 2015.2.11 jekyll test하기
 ***
 이런 에러가 나옴. rvm을 깔아도 뭘해도 남.
