@@ -10,6 +10,8 @@ categories: 취미
 
 그럭저럭 한글도 잘 나오는 것 같다.
 
+github에서 글 수정도 가능하다. 
+
 [Jekyll 문서][jekyll] 
 
 [jekyll]:      http://jekyllrb.com
