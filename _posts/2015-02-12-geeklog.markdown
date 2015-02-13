@@ -22,10 +22,10 @@ categories: 취미
 ***
 7번에 들어가도록 manpage를 만들어봤다. 리눅스를 쓰면서, 요즘은 인터넷으로 찾아볼 수 있지만, 
 vim에서 K로 찾아들어가는 manpage가 빠르고, 더 편리하다.
+
 ```
 man 7 항목
 ```
-
 
 ### 2015.2.11 org-mode에 plantuml을 이용해서 UML 다이어그램 그리기
 ***
@@ -33,16 +33,20 @@ man 7 항목
 
 ### 2015.2.11 jekyll test하기
 ***
+
 이런 에러가 나옴. rvm을 깔아도 뭘해도 남.
+
 ```
 $ sudo gem install jekyll
 ERROR:  Error installing jekyll:
 	redcarpet requires Ruby version >= 1.9.2.
 ```
+
 - 루비 code를 받아서 빌드
   - https://www.ruby-lang.org/en/documentation/installation/#building-from-source
   - Ruby를 소스로 빌드하면, jekyll을 받을 수 있음. (Ubuntu 14.04)
   - nodejs도 설치해야 함.
+
 ```
 sudo apt-get install nodejs
 ```
@@ -59,6 +63,7 @@ command line으로 먼저 익힌 후, emacs에서 조작하면 편리하다.
 ### 2015.2.7 Markdown으로 code listing을 나타내기
 ***
 그럭저럭 간결하게 나온다. 
+
 ```
 echo "hello world"
 ```
