@@ -1,9 +1,9 @@
 # Site settings
 title: Zune2
-email: aaaa aT domain.com
+email: closure
 description: > # this means to ignore newlines until "baseurl:"
   github를 가지고 놀기로 했어요. jekyll로 사이트를 만들어봤습니다.
-  github, jekyll, ruby로 떠나는 여행이라고 생각이 드네요.
+  github, jekyll, ruby가지고 놀기
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
