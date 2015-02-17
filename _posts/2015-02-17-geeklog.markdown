@@ -62,11 +62,12 @@ categories: 취미
 - 2015.2.18
 - jekyll로 블로깅을 할 때, Emacs를 이용하도록 하는 jekyll.el
 - https://github.com/krobertson/emacs.d/blob/master/vendor/jekyll.el
+
 ```
-;; C-c b d - Show all drafts
-;; C-c b p - Show all posts
-;; C-c b n - Create new draft
-;; C-c b P - Publish current draft
+C-c b d - Show all drafts
+C-c b p - Show all posts
+C-c b n - Create new draft
+C-c b P - Publish current draft
 ```
 
 #### org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs
@@ -80,19 +81,14 @@ categories: 취미
 
 ```
 M-x org2jekyll-create-draft create a draft with the necessary metadata
-
 M-x org2jekyll-publish publish the current post (or page) to the jekyll folder
-
 M-x org2jekyll-publish-pages to publish all pages (layout 'default')
-
 M-x org2jekyll-publish-posts to publish all post pages (layout 'post')
-
 M-x org2jekyll-mode to activate org2jekyll's minor mode
-
 You can customize using M-x customize-group RET org2jekyll RET
-
 More information on https://github.com/ardumont/org2jekyll
 ```
+
 - minor mode를 위한 키맵을 지정하는 방법도 나온다. 해볼 것
 
 #### Emacs로 man page보기
