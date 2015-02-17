@@ -10,6 +10,8 @@ categories: 취미
 
 - [-](#-)
     - [해볼 일 summary](#--summary)
+        - [Emacs support for Jekyll blogs](#emacs-support-for-jekyll-blogs)
+        - [org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs](#org2jekyll---org-mode--jekyll-minor-mode-in-emacs)
         - [Emacs로 man page보기](#emacs-man-page)
         - [Emacs markdown-toc 기능을 이용해서 목차를 만듬](#emacs-markdown-toc----)
         - [Emacs dired에서 그림을 바로 보여준다.](#emacs-dired---)
@@ -54,6 +56,44 @@ categories: 취미
 6. jekyll로 만들어보기
 7. Ruby Version Manager (https://rvm.io/rvm/basics)
 8. [Using org to Blog with Jekyll 해보기](http://orgmode.org/worg/org-tutorials/org-jekyll.html)
+
+#### Emacs support for Jekyll blogs
+***
+- 2015.2.18
+- jekyll로 블로깅을 할 때, Emacs를 이용하도록 하는 jekyll.el
+- https://github.com/krobertson/emacs.d/blob/master/vendor/jekyll.el
+```
+;; C-c b d - Show all drafts
+;; C-c b p - Show all posts
+;; C-c b n - Create new draft
+;; C-c b P - Publish current draft
+```
+
+#### org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs
+***
+- 2015.2.18
+- org2jekyll을 이용하면, jekyll에 Markdown대신 orgmode를 쓸 수 있을 것.
+- org mode가 더 익숙하니까, 더 편리할 것으로 보인다.
+- Minor mode to publish org-mode post to jekyll without specific yaml
+- Functions to ease publishing jekyll posts from org-mode file This will permit you to simply export an org-mode file with the right jekyll format to the right folder
+- https://github.com/ardumont/org2jekyll
+
+```
+M-x org2jekyll-create-draft create a draft with the necessary metadata
+
+M-x org2jekyll-publish publish the current post (or page) to the jekyll folder
+
+M-x org2jekyll-publish-pages to publish all pages (layout 'default')
+
+M-x org2jekyll-publish-posts to publish all post pages (layout 'post')
+
+M-x org2jekyll-mode to activate org2jekyll's minor mode
+
+You can customize using M-x customize-group RET org2jekyll RET
+
+More information on https://github.com/ardumont/org2jekyll
+```
+- minor mode를 위한 키맵을 지정하는 방법도 나온다. 해볼 것
 
 #### Emacs로 man page보기
 ***
