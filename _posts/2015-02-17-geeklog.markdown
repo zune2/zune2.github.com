@@ -2,7 +2,7 @@
 layout: post
 title:  "Github로 이것저것 해보기"
 date:   2015-02-17 00:03:00
-categories: 취미
+categories: Hobby
 comments: true
 ---
 
