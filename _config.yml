@@ -10,6 +10,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 github_username:  zune2
 
 # Build settings
+comments: true
 markdown: kramdown
 paginate: 5
 paginate_path: "/archives/page:num"

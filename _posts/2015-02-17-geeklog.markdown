@@ -60,6 +60,13 @@ categories: 취미
 10. Jekyll에서 댓글 시스템 달기
   - http://hawksworx.com/blog/adding-a-static-comments-system-to-my-jekyll-build/
 
+
+#### Jekyll comment 달기 (Disqus)
+***
+- 2015.2.21
+- http://developmentsindigital.com/jekyll/blog/2014/04/14/adding-disqus-to-a-jekyll-blog.html
+- 따라하기
+
 #### Jekyll Pagination 적용하기
 ***
 - 2015.2.21
