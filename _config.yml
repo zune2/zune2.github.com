@@ -11,3 +11,5 @@ github_username:  zune2
 
 # Build settings
 markdown: kramdown
+paginate: 5
+paginate_path: "/archives/page:num"
