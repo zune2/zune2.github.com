@@ -3,6 +3,7 @@ layout: post
 title:  "Github로 이것저것 해보기"
 date:   2015-02-17 00:03:00
 categories: 취미
+comments: true
 ---
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc/generate-toc again -->
@@ -10,6 +11,9 @@ categories: 취미
 
 - [-](#-)
     - [해볼 일 summary](#--summary)
+        - [redcarpet으로 markdown 프로세싱 엔진 변경](#redcarpet-markdown---)
+        - [Jekyll comment 달기 (Disqus)](#jekyll-comment--disqus)
+        - [Jekyll Pagination 적용하기](#jekyll-pagination-)
         - [Emacs support for Jekyll blogs](#emacs-support-for-jekyll-blogs)
         - [org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs](#org2jekyll---org-mode--jekyll-minor-mode-in-emacs)
         - [Emacs로 man page보기](#emacs-man-page)
@@ -45,33 +49,47 @@ categories: 취미
 
 ### 해볼 일 summary
 ***
-1. **vim, emacs conf 올려놓기**
-2. tmux conf 올려놓기
-3. **Emacs org-mode사용한 것 기록하기**
-4. markdown 써보기 
+1. ~~vim, emacs conf 올려놓기.~~
+2. ~~tmux conf 올려놓기~~
+3. ~~**Emacs org-mode사용한 것 기록하기**~~
+4. ~~markdown 써보기~~
   - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
-  - Table of contents를 만들어주는 tool ?
+  - ~~Table of contents를 만들어주는 tool?~~
+    - https://github.com/ardumont/markdown-toc/blob/master/README.md
   - 한 페이지에서 다른 페이지로 link하기
 5. org2blog와 wordpress연동하기. -> Github에도 가능할까?
-6. jekyll로 만들어보기
+6. ~~jekyll로 만들어보기~~
 7. Ruby Version Manager (https://rvm.io/rvm/basics)
 8. [Using org to Blog with Jekyll 해보기](http://orgmode.org/worg/org-tutorials/org-jekyll.html)
-9. Jekyll에서 pagination 적용
-10. Jekyll에서 댓글 시스템 달기
+9. ~~Jekyll에서 pagination 적용~~
+10. ~~Jekyll에서 댓글 시스템 달기~~
   - http://hawksworx.com/blog/adding-a-static-comments-system-to-my-jekyll-build/
+11. font 교체하기
+  - 좀 예쁜 font가 없나?
+12. ~~strikethrough style지원하기 (redcarpet으로 변경해야 함)~~
+
+#### redcarpet으로 markdown 프로세싱 엔진 변경
+***
+- 2015.2.21
+- config를 바꿔주어야 함.
+- strikethrough를 나타내려면 설치필요. (  ~~이것이 그리 중요한가?~~ )
+
+```
+sudo gem install redcarpet
+```
 
 
 #### Jekyll comment 달기 (Disqus)
 ***
 - 2015.2.21
 - http://developmentsindigital.com/jekyll/blog/2014/04/14/adding-disqus-to-a-jekyll-blog.html
-- 따라하기
+- 따라하기, 영어 실력의 문제였음.
 
 #### Jekyll Pagination 적용하기
 ***
 - 2015.2.21
 - http://www.ericlagergren.com/blog/jekyll-pagination/
-- 그냥 위에 나오는 사이트에서 코드를 따라함. 
+- 그냥 위에 나오는 사이트에서 코드를 따라함. 이것 역시 영어 실력의 문제 -_-;;
 
 #### Emacs support for Jekyll blogs
 ***

@@ -3,6 +3,7 @@ layout: post
 title:  "Jekyll을 설치하고, 글쓰기"
 date:   2015-02-12 00:23:06
 categories: 취미
+comments: true
 ---
 누가 이런 생각을 했는지 참 재미있다. editor를 이용한 블로그라니... ㅋㅋ 
 
