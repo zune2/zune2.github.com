@@ -60,12 +60,15 @@ comments: true
 5. org2blog와 wordpress연동하기. -> Github에도 가능할까?
 6. ~~jekyll로 만들어보기~~
 7. Ruby Version Manager (https://rvm.io/rvm/basics)
-8. [Using org to Blog with Jekyll 해보기](http://orgmode.org/worg/org-tutorials/org-jekyll.html)
+8. Org mode와 Jekyll 연동하기
+  - [Using org to Blog with Jekyll](http://orgmode.org/worg/org-tutorials/org-jekyll.html)
+  - [Blogging with Emacs Org-mode and Jekyll](http://www.gorgnegre.com/linux/using-emacs-orgmode-to-blog-with-jekyll.html)
 9. ~~Jekyll에서 pagination 적용~~
-10. ~~Jekyll에서 댓글 시스템 달기~~
+10. ~~Jekyll에서 댓글 시스템 달기(Disqus)~~
   - http://hawksworx.com/blog/adding-a-static-comments-system-to-my-jekyll-build/
 11. font 교체하기
   - 좀 예쁜 font가 없나?
+  - CSS좀 괜찮은거 찾아보자.
 12. ~~strikethrough style지원하기 (redcarpet으로 변경해야 함)~~
 
 #### redcarpet으로 markdown 프로세싱 엔진 변경
