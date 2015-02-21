@@ -13,7 +13,7 @@ comments: true
 
 github에서 글 수정도 가능하다. 
 
-[Jekyll 문서][jekyll] 
+- [Jekyll 문서][jekyll] 
 
 [jekyll]:      http://jekyllrb.com
 
