@@ -73,7 +73,10 @@ comments: true
 13. sitemap 만들기
   - http://www.gorgnegre.com/linux/tree-command-as-a-sitemap-generator.html
   - local에서 사용할 수 있을지 확인해보기
-
+  - 이미 github에 jekyll 플러그인으로 있음.
+    - https://github.com/jekyll/jekyll-sitemap/blob/master/README.md
+  - Generating a Sitemap in Jekyll without a Plugin.
+    - http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/
 
 ## DONE Lightweight Jekyll Theme - Contrast 적용
 ***
