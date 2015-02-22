@@ -1,16 +1,41 @@
-# Site settings
 title: Zune2
-email: closure
+author: "MyoungJun Park"
 description: > # this means to ignore newlines until "baseurl:"
   github에서 노는 것도 잼있군요.
+more: "read more"
+url: "http://zune2.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-#twitter_username: jekyllrb
-github_username:  zune2
-# Build settings
+
 markdown: kramdown
 #markdown: redcarpet
 paginate: 5
 paginate_path: "/archives/page:num"
 redcarpet:
   extensions: ["strikethrough"]
+
+#comments:
+#    disqus: "niklasbuschmann"
+#    isso: "comments.mysite.org"
+
+style:
+#    body: "whitesmoke"
+    padding: 33%
+    anchor: "#46f"
+    serif-heading: true
+    nav: "#181818"
+#    headline: "#06f"
+    description: "white"
+    article:
+        odd: "#ffffff"
+        even: "#222222"
+
+links:
+  - github: "https://github.com/zune2/"
+#  - twitter: "https://twitter.com/me/"
+#  - google-plus: "https://plus.google.com/+me"
+#  - reddit: "https://www.reddit.com/user/me/"
+#  - youtube: "https://www.youtube.com/user/me"
+#  - steam: "http://steamcommunity.com/id/me/"
+
+excerpt_separator: "\n\n\n"
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]
