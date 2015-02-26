@@ -80,6 +80,14 @@ comments: true
     - http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/
 
 
+## DONE org-agenda-todo를 전체 화면으로 보기
+***
+.emacs에서 window를 current로 지정하면 됨
+{% highlight lisp %}
+(setq org-agenda-window-setup 'current-window)
+{% endhighlight %}
+[emacs-org-agenda-list-destroy-my-windows-splits](http://stackoverflow.com/questions/10635989/emacs-org-agenda-list-destroy-my-windows-splits)
+
 ## DONE Diigo 가입하고, 북마크 정리함
 ***
 - 2015.2.27
