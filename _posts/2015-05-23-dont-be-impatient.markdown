@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "조급해하지 말 것"
-date:   2015-05-03 00:49:00
+date:   2015-05-03 01:05:00
 categories: Life
 comments: true
 ---
