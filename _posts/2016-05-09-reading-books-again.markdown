@@ -2,7 +2,7 @@
 layout: post
 title:  "고종석의 문장"
 date:   2016-05-09 22:36:00
-categories: Books
+categories: Life
 comments: true
 ---
 
