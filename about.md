@@ -1,11 +1,12 @@
 ---
 layout: page
 title: About
-permalink: /about/
 ---
 
-* MyoungJun Park
-* Programmer 
-* Linux와 Vim, Tmux, Emacs에 관심이 많습니다.
-* 뭔가 새로운 것을 해보는 것을 좋아합니다.
-* Emacs + org-mode를 꾸준히 쓰고 있습니다.
+Hello.
+
+The main purpose of this theme is to be as simple as it could be, so you can focus on writing your stuffs. This is your About page. You may describe about yourself here; who you are, what are you currently doing, share some of your projects, your social links and how people can contact you, etc.
+
+**Just write thing that matters..**
+
+Enjoy!
