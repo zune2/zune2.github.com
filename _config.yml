@@ -7,7 +7,7 @@ description:        "."
 # Author Info
 author_name:        "Myoungjune Park"
 author_email:       myoungjune@gmail.com
-author_gravatar:    bf9dd721d57eddac3b50ec375fd6c3fc # Gravatar md5 hash
+author_gravatar:    043ff602c287e7eb5301b7a1924cbe60 # Gravatar md5 hash
 #twitter_username:   HeiswayiNrird
 
 # Site Settings
@@ -17,8 +17,6 @@ timezone:           Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_databa
 
 # Site Build
 highlighter:        rouge
-#markdown:           redcarpet
-#redcarpet:
 #    extensions:     ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "highlight", "footnotes"]
 markdown:           kramdown
 kramdown:
