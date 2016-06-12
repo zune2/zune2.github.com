@@ -11,4 +11,4 @@ comments: true
 학교를 졸업한 이후, 생활이 아무래도 그때만큼 규칙적이고, 체계화될 수 없는 만큼, 스스로 한일/할일에 대해 잘 정리해야 한다. 
 
 참고할 글
-- http://mindwatching.kr/entry/book-journal
+http://mindwatching.kr/entry/book-journal
