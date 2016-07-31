@@ -181,6 +181,18 @@ M-x man
 - 2015.2.13
 - toc는 만들어주지만 jump는 못하는 듯 -> 숫자가 섞이면 안된다.
 
+~~~~~~
+M-x package-list-TAB
+
+  color-theme        20080305.34   installed             install color themes
+  dash               20160619.611  installed             A modern list library for Emacs
+  markdown-mode      20160722.445  installed             Major mode for Markdown-formatted text
+  markdown-toc       20160727.908  installed             A simple TOC generator for markdown file
+  s                  20160711.525  installed             The long lost Emacs string manipulation library.
+~~~~~~
+
+
+
 ## DONE Emacs dired에서 그림을 바로 보여준다.
 ***
 - 2015.2.13
