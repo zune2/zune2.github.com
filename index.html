@@ -1,22 +1,17 @@
 ---
-layout: default
+layout: blank
 ---
-
-<section>
-	<ul>
-
-		{% for post in site.posts %}
-
-		<li>
-			<div class="post-date">
-				<span>{{ post.date | date: "%b %d, %Y" }}</span>
-			</div>
-			<div class="title">
-				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-			</div>
-		</li>
-
-		{% endfor %}
-
-	</ul>
-</section>
+    {% for page in site.posts %}
+    <article>
+      <header>
+        <h2><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h2>
+        <p>{% if page.author %}{{ page.author }} • {% endif %}{% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %}{% if page.categories %} • {{ page.categories | array_to_sentence_string }}{% endif %}</p>
+      </header>
+      <div>
+{{ page.excerpt }}
+      </div>
+      <footer>
+        <p><a href="{{ page.url | prepend: site.baseurl }}">{{ site.more }} &raquo;</a></p>
+      </footer>
+    </article>
+    {% endfor %}

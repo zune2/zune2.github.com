@@ -1,53 +1,41 @@
-# Site Info
-title:              "Zune2"
-description:        "."
-#google_verify:      epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o # Put your Google Verification here
-#google_analytics:   UA-XXXXXXX-X # Put your Google Analytics code
+title: Zune2
+author: "MyoungJun Park"
+description: > # this means to ignore newlines until "baseurl:"
+  github에서 노는 것도 잼있군요.
+more: "read more"
+url: "http://zune2.github.io"
+baseurl: "" # the subpath of your site, e.g. /blog/
 
-# Author Info
-author_name:        "Myoungjune Park"
-author_email:       myoungjune@gmail.com
-author_gravatar:    043ff602c287e7eb5301b7a1924cbe60 # Gravatar md5 hash
-#twitter_username:   HeiswayiNrird
+markdown: kramdown
+#markdown: redcarpet
+paginate: 5
+paginate_path: "/archives/page:num"
+redcarpet:
+  extensions: ["strikethrough"]
 
-# Site Settings
-baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
-permalink:          /notes/:title # Post permalink
-timezone:           Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+#comments:
+#    disqus: "niklasbuschmann"
+#    isso: "comments.mysite.org"
 
-# Site Build
-highlighter:        rouge
-#    extensions:     ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "highlight", "footnotes"]
-markdown:           kramdown
-kramdown:
-    input:          GFM
-sass:
-    style:          :compressed
+style:
+#    body: "whitesmoke"
+    padding: 33%
+    anchor: "#46f"
+    serif-heading: true
+    nav: "#181818"
+#    headline: "#06f"
+    description: "white"
+    article:
+        odd: "#ffffff"
+        even: "#222222"
 
-# Other Params
-include:            [ "robots.txt" ]
-exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
-gems:
-  - jekyll-sitemap
+links:
+  - github: "https://github.com/zune2/"
+#  - twitter: "https://twitter.com/me/"
+#  - google-plus: "https://plus.google.com/+me"
+#  - reddit: "https://www.reddit.com/user/me/"
+#  - youtube: "https://www.youtube.com/user/me"
+#  - steam: "http://steamcommunity.com/id/me/"
 
-compress_html:
-    clippings:      all
-    ingore:
-        envs:       [ "test" ]
-
-defaults:
-  -
-    scope:
-      path:         ""
-    values:
-      layout:       "null"
-  -
-    scope:
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      type:         "posts"
-    values:
-      layout:       "post"
+excerpt_separator: "\n\n\n"
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]
