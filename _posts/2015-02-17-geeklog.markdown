@@ -6,10 +6,6 @@ categories: Hobby
 comments: true
 ---
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc/generate-toc again -->
-**Table of Contents**
-
-- [-](#-)
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
@@ -45,43 +41,6 @@ comments: true
     - [vim script Hello World 해보기](#vim-script-hello-world-해보기)
 
 <!-- markdown-toc end -->
-    - [해볼 일 summary](#--summary)
-    - [DONE Diigo 가입하고, 북마크 정리함](#done-diigo---)
-    - [DONE Lightweight Jekyll Theme - Contrast 적용](#done-lightweight-jekyll-theme---contrast-)
-    - [DONE redcarpet으로 markdown 프로세싱 엔진 변경](#done-redcarpet-markdown---)
-    - [DONE Jekyll comment 달기 (Disqus)](#done-jekyll-comment--disqus)
-    - [DONE Jekyll Pagination 적용하기](#done-jekyll-pagination-)
-    - [Emacs support for Jekyll blogs](#emacs-support-for-jekyll-blogs)
-    - [org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs](#org2jekyll---org-mode--jekyll-minor-mode-in-emacs)
-    - [DONE Emacs로 man page보기](#done-emacs-man-page)
-    - [DONE Emacs markdown-toc 기능을 이용해서 목차를 만듬](#done-emacs-markdown-toc----)
-    - [DONE Emacs dired에서 그림을 바로 보여준다.](#done-emacs-dired---)
-    - [Jekyll bootstrap 테스트](#jekyll-bootstrap-)
-    - [DONE man page만들어봄](#done-man-page)
-    - [DONE org-mode에 plantuml을 이용해서 UML 다이어그램 그리기](#done-org-mode-plantuml--uml--)
-    - [DONE jekyll test하기](#done-jekyll-test)
-    - [DONE Emacs + magit으로 Git 조작하기](#done-emacs--magit-git-)
-    - [DONE jekyll test하기](#done-jekyll-test)
-    - [DONE Markdown으로 code listing을 나타내기](#done-markdown-code-listing-)
-    - [Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode](#coding--tmuxvim-management-emacs-org-mode)
-    - [Emacs기반 markdown 에디터](#emacs-markdown-)
-    - [http://dillinger.io/ Web기반 markdown에디터](#httpdillingerio-web-markdown)
-    - [DONE Emacs에서 IRC를 해보다.](#done-emacs-irc-)
-    - [Emacs deft.el](#emacs-deftel)
-    - [Github에 web page만들다.](#github-web-page)
-    - [org mode로 calendar와 연동해서 보다.](#org-mode-calendar--)
-    - [DONE org-agenda-todo를 키맵하다.](#done-org-agenda-todo-)
-    - [DONE Emacs와 Cscope를 연동하다.](#done-emacs-cscope-)
-    - [VIM vundle와 pathogon](#vim-vundle-pathogon)
-    - [DONE org-mode ARCHIVE tag이용하기](#done-org-mode-archive-tag)
-    - [org-mode에서 snippets 사용하기](#org-mode-snippets-)
-    - [DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기](#done-emacs-batch-mode-org-mode-html-export)
-    - [DONE Emacs list in 15min 따라해봄](#done-emacs-list-in-15min-)
-    - [DONE info 뷰어로 Emacs 이용하기](#done-info--emacs-)
-    - [vim script Hello World 해보기](#vim-script-hello-world-)
-
-<!-- markdown-toc end -->
-
 
 ### 해볼 일 summary
 ***
