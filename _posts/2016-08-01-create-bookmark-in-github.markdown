@@ -9,5 +9,5 @@ github에서 글 수정도 가능하다.
 
 - [내 북마크][bookmark] 
 
-[bookmark]:      mybookmark.html
+[bookmark]:      http://zune2.github.io/mybookmark.html
 
