@@ -22,3 +22,5 @@ comments: true
 기존에 vim.org의 script에서 받아서 설치하는 것보다 편리하다.
 c.vim으로 plugin을 받아서 설치함. git은 어느 경로에서 가져오는지 알아볼 것.
 github가 기본인 것으로 보인다.
+
+src : http://blog.freezner.com/archives/1087
