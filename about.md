@@ -4,8 +4,10 @@ title: About
 permalink: /about/
 ---
 
-* MyoungJun Park
-* Programmer 
-* Linux와 Vim, Tmux, Emacs에 관심이 많습니다.
-* 뭔가 새로운 것을 해보는 것을 좋아합니다.
-* Emacs + org-mode를 꾸준히 쓰고 있습니다.
+* MyoungJun Park, Korea
+* Programmer
+* Linux, Vim, Tmux and Emacs
+* 나의 일을 컴퓨터가 대신해주는 것
+* Emacs + org-mode
+* Todo.txt
+* 생산성을 올리는 많은 생각들
