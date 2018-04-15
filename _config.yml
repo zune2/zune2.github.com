@@ -9,6 +9,11 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 gems:
     - jekyll-asciidoc
 
+plugins:
+    - jekyll-asciidoc
+
+
+
 markdown: kramdown
 #markdown: redcarpet
 paginate: 5
