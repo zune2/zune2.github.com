@@ -6,6 +6,9 @@ more: "read more"
 url: "http://zune2.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog/
 
+gems:
+    - jekyll-asciidoc
+
 markdown: kramdown
 #markdown: redcarpet
 paginate: 5
