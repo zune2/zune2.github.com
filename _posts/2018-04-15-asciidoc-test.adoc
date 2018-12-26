@@ -1,0 +1,41 @@
+---
+layout: post
+title: asciidoc을 이용해서 page 생성하기
+category: Hobby
+comments: true
+---
+
+= asciidoc을 이용해서 page 생성하기
+:toc:
+:icons:
+:numbered:
+:uri-asciidoctor: http://asciidoctor.org
+
+asciidoctor을 이용한 page 생성 기능 추가함 {uri-asciidoctor}[Asciidoctor].
+
+== asciidoc plugin 설치, 지정
+
+----
+sudo gem install jekyll-asciidoc
+----
+
+._config.yml을 변경함
+----
+gems:
+    - jekyll-asciidoc
+----
+* 3.0.1버전이라서 gems라고 적어줌.
+
+== 소스코드 출력
+[source,c]
+----
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+	printf("Hello World\n");	
+	return 0;
+}
+----
+
+
+== Reference
+* https://github.com/asciidoctor/jekyll-asciidoc#installation

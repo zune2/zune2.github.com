@@ -6,9 +6,415 @@
 </description>
     <link>http://zune2.github.io</link>
     <atom:link href="http://zune2.github.iofeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 31 Jul 2016 10:49:52 +0900</pubDate>
-    <lastBuildDate>Sun, 31 Jul 2016 10:49:52 +0900</lastBuildDate>
+    <pubDate>Wed, 26 Dec 2018 14:02:19 +0900</pubDate>
+    <lastBuildDate>Wed, 26 Dec 2018 14:02:19 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>asciidoc을 이용해서 page 생성하기</title>
+        <description>&lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
+&lt;div id=&quot;toctitle&quot;&gt;Table of Contents&lt;/div&gt;
+&lt;ul class=&quot;sectlevel1&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;#asciidoc-plugin-설치-지정&quot;&gt;1. asciidoc plugin 설치, 지정&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#소스코드-출력&quot;&gt;2. 소스코드 출력&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#reference&quot;&gt;3. Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;asciidoctor을 이용한 page 생성 기능 추가함 &lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;asciidoc-plugin-설치-지정&quot;&gt;1. asciidoc plugin 설치, 지정&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;sudo gem install jekyll-asciidoc&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;_config.yml을 변경함&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;gems:
+    - jekyll-asciidoc&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;3.0.1버전이라서 gems라고 적어줌.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;소스코드-출력&quot;&gt;2. 소스코드 출력&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int main(int argc, char* argv[]) {
+	printf(&quot;Hello World\n&quot;);
+	return 0;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;reference&quot;&gt;3. Reference&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/asciidoctor/jekyll-asciidoc#installation&quot; class=&quot;bare&quot;&gt;https://github.com/asciidoctor/jekyll-asciidoc#installation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sun, 15 Apr 2018 00:00:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2018/04/15/asciidoc-test.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2018/04/15/asciidoc-test.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>겨울 휴가</title>
+        <description>&lt;p&gt;크리스마스부터 신년초까지 계속 휴가다. 어디를 가기보다는 집에서 빈둥거리며 읽고 싶은 책도 읽고, 쉬면서 보낸다.&lt;/p&gt;
+
+&lt;p&gt;바쁜 직장생활에서 느끼지 못했던 이 오랜만의 여유로움이 참 좋다.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 28 Dec 2017 03:41:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2017/12/28/on-vacation-2017-winter.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2017/12/28/on-vacation-2017-winter.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>오픈소스 코드 읽기</title>
+        <description>&lt;p&gt;오픈소스 gdbm 코드를 읽어볼 일이 있어서, 파일 몇개만 살펴봤다.&lt;/p&gt;
+
+&lt;p&gt;중압감을 버리고, 가벼운 마음으로 코드를 읽어보면, 생각보다 많은 것을 배울 수 있다.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 22 Dec 2017 07:52:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2017/12/22/reading-opensource-codes.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2017/12/22/reading-opensource-codes.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>예상과 다른 결과를 볼 때의 느낌이란</title>
+        <description>&lt;p&gt;내가 제어할 수 없는 일에 희망을 품을 때, 희망이 잘못된 것을 너무 늦게 알았을 때,&lt;/p&gt;
+
+&lt;p&gt;사람은 절망하게 된다. 내가 할 수 없는 것에 왜 확신을 갖고 있었을까 싶지만, 그래도 봐온 것이 있기에&lt;/p&gt;
+
+&lt;p&gt;기대를 했었나보다.&lt;/p&gt;
+
+&lt;p&gt;세상 모든 것에서 희망적인 것을 찾으려 노력하지만, 오늘만큼은 술한잔 기울이고 싶구나.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Dec 2017 07:49:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2017/12/22/wrong-expectation.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2017/12/22/wrong-expectation.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>수첩에 적기</title>
+        <description>&lt;p&gt;서랍에 방치했던 수첩에 하루를 적어보고, 내 하루를 반성해본다.&lt;/p&gt;
+
+&lt;p&gt;적지 않는 것보다 확실히 시간의 소중함을 깨닫고, 생각보다 많은 ‘행동’을 하지 않음을 알게 된다.&lt;/p&gt;
+
+&lt;p&gt;일상적으로 중요하지 않은 일을 하면서, 바쁘다고 말하고, ‘바쁘지 않지만 중요한 일’에 소홀했음을 알게 된다.&lt;/p&gt;
+
+&lt;p&gt;일단 수첩에 하루를 조금씩 적다보면, 점차 더 잘 적는 노하우가 생긴다.&lt;/p&gt;
+
+&lt;p&gt;2018-11-17일에 1년을 채우고, 소감을 적어봐야겠다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Dec 2017 09:15:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2017/12/17/writing-on-notes.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2017/12/17/writing-on-notes.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>일찍 일어나서 하루를 살기</title>
+        <description>&lt;p&gt;일찍 일어나기를 실천하고 있다. 새벽 4:30분에 일어나 첫 버스를 타면 기분이 좋다.&lt;/p&gt;
+
+&lt;p&gt;오전이 지나면 졸리긴 하지만, 그래도 살만하다.&lt;/p&gt;
+
+&lt;p&gt;올빼미형 인간으로 알았는데, 새벽에 일어나 하루를 시작하는 것도 할만하다.&lt;/p&gt;
+
+&lt;p&gt;언제나 나의 한계를 가장 강하게 정하는 건 나 자신이다.&lt;/p&gt;
+
+&lt;p&gt;의식적으로 노력하다보면, 생각보다 좋은 성과가 나온다.&lt;/p&gt;
+
+&lt;p&gt;하나 둘 작은 습관을 만들고, 나쁜 습관을 버리면서, 나에 대한 자신과 신뢰가 생긴다.&lt;/p&gt;
+
+&lt;p&gt;앞으로도 계속 하나씩 늘려봐야겠다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Dec 2017 09:03:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2017/12/17/getting-up-early.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2017/12/17/getting-up-early.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>도전을 미루기</title>
+        <description>&lt;p&gt;도전을 미루면, 자신감이 줄고, 불안감이 커진다.&lt;/p&gt;
+
+&lt;p&gt;하지만 실제 해보면, 그만큼의 불안감이 작아지는 걸 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그래서 도전을 미루는 것은 좋지 않다.&lt;/p&gt;
+
+&lt;p&gt;지금의 상황이 바쁘고 힘들어도, 그냥 한번 연습한다 생각하고, 도전하는 것도 괜찮다.&lt;/p&gt;
+
+&lt;p&gt;기회비용이 적거나 없다면, 더욱 망설일 필요가 없다.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 10 Jul 2017 03:36:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2017/07/10/putting-off-challenging.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2017/07/10/putting-off-challenging.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>Vim Nerdtree와 tmux같이 쓰기</title>
+        <description>&lt;p&gt;NerdTree를 잘 안쓰다가, 찾아보고 쓰기 시작했다. 편리하다.
+NerdTree를 왼쪽에, Tlist를 오른쪽에, 코드창을 가운데 두고 Tmux로 창을 위아래로 나누어 아래창을 빌드 명령을 보내면, IDE처럼 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;일하는데 이렇게 나눠서 해봤는데, 생산성도 올라가고 좋았다.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 29 Dec 2016 08:19:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/12/29/vim-nerdtree-tmux-bookmark.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/12/29/vim-nerdtree-tmux-bookmark.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>2016 다이어트는 성공</title>
+        <description>&lt;p&gt;16kg을 넘게 감량했다. 체지방을 많이 줄이고, 근육은 조금만 줄었다. 만족스럽다.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 27 Dec 2016 18:00:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2016/12/27/diat-successful.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2016/12/27/diat-successful.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>일하기. 일하기. 일하기</title>
+        <description>&lt;p&gt;일하느라 정신없는 나날을 보냈다. 출근하면, 퇴근할 때까지 해도 못할 만큼의 일이 쌓여있고,
+그중 중요한 것들부터 해치우다가 정신을 차리면 저녁이 되어있다.
+헬스장에 가서 운동을 하고, 샤워를 하는 것으로 정리되는 나의 하루.&lt;/p&gt;
+
+&lt;p&gt;가끔 무료한 느낌도 들지만, 한달이 지나 일한 것들 되돌아보면 가끔은 뿌듯한 마음이 들기도 한다.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 18 Oct 2016 09:47:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/10/18/keep-working-and-working.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/10/18/keep-working-and-working.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>Vim Vundle로 플러그인 설치하기</title>
+        <description>&lt;p&gt;기존에 한곳의 dir에서 나눠서 저장하던 구조를 플러그인 별로 하나의 dir을 두고, git에서 가져와서 쉽게 설치할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; :PluginInstall 명령으로 설치를 함
+
+&quot; Vim bundle  ------------------------
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+
+Plugin &#39;tpope/vim-fugitive&#39;
+Plugin &#39;scrooloose/nerdtree.git&#39;
+Plugin &#39;vim-scripts/c.vim&#39;
+filetype plugin indent on &quot; required
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;기존에 vim.org의 script에서 받아서 설치하는 것보다 편리하다.
+c.vim으로 plugin을 받아서 설치함. git은 어느 경로에서 가져오는지 알아볼 것.
+github가 기본인 것으로 보인다.&lt;/p&gt;
+
+&lt;p&gt;src : http://blog.freezner.com/archives/1087&lt;/p&gt;
+</description>
+        <pubDate>Sun, 21 Aug 2016 21:14:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/08/21/vim-vundle-plugins.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/08/21/vim-vundle-plugins.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>살찌는 것과 살빼는 것</title>
+        <description>&lt;p&gt;잘먹으며 지내면서, 운동을 하지 않으면, 몸무게가 늘어난다. 찌는 건 쉽고, 빼는 건 어렵다. 하루종일 앉아서 일하는 사람에게는 더 어렵게만 느껴진다.&lt;/p&gt;
+
+&lt;p&gt;머슬녀, 운동녀 해가면서 운동으로 탄탄한 몸매를 가꾼 여성들이 TV에 자주 보인다. 그들도 하루종일 앉아서 일을 하며 시간을 내서 몸관리를 그 정도로 하는 것이 가능할까?&lt;/p&gt;
+
+&lt;p&gt;식단을 조절하는 것은 그나마 할만한데, 하루에 여러시간을 운동에 할애하는 것은 쉬운 일이 아니다.&lt;/p&gt;
+
+&lt;p&gt;살찌는 것을 경계하고 근육손실을 줄이면서 체지방을 천천히 줄여나가는 식습관과 운동습관을 길러나가는 것이 내가 할 수 있는 최선이다.&lt;/p&gt;
+
+&lt;p&gt;TV에 보이는 모습에 조급해하지 말자.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 06 Aug 2016 08:06:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/08/06/gaining-weights-going-on-a-diat.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/08/06/gaining-weights-going-on-a-diat.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>org-mode로 만든 북마크 올리기</title>
+        <description>&lt;p&gt;github에서 글 수정도 가능하다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://zune2.github.io/mybookmark.html&quot;&gt;내 북마크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 02 Aug 2016 08:42:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/08/02/create-bookmark-in-github.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/08/02/create-bookmark-in-github.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>org-mode 해본 것들</title>
+        <description>&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc-generate-toc again --&gt;
+&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#-&quot;&gt;-&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#org-mode로-calendar와-연동해서-보다&quot;&gt;org mode로 calendar와 연동해서 보다.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#done-org-agenda-todo를-키맵하다&quot;&gt;DONE org-agenda-todo를 키맵하다.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#done-org-mode-archive-tag이용하기&quot;&gt;DONE org-mode ARCHIVE tag이용하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#org-mode에서-snippets-사용하기&quot;&gt;org-mode에서 snippets 사용하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#done-org-mode에-plantuml을-이용해서-uml-다이어그램-그리기&quot;&gt;DONE org-mode에 plantuml을 이용해서 UML 다이어그램 그리기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- markdown-toc end --&gt;
+
+&lt;h2 id=&quot;done-org-agenda-todo---&quot;&gt;DONE org-agenda-todo를 전체 화면으로 보기&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;.emacs에서 window를 current로 지정하면 됨&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot; data-lang=&quot;lisp&quot;&gt;(setq org-agenda-window-setup &#39;current-window)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/10635989/emacs-org-agenda-list-destroy-my-windows-splits&quot;&gt;emacs-org-agenda-list-destroy-my-windows-splits&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;org-mode-calendar--&quot;&gt;org mode로 calendar와 연동해서 보다.&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;2015.2.5&lt;/li&gt;
+  &lt;li&gt;Emacs org mode에서 calendar를 org mode와 연동하는 것이 가능하다.  더 예쁘게 볼 수 있지만, 그다지 유용하지는 않았다. ‘아~ 이런 것도 되는구나’ 정도랄까?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;done-org-agenda-todo-&quot;&gt;DONE org-agenda-todo를 키맵하다.&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;2015.2.4&lt;/li&gt;
+  &lt;li&gt;Emacs org mode에서 org-agenda-todo를 F12키로 map하고나니, 일정을 보는게 한결 편해졌다. 자주 체크하는 것이 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;done-org-mode-archive-tag&quot;&gt;DONE org-mode ARCHIVE tag이용하기&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;2015.1.21&lt;/li&gt;
+  &lt;li&gt;ARCHIVE태그를 주면, html 생성할 때, 추가되지 않는다. ‘가려주는 것’도 유용한 기능이다. 백업을 따로 하는 것은 귀찮은 일이니까.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C-w C-w : refiling
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;org-mode-snippets-&quot;&gt;org-mode에서 snippets 사용하기&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;2015.1.19&lt;/li&gt;
+  &lt;li&gt;code listing을 적을 때 편리한 기능이다. YASnippets도 같이 확인해볼 필요가 있음.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;done-org-mode-plantuml--uml--&quot;&gt;DONE org-mode에 plantuml을 이용해서 UML 다이어그램 그리기&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;2015.2.11&lt;/li&gt;
+  &lt;li&gt;그림을 그리지 않고, textual description으로 diagram을 생성할 수 있어서, 유용했다.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 30 Jul 2016 20:13:00 +0900</pubDate>
+        <link>http://zune2.github.io/hobby/2016/07/30/org-mode-what-i-did.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/hobby/2016/07/30/org-mode-what-i-did.html</guid>
+        
+        
+        <category>Hobby</category>
+        
+      </item>
+    
+      <item>
+        <title>다이어트</title>
+        <description>&lt;p&gt;체중이 많이 늘어서 한달간 식단을 조절하고 운동을 했다. 힘들었지만, 살도 좀 빠지고 운동을 통해 건강해짐을 느낀다.&lt;/p&gt;
+
+&lt;p&gt;체력이 떨어져서 생활이 엉망이라면, 식습관을 바꾸는 것으로 많이 나아진다.&lt;/p&gt;
+
+&lt;p&gt;처음 고통스러웠던 것도, 익숙해지니 견딜만하다.&lt;/p&gt;
+
+&lt;p&gt;올해말까지 계속 해봐야지&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Jul 2016 19:58:00 +0900</pubDate>
+        <link>http://zune2.github.io/life/2016/07/30/go-on-a-diat.html</link>
+        <guid isPermaLink="true">http://zune2.github.io/life/2016/07/30/go-on-a-diat.html</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
     
       <item>
         <title>표로 정리하기</title>
@@ -531,46 +937,41 @@ GNU의 빌드도구로 작성된 유명한 프로젝트들이 많기 때문이�
     
       <item>
         <title>Github, Jekyll and Emacs</title>
-        <description>&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc/generate-toc again --&gt;
+        <description>&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc-generate-toc again --&gt;
 &lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#-&quot;&gt;-&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#--summary&quot;&gt;해볼 일 summary&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-diigo---&quot;&gt;DONE Diigo 가입하고, 북마크 정리함&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-lightweight-jekyll-theme---contrast-&quot;&gt;DONE Lightweight Jekyll Theme - Contrast 적용&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-redcarpet-markdown---&quot;&gt;DONE redcarpet으로 markdown 프로세싱 엔진 변경&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-jekyll-comment--disqus&quot;&gt;DONE Jekyll comment 달기 (Disqus)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-jekyll-pagination-&quot;&gt;DONE Jekyll Pagination 적용하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-diigo-가입하고-북마크-정리함&quot;&gt;DONE Diigo 가입하고, 북마크 정리함&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-lightweight-jekyll-theme---contrast-적용&quot;&gt;DONE Lightweight Jekyll Theme - Contrast 적용&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-redcarpet으로-markdown-프로세싱-엔진-변경&quot;&gt;DONE redcarpet으로 markdown 프로세싱 엔진 변경&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-jekyll-comment-달기-disqus&quot;&gt;DONE Jekyll comment 달기 (Disqus)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-jekyll-pagination-적용하기&quot;&gt;DONE Jekyll Pagination 적용하기&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#emacs-support-for-jekyll-blogs&quot;&gt;Emacs support for Jekyll blogs&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#org2jekyll---org-mode--jekyll-minor-mode-in-emacs&quot;&gt;org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-man-page&quot;&gt;DONE Emacs로 man page보기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-markdown-toc----&quot;&gt;DONE Emacs markdown-toc 기능을 이용해서 목차를 만듬&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-dired---&quot;&gt;DONE Emacs dired에서 그림을 바로 보여준다.&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jekyll-bootstrap-&quot;&gt;Jekyll bootstrap 테스트&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-man-page&quot;&gt;DONE man page만들어봄&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-org-mode-plantuml--uml--&quot;&gt;DONE org-mode에 plantuml을 이용해서 UML 다이어그램 그리기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-jekyll-test&quot;&gt;DONE jekyll test하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs--magit-git-&quot;&gt;DONE Emacs + magit으로 Git 조작하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-jekyll-test&quot;&gt;DONE jekyll test하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-markdown-code-listing-&quot;&gt;DONE Markdown으로 code listing을 나타내기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#coding--tmuxvim-management-emacs-org-mode&quot;&gt;Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#emacs-markdown-&quot;&gt;Emacs기반 markdown 에디터&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#httpdillingerio-web-markdown&quot;&gt;http://dillinger.io/ Web기반 markdown에디터&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-irc-&quot;&gt;DONE Emacs에서 IRC를 해보다.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#org2jekyll---org-mode를-지원하는-jekyll-minor-mode-in-emacs&quot;&gt;org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs로-man-page보기&quot;&gt;DONE Emacs로 man page보기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs-markdown-toc-기능을-이용해서-목차를-만듬&quot;&gt;DONE Emacs markdown-toc 기능을 이용해서 목차를 만듬&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs-dired에서-그림을-바로-보여준다&quot;&gt;DONE Emacs dired에서 그림을 바로 보여준다.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-bootstrap-테스트&quot;&gt;Jekyll bootstrap 테스트&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-man-page만들어봄&quot;&gt;DONE man page만들어봄&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-jekyll-test하기&quot;&gt;DONE jekyll test하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs--magit으로-git-조작하기&quot;&gt;DONE Emacs + magit으로 Git 조작하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-jekyll-test하기&quot;&gt;DONE jekyll test하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-markdown으로-code-listing을-나타내기&quot;&gt;DONE Markdown으로 code listing을 나타내기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#coding할-땐-tmuxvim-management는-emacs에서-org-mode&quot;&gt;Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#emacs기반-markdown-에디터&quot;&gt;Emacs기반 markdown 에디터&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#httpdillingerio-web기반-markdown에디터&quot;&gt;http://dillinger.io/ Web기반 markdown에디터&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs에서-irc를-해보다&quot;&gt;DONE Emacs에서 IRC를 해보다.&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#emacs-deftel&quot;&gt;Emacs deft.el&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#github-web-page&quot;&gt;Github에 web page만들다.&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#org-mode-calendar--&quot;&gt;org mode로 calendar와 연동해서 보다.&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-org-agenda-todo-&quot;&gt;DONE org-agenda-todo를 키맵하다.&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-cscope-&quot;&gt;DONE Emacs와 Cscope를 연동하다.&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#vim-vundle-pathogon&quot;&gt;VIM vundle와 pathogon&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-org-mode-archive-tag&quot;&gt;DONE org-mode ARCHIVE tag이용하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#org-mode-snippets-&quot;&gt;org-mode에서 snippets 사용하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-batch-mode-org-mode-html-export&quot;&gt;DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-emacs-list-in-15min-&quot;&gt;DONE Emacs list in 15min 따라해봄&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#done-info--emacs-&quot;&gt;DONE info 뷰어로 Emacs 이용하기&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#vim-script-hello-world-&quot;&gt;vim script Hello World 해보기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#github에-web-page만들다&quot;&gt;Github에 web page만들다.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#org-mode로-calendar와-연동해서-보다&quot;&gt;org mode로 calendar와 연동해서 보다.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs와-cscope를-연동하다&quot;&gt;DONE Emacs와 Cscope를 연동하다.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vim-vundle와-pathogon&quot;&gt;VIM vundle와 pathogon&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs에서-batch-mode로-org-mode를-html로-export하기&quot;&gt;DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-emacs-list-in-15min-따라해봄&quot;&gt;DONE Emacs list in 15min 따라해봄&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#done-info-뷰어로-emacs-이용하기&quot;&gt;DONE info 뷰어로 Emacs 이용하기&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vim-script-hello-world-해보기&quot;&gt;vim script Hello World 해보기&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -627,14 +1028,6 @@ GNU의 빌드도구로 작성된 유명한 프로젝트들이 많기 때문이�
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h2 id=&quot;done-org-agenda-todo---&quot;&gt;DONE org-agenda-todo를 전체 화면으로 보기&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;.emacs에서 window를 current로 지정하면 됨&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot; data-lang=&quot;lisp&quot;&gt;(setq org-agenda-window-setup &#39;current-window)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/10635989/emacs-org-agenda-list-destroy-my-windows-splits&quot;&gt;emacs-org-agenda-list-destroy-my-windows-splits&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;done-diigo---&quot;&gt;DONE Diigo 가입하고, 북마크 정리함&lt;/h2&gt;
 &lt;hr /&gt;
@@ -746,6 +1139,16 @@ More information on https://github.com/ardumont/org2jekyll
   &lt;li&gt;toc는 만들어주지만 jump는 못하는 듯 -&amp;gt; 숫자가 섞이면 안된다.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;M-x package-list-TAB
+
+  color-theme        20080305.34   installed             install color themes
+  dash               20160619.611  installed             A modern list library for Emacs
+  markdown-mode      20160722.445  installed             Major mode for Markdown-formatted text
+  markdown-toc       20160727.908  installed             A simple TOC generator for markdown file
+  s                  20160711.525  installed             The long lost Emacs string manipulation library.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h2 id=&quot;done-emacs-dired---&quot;&gt;DONE Emacs dired에서 그림을 바로 보여준다.&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;ul&gt;
@@ -773,13 +1176,6 @@ vim에서 K로 찾아들어가는 manpage가 빠르고, 더 편리하다.&lt;/li
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;man 7 항목
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-&lt;h2 id=&quot;done-org-mode-plantuml--uml--&quot;&gt;DONE org-mode에 plantuml을 이용해서 UML 다이어그램 그리기&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;2015.2.11&lt;/li&gt;
-  &lt;li&gt;그림을 그리지 않고, textual description으로 diagram을 생성할 수 있어서, 유용했다.&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h2 id=&quot;done-jekyll-test&quot;&gt;DONE jekyll test하기&lt;/h2&gt;
 &lt;hr /&gt;
@@ -895,13 +1291,6 @@ http://dillinger.io/에서 page preview를 보면서 작성해서 옮기면 된�
   &lt;li&gt;Emacs org mode에서 calendar를 org mode와 연동하는 것이 가능하다.  더 예쁘게 볼 수 있지만, 그다지 유용하지는 않았다. ‘아~ 이런 것도 되는구나’ 정도랄까?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;done-org-agenda-todo-&quot;&gt;DONE org-agenda-todo를 키맵하다.&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;2015.2.4&lt;/li&gt;
-  &lt;li&gt;Emacs org mode에서 org-agenda-todo를 F12키로 map하고나니, 일정을 보는게 한결 편해졌다. 자주 체크하는 것이 좋다.&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;h2 id=&quot;done-emacs-cscope-&quot;&gt;DONE Emacs와 Cscope를 연동하다.&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;ul&gt;
@@ -914,20 +1303,6 @@ http://dillinger.io/에서 page preview를 보면서 작성해서 옮기면 된�
 &lt;ul&gt;
   &lt;li&gt;2015.1.25&lt;/li&gt;
   &lt;li&gt;전통적인 vim의 dir과 다르게 구성. git에서 받아서 패키지를 구성하도록 했다. 파일이 서로 섞이지 않도록 한 것이 주요해보인다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;done-org-mode-archive-tag&quot;&gt;DONE org-mode ARCHIVE tag이용하기&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;2015.1.21&lt;/li&gt;
-  &lt;li&gt;ARCHIVE태그를 주면, html 생성할 때, 추가되지 않는다. ‘가려주는 것’도 유용한 기능이다. 백업을 따로 하는 것은 귀찮은 일이니까.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;org-mode-snippets-&quot;&gt;org-mode에서 snippets 사용하기&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;2015.1.19&lt;/li&gt;
-  &lt;li&gt;code listing을 적을 때 편리한 기능이다. YASnippets도 같이 확인해볼 필요가 있음.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;done-emacs-batch-mode-org-mode-html-export&quot;&gt;DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기&lt;/h2&gt;

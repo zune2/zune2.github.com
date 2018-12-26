@@ -1,0 +1,319 @@
+---
+layout: post
+title:  "Github, Jekyll and Emacs"
+date:   2015-02-17 00:03:00
+categories: Hobby
+comments: true
+---
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [-](#-)
+    - [DONE Diigo 가입하고, 북마크 정리함](#done-diigo-가입하고-북마크-정리함)
+    - [DONE Lightweight Jekyll Theme - Contrast 적용](#done-lightweight-jekyll-theme---contrast-적용)
+    - [DONE redcarpet으로 markdown 프로세싱 엔진 변경](#done-redcarpet으로-markdown-프로세싱-엔진-변경)
+    - [DONE Jekyll comment 달기 (Disqus)](#done-jekyll-comment-달기-disqus)
+    - [DONE Jekyll Pagination 적용하기](#done-jekyll-pagination-적용하기)
+    - [Emacs support for Jekyll blogs](#emacs-support-for-jekyll-blogs)
+    - [org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs](#org2jekyll---org-mode를-지원하는-jekyll-minor-mode-in-emacs)
+    - [DONE Emacs로 man page보기](#done-emacs로-man-page보기)
+    - [DONE Emacs markdown-toc 기능을 이용해서 목차를 만듬](#done-emacs-markdown-toc-기능을-이용해서-목차를-만듬)
+    - [DONE Emacs dired에서 그림을 바로 보여준다.](#done-emacs-dired에서-그림을-바로-보여준다)
+    - [Jekyll bootstrap 테스트](#jekyll-bootstrap-테스트)
+    - [DONE man page만들어봄](#done-man-page만들어봄)
+    - [DONE jekyll test하기](#done-jekyll-test하기)
+    - [DONE Emacs + magit으로 Git 조작하기](#done-emacs--magit으로-git-조작하기)
+    - [DONE jekyll test하기](#done-jekyll-test하기)
+    - [DONE Markdown으로 code listing을 나타내기](#done-markdown으로-code-listing을-나타내기)
+    - [Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode](#coding할-땐-tmuxvim-management는-emacs에서-org-mode)
+    - [Emacs기반 markdown 에디터](#emacs기반-markdown-에디터)
+    - [http://dillinger.io/ Web기반 markdown에디터](#httpdillingerio-web기반-markdown에디터)
+    - [DONE Emacs에서 IRC를 해보다.](#done-emacs에서-irc를-해보다)
+    - [Emacs deft.el](#emacs-deftel)
+    - [Github에 web page만들다.](#github에-web-page만들다)
+    - [org mode로 calendar와 연동해서 보다.](#org-mode로-calendar와-연동해서-보다)
+    - [DONE Emacs와 Cscope를 연동하다.](#done-emacs와-cscope를-연동하다)
+    - [VIM vundle와 pathogon](#vim-vundle와-pathogon)
+    - [DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기](#done-emacs에서-batch-mode로-org-mode를-html로-export하기)
+    - [DONE Emacs list in 15min 따라해봄](#done-emacs-list-in-15min-따라해봄)
+    - [DONE info 뷰어로 Emacs 이용하기](#done-info-뷰어로-emacs-이용하기)
+    - [vim script Hello World 해보기](#vim-script-hello-world-해보기)
+
+<!-- markdown-toc end -->
+
+### 해볼 일 summary
+***
+1. ***vim, emacs conf 올려놓기.***
+2. ***tmux conf 올려놓기***
+3. ***Emacs org-mode사용한 것 기록하기***
+4. ***markdown 써보기***
+  - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
+  - Table of contents를 만들어주는 tool?
+    - https://github.com/ardumont/markdown-toc/blob/master/README.md
+  - 한 페이지에서 다른 페이지로 link하기
+5. org2blog와 wordpress연동하기. -> Github에도 가능할까?
+6. ***jekyll로 만들어보기***
+7. Ruby Version Manager (https://rvm.io/rvm/basics)
+8. Org mode와 Jekyll 연동하기
+  - [Using org to Blog with Jekyll](http://orgmode.org/worg/org-tutorials/org-jekyll.html)
+  - [Blogging with Emacs Org-mode and Jekyll](http://www.gorgnegre.com/linux/using-emacs-orgmode-to-blog-with-jekyll.html)
+9. ***Jekyll에서 pagination 적용***
+10. ***Jekyll에서 댓글 시스템 달기(Disqus)***
+  - http://hawksworx.com/blog/adding-a-static-comments-system-to-my-jekyll-build/
+11. font 교체하기
+  - 좀 예쁜 font가 없나?
+  - CSS좀 괜찮은거 찾아보자.
+12. ***strikethrough style지원하기 (redcarpet으로 변경해야 함)***
+13. sitemap 만들기
+  - http://www.gorgnegre.com/linux/tree-command-as-a-sitemap-generator.html
+  - local에서 사용할 수 있을지 확인해보기
+  - 이미 github에 jekyll 플러그인으로 있음.
+    - https://github.com/jekyll/jekyll-sitemap/blob/master/README.md
+  - Generating a Sitemap in Jekyll without a Plugin.
+    - http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/
+
+
+## DONE Diigo 가입하고, 북마크 정리함
+***
+- 2015.2.27
+- https://www.diigo.com/user/myoungjune
+- 북마크를 정리하면서 그간 일했던 것을 정리하는 느낌이 든다.
+
+## DONE Lightweight Jekyll Theme - Contrast 적용
+***
+- 2015.2.22
+- https://github.com/niklasbuschmann/contrast
+- 그럭저럭 볼만하다. archive 페이지가 새로 생김
+- 블로그 view형태로 첫 페이지에서 내용을 보여준다.
+- markdown toc이 동작하지 않는 문제가 발생
+- highlite를 이용해서 code listing을 보여줄 수 있음.
+
+{% highlight sh %}
+echo "Hello World"
+{% endhighlight %}
+
+## DONE redcarpet으로 markdown 프로세싱 엔진 변경
+***
+- 2015.2.21
+- config를 바꿔주어야 함.
+- strikethrough를 나타내려면 설치필요.
+- TOC를 만들어주는 emacs macro가 동작안하는 문제가 있음.
+- strikethrough를 안쓰고 만다.
+
+~~~~~~
+sudo gem install redcarpet
+~~~~~~
+
+
+## DONE Jekyll comment 달기 (Disqus)
+***
+- 2015.2.21
+- http://developmentsindigital.com/jekyll/blog/2014/04/14/adding-disqus-to-a-jekyll-blog.html
+- 따라하기, 영어 실력의 문제였음.
+
+## DONE Jekyll Pagination 적용하기
+***
+- 2015.2.21
+- http://www.ericlagergren.com/blog/jekyll-pagination/
+- 그냥 위에 나오는 사이트에서 코드를 따라함. 이것 역시 영어 실력의 문제 -_-;;
+- paginate를 5로 지정함. 한달동안 1개 썼는데, 5개 쓰려면 5달 걸리려나?
+
+## Emacs support for Jekyll blogs
+***
+- 2015.2.18
+- jekyll로 블로깅을 할 때, Emacs를 이용하도록 하는 jekyll.el
+- https://github.com/krobertson/emacs.d/blob/master/vendor/jekyll.el
+
+~~~~~~
+C-c b d - Show all drafts
+C-c b p - Show all posts
+C-c b n - Create new draft
+C-c b P - Publish current draft
+~~~~~~
+
+## org2jekyll - org mode를 지원하는 Jekyll minor mode in Emacs
+***
+- 2015.2.18
+- org2jekyll을 이용하면, jekyll에 Markdown대신 orgmode를 쓸 수 있을 것.
+- org mode가 더 익숙하니까, 더 편리할 것으로 보인다.
+- Minor mode to publish org-mode post to jekyll without specific yaml
+- Functions to ease publishing jekyll posts from org-mode file This will permit you to simply export an org-mode file with the right jekyll format to the right folder
+- https://github.com/ardumont/org2jekyll
+
+~~~~~~
+M-x org2jekyll-create-draft create a draft with the necessary metadata
+M-x org2jekyll-publish publish the current post (or page) to the jekyll folder
+M-x org2jekyll-publish-pages to publish all pages (layout 'default')
+M-x org2jekyll-publish-posts to publish all post pages (layout 'post')
+M-x org2jekyll-mode to activate org2jekyll's minor mode
+You can customize using M-x customize-group RET org2jekyll RET
+More information on https://github.com/ardumont/org2jekyll
+~~~~~~
+
+- minor mode를 위한 키맵을 지정하는 방법도 나온다. 해볼 것
+
+## DONE Emacs로 man page보기
+***
+- 2015.2.17
+- Emacs에서 man을 하면, 자동완성이 지원되는 man page 검색을 할 수 있다. 편리하다.
+
+~~~~~~
+M-x man 
+~~~~~~
+
+## DONE Emacs markdown-toc 기능을 이용해서 목차를 만듬
+***
+- 2015.2.13
+- toc는 만들어주지만 jump는 못하는 듯 -> 숫자가 섞이면 안된다.
+
+~~~~~~
+M-x package-list-TAB
+
+  color-theme        20080305.34   installed             install color themes
+  dash               20160619.611  installed             A modern list library for Emacs
+  markdown-mode      20160722.445  installed             Major mode for Markdown-formatted text
+  markdown-toc       20160727.908  installed             A simple TOC generator for markdown file
+  s                  20160711.525  installed             The long lost Emacs string manipulation library.
+~~~~~~
+
+
+
+## DONE Emacs dired에서 그림을 바로 보여준다.
+***
+- 2015.2.13
+- [AutoImageFileMode인 듯](http://www.emacswiki.org/emacs/AutoImageFileMode)
+
+## Jekyll bootstrap 테스트
+***
+- 2015.2.13
+- 재미삼아 한번 해보기 좋다. 
+- Jekyll로 theme를 변경변경해보자.
+
+
+## DONE man page만들어봄
+
+***
+- 2015.2.12
+- 7번에 들어가도록 manpage를 만들어봤다. 리눅스를 쓰면서, 요즘은 인터넷으로 찾아볼 수 있지만, 
+vim에서 K로 찾아들어가는 manpage가 빠르고, 더 편리하다.
+
+~~~~~~
+man 7 항목
+~~~~~~
+
+## DONE jekyll test하기
+***
+- 2015.2.11
+- 이런 에러가 나옴. rvm을 깔아도 뭘해도 남.
+
+~~~~~~
+$ sudo gem install jekyll
+ERROR:  Error installing jekyll:
+	redcarpet requires Ruby version >= 1.9.2.
+~~~~~~
+
+- 루비 code를 받아서 빌드
+  - https://www.ruby-lang.org/en/documentation/installation/#building-from-source
+  - Ruby를 소스로 빌드하면, jekyll을 받을 수 있음. (Ubuntu 14.04)
+  - nodejs도 설치해야 함.
+
+~~~~~~
+sudo apt-get install nodejs
+~~~~~~
+
+- 이후 local test 성공. 그럭저럭 simple하고 괜찮다.
+
+## DONE Emacs + magit으로 Git 조작하기
+***
+- 2015.2.10
+- command line으로 먼저 익힌 후, emacs에서 조작하면 편리하다.
+
+## DONE jekyll test하기
+***
+- 2015.2.7
+- 설치가 잘 안됨. Ruby는 처음 써본다. 
+
+## DONE Markdown으로 code listing을 나타내기
+***
+- 2015.2.7
+그럭저럭 간결하게 나온다. 
+
+```
+echo "hello world"
+```
+
+* DILLINGER에서 GITHUB로 연동은 왜 안되는걸까? 혹시 유료? 
+* 버튼을 눌러도 저장이 안되는 것처럼 보임.
+
+## Coding할 땐 Tmux+Vim, Management는 Emacs에서 org-mode
+***
+- 2015.2.7
+- org모드로 일정관리와 노트정리를 하고, 프로그래밍은 Tmux에서 vim으로 하고있다. 0~9까지 10개의 가상 터미널이 하나의 terminal에서 동작하므로 모니터 하나만 봐도 다양한 작업을 할 수 있어서 좋다.
+
+## Emacs기반 markdown 에디터
+***
+- 2015.2.7
+- https://www.youtube.com/watch?v=qnoMo0ynyZo
+- websocket과 web framework를 엮어서 Preview가 지원되는 Emacs기반 markdown 에디터
+
+## http://dillinger.io/ Web기반 markdown에디터
+***
+- 2015.2.7
+- Web browser만 있으면, 미리보기가 되면서 문서를 쓸 수 있다.
+
+## DONE Emacs에서 IRC를 해보다.
+***
+- 2015.2.6
+- 재미난 시도. 이맥스의 끝은 어디인가?
+
+## Emacs deft.el
+***
+- 2015.2.6
+- org mode와 asciidoc등 구분없이 지원하는 note-taking시스템이다. org-capture가 더 익숙하지만, 이건 page별 검색도 지원하는 위키같은 느낌이 든다.
+
+## Github에 web page만들다.
+***
+- 2015.2.6
+- Github에서 web site를 만들어보았다. markdown으로 HTML작성없이도 페이지를 만들 수 있다.
+http://dillinger.io/에서 page preview를 보면서 작성해서 옮기면 된다.
+
+markdown형태로 한 page짜리 page를 만들어도 개인 blog로 충분하지 않을까 싶다.
+
+## org mode로 calendar와 연동해서 보다.
+***
+- 2015.2.5
+- Emacs org mode에서 calendar를 org mode와 연동하는 것이 가능하다.  더 예쁘게 볼 수 있지만, 그다지 유용하지는 않았다. '아~ 이런 것도 되는구나' 정도랄까?
+
+## DONE Emacs와 Cscope를 연동하다.
+***
+- 2015.2.3
+- GNU Global로 해볼까 하다가 그냥 익숙한 Cscope를 Emacs에 연동해봄. xcscope.el 패키지를 설치하면, 쉽게 할수 있다. 하지만 vim보다 아직 키맵이 익숙하지 않고 불편한 상태.
+
+## VIM vundle와 pathogon
+***
+- 2015.1.25
+- 전통적인 vim의 dir과 다르게 구성. git에서 받아서 패키지를 구성하도록 했다. 파일이 서로 섞이지 않도록 한 것이 주요해보인다.
+
+## DONE Emacs에서 batch mode로 org-mode를 HTML로 export하기
+***
+- 2015.1.13
+- Makefile에 추가완료함. 근데 왜 HTML export명령이 예전 것이 될까?
+
+## DONE Emacs list in 15min 따라해봄
+***
+- 2015.1.11
+- 이맥스 Lisp을 요리책처럼 따라해볼 수 있는 구성. defun, mapcar, car, prog등을 배울 수 있다.
+
+## DONE info 뷰어로 Emacs 이용하기
+***
+- 2015.1.5
+- docbook으로 info만드는 방법이 있다. bash commands 설명이 info가 man보다 설명이 더 풍부한 것 같다.
+
+```
+Ctrl-h i
+```
+
+## vim script Hello World 해보기
+***
+- 2015.1.5 vim script와 Emacs lisp와 어떤 차이가 있는지 감으로 파악하기.
