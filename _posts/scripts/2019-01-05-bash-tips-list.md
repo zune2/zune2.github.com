@@ -3,7 +3,7 @@ layout: post
 [[title]]:  "bash 코딩할 때 도움되는 것들 모아두기"
 date:   2019-01-05 17:18:44
 categories: scripts
-comments: true
+comments: false
 ---
 
 # Bash
