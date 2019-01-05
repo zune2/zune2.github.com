@@ -8,6 +8,10 @@ permalink: /about/
 * content
 {:toc}
 
-## About the site
-This is a personal website 
+## Who Am I
 
+* Programmer
+* Linux
+* tmux / vim
+* org-mode, orgzly
+* Open source
