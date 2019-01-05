@@ -5,6 +5,8 @@ date:   2019-01-05 20:32:29
 categories: code
 comments: false
 ---
+* content
+{:toc}
 
 ~~~javascript
 function syntaxHighlight(code) {
