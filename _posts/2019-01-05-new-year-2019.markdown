@@ -3,7 +3,7 @@ layout: post
 title:  "2019년이 되었다."
 date:   2019-01-04 11:00:00
 categories: life
-comments: true
+comments: false
 ---
 
 새해가 되었다. 그간 방치했던 github 블로그를 theme를 바꿔 입히고, 다시 관리해야겠다.
