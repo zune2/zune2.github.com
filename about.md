@@ -8,10 +8,13 @@ permalink: /about/
 * content
 {:toc}
 
-## Who Am I
-
+## What I worked
+* Tizen Platform Engineering
 * Programmer
 * Linux
+* Open source
+
+## What I like
+* automate what I have to do.
 * tmux / vim
 * org-mode, orgzly
-* Open source
