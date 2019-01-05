@@ -1,5 +1,5 @@
 # Site settings
-title: MyoungJune Park
+title: Zune2
 email: myoungjune@gmail.com
 description: My Book Reading
 # > # this means to ignore newlines until "baseurl:"
@@ -34,3 +34,5 @@ highlighter: rouge
 # highlighter: false
 plugins:
   - jekyll-toc
+
+
