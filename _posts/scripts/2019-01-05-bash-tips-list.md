@@ -4,10 +4,8 @@ layout: post
 date:   2019-01-05 17:18:44
 categories: scripts
 comments: false
+toc: true
 ---
-
-* content
-{:toc}
 
 # Bash
  
