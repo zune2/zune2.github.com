@@ -8,6 +8,7 @@ comments: false
 * content
 {:toc}
 
+## code example
 ~~~javascript
 function syntaxHighlight(code) {
 	var foo = 'Hello World';
@@ -15,5 +16,5 @@ function syntaxHighlight(code) {
 }
 ~~~
 
-참고한 블로그 moon9342
+## 참고한 블로그 moon9342
 * [Syntax highlighter 지정하기 with rouge](https://moon9342.github.io/jekyll-rouge)
