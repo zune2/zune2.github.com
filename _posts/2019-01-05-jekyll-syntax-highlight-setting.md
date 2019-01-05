@@ -12,3 +12,6 @@ function syntaxHighlight(code) {
 	var bar = 100;
 }
 ~~~
+
+참고한 블로그 moon9342
+* [Syntax highlighter 지정하기 with rouge](https://moon9342.github.io/jekyll-rouge)

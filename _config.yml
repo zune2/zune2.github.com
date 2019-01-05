@@ -25,13 +25,12 @@ disqus_shortname: zune2
 disqus_url: "http://zune2.github.io"
 #########################################
 
-
 # Build settings
 markdown: kramdown
 
 # highlight
 # highlighter: pygments
-# highlighter: rouge
+highlighter: rouge
 # highlighter: false
 plugins:
   - jekyll-toc
