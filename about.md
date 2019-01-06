@@ -9,7 +9,6 @@ permalink: /about/
 {:toc}
 
 ## What I worked
-* Tizen Platform Engineering
 * Programmer
 * Linux
 * Open source
