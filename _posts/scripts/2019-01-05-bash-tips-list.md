@@ -23,3 +23,6 @@ comments: false
  
 2. [An example of how to use getopts in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash) : getopt로 argument처리
 
+
+## pushd/popd
+1. [Can I call pushd/popd and prevent it printing the stack?](https://serverfault.com/questions/108154/can-i-call-pushd-popd-and-prevent-it-printing-the-stack)
