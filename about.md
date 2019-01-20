@@ -18,6 +18,9 @@ permalink: /about/
 
 ## Site history
 
+### 2019.1.20
+- theme 변경, tags 지원됨
+
 ### 2019.1.5
  
 - 이전 블로그 삭제, github로 옮김
