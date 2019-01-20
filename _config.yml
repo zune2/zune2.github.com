@@ -1,44 +1,70 @@
-# Site settings
+# Site Info
 title: Zune2
-email: myoungjune@gmail.com
-description: My Book Reading
-# > # this means to ignore newlines until "baseurl:"
-#   Write an awesome description for your new site here. You can edit this
-#   line in _config.yml. It will appear in your document head meta (for
-#   Google search results) and in your feed.xml site description.
+tagline: 'Zune2 - Personal web site'
+#description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
+description: 'My Book Reading and Life story'
+baseurl: ""
+url: http://codinfox.github.io
+#logo: '/public/logo.png'
 
-# baseurl: "" # the subpath of your site, e.g. /blog/
-# url: "http://yourdomain.com" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
-github_username: zune2 
-permalink: /:year/:month/:day/:title/
-# this is the url root of the view source link on the footer page.
-viewsourceroot: https://github.com/zune2/zune2.github.com/blob/master/
-# this is the url root of the create page link on the footer page.
-newsourceroot: https://github.com/zune2/zune2.github.com/new/master
-#########################################
-# for duoshuo.com commenting system, uncomment following line if you do not want to include duoshuo.com. 
-#duoshuo_shortname: lixizhi
-#duoshuo_url: "http://lixizhi.github.io"
-# disqus.com commenting system. please note that it is exclusive with duoshuo.com
-disqus_shortname: zune2
-disqus_url: "http://zune2.github.io"
-#########################################
-
-# Build settings
-markdown: kramdown
-
-# highlight
-# highlighter: pygments
-highlighter: rouge
-# highlighter: false
+# Site configurations
 plugins:
   - jekyll-toc
+  - jekyll-paginate
 
-# The font used for headings. Expects a string that is a valid CSS font-family value.
-font_heading: "'Nanum Myeongjo' 'Nanum Gothic', Helvetica, Arial, sans-serif"
+markdown: kramdown
 
-# The text font. Expects a string that is a valid CSS font-family value.
-font: "'Nanum Myeongjo' 'Noto Sans', 'Nanum Gothic', Helvetica, Arial, sans-serif"
+highlighter: rouge
 
+kramdown:
+  input: GFM
+excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss    
+paginate: 8
+paginate_path: '/blog/page:num'
+permalink: pretty
 
+version: 1.0.0
+
+# About/contact
+author:
+  name: Zune2
+  description: Programmer, SW engineer
+  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+  contact:
+      #    linkedin:  https://www.linkedin.com/in/lizhihao
+           github:    https://github.com/zune2
+    # facebook:  <hide>
+    #    twitter:   https://twitter.com/Li_Zhihao
+    #    weibo:     http://weibo.com/41173780
+    #    email:     http://www.google.com/recaptcha/mailhide/d?k=01I3lZFiZYng9N3QxYEtsDaQ==&c=31wAnZkuKqcG0ATAqJN8Z3ln5kkYLA9TwkGc-IbygpM=
+
+# Navigation (2nd level links supported)
+nav:
+  Home:           
+    - '/'
+  Blog:           
+    - '/blog/'
+    - { Categories: '/blog/categories/' }
+    - { Tags: '/blog/tags/' }
+  About:          
+    - '/about/'
+#  Github Project: 
+#    - 'http://zune2.github.io/'
+
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
+
+hero:
+  image: /public/img/mypic.jpeg
+  caption: It's me. Maybe.
+
+# Puglins
+mathjax: true # whether support mathjax
+#google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
+#disqus_short_name: 'ame' # leave blank if you don't want disqus
+disqus_short_name: zune2
+disqus_url: "http://zune2.github.io"
