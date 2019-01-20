@@ -10,12 +10,12 @@ tags: 사이트관리
 {:toc}
 
 ## code example
-~~~javascript
+``` javascript
 function syntaxHighlight(code) {
 	var foo = 'Hello World';
 	var bar = 100;
 }
-~~~
+```
 
 ## 참고한 블로그 moon9342
 * [Syntax highlighter 지정하기 with rouge](https://moon9342.github.io/jekyll-rouge)

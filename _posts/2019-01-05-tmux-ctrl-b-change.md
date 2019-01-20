@@ -9,9 +9,9 @@ tags: tmux
 
 .tmux.conf에 다음을 추가한다.
 
-~~~
+```
 unbind C-b                                                                                                                                                           
 set -g prefix C-a                                                                                                                                                    
 bind C-a send-prefix
-~~~
+```
 

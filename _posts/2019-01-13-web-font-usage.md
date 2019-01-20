@@ -10,7 +10,7 @@ tags: 사이트관리
 * 구글 웹폰트에서 내려받음
 * css의 body에서 font-family를 지정한다.
 
-~~~html
+``` html
 <html>
 <head>
 <title>font test</title>
@@ -29,4 +29,4 @@ body {
 <p>안녕하세요</p>
 </body>
 </html>
-~~~
+```

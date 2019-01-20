@@ -20,10 +20,10 @@ vim powerline 설정해보기
 
 다음 두 줄을 추가하면 잘 나온다
 
-~~~sh
+``` sh
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-~~~
+```
 
 화려하고 예쁘다.
 
