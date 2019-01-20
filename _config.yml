@@ -14,10 +14,11 @@ plugins:
 
 markdown: kramdown
 
-highlighter: rouge
 
 kramdown:
   input: GFM
+    highlighter: rouge
+
 excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
