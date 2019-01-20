@@ -4,6 +4,7 @@ title:  "vim dracula theme setting"
 date:   2019-01-05 22:37:36
 categories: book
 comments: false
+tags: vim
 ---
 
 ## 사용법

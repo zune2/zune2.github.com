@@ -8,7 +8,7 @@ comments: false
 
 terminal에서 현재 dir을 file browser로 띄우고 싶을 때
 
-~~~
+~~~sh
 nautilus --browser .
 ~~~
 

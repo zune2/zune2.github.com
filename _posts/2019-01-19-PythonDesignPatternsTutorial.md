@@ -4,6 +4,7 @@ title:  "Python Design Patterns Tutorial"
 date:   2019-01-19 23:24:50
 categories: book
 comments: false
+tags: python
 ---
 
 * [Python Design Patterns](https://www.tutorialspoint.com/python_design_patterns/python_design_patterns_introduction.htm)

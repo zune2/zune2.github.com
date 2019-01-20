@@ -4,6 +4,7 @@ title:  "vimpowerline-setting"
 date:   2019-01-05 22:35:52
 categories: book
 comments: false
+tags: vim
 ---
 
 2018-05-06
@@ -19,7 +20,7 @@ vim powerline 설정해보기
 
 다음 두 줄을 추가하면 잘 나온다
 
-~~~
+~~~sh
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 ~~~

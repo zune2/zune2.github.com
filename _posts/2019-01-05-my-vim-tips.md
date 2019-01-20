@@ -4,6 +4,7 @@ title:  "my-vim-tips"
 date:   2019-01-05 22:47:15
 categories: script
 comments: false
+tags: vim
 ---
 
 ### trailing white spaces 지우기 (in place)
