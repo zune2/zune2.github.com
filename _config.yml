@@ -16,8 +16,8 @@ markdown: kramdown
 
 
 kramdown:
-  input: GFM
-    highlighter: rouge
+input: GFM
+highlighter: rouge
 
 excerpt_separator: "<!-- more -->"
 sass:
