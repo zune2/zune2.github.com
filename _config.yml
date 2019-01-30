@@ -3,7 +3,7 @@ title: Zune2
 tagline: 'Zune2 - Personal web site'
 #description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 description: 'My Book Reading and Life story'
-baseurl: "/blog"
+baseurl: ""
 url: http://codinfox.github.io
 #logo: '/public/logo.png'
 
