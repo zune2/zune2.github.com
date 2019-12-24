@@ -10,9 +10,6 @@ Table of Content
 * content
 {:toc}
 
-## 사용법
-  - 함수 이름 + Ctrl-x Ctrl-u 입력
-
 ## libclang 설치
 
     sudo apt-get install libclang-3.8-dev
@@ -22,7 +19,7 @@ Table of Content
     Plugin 'SirVer/ultisnips'
     Plugin 'xavierd/clang_complete'
 
-## .vimrc에 syntastic, clang_complete 설정하기
+## .vimrc에 clang_complete 설정하기
 
     let g:clang_library_path='/usr/lib/llvm-3.8/lib'
 
@@ -35,6 +32,9 @@ Table of Content
     let g:clang_snippets=1       " use a snippet engine for placeholders
     let g:clang_snippets_engine='ultisnips'
     let g:clang_auto_select=2  
+
+## 사용법
+  - 함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.
 
 ## References
   - https://stackoverflow.com/questions/11300788/vim-function-hints-for-c
