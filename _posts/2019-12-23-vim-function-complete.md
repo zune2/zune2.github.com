@@ -4,8 +4,9 @@ title:  "clang_complete 이용하기"
 date:   2019-12-23 22:32:54
 categories: vim
 comments: true
-toc: true
 ---
+* content
+{:toc}
 
 ## libclang 설치
 
