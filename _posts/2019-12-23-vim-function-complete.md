@@ -34,6 +34,8 @@ comments: true
 ## 사용법
   - 함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.
 
+![screenshot]({{ "/assets/imgs/clang_complete_code.png" | absolute_url }})
+
 ## References
   - https://stackoverflow.com/questions/11300788/vim-function-hints-for-c
   - https://github.com/xavierd/clang_complete
