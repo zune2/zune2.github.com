@@ -7,6 +7,14 @@ comments: false
 tags: vim
 ---
 
+### vim으로 함수 전체 접기
+
+~~~vim
+set foldmethod=syntax
+set foldnestmax=1
+~~~
+0으로 바꾸면 unfold
+
 ### trailing white spaces 지우기 (in place)
 
 ~~~vim
