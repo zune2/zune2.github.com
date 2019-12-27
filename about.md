@@ -5,8 +5,6 @@ comments: true
 toc: true
 permalink: /about/
 ---
-* content
-{:toc}
 
 ## What I worked
 * Programmer
