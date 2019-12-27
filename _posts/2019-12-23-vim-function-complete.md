@@ -10,26 +10,32 @@ comments: true
 
 ## libclang 설치
 
-    sudo apt-get install libclang-3.8-dev
+~~~bash
+sudo apt-get install libclang-3.8-dev
+~~~
 
 ## .vimrc에 플러그인 설치하기
 
-    Plugin 'SirVer/ultisnips'
-    Plugin 'xavierd/clang_complete'
+~~~vim
+Plugin 'SirVer/ultisnips'
+Plugin 'xavierd/clang_complete'
+~~~
 
 ## .vimrc에 clang_complete 설정하기
 
-    let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+~~~vim
+let g:clang_library_path='/usr/lib/llvm-3.8/lib'
 
-    set pumheight=10             " so the complete menu doesn't get too big
-    set completeopt-=preview
-    set completeopt=menu,longest " menu, menuone, longest and preview
+set pumheight=10             " so the complete menu doesn't get too big
+set completeopt-=preview
+set completeopt=menu,longest " menu, menuone, longest and preview
 
-    let g:SuperTabDefaultCompletionType='context'
-    let g:clang_complete_auto=0  " I can start the autocompletion myself, thanks..
-    let g:clang_snippets=1       " use a snippet engine for placeholders
-    let g:clang_snippets_engine='ultisnips'
-    let g:clang_auto_select=2  
+let g:SuperTabDefaultCompletionType='context'
+let g:clang_complete_auto=0  " I can start the autocompletion myself, thanks..
+let g:clang_snippets=1       " use a snippet engine for placeholders
+let g:clang_snippets_engine='ultisnips'
+let g:clang_auto_select=2  
+~~~
 
 ## 사용법
   - 함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.
