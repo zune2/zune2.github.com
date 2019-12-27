@@ -5,6 +5,8 @@ comments: true
 toc: true
 permalink: /about/
 ---
+* content
+{:toc}
 
 ## What I worked
 * Programmer
@@ -17,6 +19,7 @@ permalink: /about/
 * org-mode, orgzly
 
 ## Site history
+
 
 ### 2019.1.20
 - theme 변경, tags 지원됨
