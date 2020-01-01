@@ -10,6 +10,10 @@ tags: 사이트관리
 {:toc}
 
 
+## Jekyll 설치, Gem으로 theme 설치
+- [설치방법](https://dev-yakuza.github.io/ko/jekyll/installation/)
+- [Gem으로 theme설치](https://dev-yakuza.github.io/ko/jekyll/installation)
+
 ## Jekyll 명령 실행하기
 ~~~bash
 bundle exec jekyll serve
