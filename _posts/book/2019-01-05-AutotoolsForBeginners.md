@@ -1,5 +1,4 @@
 ---
-layout: article
 title:  "Autotools For Beginners"
 date:   2019-01-05 22:40:14
 categories: book

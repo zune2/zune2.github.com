@@ -1,5 +1,4 @@
 ---
-layout: article
 title: "bash 코딩할 때 도움되는 것들 모아두기"
 toc: true
 date:   2019-01-05 17:18:44

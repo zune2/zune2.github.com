@@ -1,5 +1,4 @@
 ---
-layout: article
 title:  "jekyll syntax highlight 지정하기"
 date:   2019-01-05 20:32:29
 categories: code

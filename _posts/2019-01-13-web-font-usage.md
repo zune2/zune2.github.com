@@ -1,5 +1,4 @@
 ---
-layout: article
 title:  "나눔명조웹폰트사용"
 date:   2019-01-13 19:14:14
 categories: hobby

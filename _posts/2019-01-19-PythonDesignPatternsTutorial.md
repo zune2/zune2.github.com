@@ -1,5 +1,4 @@
 ---
-layout: article
 title:  "Python Design Patterns Tutorial"
 date:   2019-01-19 23:24:50
 categories: book

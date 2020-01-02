@@ -1,9 +1,8 @@
 ---
-layout: article
 title:  "vim과 GNU global 연동"
 date:   2019-12-30 22:32:54
 categories: vim
-comment: true
+
 ---
 
 ## GNU Global이란?

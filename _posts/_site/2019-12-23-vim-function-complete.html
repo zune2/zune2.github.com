@@ -1,0 +1,48 @@
+<ul id="markdown-toc">
+  <li><a href="#libclang-설치" id="markdown-toc-libclang-설치">libclang 설치</a></li>
+  <li><a href="#vimrc에-플러그인-설치하기" id="markdown-toc-vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</a></li>
+  <li><a href="#vimrc에-clang_complete-설정하기" id="markdown-toc-vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</a></li>
+  <li><a href="#사용법" id="markdown-toc-사용법">사용법</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="libclang-설치">libclang 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libclang-3.8-dev
+</code></pre></div></div>
+
+<h2 id="vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plugin <span class="s1">'SirVer/ultisnips'</span>
+Plugin <span class="s1">'xavierd/clang_complete'</span>
+</code></pre></div></div>
+
+<h2 id="vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">g:clang_library_path</span><span class="p">=</span><span class="s1">'/usr/lib/llvm-3.8/lib'</span>
+
+<span class="k">set</span> pumheight<span class="p">=</span><span class="m">10</span>             " <span class="k">so</span> the complete menu doesn'<span class="k">t</span> get too big
+<span class="k">set</span> completeopt<span class="p">-=</span>preview
+<span class="k">set</span> completeopt<span class="p">=</span>menu<span class="p">,</span>longest " menu<span class="p">,</span> menuone<span class="p">,</span> longest and preview
+
+<span class="k">let</span> <span class="nv">g:SuperTabDefaultCompletionType</span><span class="p">=</span><span class="s1">'context'</span>
+<span class="k">let</span> <span class="nv">g:clang_complete_auto</span><span class="p">=</span><span class="m">0</span>  " I can <span class="k">start</span> the autocompletion myself<span class="p">,</span> thanks<span class="p">..</span>
+<span class="k">let</span> <span class="nv">g:clang_snippets</span><span class="p">=</span><span class="m">1</span>       " use <span class="k">a</span> snippet engine <span class="k">for</span> placeholders
+<span class="k">let</span> <span class="nv">g:clang_snippets_engine</span><span class="p">=</span><span class="s1">'ultisnips'</span>
+<span class="k">let</span> <span class="nv">g:clang_auto_select</span><span class="p">=</span><span class="m">2</span>  
+</code></pre></div></div>
+
+<h2 id="사용법">사용법</h2>
+<ul>
+  <li>함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/imgs/clang_complete_code.png" alt="screenshot" /></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://stackoverflow.com/questions/11300788/vim-function-hints-for-c</li>
+  <li>https://github.com/xavierd/clang_complete</li>
+  <li>https://www.vim.org/scripts/script.php?script_id=2715</li>
+</ul>
+

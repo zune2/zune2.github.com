@@ -1,5 +1,4 @@
 ---
-layout: article
 title:  "tmux-terminal-multiplexer"
 date:   2019-01-05 22:26:11
 categories: script
