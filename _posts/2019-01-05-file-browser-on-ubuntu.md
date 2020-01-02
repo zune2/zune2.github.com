@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: artilcle
 title:  "file browser on ubuntu terminal"
 date:   2019-01-05 22:46:03
 categories: script

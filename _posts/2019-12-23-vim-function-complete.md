@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: artilcle
 title:  "clang_complete 이용하기"
 date:   2019-12-23 22:32:54
 categories: vim

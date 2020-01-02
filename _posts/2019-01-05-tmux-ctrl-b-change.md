@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: artilcle
 title:  "tmux ctrl-b키를 ctrl-a키로 변경하기"
 date:   2019-01-05 22:21:47
 categories: script

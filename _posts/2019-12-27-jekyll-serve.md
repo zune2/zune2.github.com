@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: artilcle
 title:  "Jekyll 명령어 모음"
 date:   2019-12-27 20:32:29
 categories: code
