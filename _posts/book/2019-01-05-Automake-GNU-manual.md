@@ -1,5 +1,5 @@
 ---
-layout: artilcle
+layout: article
 title:  "Automake GNU manual"
 date:   2019-01-05 22:39:18
 categories: book

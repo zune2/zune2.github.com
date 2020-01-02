@@ -1,5 +1,5 @@
 ---
-layout: artilcle
+layout: article
 title:  "elisp - hello world 예제"
 date:   2020-01-02 22:32:54
 categories: emacs elisp

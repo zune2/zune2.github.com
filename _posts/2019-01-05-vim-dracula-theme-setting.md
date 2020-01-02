@@ -1,5 +1,5 @@
 ---
-layout: artilcle
+layout: article
 title:  "vim dracula theme setting"
 date:   2019-01-05 22:37:36
 categories: book
