@@ -1,12 +1,12 @@
 ---
 layout: page
-title:  "elisp - hello world"
+title:  "elisp - hello world 예제"
 date:   2020-01-02 22:32:54
 categories: emacs elisp
 comments: true
 ---
 
-## elisp로 hello world하기
+## elisp로 hello world 출력하기
 
 M-x ielm으로 모드를 진입하고, 함수를 만들어 본다.
 
