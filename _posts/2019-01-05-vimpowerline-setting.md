@@ -3,7 +3,7 @@ layout: page
 title:  "vimpowerline-setting"
 date:   2019-01-05 22:35:52
 categories: book
-comments: false
+comment: false
 tags: vim
 ---
 

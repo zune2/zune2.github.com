@@ -3,7 +3,7 @@ layout: page
 title:  "elisp - hello world 예제"
 date:   2020-01-02 22:32:54
 categories: emacs elisp
-comments: true
+comment: true
 ---
 
 ## elisp로 hello world 출력하기

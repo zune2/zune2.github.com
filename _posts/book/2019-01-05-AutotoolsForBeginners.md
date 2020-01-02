@@ -3,7 +3,7 @@ layout: page
 title:  "Autotools For Beginners"
 date:   2019-01-05 22:40:14
 categories: book
-comments: false
+comment: false
 ---
 
 1. [Autotools Tutorial for Beginners](http://markuskimius.wikidot.com/programming:tut:autotools)

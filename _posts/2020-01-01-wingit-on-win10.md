@@ -3,7 +3,7 @@ layout: page
 title:  "Windows10에 git 설치, MSYS2"
 date:   2020-01-01 22:32:54
 categories: git
-comments: false 
+comment: false 
 ---
 
 git client windows용을 설치하면 된다.

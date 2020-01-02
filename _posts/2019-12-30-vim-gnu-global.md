@@ -3,7 +3,7 @@ layout: page
 title:  "vim과 GNU global 연동"
 date:   2019-12-30 22:32:54
 categories: vim
-comments: true
+comment: true
 ---
 
 ## GNU Global이란?

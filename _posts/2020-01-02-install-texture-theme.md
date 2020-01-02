@@ -3,7 +3,7 @@ layout: article
 title: "jekyll texture 테마 설치하기"
 date: 2020-01-02 23:32:54
 categories: jekyll
-comments: true
+comment: true
 sidebar:
   nav: layouts
 ---

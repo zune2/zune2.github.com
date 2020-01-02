@@ -3,7 +3,7 @@ layout: page
 title:  "Automake GNU manual"
 date:   2019-01-05 22:39:18
 categories: book
-comments: false
+comment: false
 ---
 
 Automake GNU 메뉴얼
