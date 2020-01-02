@@ -3,7 +3,7 @@ title:  "나눔명조웹폰트사용"
 date:   2019-01-13 19:14:14
 categories: hobby
 comment: false
-tags: 사이트관리
+tags: jekyll
 ---
 
 * 구글 웹폰트에서 내려받음

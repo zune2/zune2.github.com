@@ -3,7 +3,7 @@ title:  "jekyll syntax highlight 지정하기"
 date:   2019-01-05 20:32:29
 categories: code
 comment: false
-tags: 사이트관리
+tags: jekyll
 ---
 * content
 {:toc}
