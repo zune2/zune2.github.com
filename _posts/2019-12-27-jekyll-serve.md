@@ -14,6 +14,12 @@ tags: 사이트관리
 - [설치방법](https://dev-yakuza.github.io/ko/jekyll/installation/)
 - [Gem으로 theme설치](https://dev-yakuza.github.io/ko/jekyll/installation)
 
+
+## Jekyll blog 만들기
+~~~bash
+jekyll new BLOGNAME.github.io
+~~~
+
 ## Jekyll 명령 실행하기
 ~~~bash
 bundle exec jekyll serve
