@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Blog &middot; Zune2
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/main.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  
+  <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"> </script>
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });
+  </script>
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+		  <!--
+        <a href="http://gravatar.com/3c2986ad7ac1f2230ea3596f44563328">
+          <img src="http://www.gravatar.com/avatar/3c2986ad7ac1f2230ea3596f44563328?s=350" title="View on Gravatar" alt="View on Gravatar" />
+		  -->
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p>Programmer, SW engineer</p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me: 
+        
+        
+        
+        <a href="https://github.com/zune2">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/">
+          Home
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item active" href="/blog/">
+          Blog
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/">
+                Categories
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/tags/">
+                Tags
+              </a>
+          
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/about/">
+          About
+        </a>
+
+        
+      </span>
+
+    
+
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2020 Zune2. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a> and <a href="http://codinfox.github.io">codinfox-lanyon</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home" title="Zune2">
+              <img class="masthead-logo" src=""/>
+            </a>
+            <small>Zune2 - Personal web site</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/vim/2019/12/31/vim-gnu-global/">
+        vim과 GNU global 연동
+      </a>
+    </h1>
+
+    <span class="post-date">31 Dec 2019</span>
+     | 
+    
+    
+
+    <article>
+      <h2 id="gnu-global이란">GNU Global이란?</h2>
+
+<p>vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.</p>
+
+<p>gtags.vim이 소스 검색 결과를 좀더 잘 보여준다.</p>
+
+<ul>
+  <li>변수, 함수의 선언으로 이동</li>
+  <li>구현으로 이동</li>
+  <li>사용한 곳으로 이동</li>
+  <li>파일이름으로 이동</li>
+</ul>
+
+<h2 id="mkcscopesh와-비슷하게-script를-만들기">mkcscope.sh와 비슷하게 script를 만들기</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'*.cpp'</span> <span class="nt">-o</span> <span class="nt">-name</span> <span class="s1">'*.h'</span> <span class="o">&gt;</span> gtags.files
+gtags <span class="nt">--accept-dotfiles</span> <span class="nt">-c</span> <span class="nt">-f</span> gtags.files
+</code></pre></div></div>
+<p>mktags.sh로 만들고 실행권한을 준다.
+source의 최상위 dir에서 한번 호출해주면 된다.</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="https://github.com/vim-scripts/gtags.vim">gtags.vim</a></li>
+  <li><a href="https://slowstarter80.github.io/vim/2017/07/21/vim_settings.html">keymap 예제</a></li>
+  <li><a href="https://vi.stackexchange.com/questions/4835/gnu-global-and-vim">script형태로 쓰기</a></li>
+</ul>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/vim/2019/12/31/vim-gnu-global/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/vim/2019/12/31/vim-gnu-global/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/code/2019/12/28/jekyll-serve/">
+        Jekyll 명령어 모음
+      </a>
+    </h1>
+
+    <span class="post-date">28 Dec 2019</span>
+     | 
+    
+    <a href="/blog/tags/#사이트관리" class="post-tag">사이트관리</a>
+    
+    
+
+    <article>
+      <ul id="markdown-toc">
+  <li><a href="#jekyll-명령-실행하기" id="markdown-toc-jekyll-명령-실행하기">Jekyll 명령 실행하기</a></li>
+  <li><a href="#gemfile에-플러그인-설치하기" id="markdown-toc-gemfile에-플러그인-설치하기">Gemfile에 플러그인 설치하기</a></li>
+</ul>
+
+<h2 id="jekyll-명령-실행하기">Jekyll 명령 실행하기</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<h2 id="gemfile에-플러그인-설치하기">Gemfile에 플러그인 설치하기</h2>
+
+<p>Gemfile에 내용을 편집한 후 bundle 명령어를 실행한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/code/2019/12/28/jekyll-serve/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/code/2019/12/28/jekyll-serve/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/vim/2019/12/24/vim-function-complete/">
+        clang_complete 이용하기
+      </a>
+    </h1>
+
+    <span class="post-date">24 Dec 2019</span>
+     | 
+    
+    
+
+    <article>
+      <ul id="markdown-toc">
+  <li><a href="#libclang-설치" id="markdown-toc-libclang-설치">libclang 설치</a></li>
+  <li><a href="#vimrc에-플러그인-설치하기" id="markdown-toc-vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</a></li>
+  <li><a href="#vimrc에-clang_complete-설정하기" id="markdown-toc-vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</a></li>
+  <li><a href="#사용법" id="markdown-toc-사용법">사용법</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="libclang-설치">libclang 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libclang-3.8-dev
+</code></pre></div></div>
+
+<h2 id="vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plugin <span class="s1">'SirVer/ultisnips'</span>
+Plugin <span class="s1">'xavierd/clang_complete'</span>
+</code></pre></div></div>
+
+<h2 id="vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">g:clang_library_path</span><span class="p">=</span><span class="s1">'/usr/lib/llvm-3.8/lib'</span>
+
+<span class="k">set</span> pumheight<span class="p">=</span><span class="m">10</span>             " <span class="k">so</span> the complete menu doesn'<span class="k">t</span> get too big
+<span class="k">set</span> completeopt<span class="p">-=</span>preview
+<span class="k">set</span> completeopt<span class="p">=</span>menu<span class="p">,</span>longest " menu<span class="p">,</span> menuone<span class="p">,</span> longest and preview
+
+<span class="k">let</span> <span class="nv">g:SuperTabDefaultCompletionType</span><span class="p">=</span><span class="s1">'context'</span>
+<span class="k">let</span> <span class="nv">g:clang_complete_auto</span><span class="p">=</span><span class="m">0</span>  " I can <span class="k">start</span> the autocompletion myself<span class="p">,</span> thanks<span class="p">..</span>
+<span class="k">let</span> <span class="nv">g:clang_snippets</span><span class="p">=</span><span class="m">1</span>       " use <span class="k">a</span> snippet engine <span class="k">for</span> placeholders
+<span class="k">let</span> <span class="nv">g:clang_snippets_engine</span><span class="p">=</span><span class="s1">'ultisnips'</span>
+<span class="k">let</span> <span class="nv">g:clang_auto_select</span><span class="p">=</span><span class="m">2</span>  
+</code></pre></div></div>
+
+<h2 id="사용법">사용법</h2>
+<ul>
+  <li>함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/imgs/clang_complete_code.png" alt="screenshot" /></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://stackoverflow.com/questions/11300788/vim-function-hints-for-c</li>
+  <li>https://github.com/xavierd/clang_complete</li>
+  <li>https://www.vim.org/scripts/script.php?script_id=2715</li>
+</ul>
+
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/vim/2019/12/24/vim-function-complete/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/vim/2019/12/24/vim-function-complete/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/vim/2019/12/14/ack-vim/">
+        ack.vim
+      </a>
+    </h1>
+
+    <span class="post-date">14 Dec 2019</span>
+     | 
+    
+    
+
+    <article>
+      <p>https://github.com/mileszs/ack.vim</p>
+
+<p>vim에서 text search를 위한 도구</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span>Ack work filename
+</code></pre></div></div>
+
+<p>vim 안에서 화면을 나누어서, 검색결과를 볼 수 있다.</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/vim/2019/12/14/ack-vim/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/vim/2019/12/14/ack-vim/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/it/2019/11/10/repl-it/">
+        repl.it
+      </a>
+    </h1>
+
+    <span class="post-date">10 Nov 2019</span>
+     | 
+    
+    
+
+    <article>
+      <p>https://repl.it</p>
+
+<p>C/C++ 프로그래밍을 온라인 환경에서 해볼 수 있음.</p>
+
+<p>bash shell에서 컴파일하는 과정을 보여준다.</p>
+
+<p>stdin, stdout을 이용할 수 있음</p>
+
+<p>vim edit mode지원함</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/it/2019/11/10/repl-it/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/it/2019/11/10/repl-it/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/culture/2019/07/30/%EC%98%81%ED%99%94-%ED%8A%B8%EB%A1%9C%EC%9D%B4/">
+        트로이
+      </a>
+    </h1>
+
+    <span class="post-date">30 Jul 2019</span>
+     | 
+    
+    
+
+    <article>
+      <p>최강의 검투사인 아킬리스가 트로이 침공의 선두에 나서 활약하는 이야기</p>
+
+<p>평범한 사람들이 두려워할 상황을 영광으로 생각하고, 위험을 극복한다.</p>
+
+<p>누군가에게는 전쟁이 소중한 가족을 지키는 일이고,</p>
+
+<p>누군가에게는 자신의 영광을 얻기 위한 기회가 되기도 한다.</p>
+
+<p>다양한 사람들이 전쟁이라는 상황에서 보이는 감정을 잘 표현한 영화, 트로이.</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/culture/2019/07/30/%EC%98%81%ED%99%94-%ED%8A%B8%EB%A1%9C%EC%9D%B4/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/culture/2019/07/30/%EC%98%81%ED%99%94-%ED%8A%B8%EB%A1%9C%EC%9D%B4/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/culture/2019/07/21/%EC%98%81%ED%99%94-%EC%95%8C%EB%9D%BC%EB%94%98/">
+        알라딘
+      </a>
+    </h1>
+
+    <span class="post-date">21 Jul 2019</span>
+     | 
+    
+    
+
+    <article>
+      <p>화려한 영상미가 돋보이는 영화. 램프의 지니가 소원을 들어준다는 이야기로 풀어나간다.</p>
+
+<p>더빙판을 봤는데, 노래를 하는 장면들이 어색하지 않게 잘 처리되었다.</p>
+
+<p>성우들이 노래도 잘하나보다.</p>
+
+<p>2시간여 동안 일상을 잊고, 빠져들기 좋았던 영화</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/culture/2019/07/21/%EC%98%81%ED%99%94-%EC%95%8C%EB%9D%BC%EB%94%98/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/culture/2019/07/21/%EC%98%81%ED%99%94-%EC%95%8C%EB%9D%BC%EB%94%98/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/culture/2019/07/16/%EC%98%81%ED%99%94-%EC%88%9C%EC%88%98%EC%9D%98%EC%8B%9C%EB%8C%80/">
+        영화 순수의 시대
+      </a>
+    </h1>
+
+    <span class="post-date">16 Jul 2019</span>
+     | 
+    
+    
+
+    <article>
+      <p>무장 김민재의 삶과 주변의 다양한 사람들의 삶과 태도를 보게하는 영화.</p>
+
+<p>적당히 야한 장면이 나오고, 잔인한 장면도 나온다.</p>
+
+<p>하지만 상징을 통한 의미를 잘 살리려고 노력한 영화 같다.</p>
+
+<p>흥행하지 못한 영화인 것 같은데, 그와 상관없이 나에게 많은 생각할 것을 주었다.</p>
+
+<p>대업을 이루는 것도 망치는 것도 자신의 삶을 잘 다스리는 것에 달려있다.</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/culture/2019/07/16/%EC%98%81%ED%99%94-%EC%88%9C%EC%88%98%EC%9D%98%EC%8B%9C%EB%8C%80/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/culture/2019/07/16/%EC%98%81%ED%99%94-%EC%88%9C%EC%88%98%EC%9D%98%EC%8B%9C%EB%8C%80/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/blog/page2">Older</a>
+  
+  
+    <span class="pagination-item newer">Newer</span>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+    
+  </body>
+  
+  <script id="dsq-count-scr" src="//zune2.disqus.com/count.js" async></script>
+  
+</html>
