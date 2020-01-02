@@ -24,7 +24,6 @@ titles:
   fr-LU   : *FR
   # @end locale config
 key: page-about
-comments: true
 ---
 
 ## What I worked
@@ -39,13 +38,9 @@ comments: true
 
 ## Site history
 
-### 2020.1.2
-- theme 변경
-
-### 2019.1.20
-- theme 변경, tags 지원됨
-
-### 2019.1.5
- 
-- 이전 블로그 삭제, github로 옮김
-- theme 변경, code highlighter, TOC plugin 붙임
+| DATE      | DESC                      |
+|-----------|---------------------------|
+| 2020.1.2  | theme 변경                |
+| 2019.1.20 | theme 변경, tags 지원됨   |
+| 2019.1.5  | theme 변경, code highlighter, TOC plugin 붙임 |
+| 2019.1.4  | 이전 블로그 삭제, github로 옮김 |
