@@ -4,6 +4,7 @@ toc: true
 date:   2019-01-05 17:18:44
 categories: script
 comment: false
+tags: bash
 ---
 
 * content

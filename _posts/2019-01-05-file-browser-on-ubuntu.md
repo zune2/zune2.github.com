@@ -1,7 +1,7 @@
 ---
-title:  "file browser on ubuntu terminal"
-date:   2019-01-05 22:46:03
-categories: script
+title: "file browser on ubuntu terminal"
+date: 2019-01-05 22:46:03
+tags: script
 ---
 
 terminal에서 현재 dir을 file browser로 띄우고 싶을 때
