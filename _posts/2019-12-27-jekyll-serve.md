@@ -5,9 +5,6 @@ categories: code
 comment: false
 tags: jekyll
 ---
-* content
-{:toc}
-
 
 ## Jekyll 설치, Gem으로 theme 설치
 - [설치방법](https://dev-yakuza.github.io/ko/jekyll/installation/)
