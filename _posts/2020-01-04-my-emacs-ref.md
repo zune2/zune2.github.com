@@ -8,6 +8,7 @@ tags: emacs
 주로 쓰는 emacs 명령어 정리
 
 ## basic command
+
 | CMD	                         | DESC                      |
 |--------------------------------|---------------------------|
 | C-x C-f                        | 파일 Open                 |
@@ -16,6 +17,7 @@ tags: emacs
 
 
 ## org-mode command
+
 | CMD	                  | DESC                      |
 |-------------------------|---------------------------|
 | org-agenda 진입 후 m    | tag를 이용한 검색         |
