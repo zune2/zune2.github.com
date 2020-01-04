@@ -21,6 +21,9 @@ tags: emacs
 | C-d                            | 한 글자 지우기            |
 | C-k C-y                        | 한줄 지우고, 붙이기       |
 | C-SPC                          | visual block 지정 시작    |
+| C-x C-b                        | Buffer List 열기          |
+| C-x o                          | 창분할된 옆창 이동        |
+
 
 
 ## org-mode command
@@ -29,6 +32,9 @@ tags: emacs
 |--------------------------------|---------------------------|
 | org-agenda 진입 후 m           | tag를 이용한 검색         |
 | F12                            | org-todo-list 진입        |
+| C-c C-w                        | refile하기                |
+
+
 
 
 ## emacs config mapping
@@ -41,7 +47,6 @@ tags: emacs
 
 ### refile target이되는 파일 이름 지정하기
 ~~~elisp
-(setq org-refile-targets
-      '(("filename.org" :maxlevel . 1)
-        ))
+(setq org-refile-targets '(("archive.org" :level . 1)))
 ~~~
+
