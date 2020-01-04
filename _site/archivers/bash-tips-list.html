@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>bash 코딩할 때 도움되는 것들 모아두기 « Zune2's Blog</title>
+  <meta name="description" content="  md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)  References          Heredoc 관련      GetOpt 관련      pushd/popd      md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)$find . ...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/bash-tips-list">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">bash 코딩할 때 도움되는 것들 모아두기</h1>
+    <p class="post-meta">Jan 6, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#md-확장자인-파일을-찾아서-string-바꾸기-sub-dir모두" id="markdown-toc-md-확장자인-파일을-찾아서-string-바꾸기-sub-dir모두">md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a>    <ul>
+      <li><a href="#heredoc-관련" id="markdown-toc-heredoc-관련">Heredoc 관련</a></li>
+      <li><a href="#getopt-관련" id="markdown-toc-getopt-관련">GetOpt 관련</a></li>
+      <li><a href="#pushdpopd" id="markdown-toc-pushdpopd">pushd/popd</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="md-확장자인-파일을-찾아서-string-바꾸기-sub-dir모두">md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$find</span> <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"*.md"</span> <span class="nt">-exec</span> <span class="nb">sed</span> <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'s/AAA/BBB/g'</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/1583219/how-to-do-a-recursive-find-replace-of-a-string-with-awk-or-sed">link</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+<h3 id="heredoc-관련">Heredoc 관련</h3>
+<ol>
+  <li><a href="https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script">how-can-i-write-a-heredoc-to-a-file-in-bash-script</a> : heredoc 이용하기</li>
+  <li><a href="https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script">How can I write a heredoc to a file in Bash script?</a> : heredoc으로 file생성하기</li>
+</ol>
+
+<h3 id="getopt-관련">GetOpt 관련</h3>
+<ol>
+  <li><a href="https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash">An example of how to use getopts in bash</a> : getopt로 argument처리</li>
+</ol>
+
+<h3 id="pushdpopd">pushd/popd</h3>
+<ol>
+  <li><a href="https://serverfault.com/questions/108154/can-i-call-pushd-popd-and-prevent-it-printing-the-stack">Can I call pushd/popd and prevent it printing the stack?</a></li>
+</ol>
+
+  </article>
+  
+  
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    <a href="https://github.com/myoungjune">GitHub</a>
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.io">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/my-emacs-ref">My Emacs Reference Card</a></li>
+    
+      <li><a class="post-link" href="/archivers/vim-plugin-lightline">vim lightline.vim 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/install-texture-theme">jekyll texture 테마 설치하기</a></li>
+    
+      <li><a class="post-link" href="/archivers/elisp-say-hello">elisp - hello world 예제</a></li>
+    
+      <li><a class="post-link" href="/archivers/wingit-on-win10">Windows10에 git 설치, MSYS2</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2020 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

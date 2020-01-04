@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>clang_complete 이용하기 « Zune2's Blog</title>
+  <meta name="description" content="  libclang 설치  .vimrc에 플러그인 설치하기  .vimrc에 clang_complete 설정하기  사용법  Referenceslibclang 설치sudo apt-get install libclang-3.8-dev.vimrc에 플러그인 설치하기Plugin 'SirVer...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/vim-function-complete">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">clang_complete 이용하기</h1>
+    <p class="post-meta">Dec 24, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <ul id="markdown-toc">
+  <li><a href="#libclang-설치" id="markdown-toc-libclang-설치">libclang 설치</a></li>
+  <li><a href="#vimrc에-플러그인-설치하기" id="markdown-toc-vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</a></li>
+  <li><a href="#vimrc에-clang_complete-설정하기" id="markdown-toc-vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</a></li>
+  <li><a href="#사용법" id="markdown-toc-사용법">사용법</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="libclang-설치">libclang 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libclang-3.8-dev
+</code></pre></div></div>
+
+<h2 id="vimrc에-플러그인-설치하기">.vimrc에 플러그인 설치하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plugin <span class="s1">'SirVer/ultisnips'</span>
+Plugin <span class="s1">'xavierd/clang_complete'</span>
+</code></pre></div></div>
+
+<h2 id="vimrc에-clang_complete-설정하기">.vimrc에 clang_complete 설정하기</h2>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">g:clang_library_path</span><span class="p">=</span><span class="s1">'/usr/lib/llvm-3.8/lib'</span>
+
+<span class="k">set</span> pumheight<span class="p">=</span><span class="m">10</span>             " <span class="k">so</span> the complete menu doesn'<span class="k">t</span> get too big
+<span class="k">set</span> completeopt<span class="p">-=</span>preview
+<span class="k">set</span> completeopt<span class="p">=</span>menu<span class="p">,</span>longest " menu<span class="p">,</span> menuone<span class="p">,</span> longest and preview
+
+<span class="k">let</span> <span class="nv">g:SuperTabDefaultCompletionType</span><span class="p">=</span><span class="s1">'context'</span>
+<span class="k">let</span> <span class="nv">g:clang_complete_auto</span><span class="p">=</span><span class="m">0</span>  " I can <span class="k">start</span> the autocompletion myself<span class="p">,</span> thanks<span class="p">..</span>
+<span class="k">let</span> <span class="nv">g:clang_snippets</span><span class="p">=</span><span class="m">1</span>       " use <span class="k">a</span> snippet engine <span class="k">for</span> placeholders
+<span class="k">let</span> <span class="nv">g:clang_snippets_engine</span><span class="p">=</span><span class="s1">'ultisnips'</span>
+<span class="k">let</span> <span class="nv">g:clang_auto_select</span><span class="p">=</span><span class="m">2</span>  
+</code></pre></div></div>
+
+<h2 id="사용법">사용법</h2>
+<ul>
+  <li>함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/imgs/clang_complete_code.png" alt="screenshot" /></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://stackoverflow.com/questions/11300788/vim-function-hints-for-c</li>
+  <li>https://github.com/xavierd/clang_complete</li>
+  <li>https://www.vim.org/scripts/script.php?script_id=2715</li>
+</ul>
+
+
+  </article>
+  
+  
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    <a href="https://github.com/myoungjune">GitHub</a>
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.io">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/my-emacs-ref">My Emacs Reference Card</a></li>
+    
+      <li><a class="post-link" href="/archivers/vim-plugin-lightline">vim lightline.vim 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/install-texture-theme">jekyll texture 테마 설치하기</a></li>
+    
+      <li><a class="post-link" href="/archivers/elisp-say-hello">elisp - hello world 예제</a></li>
+    
+      <li><a class="post-link" href="/archivers/wingit-on-win10">Windows10에 git 설치, MSYS2</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2020 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>
