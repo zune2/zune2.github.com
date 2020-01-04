@@ -15,10 +15,10 @@ avatar: "//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135"
 
 profile: Keep going for the unknown
 #twitter_username: twitter_username
-github_username:  myoungjune
+#github_username:  myoungjune
 profile_links:
   Email: "mailto:myoungjune@gmail.com"
-  GitHub: "https://github.com/zune2/zune2.github.io"
+  GitHub: "https://github.com/zune2/zune2.github.com"
   # You can add more profile links above, or edit _includes/sidebar.html 
 
 # Comment Service (Disqus or 多说)
