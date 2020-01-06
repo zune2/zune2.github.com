@@ -28,13 +28,12 @@ tags: emacs
 
 ## org-mode command
 
-| CMD	                         | DESC                      |
-|--------------------------------|---------------------------|
-| org-agenda 진입 후 m           | tag를 이용한 검색         |
-| F12                            | org-todo-list 진입        |
-| C-c C-w                        | refile하기                |
-
-
+| CMD	                         | DESC                                                          |
+|--------------------------------|---------------------------------------------------------------|
+| org-agenda 진입 후 m           | tag를 이용한 검색                                             |
+| F12                            | org-todo-list 진입                                            |
+| C-c C-w                        | refile하기                                                    |
+| C-c C-o                        | org-open-at-point 문서내부 URL을 browser로 열기               |
 
 
 ## emacs config mapping
