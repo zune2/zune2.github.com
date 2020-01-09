@@ -17,6 +17,25 @@ $find . -name "*.md" -exec sed -i -e 's/AAA/BBB/g' {} \;
 
 - [link](https://stackoverflow.com/questions/1583219/how-to-do-a-recursive-find-replace-of-a-string-with-awk-or-sed)
 
+## scp로 파일 복사하기
+
+~~~bash
+sshpass -p암호 scp -o StrictHostKeyChecking=no hello.txt id@111.222.333.444:/home/id/hello.txt
+~~~
+
+- expect + scp로도 가능할 것.
+- [link](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_scp_%EC%9E%90%EB%8F%99%ED%99%94)
+
+## sftp로 최신 파일 가져오기
+
+- wild card 규칙을 적용할 수 있을까?
+~~~bash
+fileName=$(echo "ls -1rt" | sftp -oIdentityFile=<pathToKeyFile> username@sftpServer:/remoteDir | tail -1) 
+~~~
+
+- [link](https://stackoverflow.com/questions/35545774/get-latest-file-from-sftp-to-local-machine)
+
+
 ## References
 ### Heredoc 관련
 1. [how-can-i-write-a-heredoc-to-a-file-in-bash-script](https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script) : heredoc 이용하기
