@@ -18,6 +18,7 @@ permalink: /about/
 
 | DATE      | DESC                      |
 |-----------|---------------------------|
+| 2020.1.10 | tag.html 추가             |
 | 2020.1.4  | theme 변경 (EasyBook)     |
 | 2019.1.20 | theme 변경, tags 지원됨   |
 | 2019.1.5  | theme 변경, code highlighter, TOC plugin 붙임 |
