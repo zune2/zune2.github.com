@@ -31,3 +31,5 @@ set foldnestmax=1
 ~~~vim
 map <F10> <ESC>:!xsel --clipboard --input < % <CR><CR>
 ~~~
+
+
