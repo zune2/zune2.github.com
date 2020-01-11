@@ -28,3 +28,4 @@ Gemfile에 내용을 편집한 후 bundle 명령어를 실행한다.
 ~~~bash
 bundle install
 ~~~
+

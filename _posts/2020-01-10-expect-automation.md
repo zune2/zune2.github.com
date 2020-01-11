@@ -3,6 +3,7 @@ layout: post
 title: "expect 사용하기"
 date: 2020-01-10 12:04:00
 tags: expect
+nocomments: true
 ---
 
 ## expect script
