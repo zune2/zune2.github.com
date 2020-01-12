@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>bash 코딩할 때 도움되는 것들 모아두기 « Zune2's Blog</title>
-  <meta name="description" content="  md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)  References          Heredoc 관련      GetOpt 관련      pushd/popd      md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)$find . ...">
+  <meta name="description" content="Table Of Content  md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)  scp로 파일 복사하기  sftp로 최신 파일 가져오기  References          Heredoc 관련      GetOpt 관련      pushd/popd     ...">
   <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/archivers/bash-tips-list">
@@ -30,6 +30,9 @@
         
         <a class="page-link" href="/category/">Category</a>
       
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
     </nav>
   </div>
 </header>
@@ -46,8 +49,11 @@
   </header>
 
   <article class="post-content">
-    <ul id="markdown-toc">
+    <p>Table Of Content</p>
+<ul id="markdown-toc">
   <li><a href="#md-확장자인-파일을-찾아서-string-바꾸기-sub-dir모두" id="markdown-toc-md-확장자인-파일을-찾아서-string-바꾸기-sub-dir모두">md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)</a></li>
+  <li><a href="#scp로-파일-복사하기" id="markdown-toc-scp로-파일-복사하기">scp로 파일 복사하기</a></li>
+  <li><a href="#sftp로-최신-파일-가져오기" id="markdown-toc-sftp로-최신-파일-가져오기">sftp로 최신 파일 가져오기</a></li>
   <li><a href="#references" id="markdown-toc-references">References</a>    <ul>
       <li><a href="#heredoc-관련" id="markdown-toc-heredoc-관련">Heredoc 관련</a></li>
       <li><a href="#getopt-관련" id="markdown-toc-getopt-관련">GetOpt 관련</a></li>
@@ -62,6 +68,26 @@
 
 <ul>
   <li><a href="https://stackoverflow.com/questions/1583219/how-to-do-a-recursive-find-replace-of-a-string-with-awk-or-sed">link</a></li>
+</ul>
+
+<h2 id="scp로-파일-복사하기">scp로 파일 복사하기</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sshpass <span class="nt">-p</span>암호 scp <span class="nt">-o</span> <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no hello.txt <span class="nb">id</span>@111.222.333.444:/home/id/hello.txt
+</code></pre></div></div>
+
+<ul>
+  <li>expect + scp로도 가능할 것.</li>
+  <li><a href="https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_scp_%EC%9E%90%EB%8F%99%ED%99%94">link</a></li>
+</ul>
+
+<h2 id="sftp로-최신-파일-가져오기">sftp로 최신 파일 가져오기</h2>
+
+<ul>
+  <li>wild card 규칙을 적용할 수 있을까?
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">fileName</span><span class="o">=</span><span class="si">$(</span><span class="nb">echo</span> <span class="s2">"ls -1rt"</span> | sftp <span class="nt">-oIdentityFile</span><span class="o">=</span>&lt;pathToKeyFile&gt; username@sftpServer:/remoteDir | <span class="nb">tail</span> <span class="nt">-1</span><span class="si">)</span> 
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://stackoverflow.com/questions/35545774/get-latest-file-from-sftp-to-local-machine">link</a></li>
 </ul>
 
 <h2 id="references">References</h2>
@@ -85,6 +111,18 @@
   
   
 
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'zune2'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
+
 
 
 
@@ -98,13 +136,11 @@
   <p>Keep going for the unknown</p>
   <p class="contact">
     
-    <a href="https://github.com/myoungjune">GitHub</a>
-    
     
     
     <a href="mailto:myoungjune@gmail.com">Email</a>
     
-    <a href="https://github.com/zune2/zune2.github.io">GitHub</a>
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
     
   </p>
 </div>
@@ -113,15 +149,15 @@
   <div class="col-box-title">Newest Posts</div>
   <ul class="post-list">
     
+      <li><a class="post-link" href="/archivers/expect-automation">expect 사용하기</a></li>
+    
+      <li><a class="post-link" href="/archivers/gravata-generation">gravata에 이미지 등록</a></li>
+    
+      <li><a class="post-link" href="/archivers/mkcscope-sh-usage">cscope와 mkcscope.sh</a></li>
+    
+      <li><a class="post-link" href="/archivers/my-vim-ref">My Vim Reference Card</a></li>
+    
       <li><a class="post-link" href="/archivers/my-emacs-ref">My Emacs Reference Card</a></li>
-    
-      <li><a class="post-link" href="/archivers/vim-plugin-lightline">vim lightline.vim 설치</a></li>
-    
-      <li><a class="post-link" href="/archivers/install-texture-theme">jekyll texture 테마 설치하기</a></li>
-    
-      <li><a class="post-link" href="/archivers/elisp-say-hello">elisp - hello world 예제</a></li>
-    
-      <li><a class="post-link" href="/archivers/wingit-on-win10">Windows10에 git 설치, MSYS2</a></li>
     
   </ul>
 </div>

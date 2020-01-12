@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>vim과 GNU global 연동 « Zune2's Blog</title>
-  <meta name="description" content="GNU Global이란?vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.gtags.vim이 소스 검색 결과를 좀더 잘 보여준다.  변수, 함수의 선언으로 이동  구현으로 이동  사용한 곳으로 이동  파일이름으로 이동mkcscope.sh와 비슷하게 script를 만들기fi...">
+  <meta name="description" content="Table Of Content  GNU Global이란?  mkcscope.sh와 비슷하게 script를 만들기  Incremental 업데이트 하기  global 예제  6.6 최신 버전 설치하기  ReferencesGNU Global이란?vim + cscope조합을 꽤 오랫동안...">
   <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/archivers/vim-gnu-global">
@@ -30,6 +30,9 @@
         
         <a class="page-link" href="/category/">Category</a>
       
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
     </nav>
   </div>
 </header>
@@ -46,7 +49,17 @@
   </header>
 
   <article class="post-content">
-    <h2 id="gnu-global이란">GNU Global이란?</h2>
+    <p>Table Of Content</p>
+<ul id="markdown-toc">
+  <li><a href="#gnu-global이란" id="markdown-toc-gnu-global이란">GNU Global이란?</a></li>
+  <li><a href="#mkcscopesh와-비슷하게-script를-만들기" id="markdown-toc-mkcscopesh와-비슷하게-script를-만들기">mkcscope.sh와 비슷하게 script를 만들기</a></li>
+  <li><a href="#incremental-업데이트-하기" id="markdown-toc-incremental-업데이트-하기">Incremental 업데이트 하기</a></li>
+  <li><a href="#global-예제" id="markdown-toc-global-예제">global 예제</a></li>
+  <li><a href="#66-최신-버전-설치하기" id="markdown-toc-66-최신-버전-설치하기">6.6 최신 버전 설치하기</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="gnu-global이란">GNU Global이란?</h2>
 
 <p>vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.</p>
 
@@ -61,14 +74,46 @@
 
 <h2 id="mkcscopesh와-비슷하게-script를-만들기">mkcscope.sh와 비슷하게 script를 만들기</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'*.cpp'</span> <span class="nt">-o</span> <span class="nt">-name</span> <span class="s1">'*.h'</span> <span class="o">&gt;</span> gtags.files
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'*.cpp'</span> <span class="nt">-o</span> <span class="nt">-name</span> <span class="s1">'*.h'</span> <span class="o">&gt;</span> gtags.files
 gtags <span class="nt">--accept-dotfiles</span> <span class="nt">-c</span> <span class="nt">-f</span> gtags.files
 </code></pre></div></div>
 <p>mktags.sh로 만들고 실행권한을 준다.
 source의 최상위 dir에서 한번 호출해주면 된다.</p>
 
+<h2 id="incremental-업데이트-하기">Incremental 업데이트 하기</h2>
+
+<p>한번 tag database를 만든 다음에는 변경된 소스만 대상으로 db를 업데이트 해준다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>global <span class="nt">-vu</span>
+</code></pre></div></div>
+
+<h2 id="global-예제">global 예제</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>global func1                 <span class="c"># definition</span>
+<span class="nv">$ </span>global <span class="nt">-r</span> func2              <span class="c"># reference</span>
+<span class="nv">$ </span>global <span class="s1">'func[1-3]'</span>           <span class="c"># regular expression</span>
+<span class="nv">$ </span>global <span class="nt">-x</span> func2              <span class="c"># show detail</span>
+<span class="nv">$ </span>global <span class="nt">-xg</span> <span class="s1">'#ifdef NDEBUG'</span>   <span class="c"># specific pattern </span>
+<span class="nv">$ </span>global <span class="nt">-c</span> kmem&lt;TAB&gt;&lt;TAB&gt;     <span class="c"># complete command</span>
+<span class="nv">$ </span>vi <span class="sb">`</span>global func1<span class="sb">`</span>            <span class="c"># edit files having specified tags.</span>
+</code></pre></div></div>
+
+<h2 id="66-최신-버전-설치하기">6.6 최신 버전 설치하기</h2>
+
+<p>https://ftp.gnu.org/pub/gnu/global/ 코드 다운로드</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvzf</span> global-6.6.tar.gz
+<span class="nv">$ </span><span class="nb">cd </span>global-6.6
+<span class="nv">$ </span>./configure
+<span class="nv">$ </span>make
+<span class="nv">$ </span>make <span class="nb">install</span>
+<span class="nv">$ </span>global <span class="nt">--version</span>
+global <span class="o">(</span>GNU GLOBAL<span class="o">)</span> 6.6
+</code></pre></div></div>
+
 <h2 id="references">References</h2>
 <ul>
+  <li><a href="https://www.gnu.org/software/global/manual/global.html">GNU Global Manual</a></li>
   <li><a href="https://github.com/vim-scripts/gtags.vim">gtags.vim</a></li>
   <li><a href="https://slowstarter80.github.io/vim/2017/07/21/vim_settings.html">keymap 예제</a></li>
   <li><a href="https://vi.stackexchange.com/questions/4835/gnu-global-and-vim">script형태로 쓰기</a></li>
@@ -77,6 +122,18 @@ source의 최상위 dir에서 한번 호출해주면 된다.</p>
   </article>
   
   
+
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'zune2'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
 
 
 
@@ -91,13 +148,11 @@ source의 최상위 dir에서 한번 호출해주면 된다.</p>
   <p>Keep going for the unknown</p>
   <p class="contact">
     
-    <a href="https://github.com/myoungjune">GitHub</a>
-    
     
     
     <a href="mailto:myoungjune@gmail.com">Email</a>
     
-    <a href="https://github.com/zune2/zune2.github.io">GitHub</a>
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
     
   </p>
 </div>
@@ -106,15 +161,15 @@ source의 최상위 dir에서 한번 호출해주면 된다.</p>
   <div class="col-box-title">Newest Posts</div>
   <ul class="post-list">
     
+      <li><a class="post-link" href="/archivers/expect-automation">expect 사용하기</a></li>
+    
+      <li><a class="post-link" href="/archivers/gravata-generation">gravata에 이미지 등록</a></li>
+    
+      <li><a class="post-link" href="/archivers/mkcscope-sh-usage">cscope와 mkcscope.sh</a></li>
+    
+      <li><a class="post-link" href="/archivers/my-vim-ref">My Vim Reference Card</a></li>
+    
       <li><a class="post-link" href="/archivers/my-emacs-ref">My Emacs Reference Card</a></li>
-    
-      <li><a class="post-link" href="/archivers/vim-plugin-lightline">vim lightline.vim 설치</a></li>
-    
-      <li><a class="post-link" href="/archivers/install-texture-theme">jekyll texture 테마 설치하기</a></li>
-    
-      <li><a class="post-link" href="/archivers/elisp-say-hello">elisp - hello world 예제</a></li>
-    
-      <li><a class="post-link" href="/archivers/wingit-on-win10">Windows10에 git 설치, MSYS2</a></li>
     
   </ul>
 </div>

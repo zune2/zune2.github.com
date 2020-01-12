@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+nocomments: true
 ---
 
 ## What I worked
