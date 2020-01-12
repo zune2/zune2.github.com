@@ -13,7 +13,7 @@ tags: vim
 disqus_shortname: "XXXXXXX" 
 ~~~
 
-### discus comment 없애기
+### disqus comment 없애기
 
 post를 작성할 때, 상단 config에 nocomments를 지정함
 
@@ -25,7 +25,7 @@ nocomments: true
 
 ## tag 기능 추가
 
-Tag를 Categoy아래 추가한다.
+Tag를 Category아래 추가한다.
 
 ~~~yaml
 header:

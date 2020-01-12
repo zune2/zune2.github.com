@@ -33,6 +33,8 @@ source의 최상위 dir에서 한번 호출해주면 된다.
 
 한번 tag database를 만든 다음에는 변경된 소스만 대상으로 db를 업데이트 해준다.
 
+파일이 변경되면, update하게 하면 어떨까?
+
 ~~~bash
 $ global -vu
 ~~~
