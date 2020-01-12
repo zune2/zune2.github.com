@@ -23,6 +23,7 @@ g-    " 7줄 위로 이동
 
 ## Ctrl-L Ctrl-L을 이용해서 모드 변경하기
 ~~~
+" .vimrc에 키맵을 추가함
 " Relative number display
 nmap <C-L><C-L> :set invrelativenumber<CR>
 ~~~
