@@ -25,6 +25,12 @@ tags: emacs
 | C-x o                          | 창분할된 옆창 이동        |
 
 
+## 
+| CMD	                         | DESC                      |
+|--------------------------------|---------------------------|
+| M-x toggle-truncate-lines      | auto line warpping on/off |
+
+
 
 ## org-mode command
 
