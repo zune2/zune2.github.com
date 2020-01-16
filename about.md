@@ -19,6 +19,7 @@ nocomments: true
 
 | DATE      | DESC                      |
 |-----------|---------------------------|
+| 2020.1.17 | orgmode를 이용한 publishing  |
 | 2020.1.10 | tag.html 추가             |
 | 2020.1.4  | theme 변경 (EasyBook)     |
 | 2019.1.20 | theme 변경, tags 지원됨   |
