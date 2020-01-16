@@ -69,14 +69,15 @@ int main(int argc, char* argv[])
 ** 생성 방법
 C-c C-e P x 후 현재 등록된 proejct를 고른다. 
 
-** TODO image 추가하기
+** DONE image 추가하기
 
-이미지 생성 방법은 좀 더 확인해볼 것
+#+BEGIN_EXAMPLE org
+[[../assets/imgs/test.jpeg]]
+#+END_EXAMPLE
+
+ [[../assets/imgs/test.jpeg]]
 
 ** TODO orgmode로 표 추가하기
-
-| A | B |
-| 1 | 2 |
 
 * 참고자료
  - https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/
