@@ -1,0 +1,61 @@
+---
+layout: post
+title: git 명령어 모음
+tags: git
+---
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">자주 쓰는 명령어</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<pre class="src src-bash">git pull                            # 원격 저장소의 내용 가져오기 (당겨오기)
+git log                             # log보기
+git add                             # commit할 파일 추가하기
+git commit -m "commit message"      # commit하기
+git push                            # 원격 저장소에 push하기
+git reset --hard                    # 로컬 저장소 변경내용 지움
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">2020년 이후의 commit만 1줄로 보기 + 저자 상대적 시간 출력</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+
+<pre class="src src-bash">git log --pretty=format:"%s (%ar)" --after='2020-01-01'
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">git rebase</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+자주 안쓴다. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="todo TODO">TODO</span> git clone</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+tutorial git볼 것
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Reference</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><a href="https://github.com/KennethanCeyer/tutorial-git">totorial-git</a>
+</li>
+<li><a href="https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%BB%A4%EB%B0%8B-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EC%A1%B0%ED%9A%8C%ED%95%98%EA%B8%B0">git-scm-book</a>
+</li>
+</ul>
+</div>
+</div>

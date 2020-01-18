@@ -1,0 +1,31 @@
+#+BEGIN_HTML
+---
+layout: post
+title: git 명령어 모음
+tags: git
+---
+#+END_HTML
+
+** 자주 쓰는 명령어
+#+BEGIN_SRC bash
+git pull                            # 원격 저장소의 내용 가져오기 (당겨오기)
+git log                             # log보기
+git add                             # commit할 파일 추가하기
+git commit -m "commit message"      # commit하기
+git push                            # 원격 저장소에 push하기
+git reset --hard                    # 로컬 저장소 변경내용 지움
+#+END_SRC
+
+** 2020년 이후의 commit만 1줄로 보기 + 저자 상대적 시간 출력
+#+BEGIN_SRC bash
+git log --pretty=format:"%s (%ar)" --after='2020-01-01'
+#+END_SRC
+
+** git rebase
+자주 안쓴다. 
+
+** TODO git clone
+tutorial git볼 것
+** Reference
+- [[https://github.com/KennethanCeyer/tutorial-git][totorial-git]]
+- [[https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%BB%A4%EB%B0%8B-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EC%A1%B0%ED%9A%8C%ED%95%98%EA%B8%B0][git-scm-book]]

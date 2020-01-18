@@ -79,6 +79,14 @@ C-c C-e P x 후 현재 등록된 proejct를 고른다.
 
 ** TODO orgmode로 표 추가하기
 
+| Name | Phone |
+|  1   |   2   |
+
+** orgmode에서 하이퍼 링크 추가
+#+BEGIN_EXAMPLE
+[[LINK][DESCRIPTION]]
+#+END_EXAMPLE
+[[LINK][DESCRIPTION]]
 * 참고자료
  - https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/
  - https://orgmode.org/worg/org-tutorials/org-jekyll.html
