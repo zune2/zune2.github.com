@@ -1,0 +1,93 @@
+---
+layout: post
+title: todo.txt 이용하기
+tags: vim
+---
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">todo.txt-vim</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+vim을 이용해서 todo.txt 포맷으로 할일 관리를 할 수 있는 플러그인
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">vim 키맵</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>&lt;localleader&gt;s : Sort the file
+</li>
+<li>&lt;localleader&gt;s+ : 프로젝트를 sorting
+</li>
+<li>&lt;localleader&gt;s@ : 컨택스트로 sorting
+</li>
+<li>&lt;localleader&gt;sd : 날자로 sorting
+</li>
+<li>&lt;localleader&gt;sd : due date로 sorting
+</li>
+<li>&lt;localleader&gt;dd : 날자를 붙여준다
+</li>
+<li>&lt;localleader&gt;x : 현재 task에 완료 표시
+</li>
+<li>&lt;localleader&gt;d : 완료된 task를 done.txt로 보낸다.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">config</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+매핑을 F12로 해주었다.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-vimrc">let maplocalleader = "\\"
+map &lt;F12&gt; &lt;ESC&gt;:e ~/Dropbox/todo/todo.txt &lt;CR&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">date로 정렬 역순으로 하게하기</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+~/vim/bundle/todo.txt-vim/autoload/todo/todo.vim을 열어서
+sort를 %sort! 로 변경하면 역순으로 시간이 보이게 된다.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-vim">function! todo#txt#sort_by_date() range
+    let l:date_regex = "\\d\\{2,4\\}-\\d\\{2\\}-\\d\\{2\\}"
+    execute a:firstline . "," . a:lastline . "%sort! /" . l:date_regex . "/ r"
+    execute a:firstline . "," . a:lastline . "g!/" . l:date_regex . "/m" . a:lastline
+endfunction
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Reference</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><a href="https://github.com/todotxt/todo.txt">https://github.com/todotxt/todo.txt</a>
+</li>
+<li><a href="https://github.com/freitass/todo.txt-vim">https://github.com/freitass/todo.txt-vim</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">사용 소감</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+orgmode는 project단위로 트리구조를 타고 내려가며 정리하기 좋은 구조라면, todo.txt는 할일관리를 날자 단위로 챙기기 좋게 되어있다.
+</p>
+</div>
+</div>
