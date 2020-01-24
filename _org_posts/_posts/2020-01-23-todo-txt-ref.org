@@ -43,5 +43,12 @@ endfunction
 - https://github.com/todotxt/todo.txt
 - https://github.com/freitass/todo.txt-vim
 
+** SimpleTask Cloud와 연동하기
+Dropbox에 저장한 파일을 Android app에서 편집하고, desktop에서 vim으로 편집을 할 수 있다.
+
+Dropbox/todo dir아래에 파일이 저장되는 것 같다.
+
+- [[https://play.google.com/store/apps/details?id=nl.mpcjanssen.simpletask&hl=ko][Simple Task App]]
+
 ** 사용 소감
 orgmode는 project단위로 트리구조를 타고 내려가며 정리하기 좋은 구조라면, todo.txt는 할일관리를 날자 단위로 챙기기 좋게 되어있다.
