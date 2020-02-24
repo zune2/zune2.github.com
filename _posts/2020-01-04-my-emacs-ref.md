@@ -41,6 +41,12 @@ tags: emacs
 | C-c C-w                        | refile하기                                                    |
 | C-c C-o                        | org-open-at-point 문서내부 URL을 browser로 열기               |
 
+## c programming
+| CMD	                             | DESC                                                          |
+|------------------------------------|---------------------------------------------------------------|
+| block 지정 후 M-x c-macro-expand   | preprocessor 문장을 해석해준다.                               |
+
+
 
 ## emacs config mapping
 
