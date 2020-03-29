@@ -1,0 +1,97 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Problem solving 토픽
+tags: ProblemSolving
+---
+#+END_HTML
+
+* 주제별 분류
+** 수학
+1. GCD / LCM 구하기
+1. 에라토스테네스의 체
+
+** Array 이용
+
+** 자료구조 구현
+1. 스택
+2. 큐
+3. 최소/최대 힙
+4. 리스트
+5. 해시테이블
+6. 이진트리
+7. LCRS tree
+8. Binary Search Tree
+
+** 비트마스크
+
+** Sorting
+1. 삽입정렬
+2. 선택정렬
+3. 버블정렬
+4. 머지정렬
+5. 퀵정렬
+6. Partial Sort
+7. 기수정렬
+
+** String
+1. strcmp, strcpy 구현
+1. KMP 알고리즘
+1. 접미사 배열
+1. 접미사 트리
+1. Trie
+1. Rabin Karp
+1. 아호 코라식
+
+** 완전탐색 / Brute Force
+
+** Graph 알고리즘
+1. DFS
+2. BFS
+3. 다익스트라
+4. 벨만 포드
+5. 플로이드 와샬
+
+** Minimum Spanning Tree
+1. 크루스컬 알고리즘
+2. 프림 알고리즘
+
+** Topological Sort
+1. indegree를 이용하는 방법
+2. dfs를 이용하는 방법
+
+** Greedy Method
+
+** 이분탐색
+1. Lower bound / Upper bound
+2. Parametric Search
+
+** Dynamic Programing
+1. 동전교환 문제 가짓수
+2. 동전교환 문제 최소 동전수
+3. LIS를 DP로 구현 + 경로 출력
+4. LIS를 lower bound로 구현 + 경로 출력
+5. 기업투자 문제를 DP로 구현 + 선택 내용 출력
+6. 0/1 knapsack DP 구현 + 선택 내용 출력
+7. LCS
+8. 최소 비용 이동(left and down방향)
+9. 가장 긴 연속적으로 증가하는 부분 수열 (LIS와 다름)
+
+** 트리 알고리즘
+1. 트리를 표현하는 방법
+2. 트리의 탐색(전위/중위/후위)
+3. 트리의 지름 구하기
+4. LCA (최소 공통 조상 구하기)
+
+** Union Find
+
+** Index Tree
+
+** Segment Tree
+
+** 시뮬레이션 문제들
+
+* 참고자료
+- [[https://www.topcoder.com/community/competitive-programming/tutorials/][Topcoder tutorial]]
+- [[https://cp-algorithms.com/][E-Maxx Algorithms in English]] 
+- [[https://www.codechef][Introductory tutorials for competitive programming]]
