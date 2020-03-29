@@ -6,14 +6,14 @@ tags: English
 ---
 #+END_HTML
 
-* CNBS - Youtubue with scripts
-1. Is a global debt crisis coming? | CNBC Explains https://www.youtube.com/watch?v=_Cf7o_YlH5M
-2. What is Softbank? | CNBC Explains https://www.youtube.com/watch?v=YgkQdUB0JVQ
-3. What the coronavirus means for business | CNBC Reports https://www.youtube.com/watch?v=2CdV00pirjU&t=523s
+* CNBS - Youtubue with scripts [2/3]
+- [X] Is a global debt crisis coming? | CNBC Explains https://www.youtube.com/watch?v=_Cf7o_YlH5M
+- [X] What is Softbank? | CNBC Explains https://www.youtube.com/watch?v=YgkQdUB0JVQ
+- [ ] What the coronavirus means for business | CNBC Reports https://www.youtube.com/watch?v=2CdV00pirjU&t=523s
 
-* Arirang News
-1. S. Korean movie industry hit hard by COVID-19 outbreak http://www.arirang.com/News/News_View.asp?sys_lang=Eng&nseq=255165
-2. U.S. COVID-19 cases surpass 100,000 http://www.arirang.com/news/News_View.asp?nseq=255185
+* Arirang News [1/2]
+- [X] S. Korean movie industry hit hard by COVID-19 outbreak http://www.arirang.com/News/News_View.asp?sys_lang=Eng&nseq=255165
+- [ ] U.S. COVID-19 cases surpass 100,000 http://www.arirang.com/news/News_View.asp?nseq=255185
 
 * PBS News - Youtube with scripts
 1. PBS NewsHour full episode, Mar 26, 2020 https://www.youtube.com/watch?v=ROlO3HZOlnw
