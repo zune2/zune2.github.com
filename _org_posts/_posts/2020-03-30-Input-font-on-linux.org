@@ -1,0 +1,17 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Input font 설치하기
+tags: font
+---
+#+END_HTML
+
+https://input.fontbureau.com/download/ 에서 다운로드 받아서 설치한다.
+
+#+BEGIN_EXAMPLE
+sudo find . -name *.ttf -exec cp {} /usr/share/fonts -rf \;
+fc-cache -f
+#+END_EXAMPLE
+
+조금 더 써봐야겠다. Inconsolata보다 깔끔해보이지 않는다. 
+
