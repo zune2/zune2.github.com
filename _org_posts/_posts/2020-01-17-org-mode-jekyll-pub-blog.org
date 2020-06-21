@@ -67,8 +67,7 @@ int main(int argc, char* argv[])
 #+END_SRC
 
 ** 생성 방법
-C-c C-e P x 후 현재 등록된 proejct를 고른다. 
-
+C-c C-e P x 후 현재 등록된 proejct를 고른다.(org-zune)
 ** DONE image 추가하기
 
 #+BEGIN_EXAMPLE org

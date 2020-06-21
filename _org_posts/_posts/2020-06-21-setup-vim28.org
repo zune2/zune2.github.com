@@ -1,0 +1,26 @@
+#+BEGIN_HTML
+---
+layout: post
+title: vim82 setup
+tags: vim
+---
+#+END_HTML
+
+** Setting up
+#+BEGIN_EXAMPLE
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+sudo apt-get install vim
+vi ~/.bashrc
+source ~/.bashrc
+#+END_EXAMPLE
+
+Append this line to .bashrc
+#+BEGIN_EXAMPLE
+export VIMRUNTIME=/usr/share/vim/vim82
+#+END_EXAMPLE
+
+** Reference
+- http://ubuntuhandbook.org/index.php/2019/12/install-vim-8-2-ubuntu-18-04-16-04-19-10/
+- https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim
