@@ -6,31 +6,18 @@ tags: English
 ---
 #+END_HTML
 
-* CNBS - Youtubue with scripts [2/3]
-- [X] Is a global debt crisis coming? | CNBC Explains https://www.youtube.com/watch?v=_Cf7o_YlH5M
-- [X] What is Softbank? | CNBC Explains https://www.youtube.com/watch?v=YgkQdUB0JVQ
-- [ ] What the coronavirus means for business | CNBC Reports https://www.youtube.com/watch?v=2CdV00pirjU&t=523s
+* Youtube
+- PBS news - 자막 있음 공부하기 좋다.
+- ABC Prime - 1시간 길이의 영어 뉴스
+- TED ed - 5분 분량 자막 좋음
+- CNBC Explains - 자막 있음, 주로 비즈니스
+- Bob the canadian
 
-* Arirang News [1/2]
-- [X] S. Korean movie industry hit hard by COVID-19 outbreak http://www.arirang.com/News/News_View.asp?sys_lang=Eng&nseq=255165
-- [ ] U.S. COVID-19 cases surpass 100,000 http://www.arirang.com/news/News_View.asp?nseq=255185
-
-* PBS News - Youtube with scripts
-1. PBS NewsHour full episode, Mar 26, 2020 https://www.youtube.com/watch?v=ROlO3HZOlnw
-
-* TED 
-* TED ed
-1. A brie(f) history of cheese - Paul Kindstedt https://www.youtube.com/watch?v=QKae1k1BDdA
-2. A brief history of alcohol - Rod Phillips https://www.youtube.com/watch?v=y5XEwTDlriE
-
-* CNN Student news  - scripts (auto-gerenated) [/]
-- [ ]  The World's Largest Annual Human Migration | January 23, 2020 https://www.youtube.com/watch?v=KRpmMTXM7vs
-
-* Youtube - scripts (auto-generated) [1/1]
-- [X] 5 Productivity Tools For Programming https://www.youtube.com/watch?v=s8wQz6EVUzw
-
-* Documentaries [/]
-- [ ] COVID-19: How Aviation is Fighting for Survival https://www.youtube.com/watch?v=VX2e2iEg_pM
-- [ ] How China Built a Hospital in 10 Days https://www.youtube.com/watch?v=3Sh7hghljuQ
-- [ ] How North Korea Makes Money https://www.youtube.com/watch?v=YDvXOHjV4UM
+* Podcast
+- NBC Nightly News
+- ABC World News
+- Meet The Press
+- Good Morning Seoul
+- VOA IE
+- Up First
 
