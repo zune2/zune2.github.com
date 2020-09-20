@@ -21,6 +21,9 @@ Append this line to .bashrc
 export VIMRUNTIME=/usr/share/vim/vim82
 #+END_EXAMPLE
 
+| a | b | c |
+| hello | world | table  |
+
 ** Reference
 - http://ubuntuhandbook.org/index.php/2019/12/install-vim-8-2-ubuntu-18-04-16-04-19-10/
 - https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim

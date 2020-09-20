@@ -1,0 +1,27 @@
+#+BEGIN_HTML
+---
+layout: post
+title: Installing emacs26
+tags: Emacs
+---
+#+END_HTML
+
+** Setting up
+#+BEGIN_EXAMPLE
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs26
+#+END_EXAMPLE
+
+** Reinstalling Packages
+#+BEGIN_EXAMPLE
+emacs 설치된 패키지 upgrade
+-M package-list RET
+'U' 입력 -> 'x' 실행
+#+END_EXAMPLE
+
+** Reference
+- http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/
+
+** 더 할일
+- emacs26이 emacs가 되도록 하기
