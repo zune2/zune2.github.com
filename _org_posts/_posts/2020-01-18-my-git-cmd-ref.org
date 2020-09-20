@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: git 명령어 모음
-tags: git
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: git 명령어 모음
+#+HTML: tags: git
+#+HTML: ---
 
 ** 자주 쓰는 명령어
 #+BEGIN_SRC bash

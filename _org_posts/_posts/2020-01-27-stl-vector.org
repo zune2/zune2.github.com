@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: STL vector 이용
-tags: STL
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: STL vector 이용
+#+HTML: tags: STL
+#+HTML: ---
 
 * STL Vector
 - 동적 배열 형태로 사용함.

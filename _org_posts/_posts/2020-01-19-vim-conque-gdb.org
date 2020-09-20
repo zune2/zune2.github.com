@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: vim + conqueGDB 이용
-tags: vim
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: vim + conqueGDB 이용
+#+HTML: tags: vim
+#+HTML: ---
 
 ** 사용법
 vim에서 코딩하고, 빌드한 실행파일 이름을 적어준다.

@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: ox-gfm으로 org를 markdown변환하기
-tags: org-mode
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: ox-gfm으로 org를 markdown변환하기
+#+HTML: tags: org-mode
+#+HTML: ---
 
 ** org mode로 markdown page export 시도
 #+BEGIN_EXAMPLE

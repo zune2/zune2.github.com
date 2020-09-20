@@ -1,4 +1,8 @@
-
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: OrgMode를 이용한 Jekyll 블로그 쓰기
+#+HTML: tags: Emacs
+#+HTML: ---
 
 * org mode를 이용한 블로그 쓰기
 - 이 페이지는 emacs org mode로 만들어짐
@@ -46,19 +50,16 @@
 )
 #+END_SRC
 
-
 ** page마다 front matter 쓰기
 
 맨 위에 다음을 추가한다.
 
 #+BEGIN_EXAMPLE
-
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: org mode를 이용한 블로그 쓰기
 #+HTML: tags: OrgMode
 #+HTML: ---
-
 #+END_EXAMPLE
 
 ** C++ 소스 쓰기

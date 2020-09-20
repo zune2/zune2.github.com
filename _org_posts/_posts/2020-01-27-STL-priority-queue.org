@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: STL priority queue
-tags: STL
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: STL priority queue
+#+HTML: tags: STL
+#+HTML: ---
 
 ** STL priority queue
 - Max heap, Min heap이 필요할 때

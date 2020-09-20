@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: STL pair와 vector 같이 쓰기
-tags: STL
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: STL pair와 vector 같이 쓰기
+#+HTML: tags: STL
+#+HTML: ---
 
 ** STL Pair
 - first, second를 필드로 가짐
