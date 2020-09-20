@@ -1,11 +1,3 @@
-#+BEGIN_HTML
----
-layout: post
-title: vim82 setup
-tags: vim
----
-#+END_HTML
-
 ** Setting up
 #+BEGIN_EXAMPLE
 sudo add-apt-repository ppa:jonathonf/vim
