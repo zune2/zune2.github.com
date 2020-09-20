@@ -1,10 +1,8 @@
-#+BEGIN_SRC html
----
-layout: post
-title: Emacs26 설치
-tags: Emacs
----
-#+END_SRC
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Emacs26 설치
+#+HTML: tags: Emacs
+#+HTML: ---
 
 ** Setting up
 

@@ -1,3 +1,9 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Vim28 설치하기
+#+HTML: tags: vim
+#+HTML: ---
+
 ** Setting up
 #+BEGIN_EXAMPLE
 sudo add-apt-repository ppa:jonathonf/vim
