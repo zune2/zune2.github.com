@@ -1,6 +1,6 @@
-<div id="outline-container-org565be83" class="outline-3">
-<h3 id="org565be83">Setting up</h3>
-<div class="outline-text-3" id="text-org565be83">
+<div id="outline-container-org565be83" class="outline-2">
+<h2 id="org565be83">Setting up</h2>
+<div class="outline-text-2" id="text-org565be83">
 <pre class="example">
 sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt update
@@ -9,70 +9,57 @@ sudo apt install emacs26
 </div>
 </div>
 
-<div id="outline-container-org06cf240" class="outline-3">
-<h3 id="org06cf240">Reinstalling Packages</h3>
-<div class="outline-text-3" id="text-org06cf240">
+<div id="outline-container-org06cf240" class="outline-2">
+<h2 id="org06cf240">Reinstalling Packages</h2>
+<div class="outline-text-2" id="text-org06cf240">
 <pre class="example">
+
 emacs 설치된 패키지 upgrade
+
 -M package-list RET
+
 'U' 입력 -&gt; 'x' 실행
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orge3c7ebf" class="outline-3">
-<h3 id="orge3c7ebf">emacs 버전 변경하기</h3>
-<div class="outline-text-3" id="text-orge3c7ebf">
-<p>
-#+BEGIN<sub>EXAMPLE</sub>
-$ sudo update-alternatives &#x2013;config emacs
-대체 항목 emacs에 대해 (/usr/bin/emacs 제공) 2개 선택이 있습니다.
-</p>
+<div id="outline-container-orgeb5e005" class="outline-2">
+<h2 id="orgeb5e005">Emacs26을 기본으로 선택하게 하기</h2>
+<div class="outline-text-2" id="text-orgeb5e005">
+<pre class="example">
 
-<p>
-선택       경로              우선순상태
-</p>
-<hr />
-</div>
-</div>
-<div id="outline-container-org9d0df0f" class="outline-2">
-<h2 id="org9d0df0f">0            /usr/bin/emacs24-x   27        자동 모드</h2>
-<div class="outline-text-2" id="text-org9d0df0f">
-<p>
-1            /usr/bin/emacs24-x   27        수동 모드
-2            /usr/bin/emacs26     27        수동 모드
-</p>
-
-<p>
+$ sudo update-alternatives --config emacs
+...
 Press &lt;enter&gt; to keep the current choice[*], or type selection number: 2
 update-alternatives: using /usr/bin/emacs26 to provide /usr/bin/emacs (emacs) in manual mode
-$ emacs &#x2013;version
+$ emacs --version
 GNU Emacs 26.3
 Copyright (C) 2019 Free Software Foundation, Inc.
 GNU Emacs comes with ABSOLUTELY NO WARRANTY.
 You may redistribute copies of GNU Emacs
 under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
-#+END<sub>EXAMPLE</sub>
-</p>
+
+</pre>
+</div>
 </div>
 
 
-<div id="outline-container-orgac85ce1" class="outline-3">
-<h3 id="orgac85ce1">Reference</h3>
-<div class="outline-text-3" id="text-orgac85ce1">
+<div id="outline-container-orgac85ce1" class="outline-2">
+<h2 id="orgac85ce1">Reference</h2>
+<div class="outline-text-2" id="text-orgac85ce1">
 <ul class="org-ul">
 <li><a href="http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/">http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge9103f8" class="outline-3">
-<h3 id="orge9103f8">더 할일</h3>
-<div class="outline-text-3" id="text-orge9103f8">
+<div id="outline-container-orge9103f8" class="outline-2">
+<h2 id="orge9103f8">더 할일</h2>
+<div class="outline-text-2" id="text-orge9103f8">
 <ul class="org-ul">
 <li>emacs26이 emacs가 되도록 하기</li>
 </ul>
-</div>
 </div>
 </div>

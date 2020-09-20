@@ -1,5 +1,6 @@
 
 ** Setting up
+
 #+BEGIN_EXAMPLE
 sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt update
@@ -7,23 +8,23 @@ sudo apt install emacs26
 #+END_EXAMPLE
 
 ** Reinstalling Packages
+
 #+BEGIN_EXAMPLE
+
 emacs 설치된 패키지 upgrade
+
 -M package-list RET
+
 'U' 입력 -> 'x' 실행
+
 #+END_EXAMPLE
 
-** emacs 버전 변경하기
+** Emacs26을 기본으로 선택하게 하기
+
 #+BEGIN_EXAMPLE
+
 $ sudo update-alternatives --config emacs
-대체 항목 emacs에 대해 (/usr/bin/emacs 제공) 2개 선택이 있습니다.
-
-  선택       경로              우선순상태
-------------------------------------------------------------
-* 0            /usr/bin/emacs24-x   27        자동 모드
-  1            /usr/bin/emacs24-x   27        수동 모드
-  2            /usr/bin/emacs26     27        수동 모드
-
+...
 Press <enter> to keep the current choice[*], or type selection number: 2
 update-alternatives: using /usr/bin/emacs26 to provide /usr/bin/emacs (emacs) in manual mode
 $ emacs --version
@@ -33,6 +34,7 @@ GNU Emacs comes with ABSOLUTELY NO WARRANTY.
 You may redistribute copies of GNU Emacs
 under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
+
 #+END_EXAMPLE
 
 
