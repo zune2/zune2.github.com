@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: todo.txt 이용하기
-tags: vim
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: todo.txt 이용하기
+#+HTML: tags: vim
+#+HTML: ---
 
 ** todo.txt-vim
 

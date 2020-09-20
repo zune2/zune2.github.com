@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: 영어듣기 자료 + 자막
-tags: English
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: 영어듣기 자료 + 자막
+#+HTML: tags: English
+#+HTML: ---
 
 * Youtube
 - PBS news - 자막 있음 공부하기 좋다.

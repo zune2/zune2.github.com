@@ -1,10 +1,8 @@
-#+BEGIN_HTML
----
-layout: post
-title: Problem solving 토픽
-tags: ProblemSolving
----
-#+END_HTML
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Problem solving 토픽
+#+HTML: tags: ProblemSolving
+#+HTML: ---
 
 * 주제별 분류
 ** 수학
