@@ -1,11 +1,3 @@
-#+BEGIN_HTML
----
-layout: post
-title: org mode를 이용해서 Jekyll blog 쓰기
-tags: org-mode
----
-#+END_HTML
-
 * org mode를 이용한 블로그 쓰기
 - 이 페이지는 emacs org mode로 만들어짐
 - 이맥스 에디터 안에서 블로그 글을 모두 작성하고, preview 가능한 구조 구축
@@ -81,11 +73,7 @@ C-c C-e P x 후 현재 등록된 proejct를 고른다.(org-zune)
 | Name | Phone |
 |  1   |   2   |
 
-** orgmode에서 하이퍼 링크 추가
-#+BEGIN_EXAMPLE
-[[LINK][DESCRIPTION]]
-#+END_EXAMPLE
-[[LINK][DESCRIPTION]]
+
 * 참고자료
  - https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/
  - https://orgmode.org/worg/org-tutorials/org-jekyll.html
