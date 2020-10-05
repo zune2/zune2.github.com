@@ -1,0 +1,15 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: The Time Ferris Show Pod
+#+HTML: tags: StudyEnglish
+#+HTML: ---
+
+* The Tim Ferris Show - Podcast
+
+** 특징
+ + 전세계적으로 유명한 Podcast 방송
+ + Podcast, Web, mp3로 들을 수 있음
+ + pdf로 된 대본을 구할 수 있음
+
+** Transcrips
+ + https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/
