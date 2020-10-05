@@ -1,0 +1,17 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Luke English Podcast
+#+HTML: tags: StudyEnglish
+#+HTML: ---
+
+* Luke English Podcast
+
+** 특징
+
+ + 괞찮은 영어 포드캐스트 찾음
+ + podcast, web, mp3등으로 들을 수 있고, 대본을 많이 제공함.
+ + 유료 구독 프로그램 있고, 저렴한 편
+
+** Episods link
+ + https://teacherluke.co.uk/archive-of-episodes-1-149/
+ + http://teacherluke.co.uk/episodes-with-transcripts/
