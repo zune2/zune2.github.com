@@ -1,0 +1,15 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: FRONTLINE
+#+HTML: tags: StudyEnglish
+#+HTML: ---
+
+* PBS FRONTLINE - Podcast
+
+** 특징
+ + Podcast, youtube, web으로 들을 수 있음
+ + pod로 전체 episods 들을 수 있는 듯
+
+** Transcrips
+ + https://www.pbs.org/wgbh/frontline/film/
+ + 각 메뉴에 들어가면 대본이 있음
