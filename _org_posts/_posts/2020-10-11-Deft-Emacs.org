@@ -1,0 +1,12 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Emacs Deft 설치
+#+HTML: tags: Emacs
+#+HTML: ---
+
+* DONE Emacs Deft 설치
++ https://github.com/jrblevin/deft
+
+설치하라는대로 하면 된다.
+F8을 눌러서, orgmode를 편집할 수 있다.
+검색기능이 있다는 것이 편리
