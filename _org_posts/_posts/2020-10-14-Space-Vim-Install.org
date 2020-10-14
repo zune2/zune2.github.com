@@ -19,13 +19,13 @@ vim하면 실행된다.
 curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 #+END_EXAMPLE
 
-
-** 느낌
-- 뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음
-- 플러그인 설치가 편리할지 궁금하다.
-
-
-
+** 환경설정 파일 위치
+#+BEGIN_EXAMPLE
+~/.SpaceVim.d/init.toml
+#+END_EXAMPLE
 
 ** Referene
 + https://spacevim.org/quick-start-guide
+** 느낌
+- 뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음
+- 플러그인 설치가 편리할지 궁금하다.
