@@ -1,8 +1,10 @@
 #+HTML: ---
-n#+HTML: layout: post
+#+HTML: layout: post
 #+HTML: title: Space Vim 설치
 #+HTML: tags: Vim
 #+HTML: ---
+
+* SpaceVim 설치
 
 ** SpaceVim 설치 명령어
 #+BEGIN_EXAMPLE
