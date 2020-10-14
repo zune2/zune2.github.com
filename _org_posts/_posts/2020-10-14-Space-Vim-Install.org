@@ -1,0 +1,26 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Space Vim 설치
+#+HTML: tags: Vim
+#+HTML: ---
+
+** SpaceVim 설치 명령어
+#+BEGIN_EXAMPLE
+curl -sLf https://spacevim.org/install.sh | bash
+#+END_EXAMPLE
+
+vim하면 실행된다.
+
+** SpaceVim 지우기
+원래 있던 vim으로 연결해준다.
+#+BEGIN_EXAMPLE
+curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+#+END_EXAMPLE
+
+
+** 느낌
+- 뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음
+- 플러그인 설치가 편리할지 궁금하다.
+
+
+
