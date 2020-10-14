@@ -1,5 +1,5 @@
 #+HTML: ---
-#+HTML: layout: post
+n#+HTML: layout: post
 #+HTML: title: Space Vim 설치
 #+HTML: tags: Vim
 #+HTML: ---
@@ -24,3 +24,6 @@ curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 
 
 
+
+** Referene
++ https://spacevim.org/quick-start-guide
