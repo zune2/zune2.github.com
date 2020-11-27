@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: The Time Ferris Show Pod
+#+HTML: title: The Tim Ferris Show Pod
 #+HTML: tags: StudyEnglish
 #+HTML: ---
 
