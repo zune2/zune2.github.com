@@ -1,0 +1,13 @@
+---
+title:  "hello.py 인터프리터에서 실행하기"
+date:   2021-07-03 22:32:54
+categories: python
+
+---
+
+#+BEGIN_EXAMPLE
+exec(open('hello.py').read())
+'Hello World!'
+#+END_EXAMPLE
+
+https://realpython.com/run-python-scripts/
