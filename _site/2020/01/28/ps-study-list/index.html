@@ -1,0 +1,986 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ProblemSolving," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Zune2" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="주제별 분류 수학 GCD / LCM 구하기 에라토스테네스의 체">
+<meta name="keywords" content="ProblemSolving">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Problem solving 토픽">
+<meta property="og:url" content="http://localhost:4000/2020/01/28/ps-study-list/">
+<meta property="og:site_name" content="Zune2">
+<meta property="og:description" content="주제별 분류 수학 GCD / LCM 구하기 에라토스테네스의 체">
+<meta property="og:locale" content="ko">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Problem solving 토픽">
+<meta name="twitter:description" content="주제별 분류 수학 GCD / LCM 구하기 에라토스테네스의 체">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Problem solving 토픽 | Zune2</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zune2</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/01/28/ps-study-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zune2">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zune2">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Problem solving 토픽
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2020-01-28T00:00:00+09:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="outline-container-org9508fc6" class="outline-2">
+<h2 id="org9508fc6">주제별 분류</h2>
+<div class="outline-text-2" id="text-org9508fc6">
+</div>
+<div id="outline-container-org4d3997f" class="outline-3">
+<h3 id="org4d3997f">수학</h3>
+<div class="outline-text-3" id="text-org4d3997f">
+<ol class="org-ol">
+<li>GCD / LCM 구하기</li>
+<li>에라토스테네스의 체</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9ca0341" class="outline-3">
+<h3 id="org9ca0341">Array 이용</h3>
+</div>
+
+<div id="outline-container-orgb6fd637" class="outline-3">
+<h3 id="orgb6fd637">자료구조 구현</h3>
+<div class="outline-text-3" id="text-orgb6fd637">
+<ol class="org-ol">
+<li>스택</li>
+<li>큐</li>
+<li>최소/최대 힙</li>
+<li>리스트</li>
+<li>해시테이블</li>
+<li>이진트리</li>
+<li>LCRS tree</li>
+<li>Binary Search Tree</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org37c8edf" class="outline-3">
+<h3 id="org37c8edf">비트마스크</h3>
+</div>
+
+<div id="outline-container-org6680038" class="outline-3">
+<h3 id="org6680038">Sorting</h3>
+<div class="outline-text-3" id="text-org6680038">
+<ol class="org-ol">
+<li>삽입정렬</li>
+<li>선택정렬</li>
+<li>버블정렬</li>
+<li>머지정렬</li>
+<li>퀵정렬</li>
+<li>Partial Sort</li>
+<li>기수정렬</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org16667e8" class="outline-3">
+<h3 id="org16667e8">String</h3>
+<div class="outline-text-3" id="text-org16667e8">
+<ol class="org-ol">
+<li>strcmp, strcpy 구현</li>
+<li>KMP 알고리즘</li>
+<li>접미사 배열</li>
+<li>접미사 트리</li>
+<li>Trie</li>
+<li>Rabin Karp</li>
+<li>아호 코라식</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgc5938ed" class="outline-3">
+<h3 id="orgc5938ed">완전탐색 / Brute Force</h3>
+</div>
+
+<div id="outline-container-orgf7946da" class="outline-3">
+<h3 id="orgf7946da">Graph 알고리즘</h3>
+<div class="outline-text-3" id="text-orgf7946da">
+<ol class="org-ol">
+<li>DFS</li>
+<li>BFS</li>
+<li>다익스트라</li>
+<li>벨만 포드</li>
+<li>플로이드 와샬</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf145095" class="outline-3">
+<h3 id="orgf145095">Minimum Spanning Tree</h3>
+<div class="outline-text-3" id="text-orgf145095">
+<ol class="org-ol">
+<li>크루스컬 알고리즘</li>
+<li>프림 알고리즘</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org27636ee" class="outline-3">
+<h3 id="org27636ee">Topological Sort</h3>
+<div class="outline-text-3" id="text-org27636ee">
+<ol class="org-ol">
+<li>indegree를 이용하는 방법</li>
+<li>dfs를 이용하는 방법</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga90eaa1" class="outline-3">
+<h3 id="orga90eaa1">Greedy Method</h3>
+</div>
+
+<div id="outline-container-org967ad67" class="outline-3">
+<h3 id="org967ad67">이분탐색</h3>
+<div class="outline-text-3" id="text-org967ad67">
+<ol class="org-ol">
+<li>Lower bound / Upper bound</li>
+<li>Parametric Search</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org50d5549" class="outline-3">
+<h3 id="org50d5549">Dynamic Programing</h3>
+<div class="outline-text-3" id="text-org50d5549">
+<ol class="org-ol">
+<li>동전교환 문제 가짓수</li>
+<li>동전교환 문제 최소 동전수</li>
+<li>LIS를 DP로 구현 + 경로 출력</li>
+<li>LIS를 lower bound로 구현 + 경로 출력</li>
+<li>기업투자 문제를 DP로 구현 + 선택 내용 출력</li>
+<li>0/1 knapsack DP 구현 + 선택 내용 출력</li>
+<li>LCS</li>
+<li>최소 비용 이동(left and down방향)</li>
+<li>가장 긴 연속적으로 증가하는 부분 수열 (LIS와 다름)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org3b719f0" class="outline-3">
+<h3 id="org3b719f0">트리 알고리즘</h3>
+<div class="outline-text-3" id="text-org3b719f0">
+<ol class="org-ol">
+<li>트리를 표현하는 방법</li>
+<li>트리의 탐색(전위/중위/후위)</li>
+<li>트리의 지름 구하기</li>
+<li>LCA (최소 공통 조상 구하기)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org6b4d60a" class="outline-3">
+<h3 id="org6b4d60a">Union Find</h3>
+</div>
+
+<div id="outline-container-org81e4db3" class="outline-3">
+<h3 id="org81e4db3">Index Tree</h3>
+</div>
+
+<div id="outline-container-org5227206" class="outline-3">
+<h3 id="org5227206">Segment Tree</h3>
+</div>
+
+<div id="outline-container-org3374383" class="outline-3">
+<h3 id="org3374383">시뮬레이션 문제들</h3>
+</div>
+</div>
+
+<div id="outline-container-org0a70868" class="outline-2">
+<h2 id="org0a70868">참고자료</h2>
+<div class="outline-text-2" id="text-org0a70868">
+<ul class="org-ul">
+<li><a href="https://www.topcoder.com/community/competitive-programming/tutorials/">Topcoder tutorial</a></li>
+<li><a href="https://cp-algorithms.com/">E-Maxx Algorithms in English</a></li>
+<li><a href="https://www.codechef">Introductory tutorials for competitive programming</a></li>
+</ul>
+</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/ProblemSolving" rel="tag"># ProblemSolving</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/29/STL-queue/" rel="next" title="STL queue 이용">
+                <i class="fa fa-chevron-left"></i> STL queue 이용
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/28/feynman-study-technic/" rel="prev" title="파인만의 공부하는 방법">
+                파인만의 공부하는 방법 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="zune2" />
+          <p class="site-author-name" itemprop="name">zune2</p>
+           
+              <p class="site-description motion-element" itemprop="description">One or more sentences introducing this blog.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">97</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#org9508fc6"> <span class="nav-number">1</span> <span class="nav-text">주제별 분류</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org4d3997f"> <span class="nav-number">1.1</span> <span class="nav-text">수학</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org9ca0341"> <span class="nav-number">1.2</span> <span class="nav-text">Array 이용</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#orgb6fd637"> <span class="nav-number">1.3</span> <span class="nav-text">자료구조 구현</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org37c8edf"> <span class="nav-number">1.4</span> <span class="nav-text">비트마스크</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org6680038"> <span class="nav-number">1.5</span> <span class="nav-text">Sorting</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org16667e8"> <span class="nav-number">1.6</span> <span class="nav-text">String</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#orgc5938ed"> <span class="nav-number">1.7</span> <span class="nav-text">완전탐색 / Brute Force</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#orgf7946da"> <span class="nav-number">1.8</span> <span class="nav-text">Graph 알고리즘</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#orgf145095"> <span class="nav-number">1.9</span> <span class="nav-text">Minimum Spanning Tree</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org27636ee"> <span class="nav-number">1.10</span> <span class="nav-text">Topological Sort</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#orga90eaa1"> <span class="nav-number">1.11</span> <span class="nav-text">Greedy Method</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org967ad67"> <span class="nav-number">1.12</span> <span class="nav-text">이분탐색</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org50d5549"> <span class="nav-number">1.13</span> <span class="nav-text">Dynamic Programing</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org3b719f0"> <span class="nav-number">1.14</span> <span class="nav-text">트리 알고리즘</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org6b4d60a"> <span class="nav-number">1.15</span> <span class="nav-text">Union Find</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org81e4db3"> <span class="nav-number">1.16</span> <span class="nav-text">Index Tree</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org5227206"> <span class="nav-number">1.17</span> <span class="nav-text">Segment Tree</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#org3374383"> <span class="nav-number">1.18</span> <span class="nav-text">시뮬레이션 문제들</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#org0a70868"> <span class="nav-number">2</span> <span class="nav-text">참고자료</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zune2</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Emacs26 설치 « Zune2's Blog</title>
+  <meta name="description" content="Setting upsudo add-apt-repository ppa:kelleyk/emacssudo apt updatesudo apt install emacs26Reinstalling Packagesemacs 설치된 패키지 upgrade-M package-list RET'U' 입력...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/emacs26-install">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+      
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Emacs26 설치</h1>
+    <p class="post-meta">Sep 2, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <div id="outline-container-org565be83" class="outline-2">
+<h2 id="org565be83">Setting up</h2>
+<div class="outline-text-2" id="text-org565be83">
+<pre class="example">
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs26
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org06cf240" class="outline-2">
+<h2 id="org06cf240">Reinstalling Packages</h2>
+<div class="outline-text-2" id="text-org06cf240">
+<pre class="example">
+
+emacs 설치된 패키지 upgrade
+
+-M package-list RET
+
+'U' 입력 -&gt; 'x' 실행
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgeb5e005" class="outline-2">
+<h2 id="orgeb5e005">Emacs26을 기본으로 선택하게 하기</h2>
+<div class="outline-text-2" id="text-orgeb5e005">
+<pre class="example">
+
+$ sudo update-alternatives --config emacs
+...
+Press &lt;enter&gt; to keep the current choice[*], or type selection number: 2
+update-alternatives: using /usr/bin/emacs26 to provide /usr/bin/emacs (emacs) in manual mode
+$ emacs --version
+GNU Emacs 26.3
+Copyright (C) 2019 Free Software Foundation, Inc.
+GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+You may redistribute copies of GNU Emacs
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING.
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgac85ce1" class="outline-2">
+<h2 id="orgac85ce1">Reference</h2>
+<div class="outline-text-2" id="text-orgac85ce1">
+<ul class="org-ul">
+<li><a href="http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/">http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge9103f8" class="outline-2">
+<h2 id="orge9103f8">더 할일</h2>
+<div class="outline-text-2" id="text-orge9103f8">
+<ul class="org-ul">
+<li>emacs26이 emacs가 되도록 하기</li>
+</ul>
+</div>
+</div>
+
+  </article>
+  
+  
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/AdeptEnglish">AdeptEnglish Pod</a></li>
+    
+      <li><a class="post-link" href="/archivers/Space-Vim-Install">Space Vim 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Deft-Emacs">Emacs Deft 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Podcast-With-Transcripts">대본이 제공되는 Podcast</a></li>
+    
+      <li><a class="post-link" href="/archivers/FrontLine-Pbs-Pod">FRONTLINE</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2021 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

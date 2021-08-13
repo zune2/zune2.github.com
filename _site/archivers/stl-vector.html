@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>STL vector 이용 « Zune2's Blog</title>
+  <meta name="description" content="STL Vector동적 배열 형태로 사용함.이번에 정리해서 매번 찾아보지 말자. -_-헤더 추가하기#include &lt;vector&gt;using namespace std;1차원 int 배열 초기화vector&lt;int&gt; v = {1, 2, 3, 4, 5};int 배열을...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/stl-vector">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+      
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">STL vector 이용</h1>
+    <p class="post-meta">Jan 27, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <div id="outline-container-orgbac6688" class="outline-2">
+<h2 id="orgbac6688">STL Vector</h2>
+<div class="outline-text-2" id="text-orgbac6688">
+<ul class="org-ul">
+<li>동적 배열 형태로 사용함.</li>
+<li>이번에 정리해서 매번 찾아보지 말자. -_-</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb168638" class="outline-3">
+<h3 id="orgb168638">헤더 추가하기</h3>
+<div class="outline-text-3" id="text-orgb168638">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9276dbf" class="outline-3">
+<h3 id="org9276dbf">1차원 int 배열 초기화</h3>
+<div class="outline-text-3" id="text-org9276dbf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span> = {1, 2, 3, 4, 5};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1da464b" class="outline-3">
+<h3 id="org1da464b">int 배열을 loop 하면서 push back으로 추가</h3>
+<div class="outline-text-3" id="text-org1da464b">
+<p>
+원래 하던 방식
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbbcb29d" class="outline-3">
+<h3 id="orgbbcb29d">int 배열을 받아서 vector 초기화</h3>
+<div class="outline-text-3" id="text-orgbbcb29d">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #edd400; font-weight: bold;">vt</span>(a, a + <span style="color: #729fcf; font-weight: bold;">sizeof</span>(a)/<span style="color: #729fcf; font-weight: bold;">sizeof</span>(<span style="color: #8ae234; font-weight: bold;">int</span>));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd8f173" class="outline-3">
+<h3 id="orgcd8f173">1차원 int 배열 iteration</h3>
+<div class="outline-text-3" id="text-orgcd8f173">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;::<span style="color: #8ae234; font-weight: bold;">iterator</span> <span style="color: #ff6347;">iter</span> = vt.begin();iter != vt.end();iter++) {
+     cout &lt;&lt; *iter &lt;&lt; endl;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae38879" class="outline-3">
+<h3 id="orgae38879">3*3 2차원 배열 형태로 접근하기</h3>
+<div class="outline-text-3" id="text-orgae38879">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">a</span>(3, vector&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;(3));
+</pre>
+</div>
+
+<p>
+이차원 배열 쓰듯, 접근이 가능함
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+<span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;3;i++) {
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;3;j++) {
+        a[i][j] = ++cnt;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf83b91e" class="outline-3">
+<h3 id="orgf83b91e">Reference</h3>
+<div class="outline-text-3" id="text-orgf83b91e">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/2236197/what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-elements">what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-element</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+  </article>
+  
+  
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/AdeptEnglish">AdeptEnglish Pod</a></li>
+    
+      <li><a class="post-link" href="/archivers/Space-Vim-Install">Space Vim 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Deft-Emacs">Emacs Deft 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Podcast-With-Transcripts">대본이 제공되는 Podcast</a></li>
+    
+      <li><a class="post-link" href="/archivers/FrontLine-Pbs-Pod">FRONTLINE</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2021 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

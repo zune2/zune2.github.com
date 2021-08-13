@@ -1,0 +1,1505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    <entry>
+      <title><![CDATA[hello.py 인터프리터에서 실행하기]]></title>
+      <url>/python/2021/07/04/run-hello-py-on-interpreter/</url>
+      <content type="text"><![CDATA[예제exec(open('hello.py').read())'Hello World!'참고자료https://realpython.com/run-python-scripts/]]></content>
+      <categories>
+        
+          <category> python </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[AdeptEnglish Pod]]></title>
+      <url>/2020/11/28/AdeptEnglish/</url>
+      <content type="text"><![CDATA[Adept English podhttps://adeptenglish.com/downloads/특징영국영어 엑센트 느낌이다.pod로 전체 episods 들을 수 있는 듯Transcrips대본을 pdf로 제공함]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Space Vim 설치]]></title>
+      <url>/2020/10/14/Space-Vim-Install/</url>
+      <content type="text"><![CDATA[SpaceVim 설치SpaceVim 설치 명령어curl -sLf https://spacevim.org/install.sh | bashvim하면 실행된다.SpaceVim 지우기원래 있던 vim으로 연결해준다.curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall환경설정 파일 위치~/.SpaceVim.d/init.tomlReferenehttps://spacevim.org/quick-start-guide느낌뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음플러그인 설치가 편리할지 궁금하다.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Emacs Deft 설치]]></title>
+      <url>/2020/10/11/Deft-Emacs/</url>
+      <content type="text"><![CDATA[Emacs Deft 설치https://github.com/jrblevin/deft설치하라는대로 하면 된다.F8을 눌러서, orgmode를 편집할 수 있다.검색기능이 있다는 것이 편리]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Emacs </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[대본이 제공되는 Podcast]]></title>
+      <url>/2020/10/09/Podcast-With-Transcripts/</url>
+      <content type="text"><![CDATA[대본이 있는 포드캐스트CNN New - Transcript - Erin Burnettpodcast와 1일의 차이가 날 수 있음을 고려할 것http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.htmlPlay FM에서 제공하는 링크 참고, 매번 변경되는 듯https://player.fm/podcasts/TranscriptThisAmericanLifehttps://www.thisamericanlife.org/587/transcriptStoryCops Orghttps://storycorps.orgNPR Weekend editionhttps://www.npr.org/transcripts/79566098499percentinvisiblehttps://99percentinvisible.org/episode/ten-thousand-years/transcript/Science-VShttps://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruisehttps://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-againReferenceshttps://soenglish.me/learn-english-podcasts/]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[FRONTLINE]]></title>
+      <url>/2020/10/08/FrontLine-Pbs-Pod/</url>
+      <content type="text"><![CDATA[PBS FRONTLINE - Podcast특징Podcast, youtube, web으로 들을 수 있음pod로 전체 episods 들을 수 있는 듯Transcripshttps://www.pbs.org/wgbh/frontline/film/각 메뉴에 들어가면 대본이 있음]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Plain English Pod]]></title>
+      <url>/2020/10/07/Plain-English-Pod/</url>
+      <content type="text"><![CDATA[PLAIN ENLIGSH - Podcast특징듣기, 쉐도잉에 좋은 자료를 제공함, 공부하기 좋다.Podcast, Web, mp3로 들을 수 있음빠른 속도 mp3도 제공하는데, 유료구독에 한함pod로 전체 episods 들을 수 있는 듯Transcrips회원가입후, 대본 볼 수 있음. 느린 속도 재생 mp3 다운가능]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[The Tim Ferris Show Pod]]></title>
+      <url>/2020/10/06/Tim-Ferris-Pod/</url>
+      <content type="text"><![CDATA[The Tim Ferris Show - Podcast특징전세계적으로 유명한 Podcast 방송Podcast, Web, mp3로 들을 수 있음pdf로 된 대본을 구할 수 있음Transcripshttps://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Luke English Podcast]]></title>
+      <url>/2020/10/05/Luke-English-Pod/</url>
+      <content type="text"><![CDATA[Luke English Podcast특징괞찮은 영어 포드캐스트 찾음podcast, web, mp3등으로 들을 수 있고, 대본을 많이 제공함.유료 구독 프로그램 있고, 저렴한 편Episods linkhttps://teacherluke.co.uk/archive-of-episodes-1-149/http://teacherluke.co.uk/episodes-with-transcripts/]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[text file의 홀수 행만 출력하기]]></title>
+      <url>/2020/10/02/bash-print-even-lines/</url>
+      <content type="text"><![CDATA[홀수행만 출력하기sed -n 1~2p ~/test2.txt짝수행만 출력하기sed -n 2~2p ~/test2.txtReferenceLink]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> bash </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[20년 영어듣기]]></title>
+      <url>/2020/10/02/English-Listening/</url>
+      <content type="text"><![CDATA[Oct5 things that help me avoid procrastinationhttps://www.youtube.com/watch?v=cRpQOXV2cFgDevelopers vs. App Store: Apple's Fights, Explained | WSJhttps://www.youtube.com/watch?v=JZXWf65yhGM3 Big Mistakes in Your English Listening | Go Natural Englishhttps://www.youtube.com/watch?v=BlCBnY3Y-jwWinter Is Coming: Restaurant Owners Worry About Business Impact | WSJhttps://www.youtube.com/watch?v=HZDROyavRwg&amp;t=69sWho is leading in renewable ennergy? | CNBC Explainshttps://www.youtube.com/watch?v=fyqDC_AKVgEWhy Tech Firms Flock to Expensive Cities | WSJhttps://www.youtube.com/watch?v=50vRNNGqlp4]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> StudyEnglish </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[20년 독서 목록]]></title>
+      <url>/2020/09/28/reading-books-2020/</url>
+      <content type="text"><![CDATA[2020 읽은 책 목록올해 읽은 책을 뭐라도 적어보자. 1년에 한권도 안 읽으면 그건 좀 그렇지 않나?]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Reading </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[English Expressions]]></title>
+      <url>/2020/09/20/eng-expr/</url>
+      <content type="text"><![CDATA[basic expressions            KOR      ENG                  한글      Hello      ]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> English </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Emacs26 설치]]></title>
+      <url>/2020/09/02/emacs26-install/</url>
+      <content type="text"><![CDATA[Setting upsudo add-apt-repository ppa:kelleyk/emacssudo apt updatesudo apt install emacs26Reinstalling Packagesemacs 설치된 패키지 upgrade-M package-list RET'U' 입력 -&gt; 'x' 실행Emacs26을 기본으로 선택하게 하기$ sudo update-alternatives --config emacs...Press &lt;enter&gt; to keep the current choice[*], or type selection number: 2update-alternatives: using /usr/bin/emacs26 to provide /usr/bin/emacs (emacs) in manual mode$ emacs --versionGNU Emacs 26.3Copyright (C) 2019 Free Software Foundation, Inc.GNU Emacs comes with ABSOLUTELY NO WARRANTY.You may redistribute copies of GNU Emacsunder the terms of the GNU General Public License.For more information about these matters, see the file named COPYING.Referencehttp://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/더 할일emacs26이 emacs가 되도록 하기]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Emacs </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Vim28 설치하기]]></title>
+      <url>/2020/06/21/setup-vim28/</url>
+      <content type="text"><![CDATA[Setting upsudo add-apt-repository ppa:jonathonf/vimsudo apt updatesudo apt install vimsudo apt-get install vimvi ~/.bashrcsource ~/.bashrcAppend this line to .bashrcexport VIMRUNTIME=/usr/share/vim/vim82abchelloworldtableReferencehttp://ubuntuhandbook.org/index.php/2019/12/install-vim-8-2-ubuntu-18-04-16-04-19-10/https://askubuntu.com/questions/445686/vim-cannot-find-syntax-vim]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Input font 설치하기]]></title>
+      <url>/2020/03/30/Input-font-on-linux/</url>
+      <content type="text"><![CDATA[https://input.fontbureau.com/download/ 에서 다운로드 받아서 설치한다.sudo find . -name *.ttf -exec cp {} /usr/share/fonts -rf \;fc-cache -f조금 더 써봐야겠다. Inconsolata보다 깔끔해보이지 않는다. ]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> font </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[영어듣기 자료 + 자막]]></title>
+      <url>/2020/03/29/english-news/</url>
+      <content type="text"><![CDATA[YoutubePBS news - 자막 있음 공부하기 좋다.ABC Prime - 1시간 길이의 영어 뉴스TED ed - 5분 분량 자막 좋음CNBC Explains - 자막 있음, 주로 비즈니스Bob the canadianPodcastNBC Nightly NewsABC World NewsMeet The PressGood Morning SeoulVOA IEUp First]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> English </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[NEERC input/output file 테스트하기]]></title>
+      <url>/problemsolving/2020/03/02/neerc-sample-test/</url>
+      <content type="text"><![CDATA[script로 NEERC 문제 input/output test하기NEERC는 문제에 대한 input/output file을 제공한다.다음처럼 script를 이용하면, 손쉽게 pass/fail을 테스트할 수 있다.#!/bin/bash./code &lt; tests/disktree.01 | diff ./tests/disktree.01a -./code &lt; tests/disktree.02 | diff ./tests/disktree.02a -./code &lt; tests/disktree.03 | diff ./tests/disktree.03a -./code &lt; tests/disktree.04 | diff ./tests/disktree.04a -./code &lt; tests/disktree.05 | diff ./tests/disktree.05a -./code &lt; tests/disktree.06 | diff ./tests/disktree.06a -./code &lt; tests/disktree.07 | diff ./tests/disktree.07a -./code &lt; tests/disktree.08 | diff ./tests/disktree.08a -./code &lt; tests/disktree.09 | diff ./tests/disktree.09a -./code &lt; tests/disktree.10 | diff ./tests/disktree.10a -Referencehttps://neerc.ifmo.ru/archive/2000.html]]></content>
+      <categories>
+        
+          <category> ProblemSolving </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[불한당 나쁜 놈들의 세상]]></title>
+      <url>/culture/2020/02/24/%EB%82%98%EC%81%9C%EB%86%88%EB%93%A4%EC%9D%98%EC%84%B8%EC%83%81/</url>
+      <content type="text"><![CDATA[배신과 배신을 거듭하는 스토리가 나온다.배우 전혜진이 무척 크게 보이는 영화.]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[STL map 이용]]></title>
+      <url>/2020/02/23/using-STL-map/</url>
+      <content type="text"><![CDATA[STL mapunique key를 이용한 key-value pair기반 정렬된 연관 컨테이너이다.Map은 일반적으로  red-black tree로 구현된다.이용하기map객체에 key, data를 추가하면, key를 기반으로 정렬된다는 의미key가 string이라면 사전순 정렬이 된다.tree 구조를 표현하기 유리할 듯 싶다.Referencehttps://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> STL </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[STL queue 이용]]></title>
+      <url>/2020/01/29/STL-queue/</url>
+      <content type="text"><![CDATA[STL queue맨 뒤에 데이터를 추가하고, 맨 앞에서 데이터를 꺼내는 자료구조#include &lt;iostream&gt;#include &lt;queue&gt;using namespace std;int main(int argc, char *argv[]){    queue&lt; int &gt; q;    q.push(1); // &#47592; &#46244;&#50640; &#45936;&#51060;&#53552; &#52628;&#44032;    q.push(2);    q.push(3);    q.push(4);    q.push(5);    // &#50526;&#50640;&#49436; 3&#44060; &#44732;&#45236;&#49436;, &#47592; &#46244;&#47196; &#52264;&#47168;&#45824;&#47196; push&#54616;&#44592;    int cnt = 3;    while(cnt-- &amp;&amp; !q.empty()) {        int cur = q.front();  // &#47592; &#50526;&#50640;&#49436; &#45936;&#51060;&#53552; &#44032;&#51256;&#50724;&#44592;        q.pop();              // &#47592; &#50526; &#45936;&#51060;&#53552; queue&#50640;&#49436; &#51228;&#44144;        q.push(cur);          // queue&#51032; &#47592; &#46244;&#50640; &#52628;&#44032;    }    // queue&#50640;&#49436; &#54616;&#45208;&#50473; &#44732;&#45236;&#49436; &#52636;&#47141;&#54616;&#44592;    while(!q.empty()) {        int cur = q.front();        cout &lt;&lt; cur &lt;&lt; endl;        q.pop();    }    return 0;}]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> STL </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Problem solving 토픽]]></title>
+      <url>/2020/01/28/ps-study-list/</url>
+      <content type="text"><![CDATA[주제별 분류수학GCD / LCM 구하기에라토스테네스의 체Array 이용자료구조 구현스택큐최소/최대 힙리스트해시테이블이진트리LCRS treeBinary Search Tree비트마스크Sorting삽입정렬선택정렬버블정렬머지정렬퀵정렬Partial Sort기수정렬Stringstrcmp, strcpy 구현KMP 알고리즘접미사 배열접미사 트리TrieRabin Karp아호 코라식완전탐색 / Brute ForceGraph 알고리즘DFSBFS다익스트라벨만 포드플로이드 와샬Minimum Spanning Tree크루스컬 알고리즘프림 알고리즘Topological Sortindegree를 이용하는 방법dfs를 이용하는 방법Greedy Method이분탐색Lower bound / Upper boundParametric SearchDynamic Programing동전교환 문제 가짓수동전교환 문제 최소 동전수LIS를 DP로 구현 + 경로 출력LIS를 lower bound로 구현 + 경로 출력기업투자 문제를 DP로 구현 + 선택 내용 출력0/1 knapsack DP 구현 + 선택 내용 출력LCS최소 비용 이동(left and down방향)가장 긴 연속적으로 증가하는 부분 수열 (LIS와 다름)트리 알고리즘트리를 표현하는 방법트리의 탐색(전위/중위/후위)트리의 지름 구하기LCA (최소 공통 조상 구하기)Union FindIndex TreeSegment Tree시뮬레이션 문제들참고자료Topcoder tutorialE-Maxx Algorithms in EnglishIntroductory tutorials for competitive programming]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> ProblemSolving </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[파인만의 공부하는 방법]]></title>
+      <url>/2020/01/28/feynman-study-technic/</url>
+      <content type="text"><![CDATA[파인만이 제시한 공부방법배울 것의 제목을 적는다.나의 언어로 설명하고, 적어본다.써놓은 것을 살펴본다.복잡하거나 혼란스러우면 다시 공부한다.이해하기 쉽도록 다시 쓴다. 이 단계에서도 완전히 이해하지 못했다면, 다시 공부한다.느낌참 단순한 방법이다.어린시절 선생님들에게 '쓰면서 공부하라'는 조언을 들었는데, 비슷한 변형이 아닐까? 어떤 개념을 익힌 후, 나의 언어로 설명할 수 있어야 한다는 것을 강조함.어떤 개념의 이름을 아는 것과 그 개념 자제를 아는 것이 다름.Reference- 파인만의 기술]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> life </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[STL vector 이용]]></title>
+      <url>/2020/01/27/stl-vector/</url>
+      <content type="text"><![CDATA[STL Vector동적 배열 형태로 사용함.이번에 정리해서 매번 찾아보지 말자. -_-헤더 추가하기#include &lt;vector&gt;using namespace std;1차원 int 배열 초기화vector&lt;int&gt; v = {1, 2, 3, 4, 5};int 배열을 loop 하면서 push back으로 추가원래 하던 방식int 배열을 받아서 vector 초기화vector &lt;int &gt; vt(a, a + sizeof(a)/sizeof(int));1차원 int 배열 iterationfor(vector&lt;int&gt;::iterator iter = vt.begin();iter != vt.end();iter++) {     cout &lt;&lt; *iter &lt;&lt; endl;}3*3 2차원 배열 형태로 접근하기vector&lt; vector&lt;int&gt; &gt; a(3, vector&lt;int&gt;(3));이차원 배열 쓰듯, 접근이 가능함int cnt;for(int i=0;i&lt;3;i++) {    for(int j=0;j&lt;3;j++) {        a[i][j] = ++cnt;    }}Referencewhat-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-element]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> STL </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[STL priority queue]]></title>
+      <url>/2020/01/27/STL-priority-queue/</url>
+      <content type="text"><![CDATA[STL priority queueMax heap, Min heap이 필요할 때헤더 추가하기#include &lt;queue&gt;using namespace std;Min heap 변수 선언priority_queue &lt; int, vector&lt;int&gt;, greater&lt;int&gt; &gt; pq;priority_queue&lt;string, vector&lt;string&gt;, greater&lt;string&gt; &gt;pq;priority_queue&lt; pair&lt;int, int&gt;, vector&lt; pair&lt;int, int&gt; &gt;, greater&lt; pair&lt;int, int&gt; &gt; &gt;pq;pair는 first를 기준으로 정렬된다.Max heap 변수 선언priority_queue &lt; int, vector&lt;int&gt;, less&lt;int&gt; &gt; pq;priority_queue&lt;string, vector&lt;string&gt;, less&lt;string&gt; &gt;pq;우선순위큐 empty 될 때까지 loopwhile( ! pq.empty() ){    int cost = pq.top().first;    int num = pq.top.second;    pq.pop();    ...    ...    pq.push(make_pair(x, y));}]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> STL </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[STL pair와 vector 같이 쓰기]]></title>
+      <url>/2020/01/27/STL-pair-vector/</url>
+      <content type="text"><![CDATA[STL Pairfirst, second를 필드로 가짐컨테이너의 요소 하나에 두개의 데이터가 저장이 필요할 때 사용한다.헤더 추가하기#include &lt;utility&gt;using namespace std;pair를 요소로 가지는 vector 선언vector &lt; pair&lt;int, int&gt; &gt; vt;make pair로 만든 pair를 vector에 추가하기vt.push_back(make_pair(1,3));vt.push_back(make_pair(3,1));vt.push_back(make_pair(2,2));sort는 동일하게 함sort(vt.begin(), vt.end());]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> STL </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[todo.txt 이용하기]]></title>
+      <url>/2020/01/23/todo-txt-ref/</url>
+      <content type="text"><![CDATA[todo.txt-vimvim을 이용해서 todo.txt 포맷으로 할일 관리를 할 수 있는 플러그인vim 키맵&lt;localleader&gt;s : Sort the file&lt;localleader&gt;s+ : 프로젝트를 sorting&lt;localleader&gt;s@ : 컨택스트로 sorting&lt;localleader&gt;sd : 날자로 sorting&lt;localleader&gt;sd : due date로 sorting&lt;localleader&gt;dd : 날자를 붙여준다&lt;localleader&gt;x : 현재 task에 완료 표시&lt;localleader&gt;d : 완료된 task를 done.txt로 보낸다.config매핑을 F12로 해주었다.let maplocalleader = "\\"map &lt;F12&gt; &lt;ESC&gt;:e ~/Dropbox/todo/todo.txt &lt;CR&gt;date로 정렬 역순으로 하게하기~/vim/bundle/todo.txt-vim/autoload/todo/todo.vim을 열어서sort를 %sort! 로 변경하면 역순으로 시간이 보이게 된다.function! todo#txt#sort_by_date() range    let l:date_regex = "\\d\\{2,4\\}-\\d\\{2\\}-\\d\\{2\\}"    execute a:firstline . "," . a:lastline . "%sort! /" . l:date_regex . "/ r"    execute a:firstline . "," . a:lastline . "g!/" . l:date_regex . "/m" . a:lastlineendfunctionReferencehttps://github.com/todotxt/todo.txthttps://github.com/freitass/todo.txt-vimSimpleTask Cloud와 연동하기Dropbox에 저장한 파일을 Android app에서 편집하고, desktop에서 vim으로 편집을 할 수 있다.Dropbox/todo dir아래에 파일이 저장되는 것 같다.Simple Task App사용 소감orgmode는 project단위로 트리구조를 타고 내려가며 정리하기 좋은 구조라면, todo.txt는 할일관리를 날자 단위로 챙기기 좋게 되어있다.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vim + conqueGDB 이용]]></title>
+      <url>/2020/01/19/vim-conque-gdb/</url>
+      <content type="text"><![CDATA[사용법vim에서 코딩하고, 빌드한 실행파일 이름을 적어준다.:conqueGDB codecode는 실행파일 이름화면을 split해서 하단에 gdb가 있는 형태느낀 점생각보다 자연스럽게 동작하는 것 같지 않음그냥 gdb CLI나 ddd를 쓰는게 나아보인다.Referencehttps://github.com/vim-scripts/Conque-GDB]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[ox-gfm으로 org를 markdown변환하기]]></title>
+      <url>/2020/01/18/org-export-gfm/</url>
+      <content type="text"><![CDATA[org mode로 markdown page export 시도M-x package install ox-gfm설치한 패키지 제거하기M-x package-list-packagesox-gfx d로 마크하고 x선택결과에러 발생함시간날 때 고쳐보자Symbol's function definition is void: org-export-custom-protocol-maybepublish를 markdown으로 하도록 project config구성 필요함 (org-publish-project-alist)Reference]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> org-mode </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[git 명령어 모음]]></title>
+      <url>/2020/01/18/my-git-cmd-ref/</url>
+      <content type="text"><![CDATA[자주 쓰는 명령어git pull                            # &#50896;&#44201; &#51200;&#51109;&#49548;&#51032; &#45236;&#50857; &#44032;&#51256;&#50724;&#44592; (&#45817;&#44200;&#50724;&#44592;)git log                             # log&#48372;&#44592;git add                             # commit&#54624; &#54028;&#51068; &#52628;&#44032;&#54616;&#44592;git commit -m "commit message"      # commit&#54616;&#44592;git push                            # &#50896;&#44201; &#51200;&#51109;&#49548;&#50640; push&#54616;&#44592;git reset --hard                    # &#47196;&#52972; &#51200;&#51109;&#49548; &#48320;&#44221;&#45236;&#50857; &#51648;&#50880;2020년 이후의 commit만 1줄로 보기 + 저자 상대적 시간 출력git log --pretty=format:"%s (%ar)" --after='2020-01-01'git rebase자주 안쓴다. TODO git clonetutorial git볼 것Referencetotorial-gitgit-scm-book]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> git </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[OrgMode를 이용한 Jekyll 블로그 쓰기]]></title>
+      <url>/2020/01/17/org-mode-jekyll-pub-blog/</url>
+      <content type="text"><![CDATA[org mode를 이용한 블로그 쓰기이 페이지는 emacs org mode로 만들어짐이맥스 에디터 안에서 블로그 글을 모두 작성하고, preview 가능한 구조 구축글이 완성되면 git push를 하면 된다.emacs config 내용(setq org-publish-project-alist      '(        ("org-site"          ;; Path to your org files.         :base-directory "~/work/github/JEKYLLDIR/_org_post/"         :base-extension "org"         ;; Path to your Jekyll project.         :publishing-directory "~/work/github/JEKYLLDIR/"         :recursive t         :publishing-function org-html-publish-to-html         :html-extension "html"         :body-only t ;; Only export section between &lt;body&gt; &lt;/body&gt;         :section-numbers nil         :with-toc nil         :auto-index nil         :auto-preamble nil         :body-only t         :auto-postamble nil         )        ("org-static-site"         :base-directory "~/work/github/JEKYLLDIR/_org_post/"         :base-extension "css\\|js\\|png\\|jpg\\|gif"         :publishing-directory "~/work/JEKYLLDIR/"         :recursive t         :publishing-function org-publish-attachment         )        ("mysite" :components (          "org-site"          "org-static-site"        )      )    ))page마다 front matter 쓰기맨 위에 다음을 추가한다.#+HTML: ---#+HTML: layout: post#+HTML: title: org mode를 이용한 블로그 쓰기#+HTML: tags: OrgMode#+HTML: ---C++ 소스 쓰기#include &lt;iostream&gt;using namespace std;int main(int argc, char* argv[]){    cout &lt;&lt; "Hello World" &lt;&lt; endl;    return 0;}생성 방법C-c C-e P x 후 현재 등록된 proejct를 고른다.(org-zune)DONE image 추가하기[[../assets/imgs/test.jpeg]]TODO orgmode로 표 추가하기NamePhone12참고자료https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/https://orgmode.org/worg/org-tutorials/org-jekyll.html]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Emacs </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vim relative 라인 번호 지정]]></title>
+      <url>/2020/01/12/vim-relative-linenumber/</url>
+      <content type="text"><![CDATA[set rnu이란?vim에서 행 번호를 현재 커서 기준으로 위 아래를 지정할 하는 기능set numberset nuset relativenumberset rnu     " 켜기set rnu!    " 끄기행 번호가 상대기준으로 보인다면 줄 이동을 여러번 key입력하지 않아도 된다.7+    " 7줄 아래로 이동g-    " 7줄 위로 이동Ctrl-L Ctrl-L을 이용해서 모드 변경하기" .vimrc에 키맵을 추가함" Relative number displaynmap &lt;C-L&gt;&lt;C-L&gt; :set invrelativenumber&lt;CR&gt;ReferenceLink]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[jekyll config 지정하기]]></title>
+      <url>/2020/01/11/jekyll-config/</url>
+      <content type="text"><![CDATA[disqus 지정하기_config.yml에 shortname 추가disqus_shortname: "XXXXXXX" disqus comment 없애기post를 작성할 때, 상단 config에 nocomments를 지정함nocomments: true보이는 것은 default지정tag 기능 추가Tag를 Category아래 추가한다.header:  links:             # Links on the header. Link to in-site page with a slash as prefix    About: /about/    Category: /category/    Tag: /tag/tag.html 파일을 만들고, Jekyll template engine 문법에 맞춰서 코딩]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[expect 사용하기]]></title>
+      <url>/2020/01/10/expect-automation/</url>
+      <content type="text"><![CDATA[expect scriptcommand를 입력하고, 예상되는 출력에 따라 다른 동작을 하게 할 때 사용함.정형적인 작업의 흐름을 자동화 하기 좋을 것 같다.  HEREDOC 방식으로 bash script안에서 할 수 있음Reference  Bash script에 expect 스크립트 넣기]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> expect </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[gravata에 이미지 등록]]></title>
+      <url>/2020/01/06/gravata-generation/</url>
+      <content type="text"><![CDATA[Gravata에 이미지 등록하기크롬 스토어에서 Avatar Maker 설치하고, 이미지를 만든 후,gravata 사이트에 회원가입 후, 이미지를 등록하면 된다.Reference  Image Requests]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[cscope와 mkcscope.sh]]></title>
+      <url>/2020/01/05/mkcscope-sh-usage/</url>
+      <content type="text"><![CDATA[vim + cscope조합을 오래 썼다.적당히 유용하고, indexing된 파일을 분리해서 만들어, 연결해 쓸 수 있다는 장점이 있다.cscope 커맨드라인도구를 따로 쓸 수 있음. (코드 분석 목적)mkcscope.sh로 만들기#!/bin/shrm -rf cscope.files cscope.filesfind `pwd` \( -name '*.c' -o -name '*.cpp' -o -name '*.cc' -o -name '*.h' -o -name '*.y' -o -name '*.s' -o -name '*.S' \) -print &gt; cscope.filescscope -b -i cscope.filesmkcscope.sh로 만들고 실행권한을 준다.source의 최상위 dir에서 한번 호출해주면 된다.vim에서 reset해서 업데이트된 cscope DB를 들고올 수 있다.:cs resetReferences  ctags and cscope 사용법]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[My Vim Reference Card]]></title>
+      <url>/2020/01/04/my-vim-ref/</url>
+      <content type="text"><![CDATA[주로 쓰는 vim 명령어 정리basic command            CMD      DESC                  :w filename      파일 이름으로 저장              Ctrl-v 커서 이동 + y      visual block만들고 copy              p      paste 하기              :find text.txt      sub dir에서 파일 찾기              :g/^$/d      empty line 지우기              :v/./d      empty line 지우기      plugin이용 command            CMD      DESC                  Ctrl-p      ctrlp로 파일 찾기      C/C++용 키맵 (GNU global)            CMD      DESC                  ,gd ,ld      definition으로 점프              ,gr ,lr      reference로 점프              ,gs ,ls      string 검색      Text Object 예제            CMD      DESC                  6+      6 줄 다음으로 이동              6-      6 줄 이전으로 이동              gUaW      단어 전체를 대문자화              guaW      단어 전체를 소문자화              4$      4줄 뒤 맨뒤로 이동              #      paren, bracket, #ifdef의 match되는 곳으로 이동      Talk on going mouseless with Vim, Tmux, and HotkeysReference  Remove_unwanted_empty_line]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[My Emacs Reference Card]]></title>
+      <url>/2020/01/04/my-emacs-ref/</url>
+      <content type="text"><![CDATA[주로 쓰는 emacs 명령어 정리basic command            CMD      DESC                  C-x C-f      파일 Open              C-x C-s      파일 Save              M-x package-list-packages      package list로 진입하기              C-n      아래로 이동              C-f      오른쪽으로 이동              C-b      왼쪽으로 이동              C-p      위로 이동              C-d      한 글자 지우기              C-k C-y      한줄 지우고, 붙이기              C-SPC      visual block 지정 시작              C-x C-b      Buffer List 열기              C-x o      창분할된 옆창 이동      ## | CMD	                         | DESC                      ||——————————–|—————————|| M-x toggle-truncate-lines      | auto line warpping on/off |org-mode command            CMD      DESC                  org-agenda 진입 후 m      tag를 이용한 검색              F12      org-todo-list 진입              C-c C-w      refile하기              C-c C-o      org-open-at-point 문서내부 URL을 browser로 열기      c programming| CMD	                             | DESC                                                          ||————————————|—————————————————————|| block 지정 후 M-x c-macro-expand   | preprocessor 문장을 해석해준다.                               |emacs config mappingF11, F12를 org-todo-list, agenda로 매핑하기(global-set-key (kbd "&lt;f12&gt;") 'org-todo-list)(global-set-key (kbd "&lt;f11&gt;") 'org-agenda)refile target이되는 파일 이름 지정하기(setq org-refile-targets '(("archive.org" :level . 1)))]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> emacs </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vim lightline.vim 설치]]></title>
+      <url>/2020/01/03/vim-plugin-lightline/</url>
+      <content type="text"><![CDATA[  airline 플러그인과 비슷하지만, 좀 더 예쁘게 상태바를 표현해준다.  같이 써도 괜찮다.link - lightline.vim]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[jekyll texture 테마 설치하기]]></title>
+      <url>/jekyll/2020/01/03/install-texture-theme/</url>
+      <content type="text"><![CDATA[간단하게 사용하기 좋다.git clone https://github.com/thelehhman/texture.gitvi _config.ymlbundle exec jekyll serve]]></content>
+      <categories>
+        
+          <category> jekyll </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[elisp - hello world 예제]]></title>
+      <url>/emacs/elisp/2020/01/03/elisp-say-hello/</url>
+      <content type="text"><![CDATA[elisp로 hello world 출력하기M-x ielm으로 모드를 진입하고, 함수를 만들어 본다.*** Welcome to IELM ***  Type (describe-mode) for help.ELISP&gt; (defun say-hello ()"hello")say-helloELISP&gt; (say-hello)"hello"list를 만들기ELISP&gt; '(rose violet daisy buttercup) (rose violet daisy buttercup) ELISP&gt;emacs에서 2+2 evalute하기블럭을 지정한 후, C-x C-e하면 evalute된다.(+ 2 2)Reference  Practical Emacs Lisp  elisp_basics  Emacs Lisp for Hackers: Hello World  Manual &gt; Lisp-Lists  Manual &gt; Run-a-Program]]></content>
+      <categories>
+        
+          <category> emacs </category>
+        
+          <category> elisp </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Windows10에 git 설치, MSYS2]]></title>
+      <url>/git/2020/01/02/wingit-on-win10/</url>
+      <content type="text"><![CDATA[git client windows용을 설치하면 된다.간단한 terminal이 제공되는데, 이게 쓸만함.여기에 MinGW를 설치해서 gcc, make등을 이용할 수 있음tmux를 쓰려면 MSYS2를 설치해야 함.]]></content>
+      <categories>
+        
+          <category> git </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vim과 GNU global 연동]]></title>
+      <url>/2019/12/31/vim-gnu-global/</url>
+      <content type="text"><![CDATA[Table Of Content  GNU Global이란?  mkcscope.sh와 비슷하게 script를 만들기  Incremental 업데이트 하기  global 예제  6.6 최신 버전 설치하기  ReferencesGNU Global이란?vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.gtags.vim이 소스 검색 결과를 좀더 잘 보여준다.  변수, 함수의 선언으로 이동  구현으로 이동  사용한 곳으로 이동  파일이름으로 이동mkcscope.sh와 비슷하게 script를 만들기#!/bin/bashfind . -name '*.cpp' -o -name '*.h' &gt; gtags.filesgtags --accept-dotfiles -c -f gtags.filesmktags.sh로 만들고 실행권한을 준다.source의 최상위 dir에서 한번 호출해주면 된다.Incremental 업데이트 하기한번 tag database를 만든 다음에는 변경된 소스만 대상으로 db를 업데이트 해준다.파일이 변경되면, update하게 하면 어떨까?$ global -vuglobal 예제$ global func1                 # definition$ global -r func2              # reference$ global 'func[1-3]'           # regular expression$ global -x func2              # show detail$ global -xg '#ifdef NDEBUG'   # specific pattern $ global -c kmem&lt;TAB&gt;&lt;TAB&gt;     # complete command$ vi `global func1`            # edit files having specified tags.6.6 최신 버전 설치하기https://ftp.gnu.org/pub/gnu/global/ 코드 다운로드$ tar -xvzf global-6.6.tar.gz$ cd global-6.6$ ./configure$ make$ make install$ global --versionglobal (GNU GLOBAL) 6.6References  GNU Global Manual  gtags.vim  keymap 예제  script형태로 쓰기]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> global </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Jekyll 명령어 모음]]></title>
+      <url>/code/2019/12/28/jekyll-serve/</url>
+      <content type="text"><![CDATA[Jekyll 설치, Gem으로 theme 설치  설치방법  Gem으로 theme설치Jekyll blog 만들기jekyll new BLOGNAME.github.ioJekyll 명령 실행하기bundle exec jekyll serveGemfile에 플러그인 설치하기Gemfile에 내용을 편집한 후 bundle 명령어를 실행한다.bundle install]]></content>
+      <categories>
+        
+          <category> code </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> jekyll </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[clang_complete 이용하기]]></title>
+      <url>/2019/12/24/vim-function-complete/</url>
+      <content type="text"><![CDATA[  libclang 설치  .vimrc에 플러그인 설치하기  .vimrc에 clang_complete 설정하기  사용법  Referenceslibclang 설치sudo apt-get install libclang-3.8-dev.vimrc에 플러그인 설치하기Plugin 'SirVer/ultisnips'Plugin 'xavierd/clang_complete'.vimrc에 clang_complete 설정하기let g:clang_library_path='/usr/lib/llvm-3.8/lib'set pumheight=10             " so the complete menu doesn't get too bigset completeopt-=previewset completeopt=menu,longest " menu, menuone, longest and previewlet g:SuperTabDefaultCompletionType='context'let g:clang_complete_auto=0  " I can start the autocompletion myself, thanks..let g:clang_snippets=1       " use a snippet engine for placeholderslet g:clang_snippets_engine='ultisnips'let g:clang_auto_select=2  사용법  함수 이름 + Ctrl-x Ctrl-u 입력하면, parameter list가 채워진다.References  https://stackoverflow.com/questions/11300788/vim-function-hints-for-c  https://github.com/xavierd/clang_complete  https://www.vim.org/scripts/script.php?script_id=2715]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[ack.vim]]></title>
+      <url>/2019/12/14/ack-vim/</url>
+      <content type="text"><![CDATA[vim에서 text search를 위한 도구:Ack keyword:Ack keyword filenamevim 안에서 화면을 나누어서, 검색결과를 볼 수 있다.  link to ack.vim]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[repl.it]]></title>
+      <url>/it/2019/11/10/repl-it/</url>
+      <content type="text"><![CDATA[  repl.itC/C++ 프로그래밍을 온라인 환경에서 해볼 수 있음.bash shell에서 컴파일하는 과정을 보여준다.stdin, stdout을 이용할 수 있음vim edit mode지원함]]></content>
+      <categories>
+        
+          <category> IT </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[트로이]]></title>
+      <url>/culture/2019/07/30/%EC%98%81%ED%99%94-%ED%8A%B8%EB%A1%9C%EC%9D%B4/</url>
+      <content type="text"><![CDATA[최강의 검투사인 아킬리스가 트로이 침공의 선두에 나서 활약하는 이야기평범한 사람들이 두려워할 상황을 영광으로 생각하고, 위험을 극복한다.누군가에게는 전쟁이 소중한 가족을 지키는 일이고,누군가에게는 자신의 영광을 얻기 위한 기회가 되기도 한다.다양한 사람들이 전쟁이라는 상황에서 보이는 감정을 잘 표현한 영화, 트로이.]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[알라딘]]></title>
+      <url>/culture/2019/07/21/%EC%98%81%ED%99%94-%EC%95%8C%EB%9D%BC%EB%94%98/</url>
+      <content type="text"><![CDATA[화려한 영상미가 돋보이는 영화. 램프의 지니가 소원을 들어준다는 이야기로 풀어나간다.더빙판을 봤는데, 노래를 하는 장면들이 어색하지 않게 잘 처리되었다.성우들이 노래도 잘하나보다.2시간여 동안 일상을 잊고, 빠져들기 좋았던 영화]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[영화 순수의 시대]]></title>
+      <url>/culture/2019/07/16/%EC%98%81%ED%99%94-%EC%88%9C%EC%88%98%EC%9D%98%EC%8B%9C%EB%8C%80/</url>
+      <content type="text"><![CDATA[무장 김민재의 삶과 주변의 다양한 사람들의 삶과 태도를 보게하는 영화.적당히 야한 장면이 나오고, 잔인한 장면도 나온다.하지만 상징을 통한 의미를 잘 살리려고 노력한 영화 같다.흥행하지 못한 영화인 것 같은데, 그와 상관없이 나에게 많은 생각할 것을 주었다.대업을 이루는 것도 망치는 것도 자신의 삶을 잘 다스리는 것에 달려있다.]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[약해진 마음일 때 하는 결정의 위험성]]></title>
+      <url>/life/2019/07/14/%EC%95%BD%ED%95%9C%EB%A7%88%EC%9D%8C%EC%97%90%ED%9C%98%EB%91%98%EB%A6%AC%EC%A7%80%EC%95%8A%EA%B8%B0/</url>
+      <content type="text"><![CDATA[세상에는 다양한 형태의 비즈니스가 존재한다.그 중에는 약해질 대로 약해진 사람들의 마음을 쥐고 흔들어 돈을 뽑아내는 사람도 존재한다.그런 사람들은 언제나 선의로 포장되어 있고, 유머와 쿨함으로 위장하고 있다.시간이 지나면 결국 본 모습이 드러나겠지만, 그 전까지 그러한 모습에 눌러주는 ‘좋아요’는 그들의 좋은 먹잇감이다.함부로 휘둘리지 말고, 마음이 약해질 때의 결정을 조심하자.]]></content>
+      <categories>
+        
+          <category> life </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[영화 마녀]]></title>
+      <url>/culture/2019/07/14/%EC%98%81%ED%99%94-%EB%A7%88%EB%85%80/</url>
+      <content type="text"><![CDATA[인간 유전자 개조실험을 통해 길러진 아이가 탈출하여 살아가는 이야기.늦은 밤 TV 채널을 돌리다가 보게 된 영화.그나마 이름을 가지고 살수 있었던 마녀 ‘구자윤’과 이름조차 없이 살아갔던 인조인간의 삶이 나온다.초능력이 없이 사는 사람들이 무기력하다거나 하지 않게 표현되었다.극장에서 봤었다면 더 좋았을 영화 ‘마녀’]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Python Design Patterns Tutorial]]></title>
+      <url>/book/2019/01/20/PythonDesignPatternsTutorial/</url>
+      <content type="text"><![CDATA[  Python Design Patterns  Model View Controller Pattern  Singleton pattern  Factory pattern  Builder Pattern  Prototype Pattern  Facade Pattern  Command Pattern  Adapter Pattern  Prototype Pattern  Decorator Pattern  Proxy Pattern  Chain of Responsibility Pattern  Observer Pattern  State Pattern  Strategy Pattern  Template Pattern  Flyweight Pattern  Abstract Factory Pattern  Object Oriented Pattern]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> python </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Pro Git]]></title>
+      <url>/book/2019/01/19/ProGit/</url>
+      <content type="text"><![CDATA[Git 사용법  Pro Gitasciidoc으로 작성되어 있음  Pro Git github]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> git </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[파이썬조각코드모음집]]></title>
+      <url>/book/2019/01/19/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%A1%B0%EA%B0%81%EC%BD%94%EB%93%9C%EB%AA%A8%EC%9D%8C%EC%A7%91/</url>
+      <content type="text"><![CDATA[  Python Snippets - 파이썬 조각 코드 모음집]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> python </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[초보자를 위한 파이썬 300제]]></title>
+      <url>/book/2019/01/19/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC%EC%9C%84%ED%95%9C%ED%8C%8C%EC%9D%B4%EC%8D%AC300%EC%A0%9C/</url>
+      <content type="text"><![CDATA[10문제씩 풀어보면서, 답도 확인 가능함  초보자를 위한 파이썬 300제]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> python </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[점프투파이썬]]></title>
+      <url>/book/2019/01/19/%EC%A0%90%ED%94%84%ED%88%AC%ED%8C%8C%EC%9D%B4%EC%8D%AC/</url>
+      <content type="text"><![CDATA[예제가 쉽고, 설명이 쉽다. 웹북도 있고, 종이책도 있음. 입문과 리퍼런스 용으로 괜찮음  점프투파이썬]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> python </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[나눔명조웹폰트사용]]></title>
+      <url>/hobby/2019/01/14/web-font-usage/</url>
+      <content type="text"><![CDATA[  구글 웹폰트에서 내려받음  css의 body에서 font-family를 지정한다.&lt;html&gt;&lt;head&gt;&lt;title&gt;font test&lt;/title&gt;&lt;meta http-equiv="Content-Type" content="text/html;charset=utf8"&gt; &lt;link href="http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css" rel="stylesheet" type="text/css" /&gt;&lt;style&gt;body {	font-family:'Nanum Myeongjo', serif;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;안녕하세요&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
+      <categories>
+        
+          <category> hobby </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> jekyll </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[자바디자인패턴]]></title>
+      <url>/book/2019/01/12/%EC%9E%90%EB%B0%94%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/</url>
+      <content type="text"><![CDATA[인프런 강의에 있음. 작은 예제를 골라 설명해주는 방식. 유익하다.  스트래티지  어댑터  팩토리 메소드  싱글톤 패턴(Singleton Pattern)  프로토타입 2  빌더 1  추상 팩토리 1,2  브릿지  컴포지트  방문자  미디에이터  스테이트]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[my-vim-tips]]></title>
+      <url>/script/2019/01/06/my-vim-tips/</url>
+      <content type="text"><![CDATA[vim으로 함수 전체 접기set foldmethod=syntaxset foldnestmax=10으로 바꾸면 unfoldtrailing white spaces 지우기 (in place):%s/\s\+$//e여러 파일 열기 (in place)  / buffer 이동: args a.txt b.txt        :bn F10으로 파일 내용 클립보드 복사 (.vimrc)map &lt;F10&gt; &lt;ESC&gt;:!xsel --clipboard --input &lt; % &lt;CR&gt;&lt;CR&gt;]]></content>
+      <categories>
+        
+          <category> script </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[file browser on ubuntu terminal]]></title>
+      <url>/2019/01/06/file-browser-on-ubuntu/</url>
+      <content type="text"><![CDATA[terminal에서 현재 dir을 file browser로 띄우고 싶을 때nautilus --browser .  https://askubuntu.com/questions/8580/opening-the-file-browser-from-terminal]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> bash </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Autotools For Beginners]]></title>
+      <url>/book/2019/01/06/AutotoolsForBeginners/</url>
+      <content type="text"><![CDATA[      Autotools Tutorial for Beginners        Autoconf GNU manual        Makefile 쓰는 법        Setting up autoconf        enable, with 옵션 사용법  ]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Automake GNU manual]]></title>
+      <url>/book/2019/01/06/Automake-GNU-manual/</url>
+      <content type="text"><![CDATA[Automake GNU 메뉴얼  https://www.gnu.org/software/automake/manual/texinfo style이 좋은건가?잘 읽힌다.]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vim dracula theme setting]]></title>
+      <url>/book/2019/01/06/vim-dracula-theme-setting/</url>
+      <content type="text"><![CDATA[사용법  https://draculatheme.com/vim/dracula.vim을 받아서 ~/.vim/colors에 넣으면 동작한다.변수 type에만 배경색이 다른 문제가 생김 - .vimrc에 추가하기let g:dracula_italic = 0colorscheme draculahighlight Normal ctermbg=None출처  https://github.com/dracula/vim/issues/65]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[vimpowerline-setting]]></title>
+      <url>/book/2019/01/06/vimpowerline-setting/</url>
+      <content type="text"><![CDATA[2018-05-06vim powerline 설정해보기  http://shayete.tistory.com/entry/Linux-vim-powerline-%EC%84%A4%EC%A0%95%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95  https://github.com/wernight/powerline-web-fonts/issues/81번 step을 모두 진행한 후다음 두 줄을 추가하면 잘 나온다export LANG=en_US.UTF-8export LC_CTYPE=en_US.UTF-8화려하고 예쁘다.]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> vim </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[영화 안시성]]></title>
+      <url>/culture/2019/01/06/%EC%98%81%ED%99%94%EC%95%88%EC%8B%9C%EC%84%B1/</url>
+      <content type="text"><![CDATA[2018-09-20오랜만에 재미있게 봤다.유난히 말을 타던 양만춘의 부하, 기마대장 파소의 모습이 떠오른다. 정말 전투장면 같은 느낌이 들었나보다.설현도 나왔다. 아마 감독의 상상력이지 싶은데, 전쟁영화에 로맨스를 더한 느낌.양만춘의 부관도 생각이 난다. 조직을 굳건히 지키는데는 항상 그런 자들이 보이지 않는 곳에서 묵묵히 소임을 다한다.캐스팅 좋았고, 액션 좋았고, 정신없이 두시간을 흘려보냈다.지난한 일상에서 잠깐 빠져나와 시간여행을 하고 돌아가는 느낌이다.양만춘은 정말 저런 장수였을까? 아마도 감독의 상상력이지 싶지만, 그래도 저런 장수가 우리 역사속에 한명 쯤 있었어도 좋겠다.시찰중에 노인을 구해, 아들에게 데려다주는 그런 성주이면서, 전투할 때는 앞장서는 장수의 모습현실세계에서 참 보기 힘든 모습이라 더 기억에 남는 것일지도 모르겠다.영화는 결국 작가의 상상속에서 만들어진 허구이지만, 배우들의 연기와 시청각 효과가 더해지면서 현실같은 모습으로 변신한다.만족]]></content>
+      <categories>
+        
+          <category> culture </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[GRIT]]></title>
+      <url>/2019/01/06/GRIT-book/</url>
+      <content type="text"><![CDATA[타고난 재능이 아닌 끈기와 노력이 성장과 성공으로 이끈다는 긍정의 메시지를 주는 책만족  2018-03-01 읽기 끝  2017-12-28 읽기 시작]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> book </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[tmux-terminal-multiplexer]]></title>
+      <url>/script/2019/01/06/tmux-terminal-multiplexer/</url>
+      <content type="text"><![CDATA[2018-01-19Tmux (tmux-terminal-multiplexer)terminal 하나를 가상으로 여러 terminal처럼 이용할 수 있는 도구  https://youtu.be/wKEGA8oEWXwtmux conf 참고  https://github.com/tony/tmux-config/blob/master/.tmux.conf  https://gist.github.com/spicycode/1229612How do I reorder tmux windows?창 번호가 0 3 5 7 등으로 중간중간 빠졌을 때 유용함C-b, .  https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows]]></content>
+      <categories>
+        
+          <category> script </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> tmux </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[tmux ctrl-b키를 ctrl-a키로 변경하기]]></title>
+      <url>/script/2019/01/06/tmux-ctrl-b-change/</url>
+      <content type="text"><![CDATA[Ctrl a로 키맵변경기본으로는 Ctrl b로 지정되어 있다..tmux.conf에 다음을 추가한다.unbind C-b                                                                                                                                                           set -g prefix C-a                                                                                                                                                    bind C-a send-prefixEmacs 키맵과 충돌 문제C-a로 라인의 시작으로 이동하는 명령이 연결되어 있다. tmux에서 이맥스를 켜면, C-a를 tmux가 먼저 인식하게 되는 문제가 있다.C-a&lt;Home&gt;Move to the beginning of the line (move-beginning-of-line).C-e&lt;End&gt;Move to the end of the line (move-end-of-line). Reference  Emacs - Moving Point]]></content>
+      <categories>
+        
+          <category> script </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> tmux </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[명상록]]></title>
+      <url>/book/2019/01/06/%EB%AA%85%EC%83%81%EB%A1%9D/</url>
+      <content type="text"><![CDATA[2018-03-27 1번 읽기 끝2018-03-17 읽는 중철학자로서 황제였다는 사실이 놀랍다. 전쟁도 나가고 국정 업무를 하면서 틈을 내서 글을 썼고, ‘명상록’이란 책이 되었다.황제로서의 삶을 살았지만, 자신을 다스리는 태도가 끊임없이 글에 느껴졌다.]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> book </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[jekyll syntax highlight 지정하기]]></title>
+      <url>/code/2019/01/06/jekyll-syntax-highlight-setting/</url>
+      <content type="text"><![CDATA[  code example  Referencecode examplefunction syntaxHighlight(code) {	var foo = 'Hello World';	var bar = 100;}Reference  Syntax highlighter 지정하기 with rouge]]></content>
+      <categories>
+        
+          <category> code </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> jekyll </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[bash 코딩할 때 도움되는 것들 모아두기]]></title>
+      <url>/script/2019/01/06/bash-tips-list/</url>
+      <content type="text"><![CDATA[Table Of Content  md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)  scp로 파일 복사하기  sftp로 최신 파일 가져오기  References          Heredoc 관련      GetOpt 관련      pushd/popd      md 확장자인 파일을 찾아서 string 바꾸기, (sub dir모두)$find . -name "*.md" -exec sed -i -e 's/AAA/BBB/g' {} \;  linkscp로 파일 복사하기sshpass -p암호 scp -o StrictHostKeyChecking=no hello.txt id@111.222.333.444:/home/id/hello.txt  expect + scp로도 가능할 것.  linksftp로 최신 파일 가져오기  wild card 규칙을 적용할 수 있을까?    fileName=$(echo "ls -1rt" | sftp -oIdentityFile=&lt;pathToKeyFile&gt; username@sftpServer:/remoteDir | tail -1)         linkReferencesHeredoc 관련  how-can-i-write-a-heredoc-to-a-file-in-bash-script : heredoc 이용하기  How can I write a heredoc to a file in Bash script? : heredoc으로 file생성하기GetOpt 관련  An example of how to use getopts in bash : getopt로 argument처리pushd/popd  Can I call pushd/popd and prevent it printing the stack?]]></content>
+      <categories>
+        
+          <category> script </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> bash </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[알고리즘문제해결전략12]]></title>
+      <url>/book/2019/01/06/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%A0%84%EB%9E%B512/</url>
+      <content type="text"><![CDATA[알고리즘 공부하자 -_-;;]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> book </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Node.js프로그래밍]]></title>
+      <url>/book/2019/01/06/Node.js%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/</url>
+      <content type="text"><![CDATA[자바스크립트를 브라우저 밖에서 실행할 수 있도록 함.python 쓰는 것과 비슷한 느낌이 난다.자바스크립트는 활용도가 점점 커지는 느낌]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> javascript </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[리엑트교과서]]></title>
+      <url>/book/2019/01/06/%EB%A6%AC%EC%97%91%ED%8A%B8%EA%B5%90%EA%B3%BC%EC%84%9C/</url>
+      <content type="text"><![CDATA[여기에 쓰세요]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> javascript </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[모던 자바스크립트 입문]]></title>
+      <url>/book/2019/01/05/%EB%AA%A8%EB%8D%98%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9E%85%EB%AC%B8/</url>
+      <content type="text"><![CDATA[이소 히로시 지음, 서재원 옮김, 길벗출판사자바 스크립트언어를 깊이있게 설명하고, 몇가지 알고리즘 문제와 세부적인 문제를 정해서 푼다.아마도 C언어로 풀어봤을 문제들을 자바스크립트로 다시 풀어보는 느낌이 강한데, 기존에 다른 언어를 익혔던 사람이라면, 쉽게 읽히는 장점이 있다.]]></content>
+      <categories>
+        
+          <category> book </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> javascript </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Jekyll Toc 플러그인 추가하기]]></title>
+      <url>/life/2019/01/05/jekyll-toc%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/</url>
+      <content type="text"><![CDATA[  toshimaru/jekyll-toc]]></content>
+      <categories>
+        
+          <category> life </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> jekyll </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[모던자바스크립트입문]]></title>
+      <url>/2019/01/05/%EB%AA%A8%EB%8D%98%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9E%85%EB%AC%B8/</url>
+      <content type="text"><![CDATA[이소 히로시 지음, 서재원 옮김, 길벗출판사자바 스크립트언어를 깊이있게 설명하고, 몇가지 알고리즘 문제와 세부적인 문제를 정해서 푼다.아마도 C언어로 풀어봤을 문제들을 자바스크립트로 다시 풀어보는 느낌이 강한데, 기존에 다른 언어를 익혔던 사람이라면, 쉽게 읽히는 장점이 있다.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[리엑트교과서]]></title>
+      <url>/2019/01/05/%EB%A6%AC%EC%97%91%ED%8A%B8%EA%B5%90%EA%B3%BC%EC%84%9C/</url>
+      <content type="text"><![CDATA[여기에 쓰세요]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Node.js프로그래밍]]></title>
+      <url>/2019/01/05/Node.js%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/</url>
+      <content type="text"><![CDATA[layout: pagetitle:  “Node.js프로그래밍”date:   2019-01-05 17:11:37categories: bookcomments: true[[—]]여기에 쓰세요]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[성엄법사 108 자재어]]></title>
+      <url>/2019/01/05/%EC%84%B1%EC%97%84%EB%B2%95%EC%82%AC108%EC%9E%90%EC%9E%AC%EC%96%B4/</url>
+      <content type="text"><![CDATA[불교도가 아니어도 읽어두면 도움이 될만한 내용이 많다.욕심을 내려놓고, 나를 돌아보기 위한 문구들이 담겨있다.마음에 드는 문장 10  놓을 줄 알아야 잡을 수도 있다. 잡고 놓는 것이 자유로워야 비로소 자유자재한 사람이다.  순경과 역경은 모두가 은인이며,  이렇게 주어진 기회에 감사하라.  부귀와 빈천으로 성공과 실패, 얻음과 잃음을 논하지 말고, 마음과 힘을 다하여 자신을 성장시키고 남을 이롭게 하여라.  인생에 있어 굴곡은 모두 성장의 경험이다.  “정진”은 필사적으로 하자는 것이 아니라, 끊임없이 노력하자는 것이다.  생, 노, 병, 고를 초월하는 삼원칙은 : 즐겁게 살고, 건강하게 병을 맞이하고, 희망차게 늙는 것이다.  죽음을 초월하는 삼원칙은 : 죽음을 찾지 말고, 죽음을 두려워하지 말고, 죽음을 기다리지 말아라.  죽음은 경사도 아니고, 장례도 아닌, 장엄한 불사일 뿐이다.  모든 자녀는 부모의 성장을 돕는 작은 보살이다.  좋아하는 것은 점유하고자 하고, 싫어하는 것은 배척하고자 하니, 얻고 잃음에 연연해하면, 번뇌가 곧 찾아온다.마음에 드는 문장 20  도리는 자신을 다스릴 때 쓰는 것이지, 남을 가혹하게 요구하는데 쓰는 것이 아니다.  스스로를 놓아주지 못하는 것은 지혜가 없는 것이요, 남을 놓아주지 못하는 것은 자비가 없는 것이다.  역경과 순경은 모두 진일보하기 위한 인연이며, 이를 평상심과 감사의 마음으로 대하여라.  일이 순조로울 때, 자만하여 처지를 잊지 말고, 일에 풍파가 있다 해도, 의기소침할 필요가 없다.  비좁은 마음에 끝없는 욕심까지 부리면, 비록 생활은 부유하게 살지라도, 여전히 즐겁고 행복하지 못한다.  물 깊기가 천 길이라도 결국엔 바닥이 있고, 산 높기가 만길이라도 바다속에서 솟아오른 것이다.  위기가 전환점이 되는 시기로 바뀌면, 막다른 길도 활로가 된다.  인생은 꿈과 같다고 누구나 말하지만, 어찌 한평생 꿈 속에서 깨어나지 못하는가.  뛰어난 사람 위에 더 뛰어난 사람이 있으니, 각자 노력할 뿐 남을 부러워하지 말아라.  부귀는 삼대를 넘어가지 못함을 경계 하여야 하고, 권세는 사람을 타락시킬 수 있음을 주의해라.마음에 드는 문장 30  세상을 살아가며, 마땅히 갖춰야 할 것이 네 가지가 있다 ; 적합한 곳에서 태어나고, 복이 있게 늙고, 건강하게 병을 하고, 적합한 때에 죽는 것이니, 무수한 행복이 그 속에 있는 것이다.  즐겁든 괴롭든, 타인의 평판에 의해 마음이 움직이거나 영향을 받는다면, 이는 곧 자신의 마음을 제대로 보호하지 못했고, 마음의 환경보호를 못했음이다.  자유자재한 인생은 좌절이 없는 것이 아니라, 좌절한 상황 아래서도, 여전히 몸과 마음을 평온하고, 침착하게 유지하는 것이다.  자신감이 있고, 희망이 있으면, 미래가 생길 것이다.  병이 꼭 괴로운 것은 아니고, 가난함이 꼭 괴로운 것도 아니며, 노동이 꼭 괴로운 것 역시 아니니, 마음의 고통이야말로 진정 괴로운 것이다.  마음 속으로 좌절을 받아들일 준비를 하고 있으면, 곧 좌절이 두렵지 않다.  인생에 순풍만 있을 수는 없다. 몸은 병을 면하기 어려우며, 일에서는 장애를 피하기 어려우며, 자연환경은 재해를 벗어나기 어려우니 ;마음만 안정하면 곧 평안이 있다.  조금만 더 생각하여 보면, 아직도 많은 살길이 있고 ;한 숨만 남아있다면, 곧 무한한 희망이 있는 것이다.  한 숨이 남아있는 한, 생각만 돌리면, 곧 상황도 따라 변할 것이다, 상황은 일정하지 않고 늘 변하기 때문이다.  외부 상황이 어떻게 변화하든 마음을 차분히 하고 침착하게 대한다면, 반드시 해결방법을 찾을 수 있을 것이다.마음에 드는 문장 41, 42  자신이 잘났다고 생각하지 말 것이며, 또 스스로를 얕볼 필요도 없다.  인생에 여의치 않은 일이 열에 여덟 아홉이고, 여의치 않은 일이 이미 예상되고 있으니, 불안함도 느끼지 않게 된다.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> book </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[2019년이 되었다.]]></title>
+      <url>/2019/01/04/new-year-2019/</url>
+      <content type="text"><![CDATA[새해가 되었다. 그간 방치했던 github 블로그를 theme를 바꿔 입히고, 다시 관리해야겠다.  독서목록 정해서 읽기  영어공부  운동이건 매년 정하고, 매년 지키지 못한다. 그래도 또 정하기를 반복한다.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> life </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Next Theme Tutorial]]></title>
+      <url>/tutorial/2017/07/20/next-tutorial/</url>
+      <content type="text"><![CDATA[  NexT is a high quality elegant Jekyll theme ported from Hexo Next. It is crafted from scratch, with love.Live PreviewScreenshots      Desktop        Sidebar    Sidebar (Post details page)  MobileInstallationCheck whether you have Ruby 2.1.0 or higher installed:ruby --versionInstall Bundler:gem install bundlerClone Jacman theme:git clone https://github.com/Simpleyyt/jekyll-theme-next.gitcd jekyll-theme-nextInstall Jekyll and other dependencies from the GitHub Pages gem:bundle installRun your Jekyll site locally:bundle exec jekyll serverMore Details：Setting up your GitHub Pages site locally with JekyllFeaturesMultiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese.Default language is English.language: en# language: zh-Hans# language: fr-FR# language: zh-hk# language: zh-tw# language: ru# language: deSet language field as following in site _config.yml to change to Chinese.language: zh-HansComment support.NexT has native support for DuoShuo and Disqus comment systems.Add the following snippets to your _config.yml:duoshuo:  enable: true  shortname: your-duoshuo-shortnameORdisqus_shortname: your-disqus-shortnameSocial MediaNexT can automatically add links to your Social Media accounts:social:  GitHub: your-github-url  Twitter: your-twitter-url  Weibo: your-weibo-url  DouBan: your-douban-url  ZhiHu: your-zhihu-urlFeed link.  Show a feed link.Set rss field in theme’s _config.yml, as the following value:  rss: false will totally disable feed link.      rss:   use sites’ feed link. This is the default option.    Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too.    rss: http://your-feed-url set specific feed link.Up to 5 code highlight themes built-in.NexT uses Tomorrow Theme with 5 themes for you to choose from.Next use normal by default. Have a preview about normal and night:Head over to Tomorrow Theme for more details.ConfigurationNexT comes with few configurations.# Menu configuration.menu:  home: /  archives: /archives# Faviconfavicon: /favicon.ico# Avatar (put the image into next/source/images/)# can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..)avatar: /default_avatar.png# Code highlight theme# available: normal | night | night eighties | night blue | night brighthighlight_theme: normal# Fancybox for image galleryfancybox: true# Specify the date when the site was setupsince: 2013Browser support]]></content>
+      <categories>
+        
+          <category> tutorial </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Highlight Test]]></title>
+      <url>/test/2017/07/19/highlight-test/</url>
+      <content type="text"><![CDATA[This is a highlight test.Normal blockalert('Hello World!');print 'helloworld'Highlight blockalert( 'Hello, world!' );print 'helloworld'def foo  puts 'foo'enddef foo  puts 'foo'end123def foo  puts 'foo'end#include &lt;iostream&gt;using namespace std;void foo(int arg1, int arg2){}int main(){  string str;  foo(1, 2);  cout &lt;&lt; "Hello World" &lt;&lt; endl;  return 0;}]]></content>
+      <categories>
+        
+          <category> Test </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Emoji Test]]></title>
+      <url>/2015/09/19/emoji-test/</url>
+      <content type="text"><![CDATA[This is an emoji test. :smile: lol.See emoji cheat sheet for more detail :wink: : https://www.webpagefx.com/tools/emoji-cheat-sheet/.:bowtie::smile::laughing::blush::smiley::relaxed::smirk::heart_eyes::kissing_heart::kissing_closed_eyes::flushed::relieved::satisfied::grin:]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Gallery Post]]></title>
+      <url>/photo/2014/11/19/gallery-post/</url>
+      <content type="text"><![CDATA[Nunc dignissim volutpat enim, non sollicitudin purus dignissim id. Nam sit amet urna eu velit lacinia eleifend. Proin auctor rhoncus ligula nec aliquet. Donec sodales molestie lacinia. Curabitur dictum faucibus urna at convallis. Aliquam in lectus at urna rutrum porta. In lacus arcu, molestie ut vestibulum ut, rhoncus sed eros. Sed et elit vitae risus pretium consectetur vel in mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus turpis quis lectus rhoncus adipiscing. Proin pulvinar placerat suscipit. Maecenas imperdiet, quam vitae varius auctor, enim mauris vulputate sapien, nec laoreet neque diam non quam.Etiam luctus mauris at mi sollicitudin quis malesuada nibh porttitor. Vestibulum non dapibus magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin feugiat hendrerit viverra. Phasellus sit amet nunc mauris, eu ultricies tellus. Sed a mi tortor, eleifend varius erat. Proin consectetur molestie tortor eu gravida. Cras placerat orci id arcu tristique ut rutrum justo pulvinar. Maecenas lacinia fringilla diam non bibendum. Aenean vel viverra turpis. Integer ut leo nisi. Pellentesque vehicula quam ut sapien convallis consequat. Aliquam ut arcu purus, eget tempor purus. Integer eu tellus quis erat tristique gravida eu vel lorem.]]></content>
+      <categories>
+        
+          <category> Photo </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> consectetur </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[MathJax with Jekyll]]></title>
+      <url>/opinion/2014/02/16/Mathjax-with-jekyll/</url>
+      <content type="text"><![CDATA[One of the rewards of switching my website to Jekyll is theability to support MathJax, which means I can write LaTeX-like equations that getnicely displayed in a web browser, like this one \( \sqrt{\frac{n!}{k!(n-k)!}} \) orthis one \( x^2 + y^2 = r^2 \).What’s MathJax?If you check MathJax website (www.mathjax.org) you’ll seethat it is an open source JavaScript display engine for mathematics that works in allbrowsers.How to implement MathJax with JekyllI followed the instructions described by Dason Kurkiewicz forusing Jekyll and Mathjax.Here are some important details. I had to modify the Ruby library for Markdown inmy _config.yml file. Now I’m using redcarpet so the corresponding line in theconfiguration file is: markdown: redcarpetTo load the MathJax javascript, I added the following lines in my layout post.html(located in my folder _layouts)&lt;script type="text/javascript"    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;Of course you can choose a different file location in your jekyll layouts.Note that by default, the tex2jax preprocessor defines theLaTeX math delimiters, which are \\(...\\) for in-line math, and \\[...\\] fordisplayed equations. It also defines the TeX delimiters $$...$$ for displayedequations, but it does not define $...$ as in-line math delimiters. To enable in-line math delimiter with $...$, please use the following configuration:&lt;script type="text/x-mathjax-config"&gt;MathJax.Hub.Config({  tex2jax: {    inlineMath: [['$','$'], ['\\(','\\)']],    processEscapes: true  }});&lt;/script&gt;&lt;script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"&gt;&lt;/script&gt;A Couple of ExamplesHere’s a short list of examples. To know more about the details behind MathJax, you canalways checked the provided documentation available athttp://docs.mathjax.org/en/latest/Let’s try a first example. Here’s a dummy equation:How do you write such expression? Very simple: using double dollar signs$$a^2 + b^2 = c^2$$To display inline math use \\( ... \\) like this \\( sin(x^2) \\) which getsrendered as \( sin(x^2) \)Here’s another example using type \mathsf$$ \mathsf{Data = PCs} \times \mathsf{Loadings} $$which gets displayed asOr even better:\\[ \mathbf{X} = \mathbf{Z} \mathbf{P^\mathsf{T}} \\]is displayed as\[ \mathbf{X} = \mathbf{Z} \mathbf{P^\mathsf{T}} \]If you want to use subscripts like this \( \mathbf{X}_{n,p} \) you need to scape theunderscores with a backslash like so \mathbf{X}\_{n,p}:$$ \mathbf{X}\_{n,p} = \mathbf{A}\_{n,k} \mathbf{B}\_{k,p} $$will be displayed as\[ \mathbf{X}_{n,p} = \mathbf{A}_{n,k} \mathbf{B}_{k,p} \]]]></content>
+      <categories>
+        
+          <category> opinion </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> resources </tag>
+        
+          <tag> jekyll </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Images]]></title>
+      <url>/2013/12/27/images/</url>
+      <content type="text"><![CDATA[This is a image test post.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Excerpts]]></title>
+      <url>/2013/12/25/excerpts/</url>
+      <content type="text"><![CDATA[The following contents should be invisible in home/archive page.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Block]]></title>
+      <url>/foo/2013/12/25/block/</url>
+      <content type="text"><![CDATA[This post is used for testing tag plugins. See docs for more info.Block QuoteNormal blockquote  Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.Code BlockInline code blockThis is a inline code block: python, print 'helloworld'.Normal code blockalert('Hello World!');print "Hello world"Highlight code blockprint "Hello world"def foo  puts 'foo'end123def foo  puts 'foo'endGist]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[日本語テスト]]></title>
+      <url>/2013/12/25/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%86%E3%82%B9%E3%83%88/</url>
+      <content type="text"><![CDATA[This is a Japanese test post.私は昨日ついにその助力家というのの上よりするたなけれ。最も今をお話団はちょうどこの前後なかろでくらいに困りがいるたをは帰着考えたなかって、そうにもするでうたらない。がたを知っないはずも同時に九月をいよいよたありた。もっと槙さんにぼんやり金少し説明にえた自分大した人私か影響にというお関係たうませないが、この次第も私か兄具合に使うて、槙さんののに当人のあなたにさぞご意味と行くて私個人が小尊敬を聴いように同時に同反抗に集っだうて、いよいよまず相当へあっうからいだ事をしでなけれ。  それでそれでもご時日をしはずはたったいやと突き抜けるますて、その元がは行ったてという獄を尽すていけですた。この中道具の日その学校はあなたごろがすまなりかとネルソンさんの考えるですん、辺の事実ないというご盲従ありたですと、爺さんのためが薬缶が結果までの箸の当時してならて、多少の十月にためからそういう上からとにかくしましないと触れべきものたで、ないうですと多少お人達したのでたた。From すぐ使えるダミーテキスト - 日本語 Lorem ipsum]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[中文測試]]></title>
+      <url>/test/test/2013/12/25/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/</url>
+      <content type="text"><![CDATA[This is a Chinese test post.善我王上魚、產生資西員合兒臉趣論。畫衣生這著爸毛親可時，安程幾？合學作。觀經而作建。都非子作這！法如言子你關！手師也。以也座論頭室業放。要車時地變此親不老高小是統習直麼調未，行年香一？就竟在，是我童示讓利分和異種百路關母信過明驗有個歷洋中前合著區亮風值新底車有正結，進快保的行戰從：弟除文辦條國備當來際年每小腳識世可的的外的廣下歌洲保輪市果底天影；全氣具些回童但倒影發狀在示，數上學大法很，如要我……月品大供這起服滿老？應學傳者國：山式排只不之然清同關；細車是！停屋常間又，資畫領生，相們制在？公別的人寫教資夠。資再我我！只臉夫藝量不路政吃息緊回力之；兒足灣電空時局我怎初安。意今一子區首者微陸現際安除發連由子由而走學體區園我車當會，經時取頭，嚴了新科同？很夫營動通打，出和導一樂，查旅他。坐是收外子發物北看蘭戰坐車身做可來。道就學務。國新故。  工步他始能詩的，裝進分星海演意學值例道……於財型目古香亮自和這乎？化經溫詩。只賽嚴大一主價世哥受的沒有中年即病行金拉麼河。主小路了種就小為廣不？From 亂數假文產生器 - Chinese Lorem Ipsum]]></content>
+      <categories>
+        
+          <category> test/test </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam justo turpis, tincidunt ac convallis id.]]></title>
+      <url>/foo/2013/12/25/long-title/</url>
+      <content type="text"><![CDATA[This post has a long title. Make sure the title displayed right.]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Foo </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Categories]]></title>
+      <url>/foo/bar/baz/2013/12/25/categories/</url>
+      <content type="text"><![CDATA[This post contains 3 categories. Make sure your theme can display all of the categories.]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+          <category> Bar </category>
+        
+          <category> Baz </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Link Post]]></title>
+      <url>/foo/2013/12/25/link-post/</url>
+      <content type="text"><![CDATA[This is a link post. Clicking on the link should open Google in a new tab or window.]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Tags]]></title>
+      <url>/foo/2013/12/25/tags/</url>
+      <content type="text"><![CDATA[This post contains 3 tags. Make sure your theme can display all of the tags.]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Foo </tag>
+        
+          <tag> Bar </tag>
+        
+          <tag> Baz </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[Elements]]></title>
+      <url>/foo/2013/12/25/elements/</url>
+      <content type="text"><![CDATA[The purpose of this post is to help you make sure all of HTML elements can display properly. If you use CSS reset, don’t forget to redefine the style by yourself.Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6ParagraphLorem ipsum dolor sit amet, test link consectetur adipiscing elit. Strong text pellentesque ligula commodo viverra vehicula. Italic text at ullamcorper enim. Morbi a euismod nibh. Underline text non elit nisl. Deleted text tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed erat diam, blandit eget felis aliquam, rhoncus varius urna. Donec tellus sapien, sodales eget ante vitae, feugiat ullamcorper urna. Praesent auctor dui vitae dapibus eleifend. Proin viverra mollis neque, ut ullamcorper elit posuere eget.  Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.Maecenas ornare arcu at mi suscipit, non molestie tortor ultrices. Aenean convallis, diam et congue ultricies, erat magna tincidunt orci, pulvinar posuere mi sapien ac magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent vitae placerat mauris. Nullam laoreet ante posuere tortor blandit auctor. Sed id ligula volutpat leo consequat placerat. Mauris fermentum dolor sed augue malesuada sollicitudin. Vivamus ultrices nunc felis, quis viverra orci eleifend ut. Donec et quam id urna cursus posuere. Donec elementum scelerisque laoreet.List TypesDefinition List (dl)Definition List TitleThis is a definition list division.Ordered List (ol)  List Item 1  List Item 2  List Item 3Unordered List (ul)  List Item 1  List Item 2  List Item 3Table            Table Header 1      Table Header 2      Table Header 3                  Division 1      Division 2      Division 3              Division 1      Division 2      Division 3              Division 1      Division 2      Division 3      Misc Stuff - abbr, acronym, sub, sup, etc.Lorem superscript dolor subscript amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. cite. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. NBA Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.  AVE]]></content>
+      <categories>
+        
+          <category> Foo </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+</search>

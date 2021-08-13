@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>STL queue 이용 « Zune2's Blog</title>
+  <meta name="description" content="STL queue맨 뒤에 데이터를 추가하고, 맨 앞에서 데이터를 꺼내는 자료구조#include &lt;iostream&gt;#include &lt;queue&gt;using namespace std;int main(int argc, char *argv[]){    queue&lt;...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/STL-queue">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+      
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">STL queue 이용</h1>
+    <p class="post-meta">Jan 29, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <div id="outline-container-orgbb8d692" class="outline-2">
+<h2 id="orgbb8d692">STL queue</h2>
+<div class="outline-text-2" id="text-orgbb8d692">
+<ul class="org-ul">
+<li>맨 뒤에 데이터를 추가하고, 맨 앞에서 데이터를 꺼내는 자료구조</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> *<span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt; <span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #ff6347;">q</span>;
+
+    q.push(1); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#46244;&#50640; &#45936;&#51060;&#53552; &#52628;&#44032;</span>
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#50526;&#50640;&#49436; 3&#44060; &#44732;&#45236;&#49436;, &#47592; &#46244;&#47196; &#52264;&#47168;&#45824;&#47196; push&#54616;&#44592;</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 3;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(cnt-- &amp;&amp; !q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.front();  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#50526;&#50640;&#49436; &#45936;&#51060;&#53552; &#44032;&#51256;&#50724;&#44592;</span>
+        q.pop();              <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#50526; &#45936;&#51060;&#53552; queue&#50640;&#49436; &#51228;&#44144;</span>
+        q.push(cur);          <span style="color: #888a85;">// </span><span style="color: #888a85;">queue&#51032; &#47592; &#46244;&#50640; &#52628;&#44032;</span>
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">queue&#50640;&#49436; &#54616;&#45208;&#50473; &#44732;&#45236;&#49436; &#52636;&#47141;&#54616;&#44592;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.front();
+        cout &lt;&lt; cur &lt;&lt; endl;
+        q.pop();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+  </article>
+  
+  
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/AdeptEnglish">AdeptEnglish Pod</a></li>
+    
+      <li><a class="post-link" href="/archivers/Space-Vim-Install">Space Vim 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Deft-Emacs">Emacs Deft 설치</a></li>
+    
+      <li><a class="post-link" href="/archivers/Podcast-With-Transcripts">대본이 제공되는 Podcast</a></li>
+    
+      <li><a class="post-link" href="/archivers/FrontLine-Pbs-Pod">FRONTLINE</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2021 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-13T19:51:12+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">Zune2</title><subtitle>One or more sentences introducing this blog.</subtitle><author><name>zune2</name></author><entry><title type="html">hello.py 인터프리터에서 실행하기</title><link href="http://localhost:4000/python/2021/07/04/run-hello-py-on-interpreter/" rel="alternate" type="text/html" title="hello.py 인터프리터에서 실행하기" /><published>2021-07-04T07:32:54+09:00</published><updated>2021-07-04T07:32:54+09:00</updated><id>http://localhost:4000/python/2021/07/04/run-hello-py-on-interpreter</id><content type="html" xml:base="http://localhost:4000/python/2021/07/04/run-hello-py-on-interpreter/">&lt;div id=&quot;outline-container-orgdf4e752&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgdf4e752&quot;&gt;예제&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgdf4e752&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+exec(open('hello.py').read())
+'Hello World!'
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org496be17&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org496be17&quot;&gt;참고자료&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org496be17&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://realpython.com/run-python-scripts/&quot;&gt;https://realpython.com/run-python-scripts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><summary type="html">예제 exec(open('hello.py').read()) 'Hello World!'</summary></entry><entry><title type="html">AdeptEnglish Pod</title><link href="http://localhost:4000/2020/11/28/AdeptEnglish/" rel="alternate" type="text/html" title="AdeptEnglish Pod" /><published>2020-11-28T00:00:00+09:00</published><updated>2020-11-28T00:00:00+09:00</updated><id>http://localhost:4000/2020/11/28/AdeptEnglish</id><content type="html" xml:base="http://localhost:4000/2020/11/28/AdeptEnglish/">&lt;div id=&quot;outline-container-orgaa5c932&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgaa5c932&quot;&gt;Adept English pod&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgaa5c932&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://adeptenglish.com/downloads/&quot;&gt;https://adeptenglish.com/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org5a3c624&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org5a3c624&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org5a3c624&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;영국영어 엑센트 느낌이다.&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org63901b3&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org63901b3&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org63901b3&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;대본을 pdf로 제공함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">Adept English pod https://adeptenglish.com/downloads/</summary></entry><entry><title type="html">Space Vim 설치</title><link href="http://localhost:4000/2020/10/14/Space-Vim-Install/" rel="alternate" type="text/html" title="Space Vim 설치" /><published>2020-10-14T00:00:00+09:00</published><updated>2020-10-14T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/14/Space-Vim-Install</id><content type="html" xml:base="http://localhost:4000/2020/10/14/Space-Vim-Install/">&lt;div id=&quot;outline-container-orgfec548f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgfec548f&quot;&gt;SpaceVim 설치&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgfec548f&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgffeeac7&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgffeeac7&quot;&gt;SpaceVim 설치 명령어&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgffeeac7&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+curl -sLf https://spacevim.org/install.sh | bash
+&lt;/pre&gt;
+
+&lt;p&gt;
+vim하면 실행된다.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org46c0d1c&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org46c0d1c&quot;&gt;SpaceVim 지우기&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org46c0d1c&quot;&gt;
+&lt;p&gt;
+원래 있던 vim으로 연결해준다.
+&lt;/p&gt;
+&lt;pre class=&quot;example&quot;&gt;
+curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org344b04e&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org344b04e&quot;&gt;환경설정 파일 위치&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org344b04e&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+~/.SpaceVim.d/init.toml
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org2c28efa&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org2c28efa&quot;&gt;Referene&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org2c28efa&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://spacevim.org/quick-start-guide&quot;&gt;https://spacevim.org/quick-start-guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org4db9b40&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org4db9b40&quot;&gt;느낌&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org4db9b40&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음&lt;/li&gt;
+&lt;li&gt;플러그인 설치가 편리할지 궁금하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="Vim" /><summary type="html">SpaceVim 설치 SpaceVim 설치 명령어 curl -sLf https://spacevim.org/install.sh | bash</summary></entry><entry><title type="html">Emacs Deft 설치</title><link href="http://localhost:4000/2020/10/11/Deft-Emacs/" rel="alternate" type="text/html" title="Emacs Deft 설치" /><published>2020-10-11T00:00:00+09:00</published><updated>2020-10-11T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/11/Deft-Emacs</id><content type="html" xml:base="http://localhost:4000/2020/10/11/Deft-Emacs/">&lt;div id=&quot;outline-container-orgbc470ed&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgbc470ed&quot;&gt;Emacs Deft 설치&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgbc470ed&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jrblevin/deft&quot;&gt;https://github.com/jrblevin/deft&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+설치하라는대로 하면 된다.
+&lt;/p&gt;
+
+&lt;p&gt;
+F8을 눌러서, orgmode를 편집할 수 있다.
+&lt;/p&gt;
+
+&lt;p&gt;
+검색기능이 있다는 것이 편리
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="Emacs" /><summary type="html">Emacs Deft 설치 https://github.com/jrblevin/deft</summary></entry><entry><title type="html">대본이 제공되는 Podcast</title><link href="http://localhost:4000/2020/10/09/Podcast-With-Transcripts/" rel="alternate" type="text/html" title="대본이 제공되는 Podcast" /><published>2020-10-09T00:00:00+09:00</published><updated>2020-10-09T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/09/Podcast-With-Transcripts</id><content type="html" xml:base="http://localhost:4000/2020/10/09/Podcast-With-Transcripts/">&lt;div id=&quot;outline-container-org74c8d53&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org74c8d53&quot;&gt;대본이 있는 포드캐스트&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org74c8d53&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org93b0212&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org93b0212&quot;&gt;CNN New - Transcript - Erin Burnett&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org93b0212&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;podcast와 1일의 차이가 날 수 있음을 고려할 것&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html&quot;&gt;http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgcb6ec5b&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgcb6ec5b&quot;&gt;Play FM에서 제공하는 링크 참고, 매번 변경되는 듯&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgcb6ec5b&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://player.fm/podcasts/Transcript&quot;&gt;https://player.fm/podcasts/Transcript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org2221654&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org2221654&quot;&gt;ThisAmericanLife&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org2221654&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.thisamericanlife.org/587/transcript&quot;&gt;https://www.thisamericanlife.org/587/transcript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org6b2387a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6b2387a&quot;&gt;StoryCops Org&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6b2387a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://storycorps.org&quot;&gt;https://storycorps.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org82ff619&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org82ff619&quot;&gt;NPR Weekend edition&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org82ff619&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npr.org/transcripts/795660984&quot;&gt;https://www.npr.org/transcripts/795660984&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orge365d1d&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orge365d1d&quot;&gt;99percentinvisible&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orge365d1d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://99percentinvisible.org/episode/ten-thousand-years/transcript/&quot;&gt;https://99percentinvisible.org/episode/ten-thousand-years/transcript/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgbc71479&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgbc71479&quot;&gt;Science-VS&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgbc71479&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruise&quot;&gt;https://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-again&quot;&gt;https://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-again&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org53a8ee5&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org53a8ee5&quot;&gt;References&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org53a8ee5&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://soenglish.me/learn-english-podcasts/&quot;&gt;https://soenglish.me/learn-english-podcasts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">대본이 있는 포드캐스트 CNN New - Transcript - Erin Burnett podcast와 1일의 차이가 날 수 있음을 고려할 것 http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html Play FM에서 제공하는 링크 참고, 매번 변경되는 듯 https://player.fm/podcasts/Transcript ThisAmericanLife https://www.thisamericanlife.org/587/transcript StoryCops Org https://storycorps.org NPR Weekend edition https://www.npr.org/transcripts/795660984</summary></entry><entry><title type="html">FRONTLINE</title><link href="http://localhost:4000/2020/10/08/FrontLine-Pbs-Pod/" rel="alternate" type="text/html" title="FRONTLINE" /><published>2020-10-08T00:00:00+09:00</published><updated>2020-10-08T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/08/FrontLine-Pbs-Pod</id><content type="html" xml:base="http://localhost:4000/2020/10/08/FrontLine-Pbs-Pod/">&lt;div id=&quot;outline-container-org04152d6&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org04152d6&quot;&gt;PBS FRONTLINE - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org04152d6&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgd77788f&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgd77788f&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgd77788f&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;Podcast, youtube, web으로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org40093a8&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org40093a8&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org40093a8&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.pbs.org/wgbh/frontline/film/&quot;&gt;https://www.pbs.org/wgbh/frontline/film/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;각 메뉴에 들어가면 대본이 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">PBS FRONTLINE - Podcast 특징 Podcast, youtube, web으로 들을 수 있음 pod로 전체 episods 들을 수 있는 듯</summary></entry><entry><title type="html">Plain English Pod</title><link href="http://localhost:4000/2020/10/07/Plain-English-Pod/" rel="alternate" type="text/html" title="Plain English Pod" /><published>2020-10-07T00:00:00+09:00</published><updated>2020-10-07T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/07/Plain-English-Pod</id><content type="html" xml:base="http://localhost:4000/2020/10/07/Plain-English-Pod/">&lt;div id=&quot;outline-container-org0576547&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org0576547&quot;&gt;PLAIN ENLIGSH - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org0576547&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org0d9c4bc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0d9c4bc&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0d9c4bc&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;듣기, 쉐도잉에 좋은 자료를 제공함, 공부하기 좋다.&lt;/li&gt;
+&lt;li&gt;Podcast, Web, mp3로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;빠른 속도 mp3도 제공하는데, 유료구독에 한함&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org290af49&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org290af49&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org290af49&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;회원가입후, 대본 볼 수 있음. 느린 속도 재생 mp3 다운가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">PLAIN ENLIGSH - Podcast 특징 듣기, 쉐도잉에 좋은 자료를 제공함, 공부하기 좋다. Podcast, Web, mp3로 들을 수 있음 빠른 속도 mp3도 제공하는데, 유료구독에 한함 pod로 전체 episods 들을 수 있는 듯</summary></entry><entry><title type="html">The Tim Ferris Show Pod</title><link href="http://localhost:4000/2020/10/06/Tim-Ferris-Pod/" rel="alternate" type="text/html" title="The Tim Ferris Show Pod" /><published>2020-10-06T00:00:00+09:00</published><updated>2020-10-06T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/06/Tim-Ferris-Pod</id><content type="html" xml:base="http://localhost:4000/2020/10/06/Tim-Ferris-Pod/">&lt;div id=&quot;outline-container-orgd84f1e2&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd84f1e2&quot;&gt;The Tim Ferris Show - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd84f1e2&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org9ca60c7&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org9ca60c7&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org9ca60c7&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;전세계적으로 유명한 Podcast 방송&lt;/li&gt;
+&lt;li&gt;Podcast, Web, mp3로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;pdf로 된 대본을 구할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org0db15bc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0db15bc&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0db15bc&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/&quot;&gt;https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">The Tim Ferris Show - Podcast 특징 전세계적으로 유명한 Podcast 방송 Podcast, Web, mp3로 들을 수 있음 pdf로 된 대본을 구할 수 있음</summary></entry><entry><title type="html">Luke English Podcast</title><link href="http://localhost:4000/2020/10/05/Luke-English-Pod/" rel="alternate" type="text/html" title="Luke English Podcast" /><published>2020-10-05T00:00:00+09:00</published><updated>2020-10-05T00:00:00+09:00</updated><id>http://localhost:4000/2020/10/05/Luke-English-Pod</id><content type="html" xml:base="http://localhost:4000/2020/10/05/Luke-English-Pod/">&lt;div id=&quot;outline-container-orgbcb1edc&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgbcb1edc&quot;&gt;Luke English Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgbcb1edc&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org3dd735a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org3dd735a&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org3dd735a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;괞찮은 영어 포드캐스트 찾음&lt;/li&gt;
+&lt;li&gt;podcast, web, mp3등으로 들을 수 있고, 대본을 많이 제공함.&lt;/li&gt;
+&lt;li&gt;유료 구독 프로그램 있고, 저렴한 편&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org868775d&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org868775d&quot;&gt;Episods link&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org868775d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://teacherluke.co.uk/archive-of-episodes-1-149/&quot;&gt;https://teacherluke.co.uk/archive-of-episodes-1-149/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://teacherluke.co.uk/episodes-with-transcripts/&quot;&gt;http://teacherluke.co.uk/episodes-with-transcripts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>zune2</name></author><category term="StudyEnglish" /><summary type="html">Luke English Podcast 특징 괞찮은 영어 포드캐스트 찾음 podcast, web, mp3등으로 들을 수 있고, 대본을 많이 제공함. 유료 구독 프로그램 있고, 저렴한 편</summary></entry><entry><title type="html">text file의 홀수 행만 출력하기</title><link href="http://localhost:4000/2020/10/02/bash-print-even-lines/" rel="alternate" type="text/html" title="text file의 홀수 행만 출력하기" /><published>2020-10-02T21:32:54+09:00</published><updated>2020-10-02T21:32:54+09:00</updated><id>http://localhost:4000/2020/10/02/bash-print-even-lines</id><content type="html" xml:base="http://localhost:4000/2020/10/02/bash-print-even-lines/">&lt;h2 id=&quot;홀수행만-출력하기&quot;&gt;홀수행만 출력하기&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1~2p ~/test2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;짝수행만-출력하기&quot;&gt;짝수행만 출력하기&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2~2p ~/test2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/26723/print-odd-numbered-lines-print-even-numbered-lines&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;</content><author><name>zune2</name></author><category term="bash" /><summary type="html">홀수행만 출력하기</summary></entry></feed>

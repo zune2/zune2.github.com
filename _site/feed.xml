@@ -6,468 +6,465 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 Jan 2020 12:02:16 +0900</pubDate>
-    <lastBuildDate>Sat, 11 Jan 2020 12:02:16 +0900</lastBuildDate>
+    <pubDate>Sat, 03 Jul 2021 16:06:30 +0900</pubDate>
+    <lastBuildDate>Sat, 03 Jul 2021 16:06:30 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>expect 사용하기</title>
-        <description>&lt;h2 id=&quot;expect-script&quot;&gt;expect script&lt;/h2&gt;
-
-&lt;p&gt;command를 입력하고, 예상되는 출력에 따라 다른 동작을 하게 할 때 사용함.&lt;/p&gt;
-
-&lt;p&gt;정형적인 작업의 흐름을 자동화 하기 좋을 것 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HEREDOC 방식으로 bash script안에서 할 수 있음&lt;/li&gt;
+        <title>AdeptEnglish Pod</title>
+        <description>&lt;div id=&quot;outline-container-orgaa5c932&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgaa5c932&quot;&gt;Adept English pod&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgaa5c932&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://adeptenglish.com/downloads/&quot;&gt;https://adeptenglish.com/downloads/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org5a3c624&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org5a3c624&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org5a3c624&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;영국영어 엑센트 느낌이다.&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org63901b3&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org63901b3&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org63901b3&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;대본을 pdf로 제공함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 28 Nov 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/AdeptEnglish</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/AdeptEnglish</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Space Vim 설치</title>
+        <description>&lt;div id=&quot;outline-container-orgfec548f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgfec548f&quot;&gt;SpaceVim 설치&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgfec548f&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgffeeac7&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgffeeac7&quot;&gt;SpaceVim 설치 명령어&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgffeeac7&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+curl -sLf https://spacevim.org/install.sh | bash
+&lt;/pre&gt;
+
+&lt;p&gt;
+vim하면 실행된다.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org46c0d1c&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org46c0d1c&quot;&gt;SpaceVim 지우기&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org46c0d1c&quot;&gt;
+&lt;p&gt;
+원래 있던 vim으로 연결해준다.
+&lt;/p&gt;
+&lt;pre class=&quot;example&quot;&gt;
+curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org344b04e&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org344b04e&quot;&gt;환경설정 파일 위치&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org344b04e&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+~/.SpaceVim.d/init.toml
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org2c28efa&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org2c28efa&quot;&gt;Referene&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org2c28efa&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://spacevim.org/quick-start-guide&quot;&gt;https://spacevim.org/quick-start-guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org4db9b40&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org4db9b40&quot;&gt;느낌&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org4db9b40&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음&lt;/li&gt;
+&lt;li&gt;플러그인 설치가 편리할지 궁금하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 14 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Space-Vim-Install</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Space-Vim-Install</guid>
+        
+        <category>Vim</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Emacs Deft 설치</title>
+        <description>&lt;div id=&quot;outline-container-orgbc470ed&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgbc470ed&quot;&gt;Emacs Deft 설치&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgbc470ed&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jrblevin/deft&quot;&gt;https://github.com/jrblevin/deft&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+설치하라는대로 하면 된다.
+&lt;/p&gt;
+
+&lt;p&gt;
+F8을 눌러서, orgmode를 편집할 수 있다.
+&lt;/p&gt;
+
+&lt;p&gt;
+검색기능이 있다는 것이 편리
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 11 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Deft-Emacs</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Deft-Emacs</guid>
+        
+        <category>Emacs</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>대본이 제공되는 Podcast</title>
+        <description>&lt;div id=&quot;outline-container-org74c8d53&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org74c8d53&quot;&gt;대본이 있는 포드캐스트&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org74c8d53&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org93b0212&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org93b0212&quot;&gt;CNN New - Transcript - Erin Burnett&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org93b0212&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;podcast와 1일의 차이가 날 수 있음을 고려할 것&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html&quot;&gt;http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgcb6ec5b&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgcb6ec5b&quot;&gt;Play FM에서 제공하는 링크 참고, 매번 변경되는 듯&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgcb6ec5b&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://player.fm/podcasts/Transcript&quot;&gt;https://player.fm/podcasts/Transcript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org2221654&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org2221654&quot;&gt;ThisAmericanLife&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org2221654&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.thisamericanlife.org/587/transcript&quot;&gt;https://www.thisamericanlife.org/587/transcript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org6b2387a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6b2387a&quot;&gt;StoryCops Org&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6b2387a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://storycorps.org&quot;&gt;https://storycorps.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org82ff619&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org82ff619&quot;&gt;NPR Weekend edition&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org82ff619&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npr.org/transcripts/795660984&quot;&gt;https://www.npr.org/transcripts/795660984&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orge365d1d&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orge365d1d&quot;&gt;99percentinvisible&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orge365d1d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://99percentinvisible.org/episode/ten-thousand-years/transcript/&quot;&gt;https://99percentinvisible.org/episode/ten-thousand-years/transcript/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgbc71479&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgbc71479&quot;&gt;Science-VS&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgbc71479&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruise&quot;&gt;https://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-again&quot;&gt;https://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-again&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org53a8ee5&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org53a8ee5&quot;&gt;References&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org53a8ee5&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://soenglish.me/learn-english-podcasts/&quot;&gt;https://soenglish.me/learn-english-podcasts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 09 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Podcast-With-Transcripts</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Podcast-With-Transcripts</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>FRONTLINE</title>
+        <description>&lt;div id=&quot;outline-container-org04152d6&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org04152d6&quot;&gt;PBS FRONTLINE - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org04152d6&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgd77788f&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgd77788f&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgd77788f&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;Podcast, youtube, web으로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org40093a8&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org40093a8&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org40093a8&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.pbs.org/wgbh/frontline/film/&quot;&gt;https://www.pbs.org/wgbh/frontline/film/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;각 메뉴에 들어가면 대본이 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 08 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/FrontLine-Pbs-Pod</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/FrontLine-Pbs-Pod</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Plain English Pod</title>
+        <description>&lt;div id=&quot;outline-container-org0576547&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org0576547&quot;&gt;PLAIN ENLIGSH - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org0576547&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org0d9c4bc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0d9c4bc&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0d9c4bc&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;듣기, 쉐도잉에 좋은 자료를 제공함, 공부하기 좋다.&lt;/li&gt;
+&lt;li&gt;Podcast, Web, mp3로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;빠른 속도 mp3도 제공하는데, 유료구독에 한함&lt;/li&gt;
+&lt;li&gt;pod로 전체 episods 들을 수 있는 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org290af49&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org290af49&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org290af49&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;회원가입후, 대본 볼 수 있음. 느린 속도 재생 mp3 다운가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 07 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Plain-English-Pod</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Plain-English-Pod</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>The Tim Ferris Show Pod</title>
+        <description>&lt;div id=&quot;outline-container-orgd84f1e2&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd84f1e2&quot;&gt;The Tim Ferris Show - Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd84f1e2&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org9ca60c7&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org9ca60c7&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org9ca60c7&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;전세계적으로 유명한 Podcast 방송&lt;/li&gt;
+&lt;li&gt;Podcast, Web, mp3로 들을 수 있음&lt;/li&gt;
+&lt;li&gt;pdf로 된 대본을 구할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org0db15bc&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0db15bc&quot;&gt;Transcrips&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0db15bc&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/&quot;&gt;https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 06 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Tim-Ferris-Pod</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Tim-Ferris-Pod</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Luke English Podcast</title>
+        <description>&lt;div id=&quot;outline-container-orgbcb1edc&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgbcb1edc&quot;&gt;Luke English Podcast&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgbcb1edc&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org3dd735a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org3dd735a&quot;&gt;특징&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org3dd735a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;괞찮은 영어 포드캐스트 찾음&lt;/li&gt;
+&lt;li&gt;podcast, web, mp3등으로 들을 수 있고, 대본을 많이 제공함.&lt;/li&gt;
+&lt;li&gt;유료 구독 프로그램 있고, 저렴한 편&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org868775d&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org868775d&quot;&gt;Episods link&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org868775d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://teacherluke.co.uk/archive-of-episodes-1-149/&quot;&gt;https://teacherluke.co.uk/archive-of-episodes-1-149/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://teacherluke.co.uk/episodes-with-transcripts/&quot;&gt;http://teacherluke.co.uk/episodes-with-transcripts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 05 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/Luke-English-Pod</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Luke-English-Pod</guid>
+        
+        <category>StudyEnglish</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>text file의 홀수 행만 출력하기</title>
+        <description>&lt;h2 id=&quot;홀수행만-출력하기&quot;&gt;홀수행만 출력하기&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1~2p ~/test2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;짝수행만-출력하기&quot;&gt;짝수행만 출력하기&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2~2p ~/test2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zetawiki.com/wiki/Bash_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%97%90_expect_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8_%EB%84%A3%EA%B8%B0&quot;&gt;Bash script에 expect 스크립트 넣기&lt;/a&gt;&lt;/li&gt;
+&lt;p&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/26723/print-odd-numbered-lines-print-even-numbered-lines&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 02 Oct 2020 21:32:54 +0900</pubDate>
+        <link>http://localhost:4000/archivers/bash-print-even-lines</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/bash-print-even-lines</guid>
+        
+        <category>bash</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>20년 영어듣기</title>
+        <description>&lt;div id=&quot;outline-container-orga2fc03e&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orga2fc03e&quot;&gt;Oct&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orga2fc03e&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org6c8ad5c&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6c8ad5c&quot;&gt;5 things that help me avoid procrastination&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6c8ad5c&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=cRpQOXV2cFg&quot;&gt;https://www.youtube.com/watch?v=cRpQOXV2cFg&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-        <pubDate>Fri, 10 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/expect-automation</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/expect-automation</guid>
-        
-        <category>expect</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>gravata에 이미지 등록</title>
-        <description>&lt;h2 id=&quot;gravata에-이미지-등록하기&quot;&gt;Gravata에 이미지 등록하기&lt;/h2&gt;
-
-&lt;p&gt;크롬 스토어에서 Avatar Maker 설치하고, 이미지를 만든 후,
-gravata 사이트에 회원가입 후, 이미지를 등록하면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135&quot; alt=&quot;Gravata Image&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ko.gravatar.com/site/implement/images/&quot;&gt;Image Requests&lt;/a&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org3eb643d&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org3eb643d&quot;&gt;Developers vs. App Store: Apple's Fights, Explained | WSJ&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org3eb643d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=JZXWf65yhGM&quot;&gt;https://www.youtube.com/watch?v=JZXWf65yhGM&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-        <pubDate>Mon, 06 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/gravata-generation</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/gravata-generation</guid>
-        
-        <category>vim</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>cscope와 mkcscope.sh</title>
-        <description>&lt;p&gt;vim + cscope조합을 오래 썼다.&lt;/p&gt;
-
-&lt;p&gt;적당히 유용하고, indexing된 파일을 분리해서 만들어, 연결해 쓸 수 있다는 장점이 있다.&lt;/p&gt;
-
-&lt;p&gt;cscope 커맨드라인도구를 따로 쓸 수 있음. (코드 분석 목적)&lt;/p&gt;
-
-&lt;h2 id=&quot;mkcscopesh로-만들기&quot;&gt;mkcscope.sh로 만들기&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; cscope.files cscope.files
-find &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.c'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cpp'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cc'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.h'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.y'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.s'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.S'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-print&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; cscope.files
-cscope &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; cscope.files
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;mkcscope.sh로 만들고 실행권한을 준다.
-source의 최상위 dir에서 한번 호출해주면 된다.&lt;/p&gt;
-
-&lt;p&gt;vim에서 reset해서 업데이트된 cscope DB를 들고올 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:cs reset
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wonjaek.tistory.com/65&quot;&gt;ctags and cscope 사용법&lt;/a&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org6382a87&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6382a87&quot;&gt;3 Big Mistakes in Your English Listening | Go Natural English&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6382a87&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BlCBnY3Y-jw&quot;&gt;https://www.youtube.com/watch?v=BlCBnY3Y-jw&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-        <pubDate>Sun, 05 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/mkcscope-sh-usage</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/mkcscope-sh-usage</guid>
-        
-        <category>vim</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My Vim Reference Card</title>
-        <description>&lt;p&gt;주로 쓰는 vim 명령어 정리&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-command&quot;&gt;basic command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;:w filename&lt;/td&gt;
-      &lt;td&gt;파일 이름으로 저장&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ctrl-v 커서 이동 + y&lt;/td&gt;
-      &lt;td&gt;visual block만들고 copy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;p&lt;/td&gt;
-      &lt;td&gt;paste 하기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;plugin이용-command&quot;&gt;plugin이용 command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ctrl-p&lt;/td&gt;
-      &lt;td&gt;ctrlp로 파일 찾기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;cc용-키맵-gnu-global&quot;&gt;C/C++용 키맵 (GNU global)&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gd ,ld&lt;/td&gt;
-      &lt;td&gt;definition으로 점프&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gr ,lr&lt;/td&gt;
-      &lt;td&gt;reference로 점프&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gs ,ls&lt;/td&gt;
-      &lt;td&gt;string 검색&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</description>
-        <pubDate>Sat, 04 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/my-vim-ref</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/my-vim-ref</guid>
-        
-        <category>vim</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My Emacs Reference Card</title>
-        <description>&lt;p&gt;주로 쓰는 emacs 명령어 정리&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-command&quot;&gt;basic command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-f&lt;/td&gt;
-      &lt;td&gt;파일 Open&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-s&lt;/td&gt;
-      &lt;td&gt;파일 Save&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;M-x package-list-packages&lt;/td&gt;
-      &lt;td&gt;package list로 진입하기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-n&lt;/td&gt;
-      &lt;td&gt;아래로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-f&lt;/td&gt;
-      &lt;td&gt;오른쪽으로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-b&lt;/td&gt;
-      &lt;td&gt;왼쪽으로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-p&lt;/td&gt;
-      &lt;td&gt;위로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-d&lt;/td&gt;
-      &lt;td&gt;한 글자 지우기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-k C-y&lt;/td&gt;
-      &lt;td&gt;한줄 지우고, 붙이기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-SPC&lt;/td&gt;
-      &lt;td&gt;visual block 지정 시작&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-b&lt;/td&gt;
-      &lt;td&gt;Buffer List 열기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x o&lt;/td&gt;
-      &lt;td&gt;창분할된 옆창 이동&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;org-mode-command&quot;&gt;org-mode command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;org-agenda 진입 후 m&lt;/td&gt;
-      &lt;td&gt;tag를 이용한 검색&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;F12&lt;/td&gt;
-      &lt;td&gt;org-todo-list 진입&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-c C-w&lt;/td&gt;
-      &lt;td&gt;refile하기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-c C-o&lt;/td&gt;
-      &lt;td&gt;org-open-at-point 문서내부 URL을 browser로 열기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;emacs-config-mapping&quot;&gt;emacs config mapping&lt;/h2&gt;
-
-&lt;h3 id=&quot;f11-f12를-org-todo-list-agenda로-매핑하기&quot;&gt;F11, F12를 org-todo-list, agenda로 매핑하기&lt;/h3&gt;
-&lt;div class=&quot;language-elisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;f12&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'org-todo-list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;f11&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'org-agenda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;refile-target이되는-파일-이름-지정하기&quot;&gt;refile target이되는 파일 이름 지정하기&lt;/h3&gt;
-&lt;div class=&quot;language-elisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-refile-targets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;archive.org&quot;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 04 Jan 2020 09:07:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/my-emacs-ref</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/my-emacs-ref</guid>
-        
-        <category>emacs</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>vim lightline.vim 설치</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;airline 플러그인과 비슷하지만, 좀 더 예쁘게 상태바를 표현해준다.&lt;/li&gt;
-  &lt;li&gt;같이 써도 괜찮다.&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org84f6ee4&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org84f6ee4&quot;&gt;Winter Is Coming: Restaurant Owners Worry About Business Impact | WSJ&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org84f6ee4&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HZDROyavRwg&amp;amp;t=69s&quot;&gt;https://www.youtube.com/watch?v=HZDROyavRwg&amp;amp;t=69s&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/itchyny/lightline.vim&quot;&gt;link - lightline.vim&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 03 Jan 2020 09:07:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/vim-plugin-lightline</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/vim-plugin-lightline</guid>
-        
-        <category>vim</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>jekyll texture 테마 설치하기</title>
-        <description>&lt;p&gt;간단하게 사용하기 좋다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/thelehhman/texture.git
-vi _config.yml
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Fri, 03 Jan 2020 08:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/install-texture-theme</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/install-texture-theme</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>elisp - hello world 예제</title>
-        <description>&lt;h2 id=&quot;elisp로-hello-world-출력하기&quot;&gt;elisp로 hello world 출력하기&lt;/h2&gt;
-
-&lt;p&gt;M-x ielm으로 모드를 진입하고, 함수를 만들어 본다.&lt;/p&gt;
-
-&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vg&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;IELM&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;***&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;describe-mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;help.&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ELISP&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ELISP&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;list를-만들기&quot;&gt;list를 만들기&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ELISP&amp;gt; '(rose violet daisy buttercup) 
-(rose violet daisy buttercup) 
-ELISP&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;emacs에서-22-evalute하기&quot;&gt;emacs에서 2+2 evalute하기&lt;/h2&gt;
-
-&lt;p&gt;블럭을 지정한 후, C-x C-e하면 evalute된다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(+ 2 2)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ergoemacs.org/emacs/elisp.html&quot;&gt;Practical Emacs Lisp&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ergoemacs.org/emacs/elisp_basics.html&quot;&gt;elisp_basics&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-next/&quot;&gt;Emacs Lisp for Hackers: Hello World&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/emacs/manual/html_node/eintr/Lisp-Lists.html#Lisp-Lists&quot;&gt;Manual &amp;gt; Lisp-Lists&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/emacs/manual/html_node/eintr/Run-a-Program.html#Run-a-Program&quot;&gt;Manual &amp;gt; Run-a-Program&lt;/a&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgb71487a&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgb71487a&quot;&gt;Who is leading in renewable ennergy? | CNBC Explains&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgb71487a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fyqDC_AKVgE&quot;&gt;https://www.youtube.com/watch?v=fyqDC_AKVgE&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-        <pubDate>Fri, 03 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/elisp-say-hello</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/elisp-say-hello</guid>
-        
-        
-        <category>emacs</category>
-        
-        <category>elisp</category>
-        
-      </item>
-    
-      <item>
-        <title>Windows10에 git 설치, MSYS2</title>
-        <description>&lt;p&gt;git client windows용을 설치하면 된다.
-간단한 terminal이 제공되는데, 이게 쓸만함.
-여기에 MinGW를 설치해서 gcc, make등을 이용할 수 있음&lt;/p&gt;
-
-&lt;p&gt;tmux를 쓰려면 MSYS2를 설치해야 함.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 02 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/wingit-on-win10</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/wingit-on-win10</guid>
-        
-        
-        <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>vim과 GNU global 연동</title>
-        <description>&lt;p&gt;Table Of Content&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#gnu-global이란&quot; id=&quot;markdown-toc-gnu-global이란&quot;&gt;GNU Global이란?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mkcscopesh와-비슷하게-script를-만들기&quot; id=&quot;markdown-toc-mkcscopesh와-비슷하게-script를-만들기&quot;&gt;mkcscope.sh와 비슷하게 script를 만들기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#incremental-업데이트-하기&quot; id=&quot;markdown-toc-incremental-업데이트-하기&quot;&gt;Incremental 업데이트 하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#global-예제&quot; id=&quot;markdown-toc-global-예제&quot;&gt;global 예제&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#66-최신-버전-설치하기&quot; id=&quot;markdown-toc-66-최신-버전-설치하기&quot;&gt;6.6 최신 버전 설치하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org5f53003&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org5f53003&quot;&gt;Why Tech Firms Flock to Expensive Cities | WSJ&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org5f53003&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=50vRNNGqlp4&quot;&gt;https://www.youtube.com/watch?v=50vRNNGqlp4&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&quot;gnu-global이란&quot;&gt;GNU Global이란?&lt;/h2&gt;
-
-&lt;p&gt;vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.&lt;/p&gt;
-
-&lt;p&gt;gtags.vim이 소스 검색 결과를 좀더 잘 보여준다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;변수, 함수의 선언으로 이동&lt;/li&gt;
-  &lt;li&gt;구현으로 이동&lt;/li&gt;
-  &lt;li&gt;사용한 곳으로 이동&lt;/li&gt;
-  &lt;li&gt;파일이름으로 이동&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;mkcscopesh와-비슷하게-script를-만들기&quot;&gt;mkcscope.sh와 비슷하게 script를 만들기&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cpp'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.h'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gtags.files
-gtags &lt;span class=&quot;nt&quot;&gt;--accept-dotfiles&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; gtags.files
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;mktags.sh로 만들고 실행권한을 준다.
-source의 최상위 dir에서 한번 호출해주면 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;incremental-업데이트-하기&quot;&gt;Incremental 업데이트 하기&lt;/h2&gt;
-
-&lt;p&gt;한번 tag database를 만든 다음에는 변경된 소스만 대상으로 db를 업데이트 해준다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-vu&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;global-예제&quot;&gt;global 예제&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global func1                 &lt;span class=&quot;c&quot;&gt;# definition&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; func2              &lt;span class=&quot;c&quot;&gt;# reference&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;s1&quot;&gt;'func[1-3]'&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# regular expression&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; func2              &lt;span class=&quot;c&quot;&gt;# show detail&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-xg&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#ifdef NDEBUG'&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# specific pattern &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; kmem&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt;     &lt;span class=&quot;c&quot;&gt;# complete command&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;global func1&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;# edit files having specified tags.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;66-최신-버전-설치하기&quot;&gt;6.6 최신 버전 설치하기&lt;/h2&gt;
-
-&lt;p&gt;https://ftp.gnu.org/pub/gnu/global/ 코드 다운로드&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xvzf&lt;/span&gt; global-6.6.tar.gz
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;global-6.6
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-global &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;GNU GLOBAL&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 6.6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/global/manual/global.html&quot;&gt;GNU Global Manual&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/vim-scripts/gtags.vim&quot;&gt;gtags.vim&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://slowstarter80.github.io/vim/2017/07/21/vim_settings.html&quot;&gt;keymap 예제&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vi.stackexchange.com/questions/4835/gnu-global-and-vim&quot;&gt;script형태로 쓰기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Tue, 31 Dec 2019 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/vim-gnu-global</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/vim-gnu-global</guid>
+        <pubDate>Fri, 02 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/English-Listening</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/English-Listening</guid>
         
-        <category>global</category>
+        <category>StudyEnglish</category>
         
         
       </item>
