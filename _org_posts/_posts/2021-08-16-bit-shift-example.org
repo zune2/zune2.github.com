@@ -1,0 +1,33 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: bit shift 예제
+#+HTML: tags: coding
+#+HTML: ---
+
+
+** bit shift 예제
+
+왼쪽으로 시프트 : 2를 곱하는 효과
+#+BEGIN_SRC python
+>>> 1 << 0
+1
+>>> 1 << 1
+2
+>>> 1 << 2
+4
+>>> 1 << 3
+8
+#+END_SRC
+
+오른쪽으로 shift : 2로 나누는 효과
+#+BEGIN_SRC python
+>>> 10 >> 1
+5
+>>> 5 >> 1
+2
+>>> 2 >> 1
+1
+>>> 1 >> 1
+0
+#+END_SRC
+

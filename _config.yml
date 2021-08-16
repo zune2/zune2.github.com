@@ -1,7 +1,6 @@
 # Site settings
 title: Zune2's Blog
 url: "https://zune2.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-#baseurl: "jekyll-theme-EasyBook" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 #timezone: Asia/Chongqing
 description: >
@@ -22,7 +21,6 @@ profile_links:
   # You can add more profile links above, or edit _includes/sidebar.html 
 
 disqus_shortname: "zune2"   # get one: https://disqus.com/admin/signup/
-
 
 excerpt_separator: <!--more-->
 
