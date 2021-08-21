@@ -1,0 +1,21 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: D - Coprime 2
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Coprime 2
+- 서로소(coprime integers)
+- GCD(x, y) = 1 의미는 x, y는 공약수(a common divisor)가 없다.
+
+작성중
+
+#+BEGIN_COMMENT
+
+** 코드
+
+** 문제 링크
+- https://atcoder.jp/contests/abc215/tasks/abc215_d
+
+#+END_COMMENT
