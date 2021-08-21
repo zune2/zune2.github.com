@@ -1,7 +1,7 @@
 ---
 title:  "vim과 GNU global 연동"
 date:   2019-12-30 22:32:54
-tags: global
+tags: vim
 ---
 
 Table Of Content
