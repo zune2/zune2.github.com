@@ -6,10 +6,14 @@
 #+OPTIONS: ^:nil
 
 ** D - Coprime 2
+- 작성중
+
+** 용어
 - 서로소(coprime integers)
 - GCD(x, y) = 1 의미는 x, y는 공약수(a common divisor)가 없다.
-
-작성중
+- 소인수분해 (prime factorization, factorization in prime factors)
+- 인수분해 (factorization)
+- 소인수 (prime factor)
 
 
 ** 문제 링크
