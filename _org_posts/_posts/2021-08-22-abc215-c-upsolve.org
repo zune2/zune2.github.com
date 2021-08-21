@@ -3,6 +3,7 @@
 #+HTML: title: C - One More aab aba baa
 #+HTML: tags: AtCoder
 #+HTML: ---
+#+OPTIONS: ^:nil
 
 ** C - One More aab aba baa 
 - string을 순열로 나열했을 때, K번째를 구하는 문제
