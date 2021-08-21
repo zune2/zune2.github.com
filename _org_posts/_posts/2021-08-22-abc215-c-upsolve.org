@@ -1,0 +1,63 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - One More aab aba baa
+#+HTML: tags: AtCoder
+#+HTML: ---
+
+** C - One More aab aba baa 
+- string을 순열로 나열했을 때, K번째를 구하는 문제
+- STL의 next_permutation으로도 구할 수 있음
+
+sort를 해야 한다는 생각이 잘 안떠올랐던 문제
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+char t[10];
+char s[10];
+int N;
+int len;
+int cnt;
+int table[26];
+
+void f(int k)
+{
+    if (cnt > N) return;
+    if (k == len) {
+        if (cnt++ == N) {
+            for(int i=0;i<len;i++) {
+                printf("%c", t[i]);
+            }
+            printf("\n");
+        }
+        return;
+    } 
+
+    for(int i=0;i<26;i++) {
+        if (table[i]) {
+            table[i]--;
+            t[k] = 'a' + i;
+            f(k+1);
+            table[i]++;
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    cnt = 1;
+    scanf("%s %d", s, &N);
+    for(len=0;s[len];len++) {
+        int idx = s[len] - 'a';
+        table[idx]++;
+    }
+    f(0);
+
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc215/tasks/abc215_c
+
