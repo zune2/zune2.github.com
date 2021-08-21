@@ -11,11 +11,7 @@
 
 작성중
 
-#+BEGIN_COMMENT
-
-** 코드
 
 ** 문제 링크
 - https://atcoder.jp/contests/abc215/tasks/abc215_d
 
-#+END_COMMENT
