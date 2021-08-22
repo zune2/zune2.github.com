@@ -1,0 +1,30 @@
+---
+layout: post
+title: vim에서 C++14 파일 compile
+tags: vim
+---
+
+<div id="outline-container-orgcb4f3f5" class="outline-2">
+<h2 id="orgcb4f3f5">사용법</h2>
+<div class="outline-text-2" id="text-orgcb4f3f5">
+<ul class="org-ul">
+<li>.vimrc에 다음 라인을 넣어준다.</li>
+<li>,bb를 누르면, 빌드를 함</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-vim">map ,bb &lt;ESC&gt;:!g++ -o %:r % -std=c++1y &lt;CR&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf7402d" class="outline-2">
+<h2 id="orgcf7402d">의미</h2>
+<div class="outline-text-2" id="text-orgcf7402d">
+<ul class="org-ul">
+<li>%가 파일이름 전체를 의미함</li>
+<li>%:r이 extension을 제외한 파일 이름을 의미함</li>
+<li>code.cpp가 %이면, %:r은 code가 된다.</li>
+</ul>
+</div>
+</div>

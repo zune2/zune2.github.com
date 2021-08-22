@@ -1,0 +1,18 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: vim에서 C++14 파일 compile
+#+HTML: tags: vim
+#+HTML: ---
+
+** 사용법
+- .vimrc에 다음 라인을 넣어준다.
+- ,bb를 누르면, 빌드를 함
+#+BEGIN_SRC vim
+map ,bb <ESC>:!g++ -o %:r % -std=c++1y <CR>
+#+END_SRC
+
+** 의미
+- %가 파일이름 전체를 의미함
+- %:r이 extension을 제외한 파일 이름을 의미함
+- code.cpp가 %이면, %:r은 code가 된다.
+
