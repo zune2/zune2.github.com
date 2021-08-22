@@ -1,0 +1,23 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: E - Chain Contestant
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** E - Chain Contestant
+- 작성중
+
+Bit DP를 익히고 다시 볼 것
+
+** 문제 링크
+- https://atcoder.jp/contests/abc215/tasks/abc215_e
+
+
+** 참고자료
+- [[https://koosaga.com/8][비트필드와 완전 탐색 최적화 (Bit DP)]]
+- [[https://justicehui.github.io/hard-algorithm/2019/01/18/bitDP/][Bit DP란?]]
+- [[https://mygumi.tistory.com/361][비트마스크(BitMask) 는 무엇인가?]]
+
+** 문제모음
+- [[https://www.acmicpc.net/workbook/view/3146][Bitmask+DP 문제집]]

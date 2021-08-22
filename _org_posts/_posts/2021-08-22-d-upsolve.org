@@ -16,6 +16,7 @@
 - 소인수 (prime factor)
 
 ** Prime Factorization (소인수분해)
+
 #+BEGIN_EXAMPLE
 12 = 2 x 2 x 3
 #+END_EXAMPLE
