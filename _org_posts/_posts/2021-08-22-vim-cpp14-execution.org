@@ -3,6 +3,7 @@
 #+HTML: title: vim에서 C++14 파일 compile
 #+HTML: tags: vim
 #+HTML: ---
+#+OPTIONS: ^:nil
 
 ** 사용법
 - .vimrc에 다음 라인을 넣어준다.
