@@ -8,7 +8,9 @@ tags: 완전탐색 Bitmask
 <h2 id="orgf00789f">일곱 난쟁이</h2>
 <div class="outline-text-2" id="text-orgf00789f">
 <ul class="org-ul">
-<li>작성중</li>
+<li>bit를 이용한 power set을 이용해서 반복함</li>
+
+<li>완전탐색으로 조합순서를 만들기 가능</li>
 </ul>
 </div>
 </div>
@@ -69,6 +71,91 @@ tags: 완전탐색 Bitmask
 </div>
 </div>
 
+
+<div id="outline-container-org58d0aaf" class="outline-2">
+<h2 id="org58d0aaf">완전탐색 + quicksort 구현</h2>
+<div class="outline-text-2" id="text-org58d0aaf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[9];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">partition</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[], <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pivot</span> = left;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = left-1;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span> = right+1;
+
+        <span style="color: #729fcf; font-weight: bold;">while</span>(1)
+        {
+                <span style="color: #729fcf; font-weight: bold;">do</span> {
+                        i++;
+                } <span style="color: #729fcf; font-weight: bold;">while</span> (a[i] &lt; a[pivot]);
+
+                <span style="color: #729fcf; font-weight: bold;">do</span> {
+                        j--;
+                } <span style="color: #729fcf; font-weight: bold;">while</span> (a[j] &gt; a[pivot]);
+
+                <span style="color: #729fcf; font-weight: bold;">if</span> (i&gt;=j)       <span style="color: #729fcf; font-weight: bold;">return</span> j;
+
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">t</span> = a[i];
+                a[i] = a[j];
+                a[j] = t;
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> j;
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">quicksort</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[], <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+        <span style="color: #729fcf; font-weight: bold;">if</span> (left &lt; right) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p</span> = partition(a, left, right);
+                quicksort(a, left, p);
+                quicksort(a, p+1, right);
+        }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bt</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span>) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( ans ) <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( sum &gt; 100) <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (7 == k) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (sum == 100) {
+                        quicksort(b, 0, 6);
+                        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0; i&lt;7;i++) {
+                                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, b[i]);
+                        }
+                        ans = 1;
+                }
+                <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (visit[i] == 0) {
+                        visit[i] = 1;
+                        b[k] = a[i];
+                        bt(k+1, sum+a[i]);
+                        visit[i] = 0;
+
+                }
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+                scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        }
+        bt(0, 0);
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
 <div id="outline-container-orgdbf5420" class="outline-2">
 <h2 id="orgdbf5420">참고자료</h2>
 <div class="outline-text-2" id="text-orgdbf5420">
