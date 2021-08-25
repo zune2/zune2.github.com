@@ -154,8 +154,8 @@ int run;
 void f(int idx, int sum, int remaining, int cnt)
 {
     if (run == 0) return;
-    if (sum > 100) return;
-    if (sum + remaining < 100) return;
+    if (sum > 100) return;  // 100보다 크면, 제외
+    if (sum + remaining < 100) return;   // 현재 + 앞으로 가능한 값이 100보다 작으면 제외
 
     if (idx == 9) {
         if (cnt == 7 && sum == 100) {
