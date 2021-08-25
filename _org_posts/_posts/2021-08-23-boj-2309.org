@@ -142,6 +142,10 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 ** powerset이용 bactracking + bound이용 최적화
+- powerset을 구하는 bactracking코드
+- 100보다 크면 제외하기
+- 앞으로 나올값과 현재값을 더했을때 100이 될 가능성이 없으면 제외
+
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <algorithm>

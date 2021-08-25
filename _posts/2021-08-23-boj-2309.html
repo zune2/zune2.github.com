@@ -158,6 +158,12 @@ tags: 완전탐색 Bitmask
 <div id="outline-container-org7938b0c" class="outline-2">
 <h2 id="org7938b0c">powerset이용 bactracking + bound이용 최적화</h2>
 <div class="outline-text-2" id="text-org7938b0c">
+<ul class="org-ul">
+<li>powerset을 구하는 bactracking코드</li>
+<li>100보다 크면 제외하기</li>
+<li>앞으로 나올값과 현재값을 더했을때 100이 될 가능성이 없으면 제외</li>
+</ul>
+
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
 <span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
@@ -170,8 +176,8 @@ tags: 완전탐색 Bitmask
 <span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">f</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">remaining</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>)
 {
     <span style="color: #729fcf; font-weight: bold;">if</span> (run == 0) <span style="color: #729fcf; font-weight: bold;">return</span>;
-    <span style="color: #729fcf; font-weight: bold;">if</span> (sum &gt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;
-    <span style="color: #729fcf; font-weight: bold;">if</span> (sum + remaining &lt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum &gt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;  <span style="color: #888a85;">// </span><span style="color: #888a85;">100&#48372;&#45796; &#53356;&#47732;, &#51228;&#50808;</span>
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum + remaining &lt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;   <span style="color: #888a85;">// </span><span style="color: #888a85;">&#54788;&#51116; + &#50526;&#51004;&#47196; &#44032;&#45733;&#54620; &#44050;&#51060; 100&#48372;&#45796; &#51089;&#51004;&#47732; &#51228;&#50808;</span>
 
     <span style="color: #729fcf; font-weight: bold;">if</span> (idx == 9) {
         <span style="color: #729fcf; font-weight: bold;">if</span> (cnt == 7 &amp;&amp; sum == 100) {
