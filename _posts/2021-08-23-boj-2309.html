@@ -24,46 +24,36 @@ tags: 완전탐색 Bitmask
 <span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
 
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[9];
 
-<span style="color: #729fcf;">#if</span> 0
-<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dec2bin</span>(<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
 {
-    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=31;i&gt;=0;i--) {
-        <span style="color: #729fcf; font-weight: bold;">if</span> ( (num &amp; (1U &lt;&lt; (<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span>)i)) ) {
-            printf(<span style="color: #ad7fa8; font-style: italic;">"1"</span>);
-        } <span style="color: #729fcf; font-weight: bold;">else</span> {
-            printf(<span style="color: #ad7fa8; font-style: italic;">"0"</span>);
-        }
-    }
-    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
-}
-<span style="color: #729fcf;">#endif</span>
-
-<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> *<span style="color: #ff6347;">argv</span>[])
-{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
-        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);    
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
     }
     sort(a, a+9);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;(1&lt;&lt;9);i++) {
 
-    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0; i&lt;(1&lt;&lt;9);i++)  {
-        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">total</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
         <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
-        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
-            <span style="color: #729fcf; font-weight: bold;">if</span>( (i &amp; (1&lt;&lt;j))){
-                total += a[j]; 
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i &amp; (1&lt;&lt;j)) {
+                sum += a[j]; 
                 cnt += 1;
             }
         }
-        <span style="color: #729fcf; font-weight: bold;">if</span> (total == 100 &amp;&amp; cnt == 7) {
-            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
-                <span style="color: #729fcf; font-weight: bold;">if</span>( (i &amp; (1&lt;&lt;j))){
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cnt == 7 &amp;&amp; sum == 100) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (i &amp; (1&lt;&lt;j)) {
                     printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, a[j]);
                 }
             }
-            <span style="color: #729fcf; font-weight: bold;">break</span>;
+            <span style="color: #729fcf; font-weight: bold;">goto</span> <span style="color: #8ae234;">exit</span>;
         }
-    }
+    } 
+<span style="color: #8ae234;">exit</span>: 
     <span style="color: #729fcf; font-weight: bold;">return</span> 0;
 }
 </pre>
@@ -213,6 +203,16 @@ tags: 완전탐색 Bitmask
 </div>
 </div>
 </div>
+<div id="outline-container-org2f2cda3" class="outline-2">
+<h2 id="org2f2cda3"><span class="todo TODO">TODO</span> 두수를 뺐을 때, 100이 되게하는 목록 만들기</h2>
+<div class="outline-text-2" id="text-org2f2cda3">
+<ul class="org-ul">
+<li>이중 loop에서 두 숫자 x, y를 구함</li>
+<li>sum - x - y == 100이면, 전체 목록에서 x, y를 제거하고 출력하기</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-orgdbf5420" class="outline-2">
 <h2 id="orgdbf5420">참고자료</h2>
 <div class="outline-text-2" id="text-orgdbf5420">
