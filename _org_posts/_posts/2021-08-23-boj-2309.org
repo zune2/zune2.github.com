@@ -62,7 +62,6 @@ int main(int argc, char *argv[])
 }
 #+END_SRC
 
-
 ** 완전탐색 + quicksort 구현
 #+BEGIN_SRC cpp
 #include <cstdio>
@@ -140,6 +139,53 @@ int main(int argc, char* argv[])
 	}
 	bt(0, 0);
 	return 0;
+}
+#+END_SRC
+** powerset이용 bactracking + bound이용 최적화
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int a[9];
+int b[9];
+int run;
+
+void f(int idx, int sum, int remaining, int cnt)
+{
+    if (run == 0) return;
+    if (sum > 100) return;
+    if (sum + remaining < 100) return;
+
+    if (idx == 9) {
+        if (cnt == 7 && sum == 100) {
+            sort(b, b+9);
+            for(int i=0;i<9;i++) {
+                if (b[i]) printf("%d\n", b[i]);
+            }
+            run = 0;
+        }
+        return;
+    }
+
+    b[idx] = 0;
+    f(idx+1, sum, remaining, cnt);
+
+    b[idx] = a[idx];
+    f(idx+1, sum + a[idx], remaining - a[idx], cnt + 1);
+}
+
+int main(int argc, char* argv[])
+{
+    int sum = 0;
+    for(int i=0;i<9;i++) {
+        scanf("%d", &a[i]);
+        sum += a[i];
+    }
+
+    run = 1;
+    f(0, 0, sum, 0);
+    return 0;
 }
 #+END_SRC
 ** 참고자료
