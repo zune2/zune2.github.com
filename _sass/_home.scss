@@ -23,12 +23,12 @@
 }
 .post-list {
     margin: 0;
-	padding: 20px 40px;
+	padding: 20px 20px;
     list-style: none;
     > li {
-        padding-bottom: 5px;
+        padding-bottom: 0px;
         border-bottom: 1px solid #CCC;
-    	margin-bottom: 10px;
+    	margin-bottom: 0px;
     }
     .post-title {
     	font-size: 28px;
