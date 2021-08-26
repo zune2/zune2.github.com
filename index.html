@@ -8,9 +8,9 @@ layout: default
 
   <ul class="post-list">
     {% for post in paginator.posts %}
-      <li>
-          <h3> <!--{{ post.date | date: "%b %-d, %Y" }} |--> <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> </h3>
-        
+    <li>
+        <!--<h3>{{ post.date | date: "%Y-%m-%d" }} <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>-->
+        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
        <!-- 
         <div class="post-excerpt">
           {%   if post.content contains site.excerpt_separator or post.content != post.excerpt %}{{ post.excerpt }}
@@ -20,7 +20,7 @@ layout: default
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">Read More &raquo;</a>
           </p>
         </div> -->
-      </li>
+    </li>
     {% endfor %}
   </ul>
   

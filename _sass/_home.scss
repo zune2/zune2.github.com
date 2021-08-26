@@ -1,4 +1,7 @@
 .home {
+
+
+
 .page-heading {
 	font-size:40px;
 	font-weight: normal;
@@ -21,6 +24,15 @@
         color: #666;
     }
 }
+
+.list-left {
+float: left;
+}
+
+.list-right {
+float:right;
+}
+
 .post-list {
     margin: 0;
 	padding: 20px 20px;
@@ -29,6 +41,8 @@
         padding-bottom: 0px;
         border-bottom: 1px solid #CCC;
     	margin-bottom: 0px;
+
+
     }
     .post-title {
     	font-size: 28px;
