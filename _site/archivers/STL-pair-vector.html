@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>STL pair와 vector 같이 쓰기 « Zune2's Blog</title>
+  <meta name="description" content="STL Pairfirst, second를 필드로 가짐컨테이너의 요소 하나에 두개의 데이터가 저장이 필요할 때 사용한다.헤더 추가하기#include &lt;utility&gt;using namespace std;pair를 요소로 가지는 vector 선언vector &lt; pair&...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/STL-pair-vector">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">STL pair와 vector 같이 쓰기</h1>
+    <p class="post-meta">Jan 27, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <div id="outline-container-org477c384" class="outline-2">
+<h2 id="org477c384">STL Pair</h2>
+<div class="outline-text-2" id="text-org477c384">
+<ul class="org-ul">
+<li>first, second를 필드로 가짐</li>
+<li>컨테이너의 요소 하나에 두개의 데이터가 저장이 필요할 때 사용한다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5dc3dd8" class="outline-2">
+<h2 id="org5dc3dd8">헤더 추가하기</h2>
+<div class="outline-text-2" id="text-org5dc3dd8">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;utility&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab6af9c" class="outline-2">
+<h2 id="orgab6af9c">pair를 요소로 가지는 vector 선언</h2>
+<div class="outline-text-2" id="text-orgab6af9c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span> &lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">vt</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf2433a" class="outline-2">
+<h2 id="orgcf2433a">make pair로 만든 pair를 vector에 추가하기</h2>
+<div class="outline-text-2" id="text-orgcf2433a">
+<div class="org-src-container">
+<pre class="src src-cpp">vt.push_back(make_pair(1,3));
+vt.push_back(make_pair(3,1));
+vt.push_back(make_pair(2,2));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6b1b82d" class="outline-2">
+<h2 id="org6b1b82d">sort는 동일하게 함</h2>
+<div class="outline-text-2" id="text-org6b1b82d">
+<div class="org-src-container">
+<pre class="src src-cpp">sort(vt.begin(), vt.end());
+</pre>
+</div>
+</div>
+</div>
+
+  </article>
+  
+  
+
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'zune2'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/boj-2309">BOJ 2309 일곱 난쟁이</a></li>
+    
+      <li><a class="post-link" href="/archivers/vim-cpp14-execution">vim에서 C++14 파일 compile</a></li>
+    
+      <li><a class="post-link" href="/archivers/orgmode-tips">OrgMode Tips 정리</a></li>
+    
+      <li><a class="post-link" href="/archivers/cf-71a">A. Way Too Long Word</a></li>
+    
+      <li><a class="post-link" href="/archivers/abc215-e">E - Chain Contestant</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2021 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

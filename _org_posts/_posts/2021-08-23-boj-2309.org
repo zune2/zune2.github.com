@@ -7,11 +7,12 @@
 
 ** 일곱 난쟁이
 - bit를 이용한 power set을 이용해서 반복함
-
 - 완전탐색으로 조합순서를 만들기 가능
+  - 가지치기를 적용해볼 수 있음
+- sum - 100이 되도록 두 수를 찾아도 됨
 
 ** bitmask 이용 powerset 
-   
+  
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <algorithm>
@@ -185,6 +186,10 @@ int main(int argc, char* argv[])
 ** TODO 두수를 뺐을 때, 100이 되게하는 목록 만들기
 - 이중 loop에서 두 숫자 x, y를 구함
 - sum - x - y == 100이면, 전체 목록에서 x, y를 제거하고 출력하기
+
+** TODO sort하고, 두 수를 찾기
+- 두수의 합이 sum - 100이 되도록 하는 두 수 찾기
+- 알고리즘 이름이 뭐였더라?
 
 ** 참고자료
 - [[https://mygumi.tistory.com/361][비트마스크(BitMask) 는 무엇인가?]]

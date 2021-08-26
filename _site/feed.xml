@@ -6,54 +6,293 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 Jan 2020 12:02:16 +0900</pubDate>
-    <lastBuildDate>Sat, 11 Jan 2020 12:02:16 +0900</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+    <pubDate>Thu, 26 Aug 2021 21:44:29 +0900</pubDate>
+    <lastBuildDate>Thu, 26 Aug 2021 21:44:29 +0900</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title>expect 사용하기</title>
-        <description>&lt;h2 id=&quot;expect-script&quot;&gt;expect script&lt;/h2&gt;
+        <title>BOJ 2309 일곱 난쟁이</title>
+        <description>&lt;div id=&quot;outline-container-orgf00789f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgf00789f&quot;&gt;일곱 난쟁이&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgf00789f&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;bit를 이용한 power set을 이용해서 반복함&lt;/li&gt;
 
-&lt;p&gt;command를 입력하고, 예상되는 출력에 따라 다른 동작을 하게 할 때 사용함.&lt;/p&gt;
+&lt;li&gt;완전탐색으로 조합순서를 만들기 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;정형적인 작업의 흐름을 자동화 하기 좋을 것 같다.&lt;/p&gt;
+&lt;div id=&quot;outline-container-org7539c44&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org7539c44&quot;&gt;bitmask 이용 powerset&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org7539c44&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;cstdio&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;algorithm&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
 
-&lt;ul&gt;
-  &lt;li&gt;HEREDOC 방식으로 bash script안에서 할 수 있음&lt;/li&gt;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[9];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;b&lt;/span&gt;[9];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    freopen(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;input.txt&quot;&lt;/span&gt;, &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;r&quot;&lt;/span&gt;, stdin);
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;9;i++) {
+        scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, &amp;amp;a[i]);
+    }
+    sort(a, a+9);
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;(1&amp;lt;&amp;lt;9);i++) {
+
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;sum&lt;/span&gt; = 0;
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cnt&lt;/span&gt; = 0;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=0;j&amp;lt;9;j++) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (i &amp;amp; (1&amp;lt;&amp;lt;j)) {
+                sum += a[j]; 
+                cnt += 1;
+            }
+        }
+
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (cnt == 7 &amp;amp;&amp;amp; sum == 100) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=0;j&amp;lt;9;j++) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (i &amp;amp; (1&amp;lt;&amp;lt;j)) {
+                    printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d\n&quot;&lt;/span&gt;, a[j]);
+                }
+            }
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;goto&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;exit&lt;/span&gt;;
+        }
+    } 
+&lt;span style=&quot;color: #8ae234;&quot;&gt;exit&lt;/span&gt;: 
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org58d0aaf&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org58d0aaf&quot;&gt;완전탐색 + quicksort 구현&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org58d0aaf&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;cstdio&amp;gt;&lt;/span&gt;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[9];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;b&lt;/span&gt;[9];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;visit&lt;/span&gt;[9];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ans&lt;/span&gt; = 0;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;partition&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[], &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;left&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;right&lt;/span&gt;)
+{
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;pivot&lt;/span&gt; = left;
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt; = left-1;
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt; = right+1;
+
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt;(1)
+        {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;do&lt;/span&gt; {
+                        i++;
+                } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt; (a[i] &amp;lt; a[pivot]);
+
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;do&lt;/span&gt; {
+                        j--;
+                } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt; (a[j] &amp;gt; a[pivot]);
+
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (i&amp;gt;=j)       &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; j;
+
+                &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;t&lt;/span&gt; = a[i];
+                a[i] = a[j];
+                a[j] = t;
+        }
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; j;
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;quicksort&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[], &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;left&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;right&lt;/span&gt;)
+{
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (left &amp;lt; right) {
+                &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;p&lt;/span&gt; = partition(a, left, right);
+                quicksort(a, left, p);
+                quicksort(a, p+1, right);
+        }
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;bt&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;k&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;sum&lt;/span&gt;) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; ( ans ) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; ( sum &amp;gt; 100) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (7 == k) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (sum == 100) {
+                        quicksort(b, 0, 6);
+                        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0; i&amp;lt;7;i++) {
+                                printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d\n&quot;&lt;/span&gt;, b[i]);
+                        }
+                        ans = 1;
+                }
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+        }
+
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;9;i++) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (visit[i] == 0) {
+                        visit[i] = 1;
+                        b[k] = a[i];
+                        bt(k+1, sum+a[i]);
+                        visit[i] = 0;
+
+                }
+        }
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;9;i++) {
+                scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, &amp;amp;a[i]);
+        }
+        bt(0, 0);
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org7938b0c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org7938b0c&quot;&gt;powerset이용 bactracking + bound이용 최적화&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org7938b0c&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;powerset을 구하는 bactracking코드&lt;/li&gt;
+&lt;li&gt;100보다 크면 제외하기&lt;/li&gt;
+&lt;li&gt;앞으로 나올값과 현재값을 더했을때 100이 될 가능성이 없으면 제외&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;cstdio&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;algorithm&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zetawiki.com/wiki/Bash_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%97%90_expect_%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8_%EB%84%A3%EA%B8%B0&quot;&gt;Bash script에 expect 스크립트 넣기&lt;/a&gt;&lt;/li&gt;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[9];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;b&lt;/span&gt;[9];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;run&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;f&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;idx&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;sum&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;remaining&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cnt&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (run == 0) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (sum &amp;gt; 100) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;  &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;100&amp;#48372;&amp;#45796; &amp;#53356;&amp;#47732;, &amp;#51228;&amp;#50808;&lt;/span&gt;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (sum + remaining &amp;lt; 100) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;   &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;&amp;#54788;&amp;#51116; + &amp;#50526;&amp;#51004;&amp;#47196; &amp;#44032;&amp;#45733;&amp;#54620; &amp;#44050;&amp;#51060; 100&amp;#48372;&amp;#45796; &amp;#51089;&amp;#51004;&amp;#47732; &amp;#51228;&amp;#50808;&lt;/span&gt;
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (idx == 9) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (cnt == 7 &amp;amp;&amp;amp; sum == 100) {
+            sort(b, b+9);
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;9;i++) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (b[i]) printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d\n&quot;&lt;/span&gt;, b[i]);
+            }
+            run = 0;
+        }
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;
+    }
+
+    b[idx] = 0;
+    f(idx+1, sum, remaining, cnt);
+
+    b[idx] = a[idx];
+    f(idx+1, sum + a[idx], remaining - a[idx], cnt + 1);
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;sum&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;9;i++) {
+        scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, &amp;amp;a[i]);
+        sum += a[i];
+    }
+
+    run = 1;
+    f(0, 0, sum, 0);
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org2f2cda3&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org2f2cda3&quot;&gt;&lt;span class=&quot;todo TODO&quot;&gt;TODO&lt;/span&gt; 두수를 뺐을 때, 100이 되게하는 목록 만들기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org2f2cda3&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;이중 loop에서 두 숫자 x, y를 구함&lt;/li&gt;
+&lt;li&gt;sum - x - y == 100이면, 전체 목록에서 x, y를 제거하고 출력하기&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgdbf5420&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgdbf5420&quot;&gt;참고자료&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgdbf5420&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://mygumi.tistory.com/361&quot;&gt;비트마스크(BitMask) 는 무엇인가?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgb8e8367&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgb8e8367&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgb8e8367&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2309&quot;&gt;https://www.acmicpc.net/problem/2309&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Fri, 10 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/expect-automation</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/expect-automation</guid>
+        <pubDate>Mon, 23 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/boj-2309</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/boj-2309</guid>
         
-        <category>expect</category>
+        <category>완전탐색</category>
+        
+        <category>Bitmask</category>
         
         
       </item>
     
       <item>
-        <title>gravata에 이미지 등록</title>
-        <description>&lt;h2 id=&quot;gravata에-이미지-등록하기&quot;&gt;Gravata에 이미지 등록하기&lt;/h2&gt;
-
-&lt;p&gt;크롬 스토어에서 Avatar Maker 설치하고, 이미지를 만든 후,
-gravata 사이트에 회원가입 후, 이미지를 등록하면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135&quot; alt=&quot;Gravata Image&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ko.gravatar.com/site/implement/images/&quot;&gt;Image Requests&lt;/a&gt;&lt;/li&gt;
+        <title>vim에서 C++14 파일 compile</title>
+        <description>&lt;div id=&quot;outline-container-orgcb4f3f5&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgcb4f3f5&quot;&gt;사용법&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgcb4f3f5&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;.vimrc에 다음 라인을 넣어준다.&lt;/li&gt;
+&lt;li&gt;,bb를 누르면, 빌드를 함&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-vim&quot;&gt;map ,bb &amp;lt;ESC&amp;gt;:!g++ -o %:r % -std=c++1y &amp;lt;CR&amp;gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgcf7402d&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgcf7402d&quot;&gt;의미&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgcf7402d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;%가 파일이름 전체를 의미함&lt;/li&gt;
+&lt;li&gt;%:r이 extension을 제외한 파일 이름을 의미함&lt;/li&gt;
+&lt;li&gt;code.cpp가 %이면, %:r은 code가 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgeaf5bce&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgeaf5bce&quot;&gt;c.vim에서 C_CFlags 변경&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgeaf5bce&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;std=c++14를 붙여줘도 동일한 효과가 난다. (더 편리한 듯)&lt;/li&gt;
+&lt;li&gt;F9를 눌러서 실행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;example&quot;&gt;
+let s:C_CFlags                = '-Wall -g -O0 -c -std=c++14'      &quot; compiler flags: compile, don't optimize
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Mon, 06 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/gravata-generation</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/gravata-generation</guid>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/vim-cpp14-execution</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/vim-cpp14-execution</guid>
         
         <category>vim</category>
         
@@ -61,413 +300,553 @@ gravata 사이트에 회원가입 후, 이미지를 등록하면 된다.&lt;/p&g
       </item>
     
       <item>
-        <title>cscope와 mkcscope.sh</title>
-        <description>&lt;p&gt;vim + cscope조합을 오래 썼다.&lt;/p&gt;
+        <title>OrgMode Tips 정리</title>
+        <description>&lt;div id=&quot;outline-container-org5f5dabc&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org5f5dabc&quot;&gt;orgmode 마크업&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org5f5dabc&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org02319cf&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org02319cf&quot;&gt;underscore 뒤 문자가 작아지는 문제&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org02319cf&quot;&gt;
+&lt;p&gt;
+옵션을 추가해주면 된다.
+&lt;/p&gt;
+&lt;pre class=&quot;example&quot;&gt;
+#+OPTIONS: ^:nil
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;적당히 유용하고, indexing된 파일을 분리해서 만들어, 연결해 쓸 수 있다는 장점이 있다.&lt;/p&gt;
+&lt;div id=&quot;outline-container-orgf1999cf&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgf1999cf&quot;&gt;C++ 소스코드 추가&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgf1999cf&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+&amp;lt;s 후 TAB 입력 cpp
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;cscope 커맨드라인도구를 따로 쓸 수 있음. (코드 분석 목적)&lt;/p&gt;
-
-&lt;h2 id=&quot;mkcscopesh로-만들기&quot;&gt;mkcscope.sh로 만들기&lt;/h2&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; cscope.files cscope.files
-find &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.c'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cpp'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cc'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.h'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.y'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.s'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.S'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-print&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; cscope.files
-cscope &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; cscope.files
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;mkcscope.sh로 만들고 실행권한을 준다.
-source의 최상위 dir에서 한번 호출해주면 된다.&lt;/p&gt;
-
-&lt;p&gt;vim에서 reset해서 업데이트된 cscope DB를 들고올 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:cs reset
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wonjaek.tistory.com/65&quot;&gt;ctags and cscope 사용법&lt;/a&gt;&lt;/li&gt;
+&lt;div id=&quot;outline-container-org5ce5818&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org5ce5818&quot;&gt;Jekyll github운영&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org5ce5818&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org1f87056&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org1f87056&quot;&gt;Jekyll에서 org mode로 page 생성하기&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org1f87056&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+C-c C-e P p      #  (Publish -&amp;gt; Current Project) 
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/orgmode-tips</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/orgmode-tips</guid>
+        
+        <category>orgmode</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>A. Way Too Long Word</title>
+        <description>&lt;div id=&quot;outline-container-orgb0f8b1f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgb0f8b1f&quot;&gt;A. A. Way Too Long Words&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgb0f8b1f&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;긴 문자열만 골라서 축약형 문자열을 만드는 문제&lt;/li&gt;
+&lt;li&gt;Let's consider a word too long, if its length is strictly more than 10 characters. 
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;10이 넘는 경우만 줄인다. (10을 포함하지 않음)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org2c1b890&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org2c1b890&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org2c1b890&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://codeforces.com/problemset/problem/71/A&quot;&gt;https://codeforces.com/problemset/problem/71/A&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Sun, 05 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/mkcscope-sh-usage</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/mkcscope-sh-usage</guid>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/cf-71a</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/cf-71a</guid>
         
-        <category>vim</category>
+        <category>CodeForces</category>
         
         
       </item>
     
       <item>
-        <title>My Vim Reference Card</title>
-        <description>&lt;p&gt;주로 쓰는 vim 명령어 정리&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-command&quot;&gt;basic command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;:w filename&lt;/td&gt;
-      &lt;td&gt;파일 이름으로 저장&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ctrl-v 커서 이동 + y&lt;/td&gt;
-      &lt;td&gt;visual block만들고 copy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;p&lt;/td&gt;
-      &lt;td&gt;paste 하기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;plugin이용-command&quot;&gt;plugin이용 command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ctrl-p&lt;/td&gt;
-      &lt;td&gt;ctrlp로 파일 찾기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;cc용-키맵-gnu-global&quot;&gt;C/C++용 키맵 (GNU global)&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gd ,ld&lt;/td&gt;
-      &lt;td&gt;definition으로 점프&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gr ,lr&lt;/td&gt;
-      &lt;td&gt;reference로 점프&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;,gs ,ls&lt;/td&gt;
-      &lt;td&gt;string 검색&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</description>
-        <pubDate>Sat, 04 Jan 2020 21:04:00 +0900</pubDate>
-        <link>http://localhost:4000/archivers/my-vim-ref</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/my-vim-ref</guid>
-        
-        <category>vim</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My Emacs Reference Card</title>
-        <description>&lt;p&gt;주로 쓰는 emacs 명령어 정리&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-command&quot;&gt;basic command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-f&lt;/td&gt;
-      &lt;td&gt;파일 Open&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-s&lt;/td&gt;
-      &lt;td&gt;파일 Save&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;M-x package-list-packages&lt;/td&gt;
-      &lt;td&gt;package list로 진입하기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-n&lt;/td&gt;
-      &lt;td&gt;아래로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-f&lt;/td&gt;
-      &lt;td&gt;오른쪽으로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-b&lt;/td&gt;
-      &lt;td&gt;왼쪽으로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-p&lt;/td&gt;
-      &lt;td&gt;위로 이동&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-d&lt;/td&gt;
-      &lt;td&gt;한 글자 지우기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-k C-y&lt;/td&gt;
-      &lt;td&gt;한줄 지우고, 붙이기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-SPC&lt;/td&gt;
-      &lt;td&gt;visual block 지정 시작&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x C-b&lt;/td&gt;
-      &lt;td&gt;Buffer List 열기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-x o&lt;/td&gt;
-      &lt;td&gt;창분할된 옆창 이동&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;org-mode-command&quot;&gt;org-mode command&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;CMD&lt;/th&gt;
-      &lt;th&gt;DESC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;org-agenda 진입 후 m&lt;/td&gt;
-      &lt;td&gt;tag를 이용한 검색&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;F12&lt;/td&gt;
-      &lt;td&gt;org-todo-list 진입&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-c C-w&lt;/td&gt;
-      &lt;td&gt;refile하기&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;C-c C-o&lt;/td&gt;
-      &lt;td&gt;org-open-at-point 문서내부 URL을 browser로 열기&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;emacs-config-mapping&quot;&gt;emacs config mapping&lt;/h2&gt;
-
-&lt;h3 id=&quot;f11-f12를-org-todo-list-agenda로-매핑하기&quot;&gt;F11, F12를 org-todo-list, agenda로 매핑하기&lt;/h3&gt;
-&lt;div class=&quot;language-elisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;f12&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'org-todo-list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;f11&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'org-agenda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;refile-target이되는-파일-이름-지정하기&quot;&gt;refile target이되는 파일 이름 지정하기&lt;/h3&gt;
-&lt;div class=&quot;language-elisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-refile-targets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;archive.org&quot;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 04 Jan 2020 09:07:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/my-emacs-ref</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/my-emacs-ref</guid>
-        
-        <category>emacs</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>vim lightline.vim 설치</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;airline 플러그인과 비슷하지만, 좀 더 예쁘게 상태바를 표현해준다.&lt;/li&gt;
-  &lt;li&gt;같이 써도 괜찮다.&lt;/li&gt;
+        <title>E - Chain Contestant</title>
+        <description>&lt;div id=&quot;outline-container-org44cb8b3&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org44cb8b3&quot;&gt;E - Chain Contestant&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org44cb8b3&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;작성중&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/itchyny/lightline.vim&quot;&gt;link - lightline.vim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+Bit DP를 익히고 다시 볼 것
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org522eb1a&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org522eb1a&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org522eb1a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://atcoder.jp/contests/abc215/tasks/abc215_e&quot;&gt;https://atcoder.jp/contests/abc215/tasks/abc215_e&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id=&quot;outline-container-orgee67bc6&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgee67bc6&quot;&gt;참고자료&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgee67bc6&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://koosaga.com/8&quot;&gt;비트필드와 완전 탐색 최적화 (Bit DP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://justicehui.github.io/hard-algorithm/2019/01/18/bitDP/&quot;&gt;Bit DP란?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://mygumi.tistory.com/361&quot;&gt;비트마스크(BitMask) 는 무엇인가?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgdb0f2de&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgdb0f2de&quot;&gt;문제모음&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgdb0f2de&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/workbook/view/3146&quot;&gt;Bitmask+DP 문제집&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Fri, 03 Jan 2020 09:07:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/vim-plugin-lightline</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/vim-plugin-lightline</guid>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/abc215-e</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/abc215-e</guid>
         
-        <category>vim</category>
+        <category>AtCoder</category>
         
         
       </item>
     
       <item>
-        <title>jekyll texture 테마 설치하기</title>
-        <description>&lt;p&gt;간단하게 사용하기 좋다.&lt;/p&gt;
+        <title>D - Coprime 2</title>
+        <description>&lt;div id=&quot;outline-container-org73bd17a&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org73bd17a&quot;&gt;D - Coprime 2&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org73bd17a&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;작성중&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/thelehhman/texture.git
-vi _config.yml
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div id=&quot;outline-container-org62d4538&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org62d4538&quot;&gt;용어&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org62d4538&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;서로소(coprime integers)&lt;/li&gt;
+&lt;li&gt;GCD(x, y) = 1 의미는 x, y는 공약수(a common divisor)가 없다.&lt;/li&gt;
+&lt;li&gt;소인수분해 (prime factorization, factorization in prime factors)&lt;/li&gt;
+&lt;li&gt;인수분해 (factorization)&lt;/li&gt;
+&lt;li&gt;소인수 (prime factor)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org822b66b&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org822b66b&quot;&gt;Prime Factorization (소인수분해)&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org822b66b&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+12 = 2 x 2 x 3
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgd938d18&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd938d18&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd938d18&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;GCD(x, y) = 1은 서로 소인 수를 의미함&lt;/li&gt;
+
+&lt;li&gt;GCD(x, y) != 1 은 X를 소인수분해 했을 때, 배수가 있음을 의미&lt;/li&gt;
+
+&lt;li&gt;룩업 배열에 인수와 그 배수를 check해주고, 1~M까지 loop에서 남아있는 수를 고르면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;example&quot;&gt;
+a[x] = GCD(A[i], x) != 1 
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org0ad18e8&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org0ad18e8&quot;&gt;풀이&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org0ad18e8&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ARR_SIZE&lt;/span&gt; 100010
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;M&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[ARR_SIZE];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;fact&lt;/span&gt;[ARR_SIZE];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;fidx&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;out&lt;/span&gt;[ARR_SIZE];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;idx&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;pfact&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;num&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=2;i*i&amp;lt;=num;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt;(num%i==0) {
+            num /= i;
+            fact[fidx++] = i;
+        }
+    }  
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (num != 1)
+        fact[fidx++] = num;
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;ARR_SIZE;i++) a[i] = 1;
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;num&lt;/span&gt;;
+        cin &amp;gt;&amp;gt; num;
+
+        fidx = 0;
+        pfact(num);
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=0;j&amp;lt;fidx;j++) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt;(a[fact[j]]) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;k&lt;/span&gt;=fact[j];k&amp;lt;ARR_SIZE;k+=fact[j]) {
+                    a[k] = 0;
+                }
+            }
+        }
+    }
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=1;i&amp;lt;=M;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (a[i]) out[idx++] = i;        
+    }    
+
+    cout &amp;lt;&amp;lt; idx &amp;lt;&amp;lt; endl;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;idx;i++) {
+        cout &amp;lt;&amp;lt; out[i] &amp;lt;&amp;lt; endl;
+    }
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orga87d71b&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orga87d71b&quot;&gt;문제 링크/참고자료&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orga87d71b&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://atcoder.jp/contests/abc215/tasks/abc215_d&quot;&gt;https://atcoder.jp/contests/abc215/tasks/abc215_d&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.hamayanhamayan.com/entry/2021/08/21/233514&quot;&gt;https://blog.hamayanhamayan.com/entry/2021/08/21/233514&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Fri, 03 Jan 2020 08:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/install-texture-theme</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/install-texture-theme</guid>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/abc215-d-upsolve</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/abc215-d-upsolve</guid>
         
+        <category>AtCoder</category>
         
-        <category>jekyll</category>
         
       </item>
     
       <item>
-        <title>elisp - hello world 예제</title>
-        <description>&lt;h2 id=&quot;elisp로-hello-world-출력하기&quot;&gt;elisp로 hello world 출력하기&lt;/h2&gt;
-
-&lt;p&gt;M-x ielm으로 모드를 진입하고, 함수를 만들어 본다.&lt;/p&gt;
-
-&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vg&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;IELM&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;***&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;describe-mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;help.&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ELISP&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ELISP&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;say-hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;list를-만들기&quot;&gt;list를 만들기&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ELISP&amp;gt; '(rose violet daisy buttercup) 
-(rose violet daisy buttercup) 
-ELISP&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;emacs에서-22-evalute하기&quot;&gt;emacs에서 2+2 evalute하기&lt;/h2&gt;
-
-&lt;p&gt;블럭을 지정한 후, C-x C-e하면 evalute된다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(+ 2 2)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ergoemacs.org/emacs/elisp.html&quot;&gt;Practical Emacs Lisp&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ergoemacs.org/emacs/elisp_basics.html&quot;&gt;elisp_basics&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-next/&quot;&gt;Emacs Lisp for Hackers: Hello World&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/emacs/manual/html_node/eintr/Lisp-Lists.html#Lisp-Lists&quot;&gt;Manual &amp;gt; Lisp-Lists&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/emacs/manual/html_node/eintr/Run-a-Program.html#Run-a-Program&quot;&gt;Manual &amp;gt; Run-a-Program&lt;/a&gt;&lt;/li&gt;
+        <title>C - One More aab aba baa</title>
+        <description>&lt;div id=&quot;outline-container-orgb41cf77&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgb41cf77&quot;&gt;C - One More aab aba baa&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgb41cf77&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;string을 순열로 나열했을 때, K번째를 구하는 문제&lt;/li&gt;
+&lt;li&gt;STL의 next_permutation으로도 구할 수 있음&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;
+sort를 해야 한다는 생각이 잘 안떠올랐던 문제
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org6e52493&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org6e52493&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org6e52493&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;t&lt;/span&gt;[10];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;s&lt;/span&gt;[10];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;len&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cnt&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;table&lt;/span&gt;[26];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;f&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;k&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (cnt &amp;gt; N) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (k == len) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (cnt++ == N) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;len;i++) {
+                printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%c&quot;&lt;/span&gt;, t[i]);
+            }
+            printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;\n&quot;&lt;/span&gt;);
+        }
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;
+    } 
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;26;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i]) {
+            table[i]--;
+            t[k] = &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'a'&lt;/span&gt; + i;
+            f(k+1);
+            table[i]++;
+        }
+    }
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    cnt = 1;
+    scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%s %d&quot;&lt;/span&gt;, s, &amp;amp;N);
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(len=0;s[len];len++) {
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;idx&lt;/span&gt; = s[len] - &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'a'&lt;/span&gt;;
+        table[idx]++;
+    }
+    f(0);
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org1bd0335&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org1bd0335&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org1bd0335&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://atcoder.jp/contests/abc215/tasks/abc215_c&quot;&gt;https://atcoder.jp/contests/abc215/tasks/abc215_c&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Fri, 03 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/elisp-say-hello</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/elisp-say-hello</guid>
+        <pubDate>Sun, 22 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/abc215-c-upsolve</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/abc215-c-upsolve</guid>
         
+        <category>AtCoder</category>
         
-        <category>emacs</category>
-        
-        <category>elisp</category>
         
       </item>
     
       <item>
-        <title>Windows10에 git 설치, MSYS2</title>
-        <description>&lt;p&gt;git client windows용을 설치하면 된다.
-간단한 terminal이 제공되는데, 이게 쓸만함.
-여기에 MinGW를 설치해서 gcc, make등을 이용할 수 있음&lt;/p&gt;
+        <title>STL set</title>
+        <description>&lt;div id=&quot;outline-container-org7dcaf39&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org7dcaf39&quot;&gt;STL set&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org7dcaf39&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;데이터의 중복없이, 순서대로 정렬되어 저장하는 자료구조&lt;/li&gt;
+&lt;li&gt;Red Black tree 기반&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;tmux를 쓰려면 MSYS2를 설치해야 함.&lt;/p&gt;
+&lt;div id=&quot;outline-container-org4c94b28&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org4c94b28&quot;&gt;예제&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org4c94b28&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;algorithm&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;set&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;set&lt;/span&gt; &amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt;&amp;gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;s&lt;/span&gt;;
+
+    &lt;span style=&quot;color: #888a85;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;for(int i=1;i&amp;lt;=10;i++)&lt;/span&gt;
+    s.insert(1);
+    s.insert(1);
+    s.insert(2);
+    s.insert(2);
+    s.insert(3);
+    s.insert(3);
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234;&quot;&gt;set&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt;&amp;gt;::&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;iterator&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;it&lt;/span&gt;=s.begin();it!=s.end();it++) {
+        cout &amp;lt;&amp;lt; *it &amp;lt;&amp;lt; endl;
+    }
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Thu, 02 Jan 2020 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/wingit-on-win10</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/wingit-on-win10</guid>
+        <pubDate>Sat, 21 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/stl-set</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/stl-set</guid>
         
+        <category>STL</category>
         
-        <category>git</category>
         
       </item>
     
       <item>
-        <title>vim과 GNU global 연동</title>
-        <description>&lt;p&gt;Table Of Content&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#gnu-global이란&quot; id=&quot;markdown-toc-gnu-global이란&quot;&gt;GNU Global이란?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mkcscopesh와-비슷하게-script를-만들기&quot; id=&quot;markdown-toc-mkcscopesh와-비슷하게-script를-만들기&quot;&gt;mkcscope.sh와 비슷하게 script를 만들기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#incremental-업데이트-하기&quot; id=&quot;markdown-toc-incremental-업데이트-하기&quot;&gt;Incremental 업데이트 하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#global-예제&quot; id=&quot;markdown-toc-global-예제&quot;&gt;global 예제&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#66-최신-버전-설치하기&quot; id=&quot;markdown-toc-66-최신-버전-설치하기&quot;&gt;6.6 최신 버전 설치하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+        <title>bit shift 예제</title>
+        <description>&lt;div id=&quot;outline-container-org8e357d8&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org8e357d8&quot;&gt;bit shift 예제&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org8e357d8&quot;&gt;
+&lt;p&gt;
+왼쪽으로 시프트 : 2를 곱하는 효과
+&lt;/p&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; 1 &amp;lt;&amp;lt; 0
+1
+&amp;gt;&amp;gt;&amp;gt; 1 &amp;lt;&amp;lt; 1
+2
+&amp;gt;&amp;gt;&amp;gt; 1 &amp;lt;&amp;lt; 2
+4
+&amp;gt;&amp;gt;&amp;gt; 1 &amp;lt;&amp;lt; 3
+8
+&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h2 id=&quot;gnu-global이란&quot;&gt;GNU Global이란?&lt;/h2&gt;
+&lt;p&gt;
+오른쪽으로 shift : 2로 나누는 효과
+&lt;/p&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; 10 &amp;gt;&amp;gt; 1
+5
+&amp;gt;&amp;gt;&amp;gt; 5 &amp;gt;&amp;gt; 1
+2
+&amp;gt;&amp;gt;&amp;gt; 2 &amp;gt;&amp;gt; 1
+1
+&amp;gt;&amp;gt;&amp;gt; 1 &amp;gt;&amp;gt; 1
+0
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;vim + cscope조합을 꽤 오랫동안 쓰다가, 바꿔봤다.&lt;/p&gt;
+&lt;div id=&quot;outline-container-org1baec13&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org1baec13&quot;&gt;알파벳 A,B,C,D를 bit로 mapping하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org1baec13&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;1 &amp;lt;&amp;lt; (ch - &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'A'&lt;/span&gt;)
+&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;gtags.vim이 소스 검색 결과를 좀더 잘 보여준다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;변수, 함수의 선언으로 이동&lt;/li&gt;
-  &lt;li&gt;구현으로 이동&lt;/li&gt;
-  &lt;li&gt;사용한 곳으로 이동&lt;/li&gt;
-  &lt;li&gt;파일이름으로 이동&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;mkcscopesh와-비슷하게-script를-만들기&quot;&gt;mkcscope.sh와 비슷하게 script를 만들기&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.cpp'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.h'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gtags.files
-gtags &lt;span class=&quot;nt&quot;&gt;--accept-dotfiles&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; gtags.files
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;mktags.sh로 만들고 실행권한을 준다.
-source의 최상위 dir에서 한번 호출해주면 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;incremental-업데이트-하기&quot;&gt;Incremental 업데이트 하기&lt;/h2&gt;
-
-&lt;p&gt;한번 tag database를 만든 다음에는 변경된 소스만 대상으로 db를 업데이트 해준다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-vu&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;global-예제&quot;&gt;global 예제&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global func1                 &lt;span class=&quot;c&quot;&gt;# definition&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; func2              &lt;span class=&quot;c&quot;&gt;# reference&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;s1&quot;&gt;'func[1-3]'&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# regular expression&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; func2              &lt;span class=&quot;c&quot;&gt;# show detail&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-xg&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#ifdef NDEBUG'&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# specific pattern &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; kmem&amp;lt;TAB&amp;gt;&amp;lt;TAB&amp;gt;     &lt;span class=&quot;c&quot;&gt;# complete command&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;global func1&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;# edit files having specified tags.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;66-최신-버전-설치하기&quot;&gt;6.6 최신 버전 설치하기&lt;/h2&gt;
-
-&lt;p&gt;https://ftp.gnu.org/pub/gnu/global/ 코드 다운로드&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xvzf&lt;/span&gt; global-6.6.tar.gz
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;global-6.6
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;global &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-global &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;GNU GLOBAL&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 6.6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/global/manual/global.html&quot;&gt;GNU Global Manual&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/vim-scripts/gtags.vim&quot;&gt;gtags.vim&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://slowstarter80.github.io/vim/2017/07/21/vim_settings.html&quot;&gt;keymap 예제&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vi.stackexchange.com/questions/4835/gnu-global-and-vim&quot;&gt;script형태로 쓰기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;
+작은 bit부서 순서대로 set된다.
+&lt;/p&gt;
+&lt;pre class=&quot;example&quot;&gt;
+A : 1 &amp;lt;&amp;lt; ( 'A' - 'A')  =  1 &amp;lt;&amp;lt; 0  =  1  =  0001
+B : 1 &amp;lt;&amp;lt; ( 'B' - 'A')  =  1 &amp;lt;&amp;lt; 1  =  2  =  0010
+C : 1 &amp;lt;&amp;lt; ( 'C' - 'A')  =  1 &amp;lt;&amp;lt; 2  =  4  =  0100
+D : 1 &amp;lt;&amp;lt; ( 'D' - 'A')  =  1 &amp;lt;&amp;lt; 3  =  8  =  1000
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Tue, 31 Dec 2019 07:32:54 +0900</pubDate>
-        <link>http://localhost:4000/archivers/vim-gnu-global</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/vim-gnu-global</guid>
+        <pubDate>Mon, 16 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/bit-shift-example</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/bit-shift-example</guid>
         
-        <category>global</category>
+        <category>coding</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>permutation을 구하는 코드</title>
+        <description>&lt;div id=&quot;outline-container-org3a6a009&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org3a6a009&quot;&gt;permutation 구하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org3a6a009&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;3개의 공이 있을 때, 순서를 섞기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+1, 2, 3이 있다면, 6가지 경우가 생긴다. (3x2x1)
+&lt;/p&gt;
+&lt;pre class=&quot;example&quot;&gt;
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org1cdfb26&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org1cdfb26&quot;&gt;코드 예제&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org1cdfb26&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[11];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;b&lt;/span&gt;[11];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;visit&lt;/span&gt;[11];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;f&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;k&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (k == N) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+            printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d &quot;&lt;/span&gt;, b[i]);
+        }
+        printf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;\n&quot;&lt;/span&gt;);
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt;;
+    }
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (visit[i] == 0) {
+            visit[i] = 1;
+            b[k] = a[i];
+            f(k+1);
+            visit[i] = 0;
+        }
+    }
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;solve&lt;/span&gt;()
+{
+    scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, &amp;amp;N);
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        scanf(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;%d&quot;&lt;/span&gt;, &amp;amp;a[i]);
+    }
+    f(0);
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 15 Aug 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/archivers/perm-code</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/perm-code</guid>
+        
+        <category>coding</category>
         
         
       </item>
