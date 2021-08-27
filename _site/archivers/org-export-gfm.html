@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ox-gfm으로 org를 markdown변환하기 « Zune2's Blog</title>
+  <meta name="description" content="org mode로 markdown page export 시도M-x package install ox-gfm설치한 패키지 제거하기M-x package-list-packagesox-gfx d로 마크하고 x선택결과에러 발생함시간날 때 고쳐보자Symbol's function definit...">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/archivers/org-export-gfm">
+  <link rel="alternate" type="application/rss+xml" title="Zune2's Blog" href="http://localhost:4000/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="header-placeholder"></div>
+<header class="header">
+  <div class="wrapper">
+    <div id="sidebar-toggle">TOC</div>
+    <a class="site-title" href="/">Zune2's Blog</a>
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/tag/">Tag</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ox-gfm으로 org를 markdown변환하기</h1>
+    <p class="post-meta">Jan 18, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <div id="outline-container-org713a584" class="outline-2">
+<h2 id="org713a584">org mode로 markdown page export 시도</h2>
+<div class="outline-text-2" id="text-org713a584">
+<pre class="example">
+M-x package install ox-gfm
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8941f32" class="outline-2">
+<h2 id="org8941f32">설치한 패키지 제거하기</h2>
+<div class="outline-text-2" id="text-org8941f32">
+<pre class="example">
+M-x package-list-packages
+ox-gfx d로 마크하고 x선택
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge1f65d3" class="outline-2">
+<h2 id="orge1f65d3">결과</h2>
+<div class="outline-text-2" id="text-orge1f65d3">
+<p>
+에러 발생함
+시간날 때 고쳐보자
+</p>
+<pre class="example">
+Symbol's function definition is void: org-export-custom-protocol-maybe
+</pre>
+
+<p>
+publish를 markdown으로 하도록 project config구성 필요함 (org-publish-project-alist)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7019fd" class="outline-2">
+<h2 id="orge7019fd">Reference</h2>
+</div>
+
+  </article>
+  
+  
+
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'zune2'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="//s.gravatar.com/avatar/043ff602c287e7eb5301b7a1924cbe60?s=135" alt="zune2">
+  <div class="col-box-title name">zune2</div>
+  <p>Keep going for the unknown</p>
+  <p class="contact">
+    
+    
+    
+    <a href="mailto:myoungjune@gmail.com">Email</a>
+    
+    <a href="https://github.com/zune2/zune2.github.com">GitHub</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/counting-sort">카운팅소트</a></li>
+    
+      <li><a class="post-link" href="/archivers/boj-2309">BOJ 2309 일곱 난쟁이</a></li>
+    
+      <li><a class="post-link" href="/archivers/vim-cpp14-execution">vim에서 C++14 파일 compile</a></li>
+    
+      <li><a class="post-link" href="/archivers/orgmode-tips">OrgMode Tips 정리</a></li>
+    
+      <li><a class="post-link" href="/archivers/cf-71a">A. Way Too Long Word</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2021 zune2
+</div>
+</footer>
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script src="/js/easybook.js"></script>
+
+
+  </body>
+
+</html>

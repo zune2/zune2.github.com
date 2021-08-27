@@ -13,13 +13,16 @@ permalink: /tag/
 {% for item in (0..site.tags.size) %}{% unless forloop.last %}
 {% capture word %}{{ tag[item] | strip_newlines }}{% endcapture %}
 
-<h2 class="category" id="{{ word }}">{{ word }}</h2>
+<!--<h2 class="category" id="{{ word }}">{{ word | upcase }}</h2>-->
+<h3 class="category" id="{{ word }}"><a href="tagitem.html">{{ word }}<a></h3>
 
+<!--
 <ul>
 {% for post in site.tags[word] %}{% if post.title != null %}
 <li><span>{{ post.date | date: "%Y %b %d" }}</span> » <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
 {% endif %}{% endfor %}
 </ul>
+-->
 {% endunless %}{% endfor %}
   </ul>
 </div>
