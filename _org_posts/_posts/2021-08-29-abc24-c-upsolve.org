@@ -47,4 +47,3 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://atcoder.jp/contests/abc215/tasks/abc214_c
-
