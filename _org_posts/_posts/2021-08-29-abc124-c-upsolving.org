@@ -1,0 +1,49 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Distribution
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Distribution
+- 원에 N개의 Snuke가 위치하고, t시간 간격에 이동조건이 주어질 때, gem을 첫번째로 받는 시간을 출력하는 문제
+
+- 원을 N*2만큼 회전해보면서, 생각하기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+int s[200010];
+long long t[200010];
+long long a[200010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+
+    for(int i=0;i<N;i++) {
+        scanf("%d", &s[i]);
+    }
+
+    for(int i=0;i<N;i++) {
+        scanf("%lld", &t[i]);
+    }
+
+    a[0] = t[0];
+    for(int i=0;i<N*2;i++) {
+        a[i%N] = min(a[(i-1)%N] + s[(i-1)%N], t[i%N]);
+    }
+
+    for(int i=0;i<N;i++) {
+        printf("%lld\n", a[i]);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc215/tasks/abc214_c
