@@ -1,0 +1,51 @@
+---
+layout: post
+title: D - Sum of Maximum Weights
+tags: AtCoder
+---
+
+<div id="outline-container-org6bc2247" class="outline-2">
+<h2 id="org6bc2247">D - Sum of Maximum Weights</h2>
+<div class="outline-text-2" id="text-org6bc2247">
+<ul class="org-ul">
+<li>작성중</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0c8b0ca" class="outline-2">
+<h2 id="org0c8b0ca">접근하기</h2>
+<div class="outline-text-2" id="text-org0c8b0ca">
+<pre class="example">
+3
+1 2 10
+2 3 20
+</pre>
+
+<ul class="org-ul">
+<li>f(1,2) = 10</li>
+<li>f(2,3) = 20</li>
+<li>f(1,3) = 20 : 10 -&gt; 20이면 가장 큰 값을 고름</li>
+
+<li>문제 나온 수학식의 의미 : 모든 쌍을 다 찾아보라</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N-1) {
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;=N;j++) {
+         f(i, j);
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org962af45" class="outline-2">
+<h2 id="org962af45">문제 링크/참고자료</h2>
+<div class="outline-text-2" id="text-org962af45">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc214/tasks/abc214_d">https://atcoder.jp/contests/abc214/tasks/abc214_d</a></li>
+<li><a href="https://travelbeeee.tistory.com/369">Weighted Union Find</a></li>
+</ul>
+</div>
+</div>

@@ -5,10 +5,9 @@
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** E - Chain Contestant
+** TODO E - Chain Contestant
 - 작성중
-
-Bit DP를 익히고 다시 볼 것
+- Bit DP를 익히고 다시 볼 것
 
 ** 문제 링크
 - https://atcoder.jp/contests/abc215/tasks/abc215_e

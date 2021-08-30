@@ -1,0 +1,101 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1717 집합의 표현
+#+HTML: tags: UnionFind
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 집합의 표현
+- 집합을 합치는 연산을 어떻게 처리하는지 보기
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1717
+
+문제에 주어진 입력을 Weighted Union Find로 구현.
+
+** 설명
+#+BEGIN_EXAMPLE
+# 1-3-6-7 연결이 Path compression 됨
+# 4-2 연결
+
+5: p[1] = -4   # 1번은 자신 포함 4개 -> root 노드
+6: p[2] = 4    # 2번의 부모는 4
+7: p[3] = 1    # 3번의 부모는 1
+8: p[4] = -2   # 4번은 자신 포함 2개 -> root 노드
+9: p[5] = -1   # 자식노드가 없는 혼자df
+10: p[6] = 7   # 6번의 부모는 7
+11: p[7] = 1   # 7번의 부모는 1
+
+
+첫번째 집합의 크기는 4
+
+(1) --- (7)
+     \     \
+     (3)    (6)
+
+두번째 집합의 크기는 2
+ 
+(4) - (2)
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int N, M;
+int p[1000010];
+
+int Find(int a)
+{
+    // p[a]가 음수이면, a는 root노드임
+    // 음수가 집합의 노드 개수를 의미함
+    if (p[a] < 0) return a;
+    return p[a] = Find(p[a]); // path compression
+}
+
+void Union(int a, int b)
+{
+    a = Find(a);    
+    b = Find(b);    
+
+    if (a == b) return;
+    
+    if (p[a] <= p[b]) { // 작은 값을 부모로 올림
+        p[a] += p[b];   // 작은 값은 자식 노드의 개수를 누적
+        p[b] = a;
+    } else {
+        p[b] += p[a];
+        p[a] = b;
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+
+    // 초기값을 -1로 지정
+    for(int i=0;i<=N;i++) {
+        p[i] = -1;
+    }
+
+    int cmd, a, b;
+    for(int i=0;i<M;i++) {
+        scanf("%d %d %d", &cmd, &a, &b);
+        if (cmd == 0) {
+            Union(a, b);
+        } else if (cmd == 1) {
+            if (Find(a) == Find(b)){
+                printf("YES\n");
+            } else {
+                printf("NO\n");
+            }
+        }
+    }
+    return 0;
+}
+#+END_SRC
+
+** 참고자료
+- [[https://www.apexcel.blog/algorithm/graph/union-find/union-find/][유니온 파인드]]
+- [[https://m.blog.naver.com/kks227/220791837179][Ries - Union Find]]
