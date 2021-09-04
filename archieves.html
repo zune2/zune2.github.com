@@ -2,7 +2,6 @@
 layout: default
 title: Archives
 permalink: /archive/
-icon: archive
 type: page
 ---
 
@@ -47,11 +46,11 @@ type: page
                 <ul id="content-side" class="content-ul">
                     {% assign counter = 0 %}
                         {% for post in site.posts %}
-                          {% assign thisyear = post.date | date: "%Y" %}
-                          {% assign prevyear = post.previous.date | date: "%Y" %}
+                          {% assign thisyear = post.date | date: "%Y.%m" %}
+                          {% assign prevyear = post.previous.date | date: "%Y.%m" %}
                           {% assign counter = counter | plus: 1 %}
                           {% if thisyear != prevyear %}
-                            <li><a data-scroll href="#y{{ post.date | date: '%Y' }}">{{ thisyear }} ({{ counter }})</a></li>
+                            <li><a data-scroll href="#y{{ post.date | date: '%Y.%m' }}">{{ thisyear }} ({{ counter }})</a></li>
                             {% assign counter = 0 %}
                           {% endif %}
                         {% endfor %}
