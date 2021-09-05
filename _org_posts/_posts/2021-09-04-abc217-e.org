@@ -5,7 +5,7 @@
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** TODO E - Sorting Query
+** E - Sorting Query
 - 1 x : A에 맨 뒤에 x추가
 - 2 A에서 맨앞 노드 출력
 - 3 Sort A 동작

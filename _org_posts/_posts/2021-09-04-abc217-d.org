@@ -5,7 +5,7 @@
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** TODO D - Cutting Woods
+** D - Cutting Woods
 - 큰 통나무가 있고, query를 통해
 - 통나무를 자른다.
 - 자른 통나무 조각의 길이를 잰다.
