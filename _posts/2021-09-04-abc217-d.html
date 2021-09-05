@@ -41,17 +41,17 @@ tags: AtCoder
 {
     <span style="color: #8ae234; font-weight: bold;">set</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">st</span>;
     scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;L, &amp;Q);
-    st.insert(0);
-    st.insert(L);
+    st.insert(0);            <span style="color: #888a85;">// </span><span style="color: #888a85;">0&#51012; &#52628;&#44032;</span>
+    st.insert(L);            <span style="color: #888a85;">// </span><span style="color: #888a85;">L&#51012; &#52628;&#44032; -&gt; L - 0&#51008; &#51204;&#52404;&#51032; &#44600;&#51060;&#44032; &#46108;&#45796;.</span>
 
     <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>, <span style="color: #ff6347;">x</span>;
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;Q;i++) {
         scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;c, &amp;x);
 
         <span style="color: #729fcf; font-weight: bold;">if</span> (c == 1) {
-            st.insert(x);
+            st.insert(x);    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51221;&#47148;&#46108; &#49692;&#49436;&#47196; &#52628;&#44032;</span>
         } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (c == 2) {
-            <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">i</span> = st.upper_bound(x);
+            <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">i</span> = st.upper_bound(x);  <span style="color: #888a85;">// </span><span style="color: #888a85;">x&#48372;&#45796; &#53360; &#52395;&#48264;&#51705; &#44050;&#51032; &#50948;&#52824;&#47484; &#44396;&#54632;</span>
             <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">up</span> = *i;
             i--;
             <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">down</span> = *i;
