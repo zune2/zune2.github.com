@@ -1,0 +1,89 @@
+---
+layout: post
+title: E - Sorting Query
+tags: AtCoder
+---
+
+<div id="outline-container-orgdf972c6" class="outline-2">
+<h2 id="orgdf972c6"><span class="todo TODO">TODO</span> E - Sorting Query</h2>
+<div class="outline-text-2" id="text-orgdf972c6">
+<ul class="org-ul">
+<li>1 x : A에 맨 뒤에 x추가</li>
+<li>2 A에서 맨앞 노드 출력</li>
+<li>3 Sort A 동작</li>
+<li>우선순위 queue와 deque를 이용해서 풀이</li>
+<li>deque로 맨 앞노드를 출력하는데, sort가 된 이후에는 우선순위Q에서 값을 출력</li>
+<li>그 사이 1번 명령이 오면, deque에만 추가해도 된다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf76baef" class="outline-2">
+<h2 id="orgf76baef">코드</h2>
+<div class="outline-text-2" id="text-orgf76baef">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[200010]; <span style="color: #888a85;">// </span><span style="color: #888a85;">deque&#47484; &#48176;&#50676;&#47196; &#44396;&#54788;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cmd</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">front</span>, <span style="color: #ff6347;">rear</span>;
+    front = rear = 0;
+
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;&gt; <span style="color: #ff6347;">pq</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#50864;&#49440;&#49692;&#50948;Q</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;cmd);
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 1) {
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+            a[rear++] = num;   <span style="color: #888a85;">// </span><span style="color: #888a85;">deque &#47592;&#46244;&#50640; &#52628;&#44032;</span>
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 2) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!pq.empty()) {   <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51060;&#51204;&#50640; sort&#44032; &#46104;&#50632;&#45796;&#47732;,</span>
+                tmp = pq.top();  <span style="color: #888a85;">// </span><span style="color: #888a85;">pq&#50640;&#49436; &#45936;&#51060;&#53552; &#52636;&#47141;</span>
+                pq.pop();
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                tmp = a[front++]; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51060;&#51204;&#50640; sort&#44032; &#50504;&#46104;&#50632;&#45796;&#47732;, deque&#50640;&#49436; &#45936;&#51060;&#53552; &#52636;&#47141;</span>
+            }
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, tmp);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 3) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=front;i&lt;rear;i++) {  <span style="color: #888a85;">// </span><span style="color: #888a85;">sort&#49884; deque&#51032; &#45236;&#50857;&#51012; &#47784;&#46160; pq&#50640; &#51060;&#46041;&#49884;&#53416;&#45796;.</span>
+                pq.push(a[i]);
+            }
+            front = rear = 0;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3513d3c" class="outline-2">
+<h2 id="org3513d3c">문제 링크</h2>
+<div class="outline-text-2" id="text-org3513d3c">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc217/tasks/abc217_e">https://atcoder.jp/contests/abc217/tasks/abc217_e</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org3aafa7e" class="outline-2">
+<h2 id="org3aafa7e">참고자료</h2>
+<div class="outline-text-2" id="text-org3aafa7e">
+<ul class="org-ul">
+<li><a href="https://koosaga.com/8">비트필드와 완전 탐색 최적화 (Bit DP)</a></li>
+<li><a href="https://justicehui.github.io/hard-algorithm/2019/01/18/bitDP/">Bit DP란?</a></li>
+<li><a href="https://mygumi.tistory.com/361">비트마스크(BitMask) 는 무엇인가?</a></li>
+</ul>
+</div>
+</div>
