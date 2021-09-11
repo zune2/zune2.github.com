@@ -1,0 +1,50 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Swappable
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Swappable
+
+** 접근하기
+- 1~N까지는 N*(N-1)/2개의 쌍이 있다는 점에 착안
+- 중복을 제거한다.
+- 중복을 세는 방법을 생각하기 
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+long long N;
+int a[300010];
+long long d[300010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%lld", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+    for(int i=0;i<N;i++) d[i] = 1;
+
+    for(int i=1;i<N;i++) {
+        if (a[i] == a[i-1]) {
+            d[i] = d[i-1] + 1;
+        }
+    }
+    long long ans = (long long)(N*(N-1))/2;
+    for(int i=N-1;i>0;) {
+        ans -= (d[i]*(d[i]-1))/2;
+        i -= d[i];
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc206/tasks/abc206_c
