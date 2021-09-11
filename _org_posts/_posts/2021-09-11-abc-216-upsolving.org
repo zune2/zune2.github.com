@@ -1,0 +1,50 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Many Balls
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Many Balls
+- N개의 공을 빈 상자에 규칙에 따라 넣을 때, 하나의 경우를 찍으면 되는 문제
+
+** 접근
+- 2로 나눈 나머지가 0이면 B추가
+- 아니면 N에서 1빼기
+- 마지막에 역순으로 출력
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+using namespace std;
+
+long long N;
+char a[2000];
+int idx;
+int run;
+
+int main(int argc, char* argv[])
+{
+    idx = 0;
+    scanf("%lld", &N);
+    while(N) {
+        if (N%2 == 0) {
+            a[idx++] = 'B';
+            N = N / 2;
+        } else {
+            a[idx++] = 'A';
+            N = N - 1;
+        }
+    }
+
+    for(int i=idx-1;i>=0;i--) {
+        printf("%c", a[i]);
+    }
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크/참고자료
+- https://atcoder.jp/contests/abc214/tasks/abc216_c
+- [[https://codeforces.com/blog/entry/94366][AtCoder Beginner Contest 216 Announcement]]
