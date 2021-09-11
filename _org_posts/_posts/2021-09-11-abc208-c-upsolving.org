@@ -1,0 +1,65 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Not Equal
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Fair Candy Distribution
+
+** 접근하기
+- 나눈 몫은 모두에게 주고,
+- 나머지만큼 loop를 돌면서 count함
+- sort를 두가지 방식으로 필요함
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+long long K;
+
+typedef struct Node {
+    int num;
+    int idx;
+    long long ans;
+} Node;
+
+Node a[200010];
+
+bool comp1(Node& p1, Node& p2)
+{
+    return (p1.num - p2.num) < 0;
+}
+
+bool comp2(Node& p1, Node& p2)
+{
+    return (p1.idx - p2.idx) < 0;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %lld", &N, &K);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i].num);
+        a[i].idx = i;
+    }
+    sort(a, a+N, comp1);
+    long long all = K/N;
+    for(int i=0;i<K%N;i++) {
+        a[i].ans += 1;
+    }
+
+    sort(a, a+N, comp2);
+    for(int i=0;i<N;i++) {
+        printf("%lld\n", a[i].ans + all);
+    }
+
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc208/tasks/abc208_c

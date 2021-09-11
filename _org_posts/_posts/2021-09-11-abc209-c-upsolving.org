@@ -1,0 +1,49 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Not Equal
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Not Equal
+
+** 접근하기
+- 정렬한 후 곱하면, 답이 되는 규칙을 찾음
+#+BEGIN_EXAMPLE
+4
+0 1 2 3
+3 3 4 4
+
+3 * 2 * 2 * 1 = 12
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+#define MOD 1000000007
+using namespace std;
+
+int N;
+int a[200010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+
+    sort(a, a+N);
+    long long cnt = 1;
+    for(int i=0;i<N;i++) {
+        cnt *= (a[i]-i) % MOD;
+        cnt = cnt % MOD;
+    }
+    printf("%lld\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc209/tasks/abc209_c
