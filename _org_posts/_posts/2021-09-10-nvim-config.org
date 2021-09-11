@@ -1,0 +1,18 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: Nvim 설치하기
+#+HTML: tags: nvim
+#+HTML: ---
+
+** NeoVim
++ 기존 vim에서 비동기 처리가 잘 된다고 함
++ 그래서 써보기로 함
+
+** config 파일의 위치
+#+BEGIN_EXAMPLE
+~/.config/nvim/init.vim
+#+END_EXAMPLE
++ 기존의 gvim config와 같은 모양으로 쓸 수 있다.
+
+** TODO C++ 개발환경 구축
++ [[https://chmanie.com/post/2020/07/17/modern-c-development-in-neovim/][Modern C++ development in (Neo)vim]]
