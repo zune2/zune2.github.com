@@ -1,0 +1,21 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: D - Rectangles
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Rectangles
+- 조건에 맞는 사각형의 개수를 구하는 문제
+- 사각형의 성질을 알아야 풀 수 있는 문제
+- N <= 2000이므로, 2000*2000=40000000, 4백만으로 이중 for loop로 해도, 4초 안에 풀릴 것
+- Editorial에서는 sort 후 binsearch를 통해 최적화함
+
+** 접근하기
+
+** 코드
+#+BEGIN_SRC cpp
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc218/tasks/abc218_d

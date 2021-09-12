@@ -1,5 +1,5 @@
-#+HTML: layout: post
 #+HTML: ---
+#+HTML: layout: post
 #+HTML: title: STL binary search
 #+HTML: tags: STL
 #+HTML: ---
