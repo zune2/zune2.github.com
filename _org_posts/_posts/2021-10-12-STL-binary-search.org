@@ -1,0 +1,35 @@
+#+HTML: layout: post
+#+HTML: ---
+#+HTML: title: STL binary search
+#+HTML: tags: STL
+#+HTML: ---
+
+** STL binary search
+- 배열의 시작 위치, 배열의 크기, 찾으려는 값을 순서대로 넣는다.
+
+** 예제
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+int N;
+int main(int argc, char* argv[])
+{
+    N = sizeof(a) / sizeof(a[0]);
+    sort(a, a+N);
+
+    if (binary_search(a, a+N, 8)) {
+        printf("8 found\n");
+    } else {
+        printf("8 not found\n");
+    }
+
+    return 0;
+}
+#+END_SRC
+
+
+** 참고자료
+- https://www.geeksforgeeks.org/binary-search-algorithms-the-c-standard-template-library-stl/
