@@ -1,0 +1,114 @@
+---
+layout: post
+title: BOJ 1922 네트워크 연결
+tags: MST UnionFind
+---
+
+<div id="outline-container-orga0f932c" class="outline-2">
+<h2 id="orga0f932c">네트워크 연결</h2>
+<div class="outline-text-2" id="text-orga0f932c">
+<p>
+Minimum spanning tree를 구현하는 문제
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd91c98d" class="outline-2">
+<h2 id="orgd91c98d">문제 링크</h2>
+<div class="outline-text-2" id="text-orgd91c98d">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1922">https://www.acmicpc.net/problem/1922</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66c431b" class="outline-2">
+<h2 id="org66c431b">코드</h2>
+<div class="outline-text-2" id="text-org66c431b">
+<ul class="org-ul">
+<li>크루스컬 알고리즘을 이용해서 구현함</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">value</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">start</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">end</span>;
+
+    <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #729fcf; font-weight: bold;">operator</span><span style="color: #edd400; font-weight: bold;">&lt;</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">Node</span> &amp; <span style="color: #ff6347;">b</span>) {
+        <span style="color: #729fcf; font-weight: bold;">return</span> value &lt; b.value;
+    }
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[100010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">V</span>, <span style="color: #ff6347;">E</span>;
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">Union find</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">parent</span>[10010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (num == parent[num])
+        <span style="color: #729fcf; font-weight: bold;">return</span> num;
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        <span style="color: #729fcf; font-weight: bold;">return</span> parent[num] = find(parent[num]); 
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">unite</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n2</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num1</span> = find(n1);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num2</span> = find(n2);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (num1 &gt; num2) {
+        parent[num1] = n2;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        parent[num2] = n1;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> *<span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;V, &amp;E);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;10001;i++) {
+        parent[i] = i; 
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;E;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;pool[i].start, &amp;pool[i].end, &amp;pool[i].value);
+    }
+
+    sort(pool, pool+E);
+
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;E;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span> = find(pool[i].start);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n2</span> = find(pool[i].end);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">v</span> = pool[i].value;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (n1 != n2) {
+            unite(n1, n2);
+            ans += v;
+        } 
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7dc4b1d" class="outline-2">
+<h2 id="org7dc4b1d">참고자료</h2>
+<div class="outline-text-2" id="text-org7dc4b1d">
+<ul class="org-ul">
+<li><a href="https://www.apexcel.blog/algorithm/graph/union-find/union-find/">유니온 파인드</a></li>
+<li><a href="https://m.blog.naver.com/kks227/220791837179">Ries - Union Find</a></li>
+<li><a href="https://m.blog.naver.com/kks227/220799105543">Ries - Minimum Spanning Tree</a></li>
+</ul>
+</div>
+</div>
