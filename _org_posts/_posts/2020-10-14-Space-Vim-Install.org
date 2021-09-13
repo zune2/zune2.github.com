@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: Space Vim 설치
-#+HTML: tags: Vim
+#+HTML: tags: SpaceVim
 #+HTML: ---
 
 * SpaceVim 설치
