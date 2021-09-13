@@ -5,7 +5,6 @@
 #+HTML: ---
 
 * SpaceVim 설치
-
 ** SpaceVim 설치 명령어
 #+BEGIN_EXAMPLE
 curl -sLf https://spacevim.org/install.sh | bash
@@ -29,9 +28,58 @@ curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 ~/.SpaceVim.d/init.toml
 #+END_EXAMPLE
 
+*** 내 config example
+
+#+BEGIN_EXAMPLE
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+   colorscheme = "codedark"
+    #colorscheme = "gruvbox"
+    # colorscheme = "onedark"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = false
+
+[[custom_plugins]]
+  name="tomasiser/vim-code-dark"
+  merged = 0
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+
+[[layers]]
+  name = 'fzf'
+#name = 'denite'
+
+[[layers]]
+  name = 'gtags'
+
+[[layers]]
+  name = 'tmux'
+
+[[layers]]
+  name = "lang#c"
+  enable_clang_syntax_highlight = true
+#+END_EXAMPLE
+
 ** Referene
 + https://spacevim.org/quick-start-guide
 + https://velog.io/@ausg/monsters-use-vim
-** 느낌
-- 뭔가 세련된 느낌. vimrc가 다르므로 좀 더 찾아보고 익숙해질 필요가 있음
-- 플러그인 설치가 편리할지 궁금하다.
