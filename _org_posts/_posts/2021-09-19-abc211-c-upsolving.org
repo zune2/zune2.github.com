@@ -9,6 +9,11 @@
 ** 접근하기
 - 경우의 수를 구하는 DP 문제
 
+#+BEGIN_EXAMPLE
+dp[i][j] = dp[i-1][j]                    (S[i] != S[j])
+dp[i][j] = dp[i-1][j] + dp[i-1][j-1];    (S[i] == S[j])
+#+END_EXAMPLE
+
 ** 코드
 #+BEGIN_SRC cpp
 #+END_SRC

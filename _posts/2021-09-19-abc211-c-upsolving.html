@@ -13,6 +13,11 @@ tags: AtCoder DP
 <ul class="org-ul">
 <li>경우의 수를 구하는 DP 문제</li>
 </ul>
+
+<pre class="example">
+dp[i][j] = dp[i-1][j]                    (S[i] != S[j])
+dp[i][j] = dp[i-1][j] + dp[i-1][j-1];    (S[i] == S[j])
+</pre>
 </div>
 </div>
 
