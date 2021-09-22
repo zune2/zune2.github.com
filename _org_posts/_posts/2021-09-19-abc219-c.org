@@ -1,0 +1,63 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Neo-lexicographic Ordering
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Neo-lexicographic Ordering
+
+** 접근하기
+- 문자열을 사전순 정렬하는 문제
+- 정렬의 순서를 위한 lookup table을 지정해준다.s
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+char X[26];
+int N;
+string str[50010];
+int table[26];
+
+bool comp(string& s1, string& s2)
+{
+    const char* p1 = s1.c_str(); 
+    const char* p2 = s2.c_str(); 
+
+    while(*p1 != '\0' && *p1 == *p2) {
+        p1++;
+        p2++; 
+    } 
+    int v1 = (int)*p1 - 'a';
+    int v2 = (int)*p2 - 'a';
+    return (table[v1] - table[v2]) < 0; 
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", X);
+    for(int i=0;i<26;i++) {
+        table[X[i] - 'a'] = i + 1;
+    }
+
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        cin >> str[i];
+    }
+
+    sort(str, str+N, comp);
+
+    for(int i=0;i<N;i++) {
+        cout << str[i] << endl;
+    }
+
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc219/tasks/abc219_c
