@@ -5,7 +5,7 @@ tags: 좌표압축
 ---
 
 <div id="outline-container-org4d47952" class="outline-2">
-<h2 id="org4d47952"><span class="todo TODO">TODO</span> BOJ 188770 좌표압축</h2>
+<h2 id="org4d47952">BOJ 188770 좌표압축</h2>
 </div>
 
 <div id="outline-container-org301a9d9" class="outline-2">
@@ -17,13 +17,9 @@ tags: 좌표압축
 </div>
 </div>
 
-<div id="outline-container-org9af2f03" class="outline-2">
-<h2 id="org9af2f03">코드 1 584 m/s</h2>
-<div class="outline-text-2" id="text-org9af2f03">
-<ul class="org-ul">
-<li>STL 풀이와 시간을 비교해볼 것</li>
-<li>최적화가 더 필요함</li>
-</ul>
+<div id="outline-container-org96341d6" class="outline-2">
+<h2 id="org96341d6">코드 1</h2>
+<div class="outline-text-2" id="text-org96341d6">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">mespace</span> <span style="color: #ff6347;">std</span>;
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
@@ -80,10 +76,44 @@ tags: 좌표압축
 </div>
 </div>
 
-<div id="outline-container-org86af5f6" class="outline-2">
-<h2 id="org86af5f6"><span class="todo TODO">TODO</span> 코드 2 - STL로 풀기</h2>
-</div>
+<div id="outline-container-org98c5b59" class="outline-2">
+<h2 id="org98c5b59">코드 2 - STL</h2>
+<div class="outline-text-2" id="text-org98c5b59">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
 
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">a</span>;
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">b</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    a.resize(N);
+    b.resize(N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        b[i] = a[i];
+    }
+
+    sort(a.begin(), a.end());
+    a.erase(unique(a.begin(), a.end()), a.end()); 
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">c</span> : b) {
+        cout &lt;&lt; lower_bound(a.begin(), a.end(), c) - a.begin() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+    } 
+    cout &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
 <div id="outline-container-org892619c" class="outline-2">
 <h2 id="org892619c">참고자료</h2>
 <div class="outline-text-2" id="text-org892619c">
