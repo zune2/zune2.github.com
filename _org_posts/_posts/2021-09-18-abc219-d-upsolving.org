@@ -13,6 +13,12 @@
 - 메뉴가 하나 있는, 도시락을 고르는 DP문제로 생각하고 확장
 
 ** 코드 - 3차원 dp로 풀기
+
+#+BEGIN_EXAMPLE
+dp[i][j][k] : i번째 도시락을 먹었을 때, 메뉴1은 j만큼, 메뉴2는 k만큼
+
+dp[0][0][0] = 0
+#+END_EXAMPLE
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <algorithm>
@@ -44,13 +50,13 @@ int main(int argc, char* argv[])
         } 
     }
 
-    dp[0][0][0] = 0;
+    dp[0][0][0] = 0; 
     for(int k=1;k<=N;k++) {
         for(int i=0;i<=300;i++) {
             for(int j=0;j<=300;j++) {
                 int x = min(i + a[k], X);
                 int y = min(j + b[k], Y);
-                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1);
+                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1); // 도시락 고름
                 dp[k][i][j] = min(dp[k][i][j], dp[k-1][i][j]);
             } 
         } 

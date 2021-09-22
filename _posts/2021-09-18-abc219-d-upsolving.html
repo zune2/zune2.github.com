@@ -26,6 +26,11 @@ tags: AtCoder DP
 <div id="outline-container-org3769a84" class="outline-2">
 <h2 id="org3769a84">코드 - 3차원 dp로 풀기</h2>
 <div class="outline-text-2" id="text-org3769a84">
+<pre class="example">
+dp[i][j][k] : i번째 도시락을 먹었을 때, 메뉴1은 j만큼, 메뉴2는 k만큼
+
+dp[0][0][0] = 0
+</pre>
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
 <span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
@@ -57,13 +62,13 @@ tags: AtCoder DP
         } 
     }
 
-    dp[0][0][0] = 0;
+    dp[0][0][0] = 0; 
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
         <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=300;i++) {
             <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;=300;j++) {
                 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span> = min(i + a[k], X);
                 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span> = min(j + b[k], Y);
-                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1);
+                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46020;&#49884;&#46973; &#44256;&#47492;</span>
                 dp[k][i][j] = min(dp[k][i][j], dp[k-1][i][j]);
             } 
         } 
