@@ -9,7 +9,7 @@
 
 ** 접근하기
 - 문자열을 사전순 정렬하는 문제
-- 정렬의 순서를 위한 lookup table을 지정해준다.s
+- 정렬의 순서를 위한 lookup table을 지정해준다.
 
 ** 코드
 #+BEGIN_SRC cpp
@@ -34,14 +34,14 @@ bool comp(string& s1, string& s2)
     } 
     int v1 = (int)*p1 - 'a';
     int v2 = (int)*p2 - 'a';
-    return (table[v1] - table[v2]) < 0; 
+    return (table[v1] - table[v2]) < 0;  // 각 알파벳별 가중치에서 비교
 }
 
 int main(int argc, char* argv[])
 {
     scanf("%s", X);
     for(int i=0;i<26;i++) {
-        table[X[i] - 'a'] = i + 1;
+        table[X[i] - 'a'] = i + 1; // a ~ z테이블 위치에 가중치를 기록
     }
 
     scanf("%d", &N);
