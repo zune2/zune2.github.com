@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: C - Reorder Cards
-#+HTML: tags: AtCoder TODO
+#+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,0 +1,57 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: D - Takahashi Tour
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Takahashi Tour
+
+** 접근하기
+- DFS 순서로 방문, enter를 출력
+- leave하는 순서를 출력함
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int N;
+vector< vector<int> > G; // 인접리스트를 이용한 graph
+
+void dfs(int idx, int pre)
+{
+    printf("%d ", idx);  // enter하는 경로를 출력
+    for(int next:G[idx]) {
+        if (next != pre) {
+            dfs(next, idx);
+            printf("%d ", idx); // leave하는 경로를 출력
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    G.resize(N+1); 
+    int p1, p2;
+    for(int i=0;i<N-1;i++) {
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+
+    // 숫자가 작은 node부터 방문하게 함
+    for(int i=1;i<=N;i++) {
+        sort(G[i].begin(), G[i].end());
+    }
+    dfs(1, 0);
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc213/tasks/abc213_d
