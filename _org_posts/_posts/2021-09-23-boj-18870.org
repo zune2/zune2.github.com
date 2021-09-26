@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
             pool[i].val2 = cnt++;
         }
     }
-    sort(pool, pool+N, compare2);
+    sort(pool, pool+N, compare2); // 입력받은 index순서로 정렬함
     for(int i=0;i<N;i++) {
         printf("%d ", pool[i].val2);
     }
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
     a.erase(unique(a.begin(), a.end()), a.end()); 
 
     for(auto& c : b) {
-        cout << lower_bound(a.begin(), a.end(), c) - a.begin() << " ";
+        cout << lower_bound(a.begin(), a.end(), c) - a.begin() << " "; // index를 얻을 수 있음
     } 
     cout << endl;
     return 0;

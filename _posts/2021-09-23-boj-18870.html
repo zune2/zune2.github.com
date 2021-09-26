@@ -64,7 +64,7 @@ tags: 좌표압축
             pool[i].val2 = cnt++;
         }
     }
-    sort(pool, pool+N, compare2);
+    sort(pool, pool+N, compare2); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51077;&#47141;&#48155;&#51008; index&#49692;&#49436;&#47196; &#51221;&#47148;&#54632;</span>
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
         printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, pool[i].val2);
     }
@@ -105,7 +105,7 @@ tags: 좌표압축
     a.erase(unique(a.begin(), a.end()), a.end()); 
 
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">c</span> : b) {
-        cout &lt;&lt; lower_bound(a.begin(), a.end(), c) - a.begin() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+        cout &lt;&lt; lower_bound(a.begin(), a.end(), c) - a.begin() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">index&#47484; &#50619;&#51012; &#49688; &#51080;&#51020;</span>
     } 
     cout &lt;&lt; endl;
     <span style="color: #729fcf; font-weight: bold;">return</span> 0;
