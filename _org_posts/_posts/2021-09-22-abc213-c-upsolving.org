@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Redorder Cards
+#+HTML: title: C - Reorder Cards
 #+HTML: tags: AtCoder TODO
 #+HTML: ---
 #+OPTIONS: ^:nil
