@@ -5,14 +5,52 @@
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** TODO C - Reorder Cards
+** C - Reorder Cards
 - 좌표압축을 묻는 문제
-  
+- 입력받은 W, H는 사용하지 않아도 됨  
+
 ** 접근하기
 
-** 코드
+** 코드1 - STL vector, erase, unique를 이용한 좌표압축
 
 #+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int H, W, N;
+
+int a[100010];
+int b[100010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &H, &W, &N);
+   
+    vector<int> va(N); 
+    vector<int> vb(N); 
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]); 
+        scanf("%d", &b[i]); 
+
+        va.push_back(a[i]); 
+        vb.push_back(b[i]); 
+    } 
+    sort(va.begin(), va.end());
+    va.erase(unique(va.begin(), va.end()), va.end());
+
+    sort(vb.begin(), vb.end());
+    vb.erase(unique(vb.begin(), vb.end()), vb.end());
+
+    for(int i=0;i<N;i++) {
+        int p1 = lower_bound(va.begin(), va.end(), a[i]) - va.begin();
+        int p2 = lower_bound(vb.begin(), vb.end(), b[i]) - vb.begin();
+        printf("%d %d\n", p1, p2);
+    }
+    return 0;
+}
 #+END_SRC
 
 ** 참고자료
