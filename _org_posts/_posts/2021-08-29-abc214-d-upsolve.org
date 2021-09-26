@@ -6,7 +6,6 @@
 #+OPTIONS: ^:nil
 
 ** D - Sum of Maximum Weights
-- 작성중
 
 ** 접근하기
 - Union Find에서 연결된 집합의 크기를 count할 수 있어야 함
