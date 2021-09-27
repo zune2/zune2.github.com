@@ -1,0 +1,75 @@
+---
+layout: post
+title: BOJ 2951 숫자카드
+tags: DP 경우의수
+---
+
+<div id="outline-container-orge9319ab" class="outline-2">
+<h2 id="orge9319ab">숫자카드</h2>
+<div class="outline-text-2" id="text-orge9319ab">
+<p>
+Minimum spanning tree를 구현하는 문제
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d75ad3" class="outline-2">
+<h2 id="org9d75ad3">접근하기</h2>
+<div class="outline-text-2" id="text-org9d75ad3">
+<ul class="org-ul">
+<li>경우의 수를 구하는 DP 문제</li>
+<li>i번째 숫자에서 1자리 숫자를 고르면, dp[i-1]의 경우의 수를 더한다.</li>
+<li>i번재 숫자에서 2자리 숫자를 고른면, dp[i-2]의 경우의 수를 더한다.</li>
+<li>두자리 숫자에서 10의 자리가 0이 되는 경우는 제외한다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4bd77f4" class="outline-2">
+<h2 id="org4bd77f4">코드</h2>
+<div class="outline-text-2" id="text-org4bd77f4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[50];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[50];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str + 1);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 1;   
+    <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++);
+    len -= 1; 
+
+    str[0] = <span style="color: #ad7fa8; font-style: italic;">'0'</span>;
+    dp[0] = 1;  
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=len;i++) {
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">&#54620;&#51088;&#47532; &#49707;&#51088;&#47484; &#49324;&#50857;&#54616;&#45716; &#44221;&#50864;</span>
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">0&#51060; &#50500;&#45768;&#47732; 1~9&#44620;&#51648;&#51032; &#49707;&#51088;&#51076;</span>
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] != <span style="color: #ad7fa8; font-style: italic;">'0'</span>) dp[i] += dp[i-1];
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46160;&#51088;&#47532; &#49707;&#51088;&#47484; &#49324;&#50857;&#54616;&#45716; &#44221;&#50864;</span>
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">34&#48372;&#45796; &#51089;&#44256;, &#50526;&#51088;&#47532;&#49688;&#44032; 0&#51060; &#50500;&#45784;       </span>
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = (str[i-1]-<span style="color: #ad7fa8; font-style: italic;">'0'</span>)*10 + (str[i]-<span style="color: #ad7fa8; font-style: italic;">'0'</span>);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (num &lt;= 34 &amp;&amp; str[i-1] != <span style="color: #ad7fa8; font-style: italic;">'0'</span>) {
+            dp[i] += dp[i-2];
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[len]); 
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org141bcf9" class="outline-2">
+<h2 id="org141bcf9">문제 링크</h2>
+<div class="outline-text-2" id="text-org141bcf9">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2591">https://www.acmicpc.net/problem/2591</a></li>
+</ul>
+</div>
+</div>
