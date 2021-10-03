@@ -1,0 +1,66 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Select Mul
+#+HTML: tags: AtCoder 완전탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Select Mul
+
+** 접근하기
+- 최대 9자리 숫자 순열을 만들어서 모두 해볼 수 있다. 
+- 두 구간으로 나눔, left, right 
+- 숫자의 길이가 홀수이면, left쪽이 1자리수 더 길게 구성.
+- 숫자의 길이가 짝수이면, left, right같게 구성.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+char str[10];
+char a[10];
+int visit[10];
+int len;
+
+long long ans;
+
+void bt(int idx) {
+    if (idx == len) {
+        int mid = (len %2 == 0) ? len/2 : (len/2)+1;
+
+        long long num1 = 0;
+        for(int i=0;i<mid;i++) {
+            num1 = num1 * 10 + (a[i] - '0');
+        }
+        long long num2 = 0;
+        for(int i=mid;i<len;i++) {
+            num2 = num2 * 10 + (a[i] - '0');
+        }
+        if (ans < num1 * num2) ans = num1 * num2;            
+        return;
+    }
+
+    for(int i=0;i<len;i++) {
+        if (visit[i] == 0) {
+            visit[i] = 1; 
+            a[idx] = str[i];
+            bt(idx+1);
+            visit[i] = 0; 
+        }    
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    ans = 0;
+    scanf("%s", str);
+    for(len=0;str[len];len++);
+
+    bt(0);
+    printf("%lld\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc221/tasks/abc221_c
