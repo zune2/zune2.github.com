@@ -1,0 +1,19 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: TODO C - Friends and Travel costs
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** TODO C - Friends and Travel cost
+
+** 접근하기
+- 수학적으로 접근하는 문제. 생각이 어렵다.
+
+** 코드
+#+BEGIN_SRC cpp
+
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc200/tasks/abc200_c
