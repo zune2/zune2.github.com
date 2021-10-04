@@ -1,11 +1,11 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: TODO C - Ringo's Favorite Numbers 2
+#+HTML: title: C - Ringo's Favorite Numbers 2
 #+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** TODO C - Ringo's Favorite Numbers 2
+** C - Ringo's Favorite Numbers 2
 
 ** 접근하기
 - 수학적으로 접근하는 문제. 생각이 어렵다.
