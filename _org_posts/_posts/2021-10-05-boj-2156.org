@@ -1,0 +1,53 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2156 포도주 시식
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2156 포도주 시식
+- 세잔 연속 마실 수 없음
+- 한잔 마시고, 건너뛰거나, 두잔 마시고 건너뛰기
+- 두잔 연속 안마실 수 있음 (안보이는 조건)
+
+** 접근하기
+
+** 코드 - 1차원으로 풀기
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+int a[10010];
+int dp[10010];
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &a[i]);
+    }
+
+    dp[0] = 0;
+    dp[1] = a[1];
+    dp[2] = a[1] + a[2];
+
+    for(int i=3;i<=N;i++) {
+        dp[i] = max(dp[i], dp[i-2] + a[i]); // i번째 한번 마심
+        dp[i] = max(dp[i], dp[i-3] + a[i] + a[i-1]); // i번째, i-1번째 두번 연속 마심
+        dp[i] = max(dp[i], dp[i-1]); // i번째 선택안함
+    }
+    printf("%d\n", dp[N]);
+    return 0;
+}
+#+END_SRC
+
+** TODO 코드 - 2차원으로 풀기
+#+BEGIN_SRC 
+
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2156
