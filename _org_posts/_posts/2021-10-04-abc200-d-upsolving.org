@@ -92,6 +92,64 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+** 코드 - 비트연산 이용
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int N;
+int n;
+int a[210];
+
+vector < vector<int> > v(200, vector<int>(0));
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    
+    n = min(8, N); 
+
+    for(int i=1;i<(1<<n);i++) {
+
+        int sum = 0;
+        vector <int> tmp;
+        for(int j=0;j<n;j++) {
+            if (i & (1<<j)) {
+                sum += a[j];
+                sum = sum % 200;
+                tmp.push_back(j+1);
+            }    
+        }
+
+        if (v[sum].size() == 0) {
+            v[sum] = tmp;
+        } else {
+            printf("Yes\n");
+            cout << tmp.size();
+            for(auto &x : tmp) {
+                cout << " " << x;
+            }
+            cout << endl;
+
+            cout << v[sum].size();
+            for(auto &x : v[sum]) {
+                cout << " " << x;
+            }
+            cout << endl;
+            return 0; 
+        }
+    }
+    printf("No\n");
+    return 0;
+}
+#+END_SRC
 ** 문제 링크
 - https://atcoder.jp/contests/abc200/tasks/abc200_d
 
