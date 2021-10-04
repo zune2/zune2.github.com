@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: TODO E - Patisserie ABC 2
-#+HTML: tags: AtCoder DP
+#+HTML: tags: AtCoder DP TODO
 #+HTML: ---
 #+OPTIONS: ^:nil
 
