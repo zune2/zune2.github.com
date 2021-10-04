@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2579 계단 오르기
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2579 계단 오르기
+- 한번에 두개 연속밝거나, 하나 밟고, 뛰어넘을 수 있음.
+- 세개 연속 밟을 수 없음
+- 마지막 도착 계단은 꼭 밟아야 함
+
+** 접근하기
+- 문제에 주어진 내용을 점화식(Recurrence relation)으로 나타내야 함
+
+#+BEGIN_EXAMPLE
+
+d[i] : i번째 계단 까지 뛰었을 때의 최대값
+
+d[0] : 출발점
+
+d[1] : a[1] 1번째 계단 밟음
+d[2] : a[1] + a[2] 두개 연속 밟음
+
+a[i] + a[i-1] + d[i-3] : 두개 연속 밟기
+a[i] + d[i-2] : 현재 밟고, i-2에서 점프에서 오기
+#+END_EXAMPLE
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+int a[310];
+int dp[310];
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &a[i]); 
+    } 
+    
+    dp[0] = 0;
+    dp[1] = a[1];
+    dp[2] = a[1]+a[2];
+
+    for(int i=3;i<=N;i++) {
+        dp[i] = max(dp[i], a[i] + a[i-1] + dp[i-3]); // 점프 후 두개 연속 밟기
+        dp[i] = max(dp[i], a[i] + dp[i-2]); // 점프 후 하나 연속 밟기
+    }
+    printf("%d\n", dp[N]);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2579
