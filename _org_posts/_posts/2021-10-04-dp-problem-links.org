@@ -1,0 +1,13 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: 동적계획법 문제 모음
+#+HTML: tags: Bookmarks
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 동적계획법 문제 link
+1. [[https://leetcode.com/tag/dynamic-programming/][LeetCode DP]]
+2. [[https://www.acmicpc.net/workbook/view/2163][BOJ 역대 DP 연습셋 기출문제]]
+
+
+
