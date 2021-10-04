@@ -10,7 +10,7 @@
 - 세개 연속 밟을 수 없음
 - 마지막 도착 계단은 꼭 밟아야 함
 
-** 접근하기
+** 접근하기 1
 - 문제에 주어진 내용을 점화식(Recurrence relation)으로 나타내야 함
 
 #+BEGIN_EXAMPLE
@@ -25,7 +25,7 @@ d[2] : a[1] + a[2] 두개 연속 밟음
 a[i] + a[i-1] + d[i-3] : 두개 연속 밟기
 a[i] + d[i-2] : 현재 밟고, i-2에서 점프에서 오기
 #+END_EXAMPLE
-** 코드
+** 코드 - dp[i]로 풀기
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <algorithm>
@@ -56,5 +56,55 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+
+** 접근하기 2
+
+#+BEGIN_EXAMPLE
+d[i][1] : 1번 연속밟아서 i번쨰 옴
+d[i][2] : 2번 연속밟아서 i번째 옴
+
+dp[i][1] = max(dp[i-2][1], dp[i-2][2]) + a[i];
+// i-2에서 점프해서 i번째 밟음(이전에 1번, 2번 무관 큰값 고르기)
+
+dp[i][2] = dp[i-1][1] + a[i];
+// i-1에서 1번연속 밟은 상태 ->  점프해서 i번째 밟음
+#+END_EXAMPLE
+
+** 코드 - dp[i][1,2]로 풀기
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+int a[310];
+int dp[310][3]; // 
+
+// dp[i][1] : 하나 밟음
+// dp[i][2] : 두번 밟음
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+
+    for(int i=1;i<=N;i++)
+        scanf("%d", &a[i]);
+
+    dp[1][1] = a[1];
+    dp[1][2] = a[1];
+
+    dp[2][1] = a[2];
+    dp[2][2] = dp[1][1] + a[2];
+
+    for(int i=3;i<=N;i++) {
+        dp[i][1] = max(dp[i-2][1], dp[i-2][2]) + a[i]; // i-2에서 점프해서 i번째 밟음
+        dp[i][2] = dp[i-1][1] + a[i]; // i-1에서 점프해서 i번째 밟음
+    } 
+   
+    printf("%d\n", max(dp[N][1], dp[N][2]));
+    return 0;
+}
+#+END_SRC
 ** 문제 링크
 - https://www.acmicpc.net/problem/2579
