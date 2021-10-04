@@ -10,10 +10,52 @@
 ** 접근하기
 - 수학적으로 접근하는 문제. 생각이 어렵다.
 
+- A if and only if B
+  - A가 참이면 B도 참이고, B가 참이면, A도 참이다.
+  - A와 B가 동일하다. (A와 B는 동치)
+  - A는 B의 필요충분조건
+
+*** 생각하기 1
+#+BEGIN_EXAMPLE
+Ai - Aj가 200의 배수이다.
+Ai를 200으로 나눈 나머지와 Aj를 200으로 나눈 나머지는 같다.
+#+END_EXAMPLE
+
+*** 생각하기 2
+#+BEGIN_EXAMPLE
+8개의 원소가 있을 때, 2개를 선택하여 가지는 경우의 수
+  - 8*7/2 --> k*(k-1)/2
+#+END_EXAMPLE
+
 ** 코드
 #+BEGIN_SRC cpp
+#include <stdio.h>
 
+int N;
+long long a[210];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N); 
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num);
+        a[num%200] += 1;
+    }
+
+    long long ans = 0;
+    for(int i=0;i<200;i++) {
+        ans += (a[i] * (a[i]-1))/2;
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
 #+END_SRC
 
 ** 문제 링크
 - https://atcoder.jp/contests/abc200/tasks/abc200_c
+
+** 참고자료
+- [[https://m.blog.naver.com/sbssbi69/220060435293][경우의 수 - 순열과 조합]]
+- [[https://coding-factory.tistory.com/606][순열,조합 공식정리]]
+- [[https://article2.tistory.com/1346][if and only if의 의미]]
