@@ -19,9 +19,9 @@ tags: DP
 <h2 id="org8845330">접근하기</h2>
 </div>
 
-<div id="outline-container-org3230fdf" class="outline-2">
-<h2 id="org3230fdf">코드 - 1차원으로 풀기</h2>
-<div class="outline-text-2" id="text-org3230fdf">
+<div id="outline-container-orgf1f9b47" class="outline-2">
+<h2 id="orgf1f9b47">코드 - dp[i]</h2>
+<div class="outline-text-2" id="text-orgf1f9b47">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
 <span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
@@ -56,12 +56,40 @@ tags: DP
 </div>
 </div>
 
-<div id="outline-container-orga8daa80" class="outline-2">
-<h2 id="orga8daa80"><span class="todo TODO">TODO</span> 코드 - 2차원으로 풀기</h2>
-<div class="outline-text-2" id="text-orga8daa80">
-<pre class="example">
+<div id="outline-container-org6b256b9" class="outline-2">
+<h2 id="org6b256b9">코드 dp[i][j]</h2>
+<div class="outline-text-2" id="text-org6b256b9">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
 
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>[10020][3];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[10020];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+
+    d[1][0] = 0;
+    d[1][1] = a[1];
+    d[1][2] = 0;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=2;i&lt;=N;i++) {
+        d[i][0] = max(max(d[i-1][0], d[i-1][1]), d[i-1][2]);
+        d[i][1] = d[i-1][0] + a[i];
+        d[i][2] = d[i-1][1] + a[i]; 
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, max(max(d[N][0], d[N][1]), d[N][2])); 
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
 </pre>
+</div>
 </div>
 </div>
 
