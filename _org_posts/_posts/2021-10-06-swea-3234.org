@@ -1,0 +1,80 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: 3234. 준환이의 양팔저울
+#+HTML: tags: SWEA DP 완전탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 3234. 준환이의 양팔저울
+- 양팔저울에 N개의 추를 올림
+- 올리는 순서의 경우의 수를 구하는 문제
+- N<=9 로 작다. 완전탐색이 가능한 문제
+
+** 접근하기
+- top-down DP로도 풀수 있다.
+- 9개의 bit를 조합하기, left, right이용
+
+** 코드
+- 두 변수에 bit를 더하고도 선택되지 않은 bit일때 상태공간 확장
+- 오른쪽에 추를 둘 때, 왼쪽보다 더 크지 않아야 한다. (작거나 같아야 함)
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int T;
+int N;
+int a[10];
+int memo[1<<9][1<<9];
+
+int bt(int idx, int left, int right, int lsum, int rsum)
+{
+    if (idx == N) return 1;
+
+    if (memo[left][right]) return memo[left][right];
+
+    int cnt = 0;
+    for(int i=0;i<N;i++) {
+        if ( ((left | right) & (1<<i)) == 0) {
+            cnt += bt(idx+1, left | (1<<i), right, lsum + a[i], rsum);
+            if (lsum >= rsum + a[i]) {
+                cnt += bt(idx+1, left, right | (1<<i), lsum, rsum + a[i]);
+            }
+        }
+    }
+    memo[left][right] = cnt;
+    return memo[left][right];
+}
+
+
+void solve(int tc)
+{
+    scanf("%d", &N);
+
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+
+    for(int i=0;i<(1<<9);i++) {
+        for(int j=0;j<(1<<9);j++) {
+            memo[i][j] = 0;
+        }
+    }
+
+    int ret = bt(0, 0, 0, 0, 0);
+    printf("#%d %d\n",tc, ret);
+}
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &T);
+
+    for(int tc=1;tc<=T;tc++) {
+        solve(tc);   
+    }
+    return 0;
+}
+#+END_SRC
+
+** 생각해보기
+- bottom-up DP로 풀 수 있을까?
+** 문제 링크
+- [[https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWAe7XSKfUUDFAUw][문제로 가기]]
