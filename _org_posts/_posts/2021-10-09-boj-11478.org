@@ -44,6 +44,33 @@ a, b, a, b, c, ab, ba, ab, bc, aba, bab, abc, abab, babc, ababc
  }
  #+END_SRC
 
+*** 코드 - 이중루프 + STL unordered_set
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+char str[1010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", str);
+    int len = 0;
+    for(;str[len];len++);
+
+    unordered_set <string> sp;
+
+    for(int i=0;i<len;i++) {
+        string tmp;
+        for(int j=i;j<len;j++) {
+            tmp += str[j]; 
+            sp.insert(tmp);
+        }
+    }
+    printf("%d\n", (int)sp.size());
+}
+#+END_SRC
 
 ** TODO 접근하기 2 : Suffix Array + LCP
 
