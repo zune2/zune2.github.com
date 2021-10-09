@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 11478 서로 다른 부분문자열의 개수
+#+HTML: tags: 서로다른부분문자열
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11478 서로 다른 부분 문자열의 개수
+
+** 접근하기 1
+- 2중 loop로 문자열의 부분 문자열 나열하기
+
+#+BEGIN_EXAMPLE
+ababc
+a, b, a, b, c, ab, ba, ab, bc, aba, bab, abc, abab, babc, ababc
+12개
+#+END_EXAMPLE
+
+*** 코드 - 이중루프 + STL set
+ #+BEGIN_SRC cpp
+ #include <cstdio>
+ #include <string>
+ #include <set>
+
+ using namespace std;
+ char str[1010];
+
+ int main(int argc, char* argv[])
+ {
+     scanf("%s", str);
+     int len = 0;
+     for(;str[len];len++);
+
+     set <string> sp;
+
+     for(int i=0;i<len;i++) {
+         string tmp;
+         for(int j=i;j<len;j++) {
+             tmp += str[j]; 
+             sp.insert(tmp);
+         }
+     }
+     printf("%d\n", (int)sp.size());
+ }
+ #+END_SRC
+
+
+** TODO 접근하기 2 : Suffix Array + LCP
+
+** TODO 접근하기 3 : Trie
+- 트라이에 모든 부분 문자열을 추가하면, 노드의 개수
+
+** TODO 접근하기 4 : Hashing
+- 모든 부분문자열을 hash로 숫자로 변환, 추가하면서 uniq를 세기
+
+** 문제 링크
+- https://www.acmicpc.net/problem/11478
+
+** 참고자료
+- https://algoshipda.blogspot.com/2017/05/boj-11478.html
