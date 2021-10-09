@@ -1,0 +1,218 @@
+---
+layout: post
+title: C - Colorful Candies
+tags: AtCoder
+---
+
+<div id="outline-container-orgf780b00" class="outline-2">
+<h2 id="orgf780b00">C - Colorful Candies</h2>
+<div class="outline-text-2" id="text-orgf780b00">
+<ul class="org-ul">
+<li>N개의 캔디가 주어질 때, 각 요소는 캔디의 색을 의미</li>
+<li>최대한 다른 색깔로 K개 고를 때, 가능한 숫자</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfe6ed72" class="outline-2">
+<h2 id="orgfe6ed72">접근하기</h2>
+<div class="outline-text-2" id="text-orgfe6ed72">
+<ul class="org-ul">
+<li>N의 범위가 30만이내, K를 범위로 잡고 다 찾아보면 된다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcc6c863" class="outline-2">
+<h2 id="orgcc6c863">코드 - hash를 구현해서 풀기</h2>
+<div class="outline-text-2" id="text-orgcc6c863">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">HASH_SIZE</span> 7701
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">K</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span>
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">next</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[300010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[300010];
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">table</span>[HASH_SIZE];
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">CreateNode</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = &amp;pool[idx++];
+    ptr-&gt;num = num;
+    ptr-&gt;cnt = 1;
+    ptr-&gt;next = <span style="color: #8ae234;">NULL</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">HASH</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> num%HASH_SIZE;
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">hash_add</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">key</span> = HASH(ptr-&gt;num);
+    ptr-&gt;next = table[key];
+    table[key] = ptr;
+}
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">hash_find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">key</span> = HASH(num);
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = table[key];
+    <span style="color: #729fcf; font-weight: bold;">while</span>(ptr) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ptr-&gt;num == num) <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+        ptr = ptr-&gt;next;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> <span style="color: #8ae234;">NULL</span>;
+}
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">hash_remove</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">key</span> = HASH(num);
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = table[key];
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">prev</span> = <span style="color: #8ae234;">NULL</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(ptr) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ptr-&gt;num == num) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (prev == <span style="color: #8ae234;">NULL</span>) {
+                table[key] = table[key]-&gt;next;
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">todel</span> = ptr;
+                prev-&gt;next = ptr-&gt;next;
+                <span style="color: #729fcf; font-weight: bold;">return</span> todel;
+            }
+        }
+        prev = ptr;
+        ptr = ptr-&gt;next;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> <span style="color: #8ae234;">NULL</span>;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    idx = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    } 
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">maxv</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span> = a[i];
+        <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = hash_find(val);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ptr != <span style="color: #8ae234;">NULL</span>) {
+            ptr-&gt;cnt += 1;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">obj</span> = CreateNode(val); 
+            hash_add(obj);
+            ans += 1;
+        }
+    }
+    maxv = max(maxv, ans);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=K;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span> = a[i];
+        <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = hash_find(val);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ptr != <span style="color: #8ae234;">NULL</span>) {
+            ptr-&gt;cnt += 1;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">obj</span> = CreateNode(val); 
+            hash_add(obj);
+            ans += 1;
+        }
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val2</span> = a[i-K];
+        ptr = hash_find(val2);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ptr != <span style="color: #8ae234;">NULL</span>) {
+            ptr-&gt;cnt -= 1;
+            <span style="color: #729fcf; font-weight: bold;">if</span> (ptr-&gt;cnt == 0) {
+                ans -= 1;
+                hash_remove(val2);
+            }
+        }
+        maxv = max(maxv, ans);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, maxv);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab4ca64" class="outline-2">
+<h2 id="orgab4ca64">코드 - STL map 이용</h2>
+<div class="outline-text-2" id="text-orgab4ca64">
+<ul class="org-ul">
+<li>STL map을 잘 쓰기
+<ul class="org-ul">
+<li>key에 값 갱신</li>
+<li>int, int로 map객체 만들기</li>
+<li>erase로 노드 지우기</li>
+<li>size로 count하기</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">map</span>&lt; <span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #ff6347;">mp</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">int key&#47196; int value&#47484; &#47337;&#50629;&#54616;&#45716; &#48176;&#50676;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[300010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">1&#48264;&#51704; &#51452;&#44592;&#47484; &#49884;&#51089;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++) {
+        mp[a[i]] += 1; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52376;&#51020; K&#47564;&#53372; &#47337;&#50629;&#48176;&#50676; &#52292;&#50864;&#44592;</span>
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = mp.size(); <span style="color: #888a85;">// </span><span style="color: #888a85;">size&#44032; &#44060;&#49688;  1 1 2 &#46972;&#47732; 2&#44032; &#46120;, 1 2 3&#51060;&#47732; 3&#51060; &#46120;</span>
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=K;i&lt;N;i++) { <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46160;&#48264;&#51704; &#51452;&#44592;&#47484; &#49884;&#51089;</span>
+        mp[a[i]]++;     
+        mp[a[i-K]]--;      <span style="color: #888a85;">// </span><span style="color: #888a85;">i-K : &#51060;&#51204; &#51452;&#44592;&#51032; &#49884;&#51089;&#48512;&#53552;</span>
+
+        <span style="color: #729fcf; font-weight: bold;">if</span>(mp[a[i-K]] == 0) mp.erase(a[i-K]); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#44050;&#51060; 0&#51060;&#47732;, &#45432;&#46300;&#47484; &#49325;&#51228;</span>
+        ans = max(ans, (<span style="color: #8ae234; font-weight: bold;">int</span>)mp.size());       <span style="color: #888a85;">// </span><span style="color: #888a85;">size&#44032; &#53356;&#47732; ans &#44081;&#49888;</span>
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans); 
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1cd1475" class="outline-2">
+<h2 id="org1cd1475">문제 링크</h2>
+<div class="outline-text-2" id="text-org1cd1475">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc200/tasks/abc200_d">https://atcoder.jp/contests/abc200/tasks/abc200_d</a></li>
+</ul>
+</div>
+</div>

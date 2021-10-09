@@ -3,7 +3,8 @@
 #+HTML: title: 3234. 준환이의 양팔저울
 #+HTML: tags: SWEA DP 완전탐색
 #+HTML: ---
-#+OPTIONS: ^:nil
+
+* #+OPTIONS: ^:nil
 
 ** 3234. 준환이의 양팔저울
 - 양팔저울에 N개의 추를 올림
