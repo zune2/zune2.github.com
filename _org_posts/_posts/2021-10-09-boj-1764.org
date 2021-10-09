@@ -1,0 +1,102 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1764 듣보잡
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1764 듣보잡
+
+** 접근하기
+- STL을 이용해서 다양하게 풀어보자.
+
+
+** 코드 - STL vector 이용하기 492 m/s
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int N, M;
+
+int main(int argc, char* argv[])
+{
+    cin >> N >> M;
+    
+    vector <string> v(N+M);
+
+    string str;
+    // N만큼 vector에 추가 
+    for(int i=0;i<N;i++) {
+        cin >> str;
+        v[i] = str;
+    }
+    // M만큼 뒤에 이어서 추가
+    for(int i=N;i<N+M;i++) {
+        cin >> str;
+        v[i] = str;
+    }
+    // sort
+    sort(v.begin(), v.end());
+
+    
+    // N+M만큼 반복하면서, 앞뒤로 같으면 ret에 저장
+    vector <string> ret;
+    for(int i=1;i<(int)v.size();i++) {
+        if (v[i-1] == v[i]) {
+            ret.push_back(v[i]);
+        }
+    }
+    
+    // 출력
+    cout << ret.size() << endl;
+    for(auto& o:ret) {
+        cout << o << endl;
+    }
+    return 0;
+}
+#+END_SRC
+** 코드 - STL set 이용하기 500m/s
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <set>
+#include <vector>
+using namespace std;
+
+int N, M;
+set <string> s;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+    for(int i=0;i<N;i++) {
+        string tmp; 
+        cin >> tmp;
+        s.insert(tmp);
+    }
+
+    set <string> s2;
+    for(int i=0;i<M;i++) {
+        string tmp; 
+        cin >> tmp;
+        if (s.find(tmp) != s.end()) { // find해서 없으면
+            s2.insert(tmp);
+        }
+    }
+    
+    cout << s2.size() << endl;
+    for (auto& o :s2) { // set객체 iteration
+        cout << o << endl; 
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1764
+
