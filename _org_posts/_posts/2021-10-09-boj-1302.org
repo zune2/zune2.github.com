@@ -13,7 +13,7 @@
 - sort하면, 사전순으로 앞서는 것이 앞에 옴
 - 숫자를 count한다. 가장 큰것을 ans 변수에 담을 것
 
-** 코드 - hash를 구현해서 풀기
+** 코드
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <vector>
