@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1620 나는야 포켓몬 마스터 이다솜
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1620 나는야 포켓몬 마스터 이다솜
+
+** 접근하기
+- STL map key: string, value: int로 객체 이용
+- string 배열에 string을 각각 저장
+
+** 코드
+#+BEGIN_SRC cpp
+// 시간초과 풀이
+#include <cstdio>
+#include <iostream>
+#include <map>
+using namespace std;
+
+int N, M;
+map <string, int> mp;
+string sa[1000010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+
+    char str[21];
+    for(int i=0;i<N;i++) {
+        scanf("%s", str);
+        string s(str);
+        mp[s] = (long long)i+1;
+        sa[i] = s;
+    }
+
+    for(int i=0;i<M;i++) {
+        char str[21];
+        scanf("%s", str);
+
+        if (str[0] >= '0' && str[0] <= '9') {
+            long long num = 0;
+            for(int j=0;str[j];j++) {
+                num = num * 10 + (str[j] - '0');
+            }
+            printf("%s\n", sa[num-1].c_str());
+        } else {
+            printf("%d\n", mp[str]);
+        }
+    }
+    return 0;
+}
+#+END_SRC
+
+** 주의사항
+- iostream으로 in/out을 하면 시간초과가 발생함.
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1620

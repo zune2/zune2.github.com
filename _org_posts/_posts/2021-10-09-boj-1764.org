@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: BOJ 1764 듣보잡
-#+HTML: tags: AtCoder
+#+HTML: tags: STL
 #+HTML: ---
 #+OPTIONS: ^:nil
 
