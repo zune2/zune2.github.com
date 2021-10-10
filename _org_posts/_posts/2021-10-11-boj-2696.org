@@ -1,0 +1,80 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2696 중앙값 구하기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2696 중앙값 구하기
+
+** 접근하기
+- Running Median 문제를 STL로 풀어보기
+- 홀수 일때만 값을 출력하면 된다.
+- max heap, min heap을 STL로 구성하기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+int T;
+int N;
+
+void solve()
+{
+    priority_queue <int, vector<int>, greater<int>> min_heap;
+    priority_queue <int, vector<int>, less<int>> max_heap;
+    scanf("%d", &N);
+    vector <int> ans;
+
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num); 
+        min_heap.push(num);   // 최소힙에 값을 무조건 넣도록 함
+
+	// min heap이 크면 max heap으로 하나 이동
+        if (max_heap.size() < min_heap.size()) {
+            int tmp = min_heap.top();
+            min_heap.pop();
+            max_heap.push(tmp);
+        } else if (max_heap.size() == min_heap.size()) {
+            int right = min_heap.top();
+            int left = max_heap.top();
+
+            if (left > right) {
+                min_heap.pop();
+                max_heap.pop();
+                max_heap.push(right);
+                min_heap.push(left);
+            }
+        }
+
+        if ((max_heap.size() + min_heap.size()) %2 == 1) {
+            ans.push_back(max_heap.top());
+        }
+    }
+
+    printf("%d\n", (int)ans.size());
+    int cnt = 0;
+    for(auto& o:ans) {
+        printf("%d ", o);
+        if (++cnt%10 == 0) printf("\n");
+    }
+    printf("\n");
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2696
