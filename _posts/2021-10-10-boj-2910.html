@@ -1,0 +1,97 @@
+---
+layout: post
+title: BOJ 2910 빈도정렬
+tags: STL
+---
+
+<div id="outline-container-orgde406a8" class="outline-2">
+<h2 id="orgde406a8">BOJ 2910 빈도정렬</h2>
+<div class="outline-text-2" id="text-orgde406a8">
+<ul class="org-ul">
+<li>배열이 주어지고, 빈도순으로 정렬</li>
+<li>빈도가 같다면 먼저 나온 것을 선택</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org31fd12a" class="outline-2">
+<h2 id="org31fd12a">접근하기</h2>
+<div class="outline-text-2" id="text-org31fd12a">
+<ul class="org-ul">
+<li>STL map객체를 써서 배열값으로 index 룩업/cnt 룩업 할 수 있게 구성.
+<ul class="org-ul">
+<li>map을 쓸 수 없다면, 구현이 까다로웠을 듯.</li>
+</ul></li>
+<li>구조체의 idx, cnt를 각각 업데이트</li>
+<li>cmp 함수대로 sort하면, 결과가 나옴</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5820557" class="outline-2">
+<h2 id="org5820557">코드</h2>
+<div class="outline-text-2" id="text-org5820557">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">C</span>;
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[1010];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (p1.cnt == p2.cnt) {
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1.idx &lt; p2.idx;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1.cnt &gt; p2.cnt;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+    <span style="color: #8ae234; font-weight: bold;">map</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">mp</span>;
+    <span style="color: #8ae234; font-weight: bold;">map</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">mp_idx</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;C);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;pool[i].num);
+        mp[pool[i].num]++;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (mp_idx[pool[i].num] == 0) {
+            mp_idx[pool[i].num] = i + 1;
+        }
+    } 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        pool[i].cnt = mp[pool[i].num];
+        pool[i].idx = mp_idx[pool[i].num];
+    } 
+
+    sort(pool, pool+N, cmp);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, pool[i].num);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1270ce0" class="outline-2">
+<h2 id="org1270ce0">문제 링크</h2>
+<div class="outline-text-2" id="text-org1270ce0">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2910">https://www.acmicpc.net/problem/2910</a></li>
+</ul>
+</div>
+</div>
