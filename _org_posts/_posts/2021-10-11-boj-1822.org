@@ -1,0 +1,54 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1822 차집합
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1822 차집합
+
+** 접근하기
+- STL의 binary_search 이용하기
+- A - B는 A의 원소이면서, B의 원소가 아닌 경우를 센다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N, M;
+
+int a[500050];
+int b[500050];
+
+int main(int argc, char* argv[])
+{
+    cin >> N >> M;
+    for(int i=0;i<N;i++) {
+        cin >> a[i];
+    }
+    for(int i=0;i<M;i++) {
+        cin >> b[i];
+    }
+    sort(b, b+M);
+
+    vector<int> ans;
+    for(int i=0;i<N;i++) {
+        if (!binary_search(b, b+M, a[i])) {
+            ans.push_back(a[i]);
+        }
+    }
+    cout << ans.size() << endl;
+    sort(ans.begin(), ans.end());
+    for(auto& o:ans) {
+        cout << o << " ";
+    }
+    cout << endl;
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1822
