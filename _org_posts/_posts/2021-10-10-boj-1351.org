@@ -1,11 +1,11 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 9536 여우는 어떻게 울지?
+#+HTML: title: BOJ 1351 무한 수열
 #+HTML: tags: STL DP
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** BOJ 9536 여우는 어떻게 울지?
+** BOJ 1351 무한 수열
 
 ** 접근하기
 - 점화식이 주어질 째, top-down으로 구성하기
