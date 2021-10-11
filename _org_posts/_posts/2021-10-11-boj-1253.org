@@ -1,0 +1,104 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1253 좋다
+#+HTML: tags: STL 투포인터
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1253 좋다.
+
+** 접근하기 1
+- 서로 다른 두 수의 합으로 나타내기 -> 값 한개가 이미 답인 경우를 제외
+** 코드 - map 객체에 index정보 저장
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <map>
+using namespace std;
+
+int N;
+int a[2020];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+
+    map<int, pair<int, bool>> mp;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+        mp[a[i]] = {i, false};
+    }
+
+    for(int i=0;i<N;i++) {
+        for(int j=i+1;j<N;j++) {
+            int sum = a[i] + a[j];
+            if (mp.count(sum)) {
+                // sum이 아닌 하나로 구성된 경우 skip
+                if (mp[sum].first == i || mp[sum].first == j) continue; 
+                mp[sum].second = true;
+            }
+        }
+    }
+    int cnt = 0;
+    for(int i=0;i<N;i++) {
+        if (mp[a[i]].second == true) cnt++;
+    }
+    printf("%d\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 접근하기 2
+- 투 포인터로 두수의 값이 K일 때를 찾아 카운트
+- for loop를 하면서, a[0] ~ a[N-1]까지를 K로 놓기
+** 코드 - 투 포인터 이용 풀이
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+int a[2020];
+
+int find(int num, int i)
+{
+    int left = 0;
+    int right = N-1;
+    
+    int ans = 0;
+    while(left < right) {
+        if (a[left] + a[right] == num) {
+            if (i != left && i != right){
+                ans = 1;
+                break;
+            }
+            if (left == i) left++;
+            else if ( right == i) right--;
+        } else if (a[left] + a[right] < num) {
+            left++;
+        } else if (a[left] + a[right] > num) {
+            right--;
+        }
+    }
+
+    return ans;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+
+    int sum = 0;
+    for(int i=0;i<N;i++) {
+        sum += find(a[i], i); 
+    }
+    printf("%d\n", sum);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1253
