@@ -1,0 +1,89 @@
+#+Html: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 3078 좋은 친구
+#+HTML: tags: STL queue
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 3078 좋은 친구
+
+** 접근하기
+- 그냥 순서대로 K개씩 비교하면, 30만x30만으로 시간초과가 된다.
+- 등수가 0에서 증가하는 순서로 입력이 들어온다는 성질을 이용한다.
+- 이름의 길이는 2~20글자 -> queue의 배열을 만든다. (index는 이름의 길이)
+- Q의 노드들와 현재 노드의 등수차이가 K보다 크면 버린다.
+  - Q에 1개 있으면, 1쌍이 가능 -> cnt 증가
+  - Q에 2개 이으면, 2쌍이 가능 -> cnt 증가
+
+** 코드 - 시간초과
+- 300000 x 300000 -> 2중 loop를 쓰면 안됨
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+
+int N, K;
+string a[300010];
+
+int main(int argc, char* argv[])
+{
+    //freopen("input.txt", "r", stdin);
+    freopen("input2.txt", "r", stdin);
+    cin >> N >> K;    
+    for(int i=0;i<N;i++) {
+        cin >> a[i];
+    }
+    int cnt = 0;
+    for(int i=0;i<=N-K;i++) {
+        //cout<< a[i] << "----------" <<  endl;
+        for(int j=i+1;j<=i+K && j<N;j++) {
+            if (a[i].size() == a[j].size()) cnt++;
+        }
+    }
+    cout << cnt << "\n";
+    return 0;
+}
+
+#+END_SRC
+
+
+** 코드 - queue 이용 풀이
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <queue>
+#include <string>
+using namespace std;
+
+int N, K;
+string a[300010];
+queue<int> q[21];
+
+int main(int argc, char* argv[])
+{
+    //freopen("input2.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
+    cin >> N >> K;    
+
+    string str;
+
+    long long cnt = 0;
+    for(int i=0;i<N;i++) {
+        cin >> str;
+        int size = str.length();
+        
+        while (!q[size].empty() && i - q[size].front() > K) {
+            q[size].pop();
+        }
+        cnt += q[size].size(); // queue에 n개 들어있으면, n쌍이 만들어짐
+        q[size].push(i);
+    }
+
+    printf("%lld\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/3078
