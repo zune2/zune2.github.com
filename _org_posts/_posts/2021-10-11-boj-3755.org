@@ -1,6 +1,6 @@
 #+Html: ---
 #+HTML: layout: post
-#+HTML: title: BOJ Double Queue
+#+HTML: title: BOJ 3755 Double Queue
 #+HTML: tags: STL multiset
 #+HTML: ---
 #+OPTIONS: ^:nil
