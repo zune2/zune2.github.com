@@ -13,14 +13,38 @@ tags: STL queue
 <div class="outline-text-2" id="text-org0a193dc">
 <ul class="org-ul">
 <li>그냥 순서대로 K개씩 비교하면, 30만x30만으로 시간초과가 된다.</li>
+</ul>
+</div>
+
+<div id="outline-container-org56d91df" class="outline-3">
+<h3 id="org56d91df">등수가 순서대로 들어옴</h3>
+<div class="outline-text-3" id="text-org56d91df">
+<ul class="org-ul">
 <li>등수가 0에서 증가하는 순서로 입력이 들어온다는 성질을 이용한다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org53755c8" class="outline-3">
+<h3 id="org53755c8">이름의 길이가 이름의 길이가 같아야 좋은 친구가 된다. (제약)</h3>
+<div class="outline-text-3" id="text-org53755c8">
+<ul class="org-ul">
 <li>이름의 길이는 2~20글자 -&gt; queue의 배열을 만든다. (index는 이름의 길이)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5a4d900" class="outline-3">
+<h3 id="org5a4d900">queue로 순서쌍을 count하는 방법</h3>
+<div class="outline-text-3" id="text-org5a4d900">
+<ul class="org-ul">
 <li>Q의 노드들와 현재 노드의 등수차이가 K보다 크면 버린다.
 <ul class="org-ul">
 <li>Q에 1개 있으면, 1쌍이 가능 -&gt; cnt 증가</li>
-<li>Q에 2개 이으면, 2쌍이 가능 -&gt; cnt 증가</li>
+<li>Q에 2개 있으면, 2쌍이 가능 -&gt; cnt 증가</li>
 </ul></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -111,6 +135,17 @@ tags: STL queue
 <div class="outline-text-2" id="text-org8c88d52">
 <ul class="org-ul">
 <li><a href="https://www.acmicpc.net/problem/3078">https://www.acmicpc.net/problem/3078</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org247faa4" class="outline-2">
+<h2 id="org247faa4">참고링크</h2>
+<div class="outline-text-2" id="text-org247faa4">
+<ul class="org-ul">
+<li><a href="https://blog.junu.dev/30">https://blog.junu.dev/30</a></li>
+<li><a href="https://sooooooyn.tistory.com/19">https://sooooooyn.tistory.com/19</a></li>
 </ul>
 </div>
 </div>
