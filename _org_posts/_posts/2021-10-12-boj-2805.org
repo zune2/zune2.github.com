@@ -1,0 +1,68 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 9093 단어 뒤집기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2805 나무 자르기
+
+** 접근하기
+- 이분탐색을 배우는 문제
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N; 
+long long M;
+int a[1000010];
+
+long long calc(int height)
+{
+    long long sum = 0;
+    for(int i=0;i<N;i++) {
+        int val = a[i] - height;
+        if (val < 0) val = 0; 
+        sum += val;
+    }     
+    return sum;
+}
+
+int main(int argc, char* argv[])
+{
+    //freopen("input.txt", "r", stdin);
+    //freopen("input2.txt", "r", stdin);
+    scanf("%d %lld", &N, &M);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+
+    int left = 0;
+    int right = 1000000000;
+
+    int ans = 0;
+    while(left <= right) {
+        int mid = (left + right) / 2;
+        long long ret = calc(mid);
+        //printf("mid %d ret : %lld\n", mid, ret);
+        if(ret >= M) {
+            ans = mid;    
+            left = mid + 1; 
+        } else {
+            right = mid-1;
+        }
+    }
+    printf("%d\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2805
+
+** TODO 참고자료
+- [[https://www.acmicpc.net/blog/view/109][이분탐색 헷갈리지 않게 구현하기]]
