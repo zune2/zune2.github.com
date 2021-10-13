@@ -1,0 +1,98 @@
+---
+layout: post
+title: BOJ 8595 히든넘버
+tags: 배열
+---
+
+<div id="outline-container-org00b029f" class="outline-2">
+<h2 id="org00b029f">BOJ 8595 히든넘버</h2>
+</div>
+
+<div id="outline-container-org35e18b8" class="outline-2">
+<h2 id="org35e18b8">접근하기</h2>
+<div class="outline-text-2" id="text-org35e18b8">
+<ul class="org-ul">
+<li>숫자를 만나면, 배열에 담는다.</li>
+<li>문자를 만나면, 배열에서 숫자를 꺼내서 sum한다.</li>
+<li>맨 마지막 숫자를 처리가 안될 수 있믐을 주의</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3e6ba1e" class="outline-2">
+<h2 id="org3e6ba1e">코드</h2>
+<div class="outline-text-2" id="text-org3e6ba1e">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[5000050];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">arr</span>[10];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">sum</span> = 0;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">calc</span>()
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (idx != 0) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = 0;    
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;idx;i++) {
+            num = num * 10 + arr[i];
+        }
+        idx = 0;
+        sum += num;
+    }  
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    sum = 0;
+    idx = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N); 
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] &gt;= <span style="color: #ad7fa8; font-style: italic;">'0'</span> &amp;&amp; str[i] &lt;= <span style="color: #ad7fa8; font-style: italic;">'9'</span>) {
+            arr[idx++] = str[i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>; 
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            calc();
+        } 
+    } 
+    calc(); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#47560;&#51648;&#47561; &#49707;&#51088;&#45716; &#47924;&#49884;&#46104;&#48064;&#47196;, loop&#46244;&#50640; &#45796;&#49884; check</span>
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, sum);
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4b88388" class="outline-2">
+<h2 id="org4b88388">코드 - 배열 끝에 marker를 주기 - calc를 한번만 호출 가능</h2>
+<div class="outline-text-2" id="text-org4b88388">
+<div class="org-src-container">
+<pre class="src src-cpp">...
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N); 
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    str[N++] = <span style="color: #ad7fa8; font-style: italic;">'X'</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">marker</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] &gt;= <span style="color: #ad7fa8; font-style: italic;">'0'</span> &amp;&amp; str[i] &lt;= <span style="color: #ad7fa8; font-style: italic;">'9'</span>) {
+            arr[idx++] = str[i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>; 
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            calc();
+        } 
+    } 
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, sum);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27e49c9" class="outline-2">
+<h2 id="org27e49c9">문제 링크</h2>
+<div class="outline-text-2" id="text-org27e49c9">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/8595">https://www.acmicpc.net/problem/8595</a></li>
+</ul>
+</div>
+</div>
