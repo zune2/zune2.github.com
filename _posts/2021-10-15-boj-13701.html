@@ -74,6 +74,9 @@ unsigned int a[(1&lt;&lt;25)/32]; 크기 재기
 $1 = 4194304
 (gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
 $3 = 4             # a배열크기 4MB
+
+(gdb) p sizeof(a) / (1&lt;&lt;20)
+$4 = 4
 </pre>
 
 <ul class="org-ul">
@@ -83,6 +86,11 @@ $3 = 4             # a배열크기 4MB
 &gt;&gt;&gt; # int배열 1&lt;&lt;25크기
 ... 4*(1&lt;&lt;25) / 2**20
 128.0
+</pre>
+
+<pre class="example">
+&gt;&gt;&gt; (4*(1&lt;&lt;25)/32)/2**20
+4.0
 </pre>
 </div>
 </div>

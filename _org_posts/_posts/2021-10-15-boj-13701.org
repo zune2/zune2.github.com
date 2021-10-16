@@ -28,6 +28,9 @@ unsigned int a[(1<<25)/32]; 크기 재기
 $1 = 4194304
 (gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
 $3 = 4             # a배열크기 4MB
+
+(gdb) p sizeof(a) / (1<<20)
+$4 = 4
 #+END_EXAMPLE
 
 - 그냥 int 배열을 쓰면, 4*32만큼의 크기가 필요하므로 메모리 제한에 걸림
@@ -35,6 +38,11 @@ $3 = 4             # a배열크기 4MB
 >>> # int배열 1<<25크기
 ... 4*(1<<25) / 2**20
 128.0
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+>>> (4*(1<<25)/32)/2**20
+4.0
 #+END_EXAMPLE
 ** 코드
 #+BEGIN_SRC cpp
