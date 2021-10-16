@@ -1,0 +1,60 @@
+---
+layout: post
+title: BOJ 12813 이진수 연산
+tags: STL bitest
+---
+
+<div id="outline-container-orgeb01947" class="outline-2">
+<h2 id="orgeb01947">BOJ 12813 이진수 연산</h2>
+</div>
+
+<div id="outline-container-org1dbe987" class="outline-2">
+<h2 id="org1dbe987">접근하기</h2>
+<div class="outline-text-2" id="text-org1dbe987">
+<ul class="org-ul">
+<li>STL bitset을 이용하면, 긴 자리수의 bit연산을 할 수 있다.
+<ul class="org-ul">
+<li>100000 bit이므로 uint등으로는 안됨</li>
+</ul></li>
+<li>각 자리수만 숫자가 바뀌므로, 문자열을 탐색하면서 푸는 것도 가능할 것임</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd4f1310" class="outline-2">
+<h2 id="orgd4f1310">코드 : STL bitset을 이용한 풀이</h2>
+<div class="outline-text-2" id="text-orgd4f1310">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bitset&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">str1</span>, <span style="color: #ff6347;">str2</span>;
+    cin &gt;&gt; str1 &gt;&gt; str2;
+    <span style="color: #8ae234; font-weight: bold;">bitset</span>&lt;100000&gt; <span style="color: #ff6347;">a</span>(str1);
+    <span style="color: #8ae234; font-weight: bold;">bitset</span>&lt;100000&gt; <span style="color: #ff6347;">b</span>(str2);
+    cout &lt;&lt; (a &amp; b).to_string() &lt;&lt; endl;
+    cout &lt;&lt; (a | b).to_string() &lt;&lt; endl;
+    cout &lt;&lt; (a ^ b).to_string() &lt;&lt; endl;
+    cout &lt;&lt; (~a).to_string() &lt;&lt; endl;
+    cout &lt;&lt; (~b).to_string() &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge75ad06" class="outline-2">
+<h2 id="orge75ad06">문제 링크</h2>
+<div class="outline-text-2" id="text-orge75ad06">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/12813">https://www.acmicpc.net/problem/12813</a></li>
+</ul>
+</div>
+</div>
