@@ -1,0 +1,73 @@
+---
+layout: post
+title: BOJ 13701 중복제거
+tags: 비트연산 메모리최적화
+---
+
+<div id="outline-container-org5bc4421" class="outline-2">
+<h2 id="org5bc4421">BOJ 13701 중복제거</h2>
+<div class="outline-text-2" id="text-org5bc4421">
+<ul class="org-ul">
+<li>메모리제한 8M</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org765c028" class="outline-2">
+<h2 id="org765c028">접근하기</h2>
+<div class="outline-text-2" id="text-org765c028">
+<ul class="org-ul">
+<li>배열로 선언하고, 각 bit를 숫자로 매핑하는 방법 써야 함</li>
+<li>정수 A1, A2, &#x2026; An을 각 bit에 mapping하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8b87a87" class="outline-2">
+<h2 id="org8b87a87">배열의 byte 크기 계산</h2>
+<div class="outline-text-2" id="text-org8b87a87">
+<pre class="example">
+unsigned int a[(1&lt;&lt;25)/32]; 크기 재기
+(gdb) p sizeof(a)
+$1 = 4194304
+(gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
+$3 = 4             # a배열크기 4MB
+</pre>
+<ul class="org-ul">
+<li>그냥 int 배열을 쓰면, 4*32만큼의 크기가 필요하므로 메모리 제한에 걸림</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7a4fcd4" class="outline-2">
+<h2 id="org7a4fcd4">코드</h2>
+<div class="outline-text-2" id="text-org7a4fcd4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[(1&lt;&lt;25)/32];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>*<span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num) != EOF) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> ((a[(num/32)] &amp; (1&lt;&lt; num%32)) == 0) {
+            a[(num/32)] = a[(num/32)] | (1&lt;&lt; num%32);
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, num);
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d8bc5d" class="outline-2">
+<h2 id="org0d8bc5d">문제 링크</h2>
+<div class="outline-text-2" id="text-org0d8bc5d">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/13701">https://www.acmicpc.net/problem/13701</a></li>
+</ul>
+</div>
+</div>
