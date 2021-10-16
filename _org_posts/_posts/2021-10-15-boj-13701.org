@@ -14,13 +14,13 @@
 
 ** 배열의 byte 크기 계산
 
-| 단위   | bit 수    |
-|--------+-----------|
-| 1 byte | 8 bit     |
-| 1 Kb   | 2^10 byte |
-| 1 Mb   | 2^20 byte |
-| 1 Gb   | 2^30 byte |
-| 1 Gb   | 2^40 byte |
+| 단위   | bit 수     |
+|--------+------------|
+| 1 byte | 8 bits     |
+| 1 Kb   | 2^10 bytes |
+| 1 Mb   | 2^20 bytes |
+| 1 Gb   | 2^30 bytes |
+| 1 Gb   | 2^40 bytes |
 
 #+BEGIN_EXAMPLE
 unsigned int a[(1<<25)/32]; 크기 재기
@@ -29,7 +29,13 @@ $1 = 4194304
 (gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
 $3 = 4             # a배열크기 4MB
 #+END_EXAMPLE
+
 - 그냥 int 배열을 쓰면, 4*32만큼의 크기가 필요하므로 메모리 제한에 걸림
+#+BEGIN_EXAMPLE
+>>> # int배열 1<<25크기
+... 4*(1<<25) / 2**20
+128.0
+#+END_EXAMPLE
 ** 코드
 #+BEGIN_SRC cpp
 #include <cstdio>

@@ -43,27 +43,27 @@ tags: 비트연산 메모리최적화
 <tbody>
 <tr>
 <td class="org-left">1 byte</td>
-<td class="org-left">8 bit</td>
+<td class="org-left">8 bits</td>
 </tr>
 
 <tr>
 <td class="org-left">1 Kb</td>
-<td class="org-left">2^10 byte</td>
+<td class="org-left">2^10 bytes</td>
 </tr>
 
 <tr>
 <td class="org-left">1 Mb</td>
-<td class="org-left">2^20 byte</td>
+<td class="org-left">2^20 bytes</td>
 </tr>
 
 <tr>
 <td class="org-left">1 Gb</td>
-<td class="org-left">2^30 byte</td>
+<td class="org-left">2^30 bytes</td>
 </tr>
 
 <tr>
 <td class="org-left">1 Gb</td>
-<td class="org-left">2^40 byte</td>
+<td class="org-left">2^40 bytes</td>
 </tr>
 </tbody>
 </table>
@@ -75,9 +75,15 @@ $1 = 4194304
 (gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
 $3 = 4             # a배열크기 4MB
 </pre>
+
 <ul class="org-ul">
 <li>그냥 int 배열을 쓰면, 4*32만큼의 크기가 필요하므로 메모리 제한에 걸림</li>
 </ul>
+<pre class="example">
+&gt;&gt;&gt; # int배열 1&lt;&lt;25크기
+... 4*(1&lt;&lt;25) / 2**20
+128.0
+</pre>
 </div>
 </div>
 <div id="outline-container-org7a4fcd4" class="outline-2">
