@@ -94,9 +94,9 @@ $4 = 4
 </pre>
 </div>
 </div>
-<div id="outline-container-org7a4fcd4" class="outline-2">
-<h2 id="org7a4fcd4">코드</h2>
-<div class="outline-text-2" id="text-org7a4fcd4">
+<div id="outline-container-org1735487" class="outline-2">
+<h2 id="org1735487">코드 - 배열 이용 풀이</h2>
+<div class="outline-text-2" id="text-org1735487">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
 
@@ -119,6 +119,31 @@ $4 = 4
 </div>
 </div>
 
+<div id="outline-container-orgc3ae341" class="outline-2">
+<h2 id="orgc3ae341">코드 - STL bitset 이용 풀이</h2>
+<div class="outline-text-2" id="text-orgc3ae341">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bitset&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>*<span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">bitset</span>&lt;(1&lt;&lt;25)&gt; <span style="color: #ff6347;">s</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num) != EOF) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (s.test(num-1) == <span style="color: #8ae234;">false</span>) {
+            s.set(num-1, 1);
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, num);
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
 <div id="outline-container-org0d8bc5d" class="outline-2">
 <h2 id="org0d8bc5d">문제 링크</h2>
 <div class="outline-text-2" id="text-org0d8bc5d">

@@ -44,7 +44,7 @@ $4 = 4
 >>> (4*(1<<25)/32)/2**20
 4.0
 #+END_EXAMPLE
-** 코드
+** 코드 - 배열 이용 풀이
 #+BEGIN_SRC cpp
 #include <cstdio>
 
@@ -64,5 +64,25 @@ int main(int argc, char*argv[])
 }
 #+END_SRC
 
+** 코드 - STL bitset 이용 풀이
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <bitset>
+using namespace std;
+
+int main(int argc, char*argv[])
+{
+    int num;
+    bitset<(1<<25)> s;
+    while(scanf("%d", &num) != EOF) {
+        if (s.test(num-1) == false) {
+            s.set(num-1, 1);
+            printf("%d ", num);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+#+END_SRC
 ** 문제 링크
 - https://www.acmicpc.net/problem/13701
