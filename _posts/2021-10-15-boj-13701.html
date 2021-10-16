@@ -26,6 +26,48 @@ tags: 비트연산 메모리최적화
 <div id="outline-container-org8b87a87" class="outline-2">
 <h2 id="org8b87a87">배열의 byte 크기 계산</h2>
 <div class="outline-text-2" id="text-org8b87a87">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">단위</th>
+<th scope="col" class="org-left">bit 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">1 byte</td>
+<td class="org-left">8 bit</td>
+</tr>
+
+<tr>
+<td class="org-left">1 Kb</td>
+<td class="org-left">2^10 byte</td>
+</tr>
+
+<tr>
+<td class="org-left">1 Mb</td>
+<td class="org-left">2^20 byte</td>
+</tr>
+
+<tr>
+<td class="org-left">1 Gb</td>
+<td class="org-left">2^30 byte</td>
+</tr>
+
+<tr>
+<td class="org-left">1 Gb</td>
+<td class="org-left">2^40 byte</td>
+</tr>
+</tbody>
+</table>
+
 <pre class="example">
 unsigned int a[(1&lt;&lt;25)/32]; 크기 재기
 (gdb) p sizeof(a)

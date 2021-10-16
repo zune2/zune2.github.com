@@ -13,6 +13,15 @@
 - 정수 A1, A2, ... An을 각 bit에 mapping하기
 
 ** 배열의 byte 크기 계산
+
+| 단위   | bit 수    |
+|--------+-----------|
+| 1 byte | 8 bit     |
+| 1 Kb   | 2^10 byte |
+| 1 Mb   | 2^20 byte |
+| 1 Gb   | 2^30 byte |
+| 1 Gb   | 2^40 byte |
+
 #+BEGIN_EXAMPLE
 unsigned int a[(1<<25)/32]; 크기 재기
 (gdb) p sizeof(a)
