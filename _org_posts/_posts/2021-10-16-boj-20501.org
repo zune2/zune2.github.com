@@ -1,0 +1,49 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 20501 Facebook
+#+HTML: tags: STL bitset
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 20501 Facebook
+
+** 접근하기
+- bit의 길이가 2000으로 길어서, STL의 bitset을 이용함
+- AND 연산으로 1의 개수를 세면 된다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <bitset>
+
+using namespace std;
+
+int N, Q;
+
+bitset<2001> a[2001];
+
+int main(int argc, char* argv[])
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cin >> N;
+    string str; 
+    for(int i=1;i<=N;i++) {
+        cin >> str; 
+        bitset<2001> tmp(str);
+        a[i] = tmp;
+    }
+
+    cin >> Q;
+    int n1, n2;
+    for(int i=1;i<=Q;i++) {
+        cin >> n1 >> n2;
+        cout << (a[n1] & a[n2]).count() << "\n";
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/20501
