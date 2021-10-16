@@ -27,11 +27,11 @@ int main(int argc, char* argv[])
     cin >> str1 >> str2;
     bitset<100000> a(str1);
     bitset<100000> b(str2);
-    cout << (a & b).to_string() << endl;
-    cout << (a | b).to_string() << endl;
-    cout << (a ^ b).to_string() << endl;
-    cout << (~a).to_string() << endl;
-    cout << (~b).to_string() << endl;
+    cout << (a & b) << endl;
+    cout << (a | b) << endl;
+    cout << (a ^ b) << endl;
+    cout << (~a) << endl;
+    cout << (~b) << endl;
     return 0;
 }
 #+END_SRC
