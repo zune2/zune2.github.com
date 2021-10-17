@@ -1,0 +1,93 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 13913 숨바꼭질 4
+#+HTML: tags: STL BFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 13913 숨바꼭질 4
+
+** 접근하기
+- BFS 순서로 점을 이동하여, 목표 위치에 제일먼저 닿으면, 최단거리
+- 1, -1 이동은 왔다갔다를 무한반복할 수 있음. visit배열로 중복 처리를 제외함
+- path출력은 stack에 역순으로 출력
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+#include <stack>
+using namespace std;
+
+int N, K;
+
+typedef struct Node {
+    int pos;
+    int depth;
+} Node;
+
+queue<Node> q;
+int const MV = 100000;
+bool visit[100010];
+int path[100010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &K);
+
+    for(int i=0;i<=100000;i++) path[i] = -1;
+
+    q.push({N, 0});
+    path[N] = N;
+    visit[N] = true;
+    
+    stack <int> sp;
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+
+        if (cur.pos == K) {
+            printf("%d\n", cur.depth);
+
+            int pos = cur.pos;
+            while(pos != N) {
+                sp.push(pos);
+                pos = path[pos];
+            }
+            sp.push(pos);
+
+            while(!sp.empty()) {
+                int val = sp.top(); sp.pop();
+                printf("%d ", val);
+            }
+            printf("\n");
+            break;
+        }
+
+        int pos = cur.pos;
+        int depth = cur.depth;
+
+        if (pos + 1 <= MV && visit[pos+1] == false) {
+            Node next = {pos + 1, depth + 1};
+            path[pos + 1] = pos;
+            visit[pos + 1] = true;
+            q.push(next);
+        }
+        if (pos - 1 >= 0 && visit[pos-1] == false) {
+            Node next = {pos - 1, depth + 1};
+            path[pos - 1] = pos;
+            visit[pos - 1] = true;
+            q.push(next);
+        }
+        if (pos * 2 <= MV && visit[pos*2] == false) {
+            Node next = {pos * 2, depth + 1};
+            path[pos * 2] = pos;
+            visit[pos * 2] = true;
+            q.push(next);
+        }
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/13913
