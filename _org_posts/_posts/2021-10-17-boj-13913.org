@@ -10,9 +10,8 @@
 ** 접근하기
 - BFS 순서로 점을 이동하여, 목표 위치에 제일먼저 닿으면, 최단거리
 - 1, -1 이동은 왔다갔다를 무한반복할 수 있음. visit배열로 중복 처리를 제외함
-- path출력은 stack에 역순으로 출력
+- path출력은 stack 순서로 출력
 
-** 코드
 #+BEGIN_SRC cpp
 #include <cstdio>
 #include <queue>
