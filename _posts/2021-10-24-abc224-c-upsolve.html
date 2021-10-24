@@ -1,0 +1,80 @@
+---
+layout: post
+title: C - Triangle?
+tags: AtCoder
+---
+
+<div id="outline-container-org930c4b0" class="outline-2">
+<h2 id="org930c4b0">C - Triangle?</h2>
+</div>
+
+<div id="outline-container-org09b17fb" class="outline-2">
+<h2 id="org09b17fb">접근하기</h2>
+<div class="outline-text-2" id="text-org09b17fb">
+<ul class="org-ul">
+<li>N이 300이하, 3중 루프로 다른 세점을 뽑아서, 삼각형판별 조건을 확인해도 됨</li>
+<li>300 x 300 x 300 = 27000000 (2700만)</li>
+
+<li>삼각형 판별은 editorial로 확인함</li>
+<li>삼각형 면적 공식에서 이용함</li>
+</ul>
+<pre class="example">
+1/2 * | (x2 - x1)(y3 - y1) - (x3 - x1)(y2 - y1) | 
+</pre>
+<ul class="org-ul">
+<li>value가 0이면, 세개의 점이 같은 라인에 있음을 의미한다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2179e02" class="outline-2">
+<h2 id="org2179e02">코드</h2>
+<div class="outline-text-2" id="text-org2179e02">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[310];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;pool[i].x, &amp;pool[i].y);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-2;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;N-1;j++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=j+1;k&lt;N;k++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (((pool[j].x - pool[i].x) * (pool[k].y - pool[i].y) -  
+                (pool[k].x - pool[i].x) * (pool[j].y - pool[i].y)) != 0) {
+                    ans++;
+                }
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3750ca7" class="outline-2">
+<h2 id="org3750ca7">문제 링크</h2>
+<div class="outline-text-2" id="text-org3750ca7">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc224/tasks/abc224_c">https://atcoder.jp/contests/abc224/tasks/abc224_c</a></li>
+</ul>
+</div>
+</div>
