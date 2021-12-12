@@ -1,0 +1,45 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: C - Counting 2
+#+HTML: tags: AtCoder 최적화
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Counting 2
+- 배열이 주어지고, 질문의 x보다 크거나 같은 숫자의 개수 세기
+
+** 접근하기
+- 이중 loop로 그냥 찾으면, TLE가 날 것
+- sort + lower_bound를 이용함
+   
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N, Q;
+
+int a[200020];
+int q[200020];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &Q);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+    int val;
+    for(int i=0;i<Q;i++) {
+        scanf("%d", &val);
+        cout << N- (lower_bound(a, a+N, val) - a) << "\n";
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc231/tasks/abc231_c
+
