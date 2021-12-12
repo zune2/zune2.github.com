@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: BOJ 11052 카드 구매하기
-#+HTML: tags: STL
+#+HTML: tags: DP
 #+HTML: ---
 #+OPTIONS: ^:nil
 
