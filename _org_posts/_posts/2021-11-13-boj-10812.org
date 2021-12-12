@@ -52,7 +52,6 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
-
 ** 코드 - STL rotate로 풀기
 - vector 생성자에서 N을 주면, 배열처럼 사용
 - std::rotate로 바꿈
