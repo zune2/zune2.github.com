@@ -1,0 +1,64 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2358 평행선
+#+HTML: tags: 자료구조
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2358 평행선
+- n개의 점(x,y)이 주어질 때, 가로,세로 평행선의 수를 세기
+
+** 접근하기
+- xmap과 ymap에 각각 x, y 좌표를 key로 하고, 값을 1씩 증가
+- 2보다 크면, (두점 이상이면), 수평선, 수직선이 된다.
+
+#+BEGIN_EXAMPLE
+4
+0 0
+10 10
+0 10
+10 0
+
+mx[0] = 2    -> 1
+mx[10] = 2   -> 1
+my[0] = 2    -> 1
+my[10] = 2   -> 1 --> 4
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <map>
+
+using namespace std;
+
+int N;
+
+map<int, int> mx;
+map<int, int> my;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int x, y;
+    for(int i=0;i<N;i++) {
+        scanf("%d %d", &x, &y);
+        mx[x]++;
+        my[y]++;
+    }
+
+    int cnt = 0;
+    for(auto val:mx) {
+        if (val.second >= 2) cnt++; 
+    }
+
+    for(auto val:my) {
+        if (val.second >= 2) cnt++; 
+    }
+    printf("%d\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2358
