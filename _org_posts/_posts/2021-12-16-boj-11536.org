@@ -1,61 +1,73 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 11536 줄 세우기
+#+HTML: title: BOJ 15688 수 정렬하기 5
 #+HTML: tags: STL
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** BOJ 11536 줄 세우기
-- 문자열 배열을 전체 비교하는 방법
+** BOJ 15688 수 정렬하기 5
+- 절대값이 100만인 숫자 N이 백만인 배열 정렬하기
 
 ** 접근하기
-- STL vector 객체에 operator가 있음
+- STL sort이용
+- 200만 배열 만들어서 음수/양수 나눠서 저장
 
-** 코드
+** 코드 - STL sort
 #+BEGIN_SRC cpp
-#include <string>
-#include <iostream>
+#include <cstdio>
 #include <algorithm>
-
+#include <vector>
 using namespace std;
+
 int N;
-
-bool cmp_dec(const string& str1, const string& str2)
-{
-    return str1 > str2;
-}
-
-bool cmp_inc(const string& str1, const string& str2)
-{
-    return str1 < str2;
-}
 
 int main(int argc, char* argv[])
 {
-    cin >> N;
-    vector <string> org(N);
-    vector <string> inc(N);
-    vector <string> dec(N);
+    scanf("%d", &N);
+    vector<int> v(N);
+    int num;
     for(int i=0;i<N;i++) {
-        string tmp;
-        cin >> tmp;
-        org[i] = tmp;
-        inc[i] = tmp;
-        dec[i] = tmp;
+        scanf("%d", &num);
+        v[i] = num; 
     }
-    sort(inc.begin(), inc.end(), cmp_inc);
-    sort(dec.begin(), dec.end(), cmp_dec);
+    sort(v.begin(), v.end());
+    for(auto item:v) {
+        printf("%d\n", item);
+    }
+    return 0;
+}
+#+END_SRC
 
-    if (org == inc) {
-        cout << "INCREASING" << "\n";
-    } else if (org == dec) {
-        cout << "DECREASING" << "\n";
-    } else {
-        cout << "NEITHER" << "\n";
+** 코드 - 200만 배열 이용
+#+BEGIN_SRC cpp
+// 6632 ms
+#include <cstdio>
+
+int N;
+
+#define OFFSET 1000000
+int a[2000001];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num);
+        a[OFFSET+num]++;
+    }
+
+    for(int i=0;i<=2000000;i++) {
+        for(int j=0;j<a[i];j++) {
+            if (i <= OFFSET)
+                printf("%d\n", -1*(OFFSET-i));
+            else
+                printf("%d\n", i-OFFSET);
+        }
     }
     return 0;
 }
 #+END_SRC
 
 ** 문제 링크
-- https://www.acmicpc.net/problem/11536
+- https://www.acmicpc.net/problem/15688

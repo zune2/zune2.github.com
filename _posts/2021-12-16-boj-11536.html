@@ -1,14 +1,14 @@
 ---
 layout: post
-title: BOJ 11536 줄 세우기
+title: BOJ 15688 수 정렬하기 5
 tags: STL
 ---
 
-<div id="outline-container-org5fc3ee6" class="outline-2">
-<h2 id="org5fc3ee6">BOJ 11536 줄 세우기</h2>
-<div class="outline-text-2" id="text-org5fc3ee6">
+<div id="outline-container-org466dbe7" class="outline-2">
+<h2 id="org466dbe7">BOJ 15688 수 정렬하기 5</h2>
+<div class="outline-text-2" id="text-org466dbe7">
 <ul class="org-ul">
-<li>문자열 배열을 전체 비교하는 방법</li>
+<li>절대값이 100만인 숫자 N이 백만인 배열 정렬하기</li>
 </ul>
 </div>
 </div>
@@ -17,54 +17,71 @@ tags: STL
 <h2 id="org299803d">접근하기</h2>
 <div class="outline-text-2" id="text-org299803d">
 <ul class="org-ul">
-<li>STL vector 객체에 operator가 있음</li>
+<li>STL sort이용</li>
+<li>200만 배열 만들어서 음수/양수 나눠서 저장</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org56e0015" class="outline-2">
-<h2 id="org56e0015">코드</h2>
-<div class="outline-text-2" id="text-org56e0015">
+<div id="outline-container-orgdf33fb0" class="outline-2">
+<h2 id="orgdf33fb0">코드 - STL sort</h2>
+<div class="outline-text-2" id="text-orgdf33fb0">
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
-<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
 <span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
-
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
 <span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
-
-<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp_dec</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str1</span>, <span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str2</span>)
-{
-    <span style="color: #729fcf; font-weight: bold;">return</span> str1 &gt; str2;
-}
-
-<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp_inc</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str1</span>, <span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str2</span>)
-{
-    <span style="color: #729fcf; font-weight: bold;">return</span> str1 &lt; str2;
-}
 
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
 {
-    cin &gt;&gt; N;
-    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">org</span>(N);
-    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">inc</span>(N);
-    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">dec</span>(N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
-        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>;
-        cin &gt;&gt; tmp;
-        org[<span style="color: #8ae234;">i</span>] = tmp;
-        inc[i] = tmp;
-        dec[i] = tmp;
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        v[i] = num; 
     }
-    sort(inc.begin(), inc.end(), cmp_inc);
-    sort(dec.begin(), dec.end(), cmp_dec);
+    sort(v.begin(), v.end());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">item</span>:v) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, item);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
 
-    <span style="color: #729fcf; font-weight: bold;">if</span> (org == inc) {
-        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"INCREASING"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
-    } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (org == dec) {
-        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"DECREASING"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
-    } <span style="color: #729fcf; font-weight: bold;">else</span> {
-        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"NEITHER"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+<div id="outline-container-org33ae664" class="outline-2">
+<h2 id="org33ae664">코드 - 200만 배열 이용</h2>
+<div class="outline-text-2" id="text-org33ae664">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #888a85;">// </span><span style="color: #888a85;">6632 ms</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">OFFSET</span> 1000000
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[2000001];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        a[OFFSET+num]++;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=2000000;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;a[i];j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i &lt;= OFFSET)
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, -1*(OFFSET-i));
+            <span style="color: #729fcf; font-weight: bold;">else</span>
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, i-OFFSET);
+        }
     }
     <span style="color: #729fcf; font-weight: bold;">return</span> 0;
 }
@@ -77,7 +94,7 @@ tags: STL
 <h2 id="org68c59b3">문제 링크</h2>
 <div class="outline-text-2" id="text-org68c59b3">
 <ul class="org-ul">
-<li><a href="https://www.acmicpc.net/problem/11536">https://www.acmicpc.net/problem/11536</a></li>
+<li><a href="https://www.acmicpc.net/problem/15688">https://www.acmicpc.net/problem/15688</a></li>
 </ul>
 </div>
 </div>
