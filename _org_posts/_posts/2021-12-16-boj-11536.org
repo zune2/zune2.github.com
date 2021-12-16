@@ -1,0 +1,61 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 11536 줄 세우기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11536 줄 세우기
+- 문자열 배열을 전체 비교하는 방법
+
+** 접근하기
+- STL vector 객체에 operator가 있음
+
+** 코드
+#+BEGIN_SRC cpp
+#include <string>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+int N;
+
+bool cmp_dec(const string& str1, const string& str2)
+{
+    return str1 > str2;
+}
+
+bool cmp_inc(const string& str1, const string& str2)
+{
+    return str1 < str2;
+}
+
+int main(int argc, char* argv[])
+{
+    cin >> N;
+    vector <string> org(N);
+    vector <string> inc(N);
+    vector <string> dec(N);
+    for(int i=0;i<N;i++) {
+        string tmp;
+        cin >> tmp;
+        org[i] = tmp;
+        inc[i] = tmp;
+        dec[i] = tmp;
+    }
+    sort(inc.begin(), inc.end(), cmp_inc);
+    sort(dec.begin(), dec.end(), cmp_dec);
+
+    if (org == inc) {
+        cout << "INCREASING" << "\n";
+    } else if (org == dec) {
+        cout << "DECREASING" << "\n";
+    } else {
+        cout << "NEITHER" << "\n";
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/11536

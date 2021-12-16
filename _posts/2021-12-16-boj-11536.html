@@ -1,0 +1,83 @@
+---
+layout: post
+title: BOJ 11536 줄 세우기
+tags: STL
+---
+
+<div id="outline-container-org5fc3ee6" class="outline-2">
+<h2 id="org5fc3ee6">BOJ 11536 줄 세우기</h2>
+<div class="outline-text-2" id="text-org5fc3ee6">
+<ul class="org-ul">
+<li>문자열 배열을 전체 비교하는 방법</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org299803d" class="outline-2">
+<h2 id="org299803d">접근하기</h2>
+<div class="outline-text-2" id="text-org299803d">
+<ul class="org-ul">
+<li>STL vector 객체에 operator가 있음</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org56e0015" class="outline-2">
+<h2 id="org56e0015">코드</h2>
+<div class="outline-text-2" id="text-org56e0015">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp_dec</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str1</span>, <span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> str1 &gt; str2;
+}
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp_inc</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str1</span>, <span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">string</span>&amp; <span style="color: #ff6347;">str2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> str1 &lt; str2;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cin &gt;&gt; N;
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">org</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">inc</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">dec</span>(N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>;
+        cin &gt;&gt; tmp;
+        org[<span style="color: #8ae234;">i</span>] = tmp;
+        inc[i] = tmp;
+        dec[i] = tmp;
+    }
+    sort(inc.begin(), inc.end(), cmp_inc);
+    sort(dec.begin(), dec.end(), cmp_dec);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (org == inc) {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"INCREASING"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (org == dec) {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"DECREASING"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"NEITHER"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org68c59b3" class="outline-2">
+<h2 id="org68c59b3">문제 링크</h2>
+<div class="outline-text-2" id="text-org68c59b3">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11536">https://www.acmicpc.net/problem/11536</a></li>
+</ul>
+</div>
+</div>
