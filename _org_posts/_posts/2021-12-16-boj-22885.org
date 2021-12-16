@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 22885 Reersort
+#+HTML: title: BOJ 22885 Reversort
 #+HTML: tags: 구현
 #+HTML: ---
 #+OPTIONS: ^:nil
