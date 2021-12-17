@@ -1,0 +1,99 @@
+---
+layout: post
+title: BOJ 16561 3의 배수
+tags: 최적화
+---
+
+<div id="outline-container-org5c8d7d0" class="outline-2">
+<h2 id="org5c8d7d0">BOJ 16561 3의 배수</h2>
+<div class="outline-text-2" id="text-org5c8d7d0">
+<ul class="org-ul">
+<li>3의 배수 3개를 조합해서 N만드는 경우의 수 구하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org48bb997" class="outline-2">
+<h2 id="org48bb997">접근하기</h2>
+<div class="outline-text-2" id="text-org48bb997">
+<pre class="example">
+a + b + c = N
+형태로 3중 loop로 가능
+
+&gt;&gt;&gt; (3000*3000*3000)/(3*3*3)
+1000000000 십억만큼 반복 -&gt; 시간초과
+
+</pre>
+
+<pre class="example">
+c = N - a - b
+
+c가 3의 배수이어야 함
+3보다 같거나 커야 함
+N보다 작아야 함
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgeeb211a" class="outline-2">
+<h2 id="orgeeb211a">시간초과 코드</h2>
+<div class="outline-text-2" id="text-orgeeb211a">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #888a85;">// </span><span style="color: #888a85;">&#49884;&#44036;&#52488;&#44284; &#54400;&#51060;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i+=3) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=3;j&lt;=N;j+=3) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=3;k&lt;=N;k+=3) {
+                ans = i + j + k;  
+                <span style="color: #729fcf; font-weight: bold;">if</span> (ans == N) cnt += 1;
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc3ffeba" class="outline-2">
+<h2 id="orgc3ffeba">코드 - 2중 for loop</h2>
+<div class="outline-text-2" id="text-orgc3ffeba">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i+=3) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=3;j&lt;=N;j+=3) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span> = N - i - j;  
+            <span style="color: #729fcf; font-weight: bold;">if</span> (c &gt;= 3 &amp;&amp; c%3 == 0 &amp;&amp; c &lt; N) cnt += 1;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb55e8ee" class="outline-2">
+<h2 id="orgb55e8ee">문제 링크</h2>
+<div class="outline-text-2" id="text-orgb55e8ee">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/16561">https://www.acmicpc.net/problem/16561</a></li>
+</ul>
+</div>
+</div>
