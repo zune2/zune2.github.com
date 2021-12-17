@@ -1,0 +1,72 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1464 뒤집기 3
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1464 뒤집기 3
+- 조건대로 문자열 뒤집어서, 사전순으로 최소가 되도록 출력
+- 완전탐색으로 하면 시간초과가 남
+
+- 그리디하게 성질을 발견해야 하는 문제 (이해가 어렵다)
+- 다른 블로그 풀이를 [[https://kangminjun.tistory.com/entry/BOJ-1464-%EB%B2%88-%EB%92%A4%EC%A7%91%EA%B8%B0-3][참고]]
+
+** 접근하기
+#+BEGIN_EXAMPLE
+s = BCDAF
+
+ans = B
+
+if (ans [0] < s[1]) // C
+    ans = C B
+
+if (ans [1] < s[2]) // D
+    ans = D C B
+
+if (ans [2] < s[3]) // A
+    ans = D C B A
+
+if (ans [3] < s[4]) // F
+    ans = F D C B A
+
+reserse(ans) => A B C D F
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+char str[51];
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", str);
+    int len;
+    for(len = 0;str[len];len++);
+    string ans = "";
+    ans += str[0];
+    for(int i=1;i<len;i++) {
+        if (ans[i-1] < str[i]) {
+            ans = str[i] + ans;
+        } else {
+            ans = ans + str[i];
+        }
+    } 
+    reverse(ans.begin(), ans.end());
+    cout << ans << "\n";
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1464
+
+** 풀이참고
+- https://kangminjun.tistory.com/entry/BOJ-1464-%EB%B2%88-%EB%92%A4%EC%A7%91%EA%B8%B0-3
