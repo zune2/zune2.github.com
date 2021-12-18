@@ -11,3 +11,15 @@
 - 한글 설명자료
   - https://blog.solarmagic.dev/algorithm/2020/09/08/aclibrary/
 
+
+** 사용법
+#+BEGIN_EXAMPLE
+g++ -o code code.cpp -std=c++14 -I.
+python expander.py code.cpp
+
+$ ls
+atcoder  code.cpp  combined.cpp  document_en  expander.py
+code     combined  combined.o    document_ja  try1
+#+END_EXAMPLE
+- combinded.cpp에 code가 copy됨
+- atcoder/all을 include하면, header의 모든 내용이 copy됨 (코드가 길어짐) 
