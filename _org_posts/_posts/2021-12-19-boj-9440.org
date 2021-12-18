@@ -94,3 +94,6 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://www.acmicpc.net/problem/9440
+
+** TC 참고
+- https://kwanghyuk.tistory.com/76
