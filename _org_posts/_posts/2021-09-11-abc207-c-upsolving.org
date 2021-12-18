@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Many Segments
+#+HTML: title: abc207 C - Many Segments
 #+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil

@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Ringo's Favorite Numbers 2
+#+HTML: title: abc200 C - Ringo's Favorite Numbers 2
 #+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil

@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: D - Online games
+#+HTML: title: abc221 D - Online games
 #+HTML: tags: AtCoder Greedy
 #+HTML: ---
 #+OPTIONS: ^:nil

@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Friends and Travel costs
+#+HTML: title: abc203 C - Friends and Travel costs
 #+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil

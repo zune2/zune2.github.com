@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Triangle?
+#+HTML: title: abc224 C - Triangle?
 #+HTML: tags: AtCoder
 #+HTML: ---
 #+OPTIONS: ^:nil

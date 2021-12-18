@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: C - Counting 2
+#+HTML: title: abc231 C - Counting 2
 #+HTML: tags: AtCoder 최적화
 #+HTML: ---
 #+OPTIONS: ^:nil

@@ -1,11 +1,11 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 17069 파이프 옮기기
+#+HTML: title: BOJ 17069 파이프 옮기기 2
 #+HTML: tags: DP
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** BOJ 17069
+** BOJ 17069 파이프 옮기기 2
 - 오른쪽 방향으로 가로,세로,대각선 이동하고 N,N에 도착가능한 경우의 수 세기
 
 ** 접근하기
