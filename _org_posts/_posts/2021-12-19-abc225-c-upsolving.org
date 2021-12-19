@@ -1,0 +1,59 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: abc225 C - Calendar Validator
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Calendar Validator
+
+** 접근하기
+- (시작점-1)%7 + M <=7 이어야 범위 안에 들어온다. (놓치기 쉬운 조건)
+- 가로로 이동할때 왼쪽 값과 1만큼 차이
+- 세로로 이동할 때 위 값과 7만큼 차이
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N, M;
+
+int a[10010][8];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=M;j++) {
+            scanf("%d", &a[i][j]);
+        } 
+    } 
+
+    bool ok = true;
+
+    // 시작점의 값 범위
+    if ((a[1][1] -1)%7 + M > 7) ok = false;
+
+    for(int j=1;j<=M;j++) {
+        for(int i=1;i<=N;i++) {
+            if (i>=2 && a[i][j] - a[i-1][j] != 7) {
+                ok = false;
+                break;
+            }
+            if (j>=2 && a[i][j] - a[i][j-1] != 1) {
+                ok = false;
+                break;
+            }
+        } 
+    } 
+
+    if (ok)
+        printf("Yes\n");
+    else
+        printf("No\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc225/tasks/abc225_c
