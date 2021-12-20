@@ -1,0 +1,88 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 10451 순열 사이클
+#+HTML: tags: DFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 10451 순열 사이클
+- graph 가 주어질 때, 순열 사이클의 개수 세기
+- dfs에서 cycle의 개수를 센다.
+
+** 접근하기
+#+BEGIN_EXAMPLE
+dfs에서
+visit배열과 함께
+finish 배열을 유지함
+
+f(1) -> f(2) -> f(3)
+
+visit  1 1 1
+finish 1 1 1
+
+f(1) -> f(2) -> f(3) -> f(1) 형태 cycle이 있으면
+
+visit  1 1 1
+finish 0 0 0
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+int T;
+int N;
+
+int a[1001];
+int visit[1001];
+int done[1001];
+
+int ans;
+
+void dfs(int k)
+{
+    visit[k] = 1;
+
+    int nextval = a[k];
+    if (!visit[nextval]) {
+        dfs(nextval);
+    } else if (!done[nextval]) {
+        ans += 1;
+    }
+    done[k] = 1;
+}
+
+void solve()
+{
+    ans = 0;
+    scanf("%d", &N);
+    for(int i=1;i<=N;i++) {
+        visit[i] = 0;
+        done[i] = 0;
+    }
+    int num;
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &num);
+        a[i] = num;
+    }
+
+    for(int i=1;i<=N;i++) {
+        if(!visit[i]) dfs(i);
+    }
+    printf("%d\n", ans);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/10451
