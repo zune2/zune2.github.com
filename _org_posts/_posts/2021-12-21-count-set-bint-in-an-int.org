@@ -1,0 +1,53 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: 정수의 bit표현에서 1의 개수 세기
+#+HTML: tags: Bit연산
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+
+** 두 정수의 비트 표현에서 다른 자리수가 몇개인지 세기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+다른 비트의 개수를 세기
+
+  10110
+  01111
+  -----
+  11001(25)  -> 3
+
+#+END_EXAMPLE
+
+** 코드 - countSetBits - log2(N)
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int countSetBits(unsigned int n)
+{
+    // base case
+    if (n == 0)
+        return 0;
+    else
+        // if last bit set add 1 else add 0
+        return (n & 1) + countSetBits(n >> 1);
+}
+
+int main(int argc, char* argv[])
+{
+    unsigned int first = 22;
+    unsigned int second = 15;
+   
+
+    printf("%u\n", first ^ second); // 25
+    printf("%d\n", countSetBits(first ^ second));  // 3
+    return 0;
+}
+#+END_SRC
+
+
+** TODO 코드 - Table 기반 최적화
+- 링크 참조
+
+** 참고자료
+- https://www.geeksforgeeks.org/count-set-bits-in-an-integer/
