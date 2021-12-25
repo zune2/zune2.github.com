@@ -1,0 +1,47 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 10973 이전 순열
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 10973 이전 순열
+- 이전에 나오는 순열 구하기
+
+** 접근하기
+- STL prev_permutation을 이용
+
+** 코드 - STL prev permutation 이용함
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    vector<int> a(N);
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num);
+        a[i] = num;
+    }
+    if (prev_permutation(a.begin(), a.end())) {
+        for(auto& o:a) {
+            printf("%d ", o);
+        } 
+        printf("\n");
+    } else {
+        printf("-1\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+** TODO 코드 - 그냥 구현하기
+
+** 문제 링크
+- https://www.acmicpc.net/problem/10973
