@@ -1,0 +1,61 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2635 수 이어가기
+#+HTML: tags: 수학 dfs
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2635 수 이어가기
+- 첫번째 수 주어짐
+- 두번째 수 고름
+- 세번째 수 = 첫번째 - 두번째
+- 네번째 수 - 두번째 - 세번째
+- ... 순서로 계속 음수가 나올 때까지
+
+** 코드 - dfs style로 풀이
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+int N;
+
+int ans = 0;
+int tmp[30000/2];
+vector<int> v;
+void dfs(int idx, int num1, int num2)
+{
+    if (num1 < 0) {
+        if (ans < idx) {
+            ans = idx;
+            v.clear();
+            for(int i=0;i<ans;i++) {
+                v.push_back(tmp[i]);
+            }
+        }
+        return;
+    }
+    tmp[idx+1] = num2;
+    dfs(idx+1, num2, num1-num2);
+}
+
+int main(int argc, char* argv[])
+{
+    ans = 0;
+    scanf("%d", &N);
+    
+    tmp[0] = N;
+    for(int i=0;i<=N;i++) {
+        dfs(0, N, N-i);
+    }
+    printf("%d\n", (int)v.size());
+    for(auto o:v) {
+        printf("%d ", o);
+    }
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2635
