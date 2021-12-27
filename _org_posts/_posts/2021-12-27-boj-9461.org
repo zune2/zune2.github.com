@@ -1,0 +1,57 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 9461 파도반 수열
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 9461 파도반 수열
+- 파도반 수열 규칙으로 DP 문제 풀기
+- 규칙성을 찾는 DP문제
+** 접근하기
+#+BEGIN_EXAMPLE
+dp[0] = 0
+dp[1] = 1
+dp[2] = 1
+dp[3] = 1
+dp[4] = 2
+dp[5] = 2
+dp[6] = 3
+dp[7] = 4
+dp[8] = 5
+dp[9] = 7
+dp[10] = 9
+
+dp[i] = dp[i-2] + dp[i-3] 점화식이 쉽게 보인다.
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N;
+
+long long dp[110];
+
+int main(int argc, char* argv[])
+{
+    dp[0] = 0;
+    dp[1] = 1;
+    dp[2] = 1;
+
+    for(int i=3;i<=100;i++) {
+        dp[i] = dp[i-2] + dp[i-3];
+    }
+
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        int num;
+        scanf("%d", &num);
+        printf("%lld\n", dp[num]);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/9461
