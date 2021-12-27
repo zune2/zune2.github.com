@@ -1,0 +1,40 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2909 캔디 구매
+#+HTML: tags: 수학 구현
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2909 캔디 구매
+
+** 접근하기
+- 주어진 식대로 구현
+
+** 코드
+
+#+BEGIN_SRC cpp
+#include <cstdio>
+int C, K;
+int main(int argc, char* argv[])
+{
+    freopen("input3.txt", "r", stdin);
+    scanf("%d %d", &C, &K);
+
+    // K숫자만큼 00 붙이기
+    // 1 -> 10
+    // 2 -> 100
+    int n10 = 1;
+    for(int i=0;i<K;i++)
+        n10 *= 10;
+    if (C%n10 < (n10/2)) {
+        C = C - (C%n10);
+    } else {
+        C = C + n10 - (C%n10);
+    }
+    printf("%d\n", C);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2909

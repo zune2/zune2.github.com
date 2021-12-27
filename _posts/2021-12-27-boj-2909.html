@@ -1,0 +1,57 @@
+---
+layout: post
+title: BOJ 2909 캔디 구매
+tags: 수학 구현
+---
+
+<div id="outline-container-org41f1614" class="outline-2">
+<h2 id="org41f1614">BOJ 2909 캔디 구매</h2>
+</div>
+
+<div id="outline-container-orgf6c378c" class="outline-2">
+<h2 id="orgf6c378c">접근하기</h2>
+<div class="outline-text-2" id="text-orgf6c378c">
+<ul class="org-ul">
+<li>주어진 식대로 구현</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org42d3142" class="outline-2">
+<h2 id="org42d3142">코드</h2>
+<div class="outline-text-2" id="text-org42d3142">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">C</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input3.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;C, &amp;K);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">K&#49707;&#51088;&#47564;&#53372; 00 &#48537;&#51060;&#44592;</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">1 -&gt; 10</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">2 -&gt; 100</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n10</span> = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++)
+        n10 *= 10;
+    <span style="color: #729fcf; font-weight: bold;">if</span> (C%n10 &lt; (n10/2)) {
+        C = C - (C%n10);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        C = C + n10 - (C%n10);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, C);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf8ff57" class="outline-2">
+<h2 id="orgcf8ff57">문제 링크</h2>
+<div class="outline-text-2" id="text-orgcf8ff57">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2909">https://www.acmicpc.net/problem/2909</a></li>
+</ul>
+</div>
+</div>
