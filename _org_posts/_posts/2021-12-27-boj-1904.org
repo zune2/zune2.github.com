@@ -1,0 +1,55 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1904 01타일
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1904 01타일
+- 00, 1을 이용해서 N자리 숫자를 만드는 경우의 수 구하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+00,1 로만 숫자를 만들기
+
+N = 1     1                           1 
+N = 2     00 11                       2
+N = 3     001 100 111                 3
+N = 4     0011 0000 1001 1100 1111    5
+
+피보나치 수열 점화식이 나옴
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#if 0
+N = 1     1                           1 
+N = 2     00 11                       2
+N = 3     001 100 111                 3
+N = 4     0011 0000 1001 1100 1111    5
+#endif
+
+#include <cstdio>
+
+int N;
+int dp[1000010];
+
+#define MOD 15746
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    dp[1] = 1;
+    dp[2] = 2;
+    
+    for(int i=3;i<=N;i++) {
+        dp[i] = dp[i-1]%MOD + dp[i-2]%MOD;
+        dp[i] %= MOD;
+    }
+    printf("%d\n", dp[N]);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1904
