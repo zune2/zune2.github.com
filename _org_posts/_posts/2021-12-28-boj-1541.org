@@ -1,0 +1,56 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1541 잃어버린 괄호
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1541 잃어버린 괄호
+
+** 접근하기
+- 마이너스 기호가 나오면, 그 뒤에 모든 +를 마이너스로 바꾸면, 작은 수가 됨.
+
+** 코드
+- 맨 앞의 숫자는 그냥 ans에 더해야 하는 것을 생각하기 어려웠음
+  - is_minus로 마이너스 기호가 나왔다는 표시를 함
+  - 맨 앞의 마이너스가 나와도 한번은 더하게 하기
+#+BEGIN_SRC cpp
+#include <cstdio>
+char str[100];
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%s", str);
+
+    int num = 0;
+    int ans = 0;
+
+    bool is_minus = false;
+    int len;    
+    for(len = 0;str[len];len++);
+        
+    for(int i=0;i<=len;i++)
+    {
+        if (str[i] >= '0' && str[i] <= '9')
+            num = num * 10 + (str[i]-'0');
+        else if (str[i] == '-' || str[i] == '+' || len == i) {
+            
+            if (is_minus)
+            {
+                ans -= num;
+                num = 0;
+            } else {
+                ans += num;
+                num = 0;                
+            }   
+        }
+        if (str[i] == '-') is_minus = true;        
+    }
+    printf("%d\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1541
