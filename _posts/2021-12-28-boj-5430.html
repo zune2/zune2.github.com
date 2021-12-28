@@ -1,0 +1,134 @@
+---
+layout: post
+title: BOJ 5430 AC
+tags: STL deque
+---
+
+<div id="outline-container-orgb2a98de" class="outline-2">
+<h2 id="orgb2a98de">BOJ 5430 AC</h2>
+<div class="outline-text-2" id="text-orgb2a98de">
+<ul class="org-ul">
+<li>R : reverse 배열 뒤집기</li>
+<li>D : delete 맨 앞 요소 제거</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org83a3fe7" class="outline-2">
+<h2 id="org83a3fe7">접근하기</h2>
+<div class="outline-text-2" id="text-org83a3fe7">
+<ul class="org-ul">
+<li>배열을 매번 reverse하는 것은 O(N)만큼 시간이 든다. -&gt; 시간 초과가 날 것</li>
+<li>STL deque를 이용해서, front/back을 사용하도록 하면, reverse를 하지 않아도 된다는 점에 착안</li>
+</ul>
+<pre class="example">
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgda7d6a6" class="outline-2">
+<h2 id="orgda7d6a6">코드 - STL deque 이용</h2>
+<div class="outline-text-2" id="text-orgda7d6a6">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;deque&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[100010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">arr</span>[500000];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mode</span> = 0;   <span style="color: #888a85;">// </span><span style="color: #888a85;">0 : &#50812;&#51901; --&gt; &#50724;&#47480;&#51901;    1 : &#50724;&#47480;&#51901; --&gt; &#50812;&#51901;</span>
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, arr);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(;arr[len];len++);
+
+    <span style="color: #8ae234; font-weight: bold;">deque</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">dq</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;len-1;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (arr[i] &gt;= <span style="color: #ad7fa8; font-style: italic;">'0'</span> &amp;&amp; arr[i] &lt;= <span style="color: #ad7fa8; font-style: italic;">'9'</span>) {
+            num = num * 10 + (arr[i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            <span style="color: #888a85;">//</span><span style="color: #888a85;">a[idx++] = num;</span>
+            dq.push_back(num);
+            num = 0;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (num) dq.push_back(num);  
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">R / D command&#47484; &#48152;&#48373;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] == <span style="color: #ad7fa8; font-style: italic;">'R'</span>) {
+            mode = (!mode) ? 1 : 0;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] == <span style="color: #ad7fa8; font-style: italic;">'D'</span>) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (mode == 0) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (!dq.empty())
+                    dq.pop_front();
+                <span style="color: #729fcf; font-weight: bold;">else</span> {
+                    printf(<span style="color: #ad7fa8; font-style: italic;">"error\n"</span>);
+                    <span style="color: #729fcf; font-weight: bold;">return</span>;
+                }
+
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (!dq.empty())
+                    dq.pop_back();
+                <span style="color: #729fcf; font-weight: bold;">else</span> {
+                    printf(<span style="color: #ad7fa8; font-style: italic;">"error\n"</span>);
+                    <span style="color: #729fcf; font-weight: bold;">return</span>;
+                }
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"["</span>);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">size</span> = dq.size();
+    <span style="color: #729fcf; font-weight: bold;">if</span> (mode == 0) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;size;i++) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, dq.at(i));
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i&lt;size-1)
+            printf(<span style="color: #ad7fa8; font-style: italic;">","</span>);
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"]\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=size-1;i&gt;=0;i--) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, dq.at(i));
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i&gt;0)
+            printf(<span style="color: #ad7fa8; font-style: italic;">","</span>);
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"]\n"</span>);        
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input2.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org03851ee" class="outline-2">
+<h2 id="org03851ee"><span class="todo TODO">TODO</span> 코드 - STL 없이 deque 만들기</h2>
+</div>
+
+<div id="outline-container-orgcd88959" class="outline-2">
+<h2 id="orgcd88959">문제 링크</h2>
+<div class="outline-text-2" id="text-orgcd88959">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/5430">https://www.acmicpc.net/problem/5430</a></li>
+</ul>
+</div>
+</div>
