@@ -1,0 +1,51 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 9742 순열
+#+HTML: tags: STL 완전탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 9742 순열
+
+** 접근하기
+- STL next_permutation을 이용해서 풀기
+
+** 코드 STL next_permutation 이용
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+char str[20];
+char bak[20];
+int N;
+
+int main(int argc, char* argv[])
+{
+    while(scanf("%s %d", str, &N) != EOF)   {
+
+        int len = 0;
+        for(;str[len];len++) {
+            bak[len] = str[len];
+        }
+        bak[len] = '\0';
+
+        int cnt = 0;
+        bool ok = false;
+        do {
+            if (N == ++cnt){
+                printf("%s %d = %s\n",bak, N, str);
+                ok = true;
+                break;
+            }
+        } while(next_permutation(str, str+len));
+
+        if (!ok) {
+            printf("%s %d = No permutation\n",bak, N);
+        }
+    }
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/9742

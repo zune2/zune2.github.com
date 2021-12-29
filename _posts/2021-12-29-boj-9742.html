@@ -1,0 +1,69 @@
+---
+layout: post
+title: BOJ 9742 순열
+tags: STL 완전탐색
+---
+
+<div id="outline-container-orgd2d3e9a" class="outline-2">
+<h2 id="orgd2d3e9a">BOJ 9742 순열</h2>
+</div>
+
+<div id="outline-container-orgf8bfbe3" class="outline-2">
+<h2 id="orgf8bfbe3">접근하기</h2>
+<div class="outline-text-2" id="text-orgf8bfbe3">
+<ul class="org-ul">
+<li>STL next_permutation을 이용해서 풀기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf560aa4" class="outline-2">
+<h2 id="orgf560aa4">코드 STL next_permutation 이용</h2>
+<div class="outline-text-2" id="text-orgf560aa4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[20];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">bak</span>[20];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #729fcf; font-weight: bold;">while</span>(scanf(<span style="color: #ad7fa8; font-style: italic;">"%s %d"</span>, str, &amp;N) != EOF)   {
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++) {
+            bak[len] = str[len];
+        }
+        bak[len] = <span style="color: #ad7fa8; font-style: italic;">'\0'</span>;
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">ok</span> = <span style="color: #8ae234;">false</span>;
+        <span style="color: #729fcf; font-weight: bold;">do</span> {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (N == ++cnt){
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%s %d = %s\n"</span>,bak, N, str);
+                ok = <span style="color: #8ae234;">true</span>;
+                <span style="color: #729fcf; font-weight: bold;">break</span>;
+            }
+        } <span style="color: #729fcf; font-weight: bold;">while</span>(next_permutation(str, str+len));
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (!ok) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%s %d = No permutation\n"</span>,bak, N);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org36f4241" class="outline-2">
+<h2 id="org36f4241">문제 링크</h2>
+<div class="outline-text-2" id="text-org36f4241">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/9742">https://www.acmicpc.net/problem/9742</a></li>
+</ul>
+</div>
+</div>
