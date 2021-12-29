@@ -44,6 +44,7 @@ void dfs(int y, int x, char color, int nmove)
             dfs(ny, nx, color, nmove+1);
         } else if(org_y == ny && org_x == nx && nmove >= 4) {
             loop += 1;
+            // exit(0) 하면, 16m/s에 종료, 안하면 600m/s
         }
     }
 
