@@ -1,0 +1,104 @@
+---
+layout: post
+title: BOJ 16929 Two Dots
+tags: dfs
+---
+
+<div id="outline-container-orgfa66f64" class="outline-2">
+<h2 id="orgfa66f64">BOJ 16929 Two Dots</h2>
+</div>
+
+<div id="outline-container-orgf285b44" class="outline-2">
+<h2 id="orgf285b44">접근하기</h2>
+<div class="outline-text-2" id="text-orgf285b44">
+<ul class="org-ul">
+<li>2차원 맵에서 dfs를 하면서, cycle을 찾는다.</li>
+<li>dfs로 4번 이상 이동했는데, 처음 위치로 돌아올 수 있으면, cycle인 성질에 착안</li>
+<li>visit 대신 stack변수로 cycle을 찾을 수 있음</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb9fa1d2" class="outline-2">
+<h2 id="orgb9fa1d2">코드- dfs(y, x, color, nmove) 이용</h2>
+<div class="outline-text-2" id="text-orgb9fa1d2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">map</span>[52][52];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">stack</span>[52][52];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0, 0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = {0, 0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">org_x</span>, <span style="color: #ff6347;">org_y</span>;
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (0&lt;=y &amp;&amp; y&lt;N) &amp;&amp; (0&lt;=x &amp;&amp; x&lt;M);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">loop</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>, <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">color</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nmove</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">stack</span>[y][x] = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = y + dy[i];
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = x + dx[i];
+        <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; map[ny][nx] == color &amp;&amp; stack[ny][nx] == 0)
+        {
+            dfs(ny, nx, color, nmove+1);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span>(org_y == ny &amp;&amp; org_x == nx &amp;&amp; nmove &gt;= 4) {
+            loop += 1;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">stack</span>[y][x] = 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    loop = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[52];
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            <span style="color: #8ae234; font-weight: bold;">map</span>[i][j] = str[j];
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;M;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (<span style="color: #8ae234; font-weight: bold;">stack</span>[i][j] == 0) {
+                org_y = i;
+                org_x = j;
+                dfs(i, j, <span style="color: #8ae234; font-weight: bold;">map</span>[i][j], 1);
+                <span style="color: #8ae234; font-weight: bold;">stack</span>[i][j] = 1;
+            }
+        }        
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (loop)
+        printf(<span style="color: #ad7fa8; font-style: italic;">"Yes\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        printf(<span style="color: #ad7fa8; font-style: italic;">"No\n"</span>);
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f05d44" class="outline-2">
+<h2 id="org4f05d44">문제 링크</h2>
+<div class="outline-text-2" id="text-org4f05d44">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/16929">https://www.acmicpc.net/problem/16929</a></li>
+</ul>
+</div>
+</div>
