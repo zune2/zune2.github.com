@@ -1,0 +1,76 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2533 사회망 서비스(SNS)
+#+HTML: tags: DP dfs Tree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2533 사회망 서비스(SNS)
+- tree 구조에서 DP를 적용하는 문제 
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. Graph를 인접 리스트로 구성한다 -> Tree가 나옴
+
+2. 1번부터 dfs로 이동한다.
+
+3. 방문한 노드에서 얼리아답터/일반인 일때를 나눠서 dp 배열을 채움
+
+    dp[k][0] : k 노드가 일반인일 때 sub tree에서 얼리아답터 수의 총합
+              -> 자식노드가 무조건 얼리아답터여야 한다
+
+    dp[k][1] : k 노드가 얼리아답터일 때 sub tree에서 얼리아답터 수의 총합
+              -> 자식 노드가 얼리아답터 or 일반인
+
+4. dfs가 마무리되면, 1번의 dp[1][1], dp[1][0]에
+   각각 1번 노드가 일반인/얼리아답터 일 때,  최소 수가 들어있음
+   이중 최소값 출력
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+//#include <cstdio>
+//#include <vector>
+using namespace std;
+
+int N;
+vector<int> G[1000010];
+int done[1000010];
+int dp[1000010][2];
+
+void dfs(int num)
+{
+    dp[num][0] = 0; // 일반인
+    dp[num][1] = 1; // 얼리아답터
+    done[num] = 1;
+
+    for(auto& next:G[num]) {
+        if (!done[next]) {
+            dfs(next);
+   	    // 부모가 일반 - 자식은 모두 얼리아답터
+            dp[num][0] += dp[next][1];
+	    // 부모가 얼리 - 자식은 얼리 or 일반
+            dp[num][1] += min(dp[next][0], dp[next][1]);
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int p1, p2;    
+    for(int i=0;i<N-1;i++){
+		scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+    dfs(1);
+
+    printf("%d\n", min(dp[1][0], dp[1][1]));
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2533
