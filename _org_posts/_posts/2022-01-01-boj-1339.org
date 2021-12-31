@@ -89,4 +89,5 @@ int main(int argc, char* argv[])
 - https://www.acmicpc.net/problem/1339
 
 ** 풀이참고
+- https://pskpsk.tistory.com/entry/%EB%B0%B1%EC%A4%801339-%EB%8B%A8%EC%96%B4-%EC%88%98%ED%95%99
 - https://mygumi.tistory.com/156
