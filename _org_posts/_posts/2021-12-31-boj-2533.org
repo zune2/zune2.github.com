@@ -27,11 +27,10 @@
    이중 최소값 출력
 #+END_EXAMPLE
 
+
 ** 코드
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
-//#include <cstdio>
-//#include <vector>
 using namespace std;
 
 int N;
