@@ -1,0 +1,53 @@
+#+Html: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2217 로프
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2217 그리디
+- N개의 로프 - 버틸수 있는 최대 중량을 구하기
+** 접근하기
+#+BEGIN_EXAMPLE
+2
+10
+15
+
+min(15, 15) x 1 = 15
+min(10, 15) x 2 = 20  <= 예제 답
+
+가장큰 중량 x 1
+다음 중량   x 2
+...
+가장작은 중량 x N
+
+이중 가장 큰 값 구하기
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+int a[100010];
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    for(int i=0;i<N;i++)
+        scanf("%d", &a[i]);
+    sort(a, a+N);
+
+    int ans = 0;
+    for(int i=N-1, cnt=1;i>=0;i--, cnt++) {
+        ans = max(ans, a[i]*cnt);
+    }
+    printf("%d\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2217
