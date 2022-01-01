@@ -1,0 +1,108 @@
+---
+layout: post
+title: BOJ 1826 연료 채우기
+tags: 그리디
+---
+
+<div id="outline-container-org638db27" class="outline-2">
+<h2 id="org638db27">BOJ 1826 연료 채우기</h2>
+<div class="outline-text-2" id="text-org638db27">
+<ul class="org-ul">
+<li>N개의 주유소가 거리별로 주어짐. 주유소마다 다른 양의 기름 넣을 수 있음</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5035ca8" class="outline-2">
+<h2 id="org5035ca8">접근하기</h2>
+<div class="outline-text-2" id="text-org5035ca8">
+<pre class="example">
+                1               1           1 
+일직선  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+주유소          4 2             5          10                            10
+연료   10
+cnt = 3
+
+P &lt; L 인 조건동안 반복
+
+   1. 연료를 넣지 않아도, 10까지 갈 수 있음. 10안에 4, 2만큼 기름을 채울 수 있음
+
+   2. 위치10에서 4를 넣는다. (max heap을 이용해서, 큰 값을 꺼냄 -&gt; +4를 함)
+
+   3. 14까지 갈 수 있음. 11위치의 주유소 5의 값을 pq에 추가 pq = (5, 2) -&gt;5 꺼냄
+
+   4. 19까지 갈 수 있음. 15위치의 주유소 10의 값을 pq에 추가 pq = (10, 2) -&gt; 10 꺼냄
+
+   - 예외처리 : P &lt; L조건인데, pq가 비어있으면 도착할 수 없음
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge810141" class="outline-2">
+<h2 id="orge810141">코드</h2>
+<div class="outline-text-2" id="text-orge810141">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">first : num</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">second : gas</span>
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">a</span>[10010];      <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51452;&#50976;&#49548;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">L</span>, <span style="color: #ff6347;">P</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;a[i].first, &amp;a[i].second);
+    }
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;L, &amp;P);
+    sort(a, a+N);
+
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">pq</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">max heap</span>
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(P &lt; L) { <span style="color: #888a85;">// </span><span style="color: #888a85;">&#44592;&#47492;(P)&#44032; &#46020;&#52265;&#51648;(L)&#48372;&#45796; &#51089;&#51008; &#46041;&#50504;</span>
+        <span style="color: #729fcf; font-weight: bold;">while</span>(a[idx].first &lt;= P &amp;&amp; idx &lt; N) {
+            pq.push(a[idx].second);
+            idx++;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (pq.empty()) {
+            cnt = -1;
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+        cnt += 1;
+        P += pq.top(); pq.pop();
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org8de5e55" class="outline-2">
+<h2 id="org8de5e55">문제 링크</h2>
+<div class="outline-text-2" id="text-org8de5e55">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1826">https://www.acmicpc.net/problem/1826</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org85fff42" class="outline-2">
+<h2 id="org85fff42">풀이 참고</h2>
+<div class="outline-text-2" id="text-org85fff42">
+<ul class="org-ul">
+<li><a href="https://jason9319.tistory.com/228">https://jason9319.tistory.com/228</a></li>
+</ul>
+</div>
+</div>
