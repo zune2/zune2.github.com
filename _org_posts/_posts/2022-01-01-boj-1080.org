@@ -1,0 +1,67 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1080 행렬
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1080 행렬
+- NxM 행렬을 2개 주고, 3x3 부분행렬 뒤집어서 두번재 행렬과 같게 되는 뒤집기 회수 구하기 
+
+** 접근하기
+- 같은 위치를 두번 뒤집으면 원래 모습 -> 답이 될 수 없음
+- 3x3행렬을 처음부터 끝까지 적용해보기
+#+BEGIN_EXAMPLE
+3 4
+(처음)
+0000
+0010
+0000
+
+(1,1에서 뒤집기)
+1110
+1100
+1110
+
+(2,2에서 뒤집기) -> 목표와 같음
+1001
+1011
+1001
+
+(목표)
+1001
+1011
+1001
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+int a[100010];
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    for(int i=0;i<N;i++)
+        scanf("%d", &a[i]);
+    sort(a, a+N);
+
+    int ans = 0;
+    for(int i=N-1, cnt=1;i>=0;i--, cnt++) {
+        ans = max(ans, a[i]*cnt);
+    }
+    printf("%d\n", ans);
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1080
+
+** 풀이참고
+- https://hongjw1938.tistory.com/178
