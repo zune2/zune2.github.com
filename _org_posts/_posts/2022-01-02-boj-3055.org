@@ -1,0 +1,140 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 3055 탈출
+#+HTML: tags: bfs 그래프
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 3055 탈출
+- 물이 계속 차오르고 있을때, 고슴도치가 물을 피해, S에서 D로 이동할 최소시간
+
+** 접근하기
+- BFS로 풀기. 물의 확장을 bfs로 탐색 water_map에 채우기
+#+BEGIN_EXAMPLE
+water    bebber
+0 1 0    3 0 0
+3 2 1    2 1 0
+4 0 2    1 0 1
+
+- 목적지는 water[y][x] = 0 상태
+- water[ny][nx] > bebber[y][x] + 1
+   -> 이동할 좌표가 물이 찬 시간 > 비버의 현재시간 + 1  (이 조건을 생각해내는 것이 중요)
+#+END_EXAMPLE
+
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int R, C;
+
+int dy[4] = {1, -1, 0, 0};
+int dx[4] = {0,  0, 1,-1};
+
+#define MAX_R 51
+#define MAX_C 51
+
+char wmap[MAX_R][MAX_C];
+int water_map[MAX_R][MAX_C];
+int beber_map[MAX_R][MAX_C];
+
+typedef struct Node {
+    int y;
+    int x;
+} Node;
+queue<Node> wq;     // 물의 퍼짐을 저장하는 queue
+
+Node start, dest;
+
+bool safe(int y, int x)
+{
+    return (0<=x && x<C) && (0<=y && y<R);
+}
+
+void bfs_water(){
+
+    while(!wq.empty()) {
+        Node cur = wq.front(); wq.pop();
+        //wvisit[cur.y][cur.x] = 1;
+        //water_map[cur.y][cur.x] = cur.dist;
+
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+            if(safe(ny, nx) && !water_map[ny][nx] && wmap[ny][nx] == '.') {
+                water_map[ny][nx] = water_map[cur.y][cur.x] + 1;
+                wq.push({ny, nx});
+            }
+        }
+    }
+}
+
+void bfs()
+{
+    queue<Node> q;
+    q.push(start);
+
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+        if (cur.x == dest.x && cur.y == dest.y) break;
+
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+            if (safe(ny, nx) && beber_map[ny][nx] == 0
+                && (wmap[ny][nx] == '.' || wmap[ny][nx] == 'D')) {
+                
+                if (water_map[ny][nx] == 0) {
+                    beber_map[ny][nx] = beber_map[cur.y][cur.x] + 1;
+                    q.push({ny, nx});
+                } else {
+                    // 물이 도달한 시간 > 베버가 현재에 도착한 시간 + 1
+                   if (water_map[ny][nx] > beber_map[cur.y][cur.x] + 1) {
+                        beber_map[ny][nx] = beber_map[cur.y][cur.x] + 1;
+                        q.push({ny, nx});
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+int main(int argc, char* argv[])
+{
+    freopen("input4.txt", "r", stdin);
+    scanf("%d %d", &R, &C);
+    char str[60];
+    for(int i=0;i<R;i++) {
+        scanf("%s", str);
+        for(int j=0;str[j];j++) {
+            wmap[i][j] = str[j];
+            if (str[j] == '*') {
+                wq.push({i, j});
+            } else if (str[j] == 'S') {
+                start.y = i;
+                start.x = j;
+            } else if (str[j] == 'D') {
+                dest.y = i;
+                dest.x = j;
+            }
+        }
+    }
+
+    bfs_water();
+    bfs();
+
+    if (beber_map[dest.y][dest.x] != 0) {
+        printf("%d\n", beber_map[dest.y][dest.x]);
+    } else {
+        printf("KAKTUS\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/3055
