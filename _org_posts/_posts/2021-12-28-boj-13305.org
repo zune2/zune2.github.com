@@ -34,38 +34,30 @@ Case2)
 
 ** 코드
 #+BEGIN_SRC cpp
-#include <cstdio>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 typedef long long ll;
-#define MV 1000000010
 
 int N;
 
-ll edge[100010];
-ll vertex[100010];
+ll load[100010];
+ll cost[100010];
 
 int main(int argc, char* argv[])
 {
     scanf("%d", &N);
-    for(int i=0;i<N-1;i++) {
-        scanf("%lld", &edge[i]);
+    for(int i=1;i<N;i++) scanf("%lld", &load[i]); 
+    for(int i=0;i<N;i++) scanf("%lld", &cost[i]); 
+
+    ll minv = cost[0];
+    ll ans = 0; 
+    for(int i=1;i<N;i++) {
+        ans += minv * load[i]; 
+        minv = min(minv, cost[i]);
     }
-
-    for(int i=0;i<N;i++) {
-        scanf("%lld", &vertex[i]);
-    }    
-
-    ll cost = 0;
-    ll minv = MV;
-    for(int i=0;i<N;i++) {
-        ll togo = edge[i];
-        minv = min(minv, vertex[i]);
-        cost += (minv * togo);
-    }        
-    printf("%lld\n", cost);
-    return 0;
+    printf("%lld\n", ans);
+    return 0; 
 }
 #+END_SRC
 
