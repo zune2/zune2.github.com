@@ -24,113 +24,125 @@ water    bebber
 
 ** 코드
 #+BEGIN_SRC cpp
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <queue>
 using namespace std;
 
 int R, C;
 
-int dy[4] = {1, -1, 0, 0};
-int dx[4] = {0,  0, 1,-1};
+#define MAX_H 51
+#define MAX_W 51
 
-#define MAX_R 51
-#define MAX_C 51
+char map[MAX_H][MAX_H];
+int water[MAX_H][MAX_H];
+int bebber[MAX_H][MAX_H];
 
-char wmap[MAX_R][MAX_C];
-int water_map[MAX_R][MAX_C];
-int beber_map[MAX_R][MAX_C];
-
-typedef struct Node {
+typedef struct Node
+{
     int y;
     int x;
 } Node;
-queue<Node> wq;     // 물의 퍼짐을 저장하는 queue
 
-Node start, dest;
+queue<Node> water_q;
+
+Node start;
+Node dest;
+
+int dy[4] = {1, -1, 0, 0};
+int dx[4] = {0, 0, 1, -1};
 
 bool safe(int y, int x)
 {
-    return (0<=x && x<C) && (0<=y && y<R);
+    return (0<=x && x < C) && (0<=y && y < R);
 }
 
-void bfs_water(){
-
-    while(!wq.empty()) {
-        Node cur = wq.front(); wq.pop();
-        //wvisit[cur.y][cur.x] = 1;
-        //water_map[cur.y][cur.x] = cur.dist;
+void bfs_water()
+{
+    while(!water_q.empty()) {
+        Node cur = water_q.front(); water_q.pop();
 
         for(int i=0;i<4;i++) {
-            int ny = cur.y + dy[i];
+            int ny = cur.y + dy[i];    
             int nx = cur.x + dx[i];
-
-            if(safe(ny, nx) && !water_map[ny][nx] && wmap[ny][nx] == '.') {
-                water_map[ny][nx] = water_map[cur.y][cur.x] + 1;
-                wq.push({ny, nx});
+            
+            if (safe(ny, nx) && !water[ny][nx] && map[ny][nx] == '.') {
+                water[ny][nx] = water[cur.y][cur.x] + 1;
+                water_q.push({ny, nx});
             }
         }
     }
 }
 
-void bfs()
+void bfs_bebber()
 {
     queue<Node> q;
     q.push(start);
 
     while(!q.empty()) {
         Node cur = q.front(); q.pop();
-        if (cur.x == dest.x && cur.y == dest.y) break;
 
         for(int i=0;i<4;i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
 
-            if (safe(ny, nx) && beber_map[ny][nx] == 0
-                && (wmap[ny][nx] == '.' || wmap[ny][nx] == 'D')) {
+            if (safe(ny, nx) && !bebber[ny][nx] && (map[ny][nx] == '.' || map[ny][nx] == 'D')) {
                 
-                if (water_map[ny][nx] == 0) {
-                    beber_map[ny][nx] = beber_map[cur.y][cur.x] + 1;
+                if (water[ny][nx] == 0) {
+                    bebber[ny][nx] = bebber[cur.y][cur.x] + 1;
                     q.push({ny, nx});
-                } else {
-                    // 물이 도달한 시간 > 베버가 현재에 도착한 시간 + 1
-                   if (water_map[ny][nx] > beber_map[cur.y][cur.x] + 1) {
-                        beber_map[ny][nx] = beber_map[cur.y][cur.x] + 1;
-                        q.push({ny, nx});
-                    }
+                } else if (water[ny][nx] > bebber[cur.y][cur.x] + 1) {
+                    bebber[ny][nx] = bebber[cur.y][cur.x] + 1;
+                    q.push({ny, nx});
                 }
-            }
+            } 
         }
     }
 }
-
 
 int main(int argc, char* argv[])
 {
     freopen("input4.txt", "r", stdin);
     scanf("%d %d", &R, &C);
-    char str[60];
+    char str[51];
     for(int i=0;i<R;i++) {
         scanf("%s", str);
         for(int j=0;str[j];j++) {
-            wmap[i][j] = str[j];
+            map[i][j] = str[j];
             if (str[j] == '*') {
-                wq.push({i, j});
+                water_q.push({i,j});        
             } else if (str[j] == 'S') {
                 start.y = i;
                 start.x = j;
+                //printf("i:%d j:%d \n", i, j);
             } else if (str[j] == 'D') {
                 dest.y = i;
                 dest.x = j;
             }
         }
     }
-
     bfs_water();
-    bfs();
+#if 0
+    for(int i=0;i<R;i++) {
+        for(int j=0;j<C;j++) {
+            printf("%d ", water[i][j]);
+        }        
+        printf("\n");
+    }
+#endif
 
-    if (beber_map[dest.y][dest.x] != 0) {
-        printf("%d\n", beber_map[dest.y][dest.x]);
-    } else {
+    bfs_bebber();
+#if 0    
+    for(int i=0;i<R;i++) {
+        for(int j=0;j<C;j++) {
+            printf("%d ", bebber[i][j]);
+        }        
+        printf("\n");
+    }
+#endif    
+    if (bebber[dest.y][dest.x] == 0) {
         printf("KAKTUS\n");
+    } else {
+        printf("%d\n", bebber[dest.y][dest.x]);
     }
     return 0;
 }
@@ -138,3 +150,7 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://www.acmicpc.net/problem/3055
+
+
+** 풀이참고/해설참고
+- https://yabmoons.tistory.com/66
