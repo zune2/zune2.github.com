@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Emacs Deft 설치
-tags: Emacs
+tags: Emacs Deft
 ---
 
 <div id="outline-container-orgbc470ed" class="outline-2">
@@ -22,5 +22,18 @@ F8을 눌러서, orgmode를 편집할 수 있다.
 <p>
 검색기능이 있다는 것이 편리
 </p>
+</div>
+
+<div id="outline-container-orgece3ea1" class="outline-3">
+<h3 id="orgece3ea1">F8로 키맵하고 directory 지정하기</h3>
+<div class="outline-text-3" id="text-orgece3ea1">
+<pre class="example">
+; Deft
+(global-set-key [f8] 'deft)
+(setq deft-extensions '("org"))
+(setq deft-directory "XXXXXXX/work/github/YYYYYYYY/_org_posts/_posts")
+(setq deft-recursive t)
+</pre>
+</div>
 </div>
 </div>
