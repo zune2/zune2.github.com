@@ -1,7 +1,7 @@
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: BOJ 14725 개미굴
-#+HTML: tags: bfs
+#+HTML: tags: dfs Trie
 #+HTML: ---
 #+OPTIONS: ^:nil
 
