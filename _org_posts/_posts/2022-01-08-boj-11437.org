@@ -1,0 +1,98 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 11437 LCA
+#+HTML: tags: dfs LCA
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11437 LCA 
+- 트리에 두 점이 주어질 때 가장 가까운 부모의 번호를 출력하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. 인접 리스트로 Graph 형태로 받음. N-1번 받는다.
+
+2. dfs로 1번(root)로부터의 거리만큼을 depth 배열에 저장하고, parent의 번호도 저장한다.
+#+END_EXAMPLE
+
+
+** 코드 - dfs로 풀이 (O(N) - 1128 m/s)
+#+BEGIN_SRC cpp
+// 1128 m/s
+#include <bits/stdc++.h>
+using namespace std;
+
+int parent[50010];
+int depth[50010];
+int N;
+int M;
+
+vector<int> G[50010];
+
+void dfs(int idx, int k)
+{
+    depth[idx] = k;
+    for(auto&next :G[idx]) {
+        if (depth[next] == 0) {
+            parent[next] = idx; 
+            dfs(next, k+1);
+        }
+    }
+}
+
+int LCA(int p1, int p2)
+{
+    if (p1 == p2) return p1; 
+
+    if (depth[p1] > depth[p2]) {
+        return LCA(parent[p1], p2); 
+    } else if (depth[p1] < depth[p2]) {
+        return LCA(p1, parent[p2]); 
+    } else if(depth[p1] == depth[p2]) {
+        return LCA(parent[p1], parent[p2]);
+    }
+    return p1;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int p1, p2;
+    for(int i=0;i<N-1;i++) {
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    } 
+    parent[1] = 1; 
+    dfs(1, 1);
+
+    scanf("%d", &M);
+    for(int i=0;i<M;i++) {
+        scanf("%d %d", &p1, &p2); 
+        int ret = LCA(p1, p2);
+        printf("%d\n", ret);
+    }
+    return 0;
+}
+#+END_SRC
+
+** dfs로 풀이 - LCA를 iterative로 1128 m/s
+#+BEGIN_SRC cpp
+int LCA(int p1, int p2)
+{
+    while(p1 != p2) {
+        if (depth[p1] > depth[p2]) {
+            p1 = parent[p1];
+        } else if (depth[p1] < depth[p2]) {
+            p2 = parent[p2];
+        } else if(depth[p1] == depth[p2]) {
+            p1 = parent[p1];
+            p2 = parent[p2];
+        }
+    }
+    return p1;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/11437
