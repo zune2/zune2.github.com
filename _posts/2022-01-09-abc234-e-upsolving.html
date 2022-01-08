@@ -34,9 +34,9 @@ tags: AtCoder 수학
 
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s</span>=0;s&lt;=9;s++) {
         sp.insert(s);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (s == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
 
         <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>=-9;d&lt;=9;d++) {
-            <span style="color: #729fcf; font-weight: bold;">if</span> (s == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
             <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">val</span> = s;
             <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span> = s;
             <span style="color: #729fcf; font-weight: bold;">while</span>(val&lt;1e18) {
