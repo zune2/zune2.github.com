@@ -113,6 +113,109 @@ tags: dfs LCA
 </div>
 </div>
 
+<div id="outline-container-orga388174" class="outline-2">
+<h2 id="orga388174">sparse table 기법으로 풀이 (36 m/s)</h2>
+<div class="outline-text-2" id="text-orga388174">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #888a85;">// </span><span style="color: #888a85;">1128 m/s</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">LOG_SIZE</span> 16
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">parent</span>[LOG_SIZE+1][50010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">depth</span>[50010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">G</span>[50010];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>)
+{
+    depth[idx] = k;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp;<span style="color: #ff6347;">next</span> :G[idx]) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (depth[next] == 0) {
+            parent[0][next] = idx; 
+            dfs(next, k+1);
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">lastOneBit</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">u</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span> (u % 2 == 0) {
+        u /= 2;
+        ++ret;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> ret;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">LCA</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (depth[p1] &lt; depth[p2]) {
+        swap(p1, p2);
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">diff</span> = depth[p1] - depth[p2];
+    <span style="color: #729fcf; font-weight: bold;">while</span>(diff){
+        p1 = parent[lastOneBit(diff)][p1];
+        diff = diff &amp; (diff-1);     <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52572;&#54616;&#50948; bit unset</span>
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#44057;&#51008; &#45458;&#51060;&#50640;&#49436; &#45796;&#47492;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span> (p1 != p2) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=LOG_SIZE;j&gt;=0;j--) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (parent[j][p1] != 0 &amp;&amp; parent[j][p1] != parent[j][p2]) {
+                p1 = parent[j][p1];    
+                p2 = parent[j][p2];    
+                <span style="color: #729fcf; font-weight: bold;">break</span>;
+            }
+        }
+        p1 = parent[0][p1];    
+        p2 = parent[0][p2];    
+    }
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">printf("%d\n", p1);</span>
+    <span style="color: #729fcf; font-weight: bold;">return</span> p1;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-1;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    } 
+    parent[0][1] = 1; 
+    dfs(1, 1);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=LOG_SIZE;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            parent[i][j] = parent[i-1][parent[i-1][j]];
+        }
+    }
+
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;M);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2); 
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = LCA(p1, p2);
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ret);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8a7ce67" class="outline-2">
+<h2 id="org8a7ce67"><span class="todo TODO">TODO</span> O(1) LCA 적용해보기</h2>
+<div class="outline-text-2" id="text-org8a7ce67">
+<p>
+<a href="http://www.secmem.org/blog/2019/03/27/fast-LCA-with-sparsetable/">- 바로가기</a>
+</p>
+</div>
+</div>
 <div id="outline-container-org681efc2" class="outline-2">
 <h2 id="org681efc2">문제 링크</h2>
 <div class="outline-text-2" id="text-org681efc2">

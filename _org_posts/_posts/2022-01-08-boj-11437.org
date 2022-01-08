@@ -94,5 +94,97 @@ int LCA(int p1, int p2)
 }
 #+END_SRC
 
+** sparse table 기법으로 풀이 (36 m/s)
+#+BEGIN_SRC cpp
+// 1128 m/s
+#include <bits/stdc++.h>
+using namespace std;
+
+#define LOG_SIZE 16
+int parent[LOG_SIZE+1][50010];
+int depth[50010];
+int N;
+int M;
+
+vector<int> G[50010];
+
+void dfs(int idx, int k)
+{
+    depth[idx] = k;
+    for(auto&next :G[idx]) {
+        if (depth[next] == 0) {
+            parent[0][next] = idx; 
+            dfs(next, k+1);
+        }
+    }
+}
+
+int lastOneBit(int u)
+{
+    int ret = 0;
+    while (u % 2 == 0) {
+        u /= 2;
+        ++ret;
+    }
+    return ret;
+}
+
+int LCA(int p1, int p2)
+{
+    if (depth[p1] < depth[p2]) {
+        swap(p1, p2);
+    }
+    int diff = depth[p1] - depth[p2];
+    while(diff){
+        p1 = parent[lastOneBit(diff)][p1];
+        diff = diff & (diff-1);     // 최하위 bit unset
+    }
+
+    // 같은 높이에서 다름
+    while (p1 != p2) {
+        for(int j=LOG_SIZE;j>=0;j--) {
+            if (parent[j][p1] != 0 && parent[j][p1] != parent[j][p2]) {
+                p1 = parent[j][p1];    
+                p2 = parent[j][p2];    
+                break;
+            }
+        }
+        p1 = parent[0][p1];    
+        p2 = parent[0][p2];    
+    }
+    //printf("%d\n", p1);
+    return p1;
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    int p1, p2;
+    for(int i=0;i<N-1;i++) {
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    } 
+    parent[0][1] = 1; 
+    dfs(1, 1);
+
+    for(int i=1;i<=LOG_SIZE;i++) {
+        for(int j=1;j<=N;j++) {
+            parent[i][j] = parent[i-1][parent[i-1][j]];
+        }
+    }
+
+    scanf("%d", &M);
+    for(int i=0;i<M;i++) {
+        scanf("%d %d", &p1, &p2); 
+        int ret = LCA(p1, p2);
+        printf("%d\n", ret);
+    }
+    return 0;
+}
+#+END_SRC
+** TODO O(1) LCA 적용해보기
+[[http://www.secmem.org/blog/2019/03/27/fast-LCA-with-sparsetable/][- 바로가기]]
 ** 문제 링크
 - https://www.acmicpc.net/problem/11437
