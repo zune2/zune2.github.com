@@ -1,0 +1,47 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: abc234 C - Happy New Year!
+#+HTML: tags: AtCoder 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Happy New Year!
+
+** 접근하기
+#+BEGIN_EXAMPLE
+3 -> 11 로 생각가능
+
+11 -> 1011 로 생각 가능
+
+2진수로 변환하여, 1을 2로 출력, 0을 0으로 string을 만들어 뒤집기
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+long long int N;
+
+int main(int argc, char* argv[])
+{
+    string ans;
+    scanf("%lld", &N);
+    
+    while(N) {
+        int nam = N %2; 
+        if (nam == 0) {
+            ans.push_back('0');
+        } else {
+            ans.push_back('2');
+        }
+        N = N / 2;
+    }
+    reverse(ans.begin(), ans.end());
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc234/tasks/abc234_c
