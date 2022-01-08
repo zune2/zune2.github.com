@@ -94,9 +94,8 @@ int LCA(int p1, int p2)
 }
 #+END_SRC
 
-** sparse table 기법으로 풀이 (36 m/s)
+** sparse table 기법으로 풀이 (32 m/s)
 #+BEGIN_SRC cpp
-// 1128 m/s
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -119,25 +118,17 @@ void dfs(int idx, int k)
     }
 }
 
-int lastOneBit(int u)
-{
-    int ret = 0;
-    while (u % 2 == 0) {
-        u /= 2;
-        ++ret;
-    }
-    return ret;
-}
-
 int LCA(int p1, int p2)
 {
     if (depth[p1] < depth[p2]) {
         swap(p1, p2);
     }
     int diff = depth[p1] - depth[p2];
-    while(diff){
-        p1 = parent[lastOneBit(diff)][p1];
-        diff = diff & (diff-1);     // 최하위 bit unset
+
+    for(int i=LOG_SIZE-1;i>=0;i--) {
+        if (diff & (1<<i)) {
+            p1 = parent[i][p1];
+        }
     }
 
     // 같은 높이에서 다름
@@ -171,6 +162,7 @@ int main(int argc, char* argv[])
 
     for(int i=1;i<=LOG_SIZE;i++) {
         for(int j=1;j<=N;j++) {
+            //int tmp = parent[i-1][j];
             parent[i][j] = parent[i-1][parent[i-1][j]];
         }
     }
