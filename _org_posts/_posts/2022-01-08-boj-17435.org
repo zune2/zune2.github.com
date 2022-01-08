@@ -1,100 +1,118 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 17435 합성함수와 쿼리
+#+HTML: title: BOJ 1761 정점들의 거리
 #+HTML: tags: SparseTable
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** BOJ 17435 합성함수와 쿼리
+** BOJ 1761 정점들의 거리
 
 ** 접근하기
-- dp table을 구성해서 N번 이동해서 찾을 것을 Log2(N)번 이동해서 찾는 방식
+- Sparse table을 구성해서, LCA를 구하는 문제
 #+BEGIN_EXAMPLE
-5
-3 3 5 4 3
-5
-1 1         1에서 1(2)만큼 이동
-2 1         1에서 10(2)만큼 이동
-11 3        3에서 1101(2)만큼 이동
-1000 4      4에서 1111101000(2)만큼 이동
-5 1         5에서 101(2)만큼 이동
 
-dp[k][v] : v에서 k번 이동하면 나오는 번호
-----------------
-     1 3 3 5 4 3
-     2 5 5 3 4 5
-     4 5 5 3 4 5
-     8 5 5 3 4 5
-    16 5 5 3 4 5
-    32 5 5 3 4 5
-    64 5 5 3 4 5
-   128 5 5 3 4 5
-   256 5 5 3 4 5
-   512 5 5 3 4 5
-  1024 5 5 3 4 5
-  2048 5 5 3 4 5
-  4096 5 5 3 4 5
-  8192 5 5 3 4 5
- 16384 5 5 3 4 5
- 32768 5 5 3 4 5
- 65536 5 5 3 4 5
-131072 5 5 3 4 5
-262144 5 5 3 4 5
+Root에서 노드1사이의 거리 = a
+Root에서 노드2사이의 거리 = b
+Root에서 노드 1,2의 LCA사이의 거리 = lca
+
+=> Tree에서 두 노드 사이의 거리 = a + b - 2 x lca
+
 #+END_EXAMPLE
-
 ** 코드
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
+using namespace std;
+#define LOG_SIZE 16
 
-#define LOG_SIZE 18
+int N;
 
+int dp[LOG_SIZE+1][40040];
+
+int visited[40040];
+int dist[40040];
+int depth[40040];
+
+typedef struct Node {
+	int num;
+	int cost;
+} Node;
+
+vector<Node> G[40040];
 int M;
-int next[200020];
-int dp[LOG_SIZE+1][200020];
+
+void dfs(int idx, int d, int w)
+{
+	visited[idx] = 1;
+	depth[idx] = d;
+	dist[idx] = w;
+	
+	for(auto& o:G[idx]) {
+		int next = o.num;
+		int cost = o.cost;
+		if (!visited[next]) {
+			dp[0][next] = idx;
+			dfs(next, d+1, w+cost);
+		}
+	} 
+}
+
+int LCA(int p1, int p2)
+{
+	if (depth[p1] < depth[p2]) {
+		swap(p1, p2);
+	}
+	int diff = depth[p1] - depth[p2];
+
+	for(int i=LOG_SIZE;i>=0;--i) {
+		if (diff & (1 << i)) {
+			p1 = dp[i][p1];
+		}
+	}
+
+	if (p1 != p2) {
+		for(int i=LOG_SIZE;i>=0;--i) {
+			if (dp[i][p1] != dp[i][p2]) {
+				p1 = dp[i][p1];
+				p2 = dp[i][p2];
+			}
+		}		
+		p1 = dp[0][p1];
+	}
+	return p1;
+}
 
 int main(int argc, char* argv[])
 {
-    scanf("%d", &M);
-    for(int i=1;i<=M;i++) {
-        scanf("%d", &next[i]);
-    }
+	freopen("input.txt", "r", stdin);
+	scanf("%d", &N);
+	int p1, p2, w;
+	for(int i=0;i<N-1;i++) {
+		scanf("%d %d %d", &p1, &p2, &w);
+		G[p1].push_back({p2, w});
+		G[p2].push_back({p1, w});
+	}
 
-    for(int i=1;i<=M;i++) {
-        dp[0][i] = next[i];
-    }
+	dfs(1, 0, 0); // dp[0][i] 채움
+	
+	// sparse table 채움
+	for(int i=1;i<=LOG_SIZE;i++) {
+		for(int j=1;j<=N;j++) {
+			int tmp = dp[i-1][j];
+			dp[i][j] = dp[i-1][tmp];
+		}		
+	}
 
-    for(int k=1;k<=LOG_SIZE;k++) {
-        for(int i=1;i<=M;i++) {
-            dp[k][i] = dp[k-1][dp[k-1][i]];
-        }
-    }
-
-    for(int k=0;k<=LOG_SIZE;k++) {
-        printf("%6lld ", 1ULL<<k);
-        for(int i=1;i<=M;i++) {
-            printf("%d ", dp[k][i]);
-        }
-        printf("\n");
-    }
-
-    int Q;
-    int N, X;
-    scanf("%d", &Q);
-    for(int i=0;i<Q;i++) {
-        scanf("%d %d", &N, &X);
-        for(int j=LOG_SIZE;j>=0;j--) {
-            if (N & (1<<j)) {
-                X = dp[j][X];
-            }
-        }
-        printf("%d\n", X);
-    }
-    return 0;
+	scanf("%d", &M);
+	for(int i=0;i<M;i++) {
+		scanf("%d %d", &p1, &p2);
+		int lca = LCA(p1, p2);
+		printf("%d\n", dist[p1]+dist[p2] - 2*dist[lca]);
+	}
+	return 0;
 }
 #+END_SRC
 
 ** 문제 링크
-- https://www.acmicpc.net/problem/17435
-
+- https://www.acmicpc.net/problem/1761
 ** 풀이/해설참고
-- https://namnamseo.tistory.com/entry/Sparse-Table
+- https://justicehui.github.io/ps/2019/04/22/BOJ1761/
