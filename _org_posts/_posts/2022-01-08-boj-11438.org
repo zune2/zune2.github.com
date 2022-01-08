@@ -87,7 +87,6 @@ int main(int argc, char* argv[])
 		G[p2].push_back(p1);
 	}
 	
-	dp[0][1] = 1;	// root node는 1
 	dfs(1, 1);
 
 	for(int i=1;i<=LOG_SIZE;i++) {

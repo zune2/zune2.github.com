@@ -177,7 +177,6 @@ tags: dfs LCA
                 G[p2].push_back(p1);
         }
 
-        dp[0][1] = 1;   <span style="color: #888a85;">// </span><span style="color: #888a85;">root node&#45716; 1</span>
         dfs(1, 1);
 
         <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=LOG_SIZE;i++) {
