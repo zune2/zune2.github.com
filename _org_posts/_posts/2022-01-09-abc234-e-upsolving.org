@@ -13,7 +13,7 @@
 
 ** 코드
 #+BEGIN_SRC cpp
-#include <bits/stdc++.h>
+i#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -21,11 +21,11 @@ ll X;
 set<ll> sp;
 int main(int argc, char* argv[])
 {
+    freopen("input.txt", "r", stdin);
     scanf("%lld", &X);    
     
-    for(int s=0;s<=9;s++) {
+    for(int s=1;s<=9;s++) {
         sp.insert(s);
-        if (s == 0) continue;
 
         for(int d=-9;d<=9;d++) {
             ll val = s;
