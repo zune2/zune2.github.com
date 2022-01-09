@@ -9,11 +9,13 @@
 
 ** 접근하기
 - 주어진 조건을 이용해서 sort된 수열을 만든다. - STL set 이용
+  - set에 넣으면, 정렬된 순서로 들어감
 - Find the smallest arithmetic number not less than X -> lower_bound 이용
+  - set에서 lower_bound 함수를 제공
 
 ** 코드
 #+BEGIN_SRC cpp
-i#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -21,7 +23,6 @@ ll X;
 set<ll> sp;
 int main(int argc, char* argv[])
 {
-    freopen("input.txt", "r", stdin);
     scanf("%lld", &X);    
     
     for(int s=1;s<=9;s++) {
@@ -29,11 +30,11 @@ int main(int argc, char* argv[])
 
         for(int d=-9;d<=9;d++) {
             ll val = s;
-            int tmp = s;
+            int num = s;
             while(val<1e18) {
-                tmp += d;
-                if (tmp < 0 || tmp > 9) break;
-                val = val * 10 + tmp; 
+                num += d;
+                if (num < 0 || num > 9) break;
+                val = val * 10 + num; 
                 sp.insert(val);
             }
 

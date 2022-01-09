@@ -1,0 +1,57 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 11051 이항계수 2
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11051 이항계수 2
+- N이 1000으로 크고, Mod연산 추가
+
+** 접근하기
+#+BEGIN_EXAMPLE
+이항계수의 성질 중 점화식 이용
+
+4C3은? 
+1고른 상태에서 남은 3개중 2개 고르기 = 3C2
+1 2 3 4     
+
+1안고른상태에서 남은 3개중  3개 고르기 = 3C3
+1 2 3 4
+
+dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+int N, K;
+
+int dp[1001][1001];
+#define MOD 10007
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d %d", &N, &K);
+    dp[0][0] = 1;
+
+    for(int i=0;i<=N;i++) {
+        dp[i][0] = 1;
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=min(i, K);j++) {
+            dp[i][j] = dp[i-1][j-1]%MOD +  dp[i-1][j]%MOD;
+            dp[i][j] %= MOD;
+        }
+    }
+
+    printf("%d\n", dp[N][K]);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/11051

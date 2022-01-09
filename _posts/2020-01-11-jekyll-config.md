@@ -5,7 +5,6 @@ tags: vim
 ---
 
 
-
 ## disqus 지정하기
 
 ### _config.yml에 shortname 추가
@@ -36,3 +35,8 @@ header:
 ~~~
 
 tag.html 파일을 만들고, Jekyll template engine 문법에 맞춰서 코딩
+
+
+## 수학식 출력 (Mathjax)
+
+$$ x = y^2 $$
