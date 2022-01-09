@@ -1,0 +1,108 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 13977 이항계수와 쿼리
+#+HTML: tags: 분할정복 조합론
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 13977 이항계수와 쿼리
+- pow(base, cnt)를 구하기
+
+** 접근하기
+- factorial을 400만 크기로 미리 계산한다.
+- 페르마의 소정리를 이용해 이항계수 구한다.
+
+** 코드 - 페르마의 소정리, 직접 계산 (144 m/s)
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+#define MOD 1000000007
+typedef long long ll;
+
+int M, N, K;
+
+ll fact[4000040];
+
+ll pow(ll base, ll cnt)
+{
+	if (cnt == 0) return 1;
+	ll tmp = pow(base, cnt/2) %MOD;
+
+	if (cnt%2) {
+		return ((tmp * tmp) % MOD * base% MOD)% MOD;
+	} else {
+		return (tmp * tmp) % MOD;
+	}
+}
+
+int main(int argc, char* argv[])
+{
+	fact[0] = 1;
+	for(int i=1;i<=4000000;i++) {
+		fact[i] = fact[i-1]%MOD * i;
+		fact[i] %= MOD;
+	}
+
+	scanf("%d", &M);
+	for(int i=0;i<M;i++) {
+		scanf("%d %d", &N, &K);
+		ll ans = (fact[N] * pow((fact[N-K]*fact[K])%MOD, MOD-2))%MOD;
+		printf("%lld\n", ans%MOD);
+	}
+}
+#+END_SRC
+
+
+** 코드 - inverse 미리 구해서 가져옴 (163 m/s)
+- 역원을 400만부터 거슬러서 미리 table에 넣어둘 수 있음
+
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+#define MOD 1000000007
+typedef long long ll;
+
+int M, N, K;
+
+ll fact[4000040];
+ll inv[4000040];
+
+ll pow(ll base, ll cnt)
+{
+	if (cnt == 0) return 1;
+	ll tmp = pow(base, cnt/2) %MOD;
+
+	if (cnt%2) {
+		return ((tmp * tmp) % MOD * base% MOD)% MOD;
+	} else {
+		return (tmp * tmp) % MOD;
+	}
+}
+
+int main(int argc, char* argv[])
+{
+	freopen("input.txt", "r", stdin);
+	fact[0] = 1;
+	
+	for(int i=1;i<=4000000;i++) {
+		fact[i] = fact[i-1]%MOD * i;
+		fact[i] %= MOD;
+	}
+	inv[4000000] = pow(fact[4000000], MOD-2) %MOD;
+	for(int i=4000000-1;i>=0;i--) {
+		inv[i] = (inv[i+1] * (i+1))%MOD;
+	}
+	scanf("%d", &M);
+	for(int i=0;i<M;i++) {
+		scanf("%d %d", &N, &K);
+		ll ans = fact[N] % MOD;
+		ans = (ans * inv[K] % MOD) % MOD;
+		ans = (ans * inv[N-K] % MOD) % MOD;
+		
+		printf("%lld\n", ans);
+	}
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/13977
