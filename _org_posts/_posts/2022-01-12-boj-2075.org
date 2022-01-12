@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2075 N번째 큰수
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2075 N번째 큰수
+- qsort로 풀어도 큰 시간차 없이 풀림
+
+** 접근하기
+#+BEGIN_EXAMPLE
+max heap에 큰 수 순서대로 push하고, heap의 크기가 N보다 커지면, 맨 위의 값을 pop
+
+12
+13 12
+21 13 12
+48 21 13 12
+52 48 21 13 12
+
+7이 들어오면 top을 버린다.
+(52) 48 21 13 12 7        -> 48이 5번째로 큰수
+
+8이 들어오면 top을 버린다.
+(52) (48) 21 13 12 8 7        -> 21이 5번째로 큰수
+
+... 반복
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+priority_queue < int > pq;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int val;
+    for(int i=0;i<N*N;i++) {
+        scanf("%d", &val);
+        pq.push(val);
+        if ((int)pq.size() > N) {
+            pq.pop();   
+        }
+    }
+    printf("%d\n", pq.top());
+
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2075
+
+
+

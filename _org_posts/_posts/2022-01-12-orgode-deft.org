@@ -1,0 +1,24 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: org mode와 deft를 같이 쓰기
+#+HTML: tags: deft
+#+HTML: ---
+#+OPTIONS: ^:nil
+#+OPTIONS: tex:dvipng
+
+** Deft
+- https://github.com/jrblevin/deft
+- plain text note를 관리하는 시스템
+- F8로 orgmode 파일을 저장하는 위치에 연결했음
+
+
+** 사용법
+- 파일이름을 치면 검색이 됨
+- 새로운 파일 이름이면 만들어짐
+
+|---------+------------------|
+| C-c C-d | 선택 파일 지우기 |
+| C-c C-r | 파일 이름 변경   |
+| C-c C-q | 종료             |
+
+
