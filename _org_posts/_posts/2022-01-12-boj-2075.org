@@ -6,11 +6,11 @@
 #+OPTIONS: ^:nil
 
 ** BOJ 2075 N번째 큰수
-- qsort로 풀어도 큰 시간차 없이 풀림
+- qsort로 풀어도 큰 시간차 없이 풀림 (1500 x 1500 = 2250000)
 
 ** 접근하기
 #+BEGIN_EXAMPLE
-max heap에 큰 수 순서대로 push하고, heap의 크기가 N보다 커지면, 맨 위의 값을 pop
+min heap에  push하고, heap의 크기가 N보다 커지면, 맨 위의 값을 pop
 
 12
 13 12
@@ -19,10 +19,10 @@ max heap에 큰 수 순서대로 push하고, heap의 크기가 N보다 커지면
 52 48 21 13 12
 
 7이 들어오면 top을 버린다.
-(52) 48 21 13 12 7        -> 48이 5번째로 큰수
+(52) 48 21 13 12 7        -> 7이 5번째로 큰수
 
 8이 들어오면 top을 버린다.
-(52) (48) 21 13 12 8 7        -> 21이 5번째로 큰수
+(52) (48) 21 13 12 8 7        -> 7이 5번째로 큰수
 
 ... 반복
 #+END_EXAMPLE
@@ -55,6 +55,3 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://www.acmicpc.net/problem/2075
-
-
-
