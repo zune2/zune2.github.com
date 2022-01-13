@@ -1,0 +1,45 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2979 트럭 주차
+#+HTML: tags: 구현
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2979 트럭주차
+- 시작시간 끝 시간을 주고 겹치는 구간을 세기
+- 1대 겹침, 2대 겹침, 3대 겹침
+
+** 접근하기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int c[4];
+
+int a[101];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &c[0], &c[1], &c[2]);
+    int s, e;
+    c[1] *= 2;
+    c[2] *= 3;
+    for(int i=0;i<3;i++) {
+        scanf("%d %d", &s, &e);
+
+        for(int i=s;i<e;i++) {
+            a[i] += 1;
+        }
+    }
+    int sum = 0;
+    for(int i=0;i<100;i++) {
+        if (a[i]) sum += c[a[i]-1];     
+    }
+    printf("%d\n", sum);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2979
