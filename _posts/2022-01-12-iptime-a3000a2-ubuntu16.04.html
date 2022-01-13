@@ -20,6 +20,7 @@ tags: LinuxDeviceDriver
 <h2 id="orga86ef27">순서</h2>
 <div class="outline-text-2" id="text-orga86ef27">
 <pre class="example">
+
 ~/work$ git clone https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959     .... (1)
 
 'rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959'에 복제합니다...
@@ -89,11 +90,40 @@ cfg80211              565248  1 88x2bu
 </div>
 </div>
 
+
+
+<div id="outline-container-org5cbbf00" class="outline-2">
+<h2 id="org5cbbf00">랜카드 잡기</h2>
+<div class="outline-text-2" id="text-org5cbbf00">
+<ul class="org-ul">
+<li><a href="https://linsoo.pe.kr/archives/15553">https://linsoo.pe.kr/archives/15553</a></li>
+<li>이대로 하기</li>
+<li>ESSID와 SSID가 같았음</li>
+</ul>
+
+<pre class="example">
+$ cat /etc/network/interfaces
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto WIRELESS_LAN_NAME
+iface WIRELESS_LAN_NAME inet dhcp
+wpa-ssid KT_xxxxxxx
+wpa-key_mgmt WPA-PSK KT_xxxxxx
+wpa-psk 암호
+</pre>
+<ul class="org-ul">
+<li>reboot하면 무선랜이 잡힘</li>
+</ul>
+</div>
+</div>
 <div id="outline-container-org1b9eca4" class="outline-2">
 <h2 id="org1b9eca4">참고 링크</h2>
 <div class="outline-text-2" id="text-org1b9eca4">
 <ul class="org-ul">
-<li><a href="https://simryang.tistory.com/m/entry/%EB%AC%B4%EC%84%A0-%EB%9E%9C%EC%B9%B4%EB%93%9C-IPTime-A3000UA-2-Ubuntu-1604-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">simryang.tistory.com</a></li>
+<li>device driver 설치 : <a href="https://simryang.tistory.com/m/entry/%EB%AC%B4%EC%84%A0-%EB%9E%9C%EC%B9%B4%EB%93%9C-IPTime-A3000UA-2-Ubuntu-1604-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">simryang.tistory.com</a></li>
 </ul>
 </div>
 </div>

@@ -81,6 +81,27 @@ cfg80211              565248  1 88x2bu
 ~/work$
 #+END_EXAMPLE
 
+
+
+** 랜카드 잡기
+- https://linsoo.pe.kr/archives/15553
+- 이대로 하기
+- ESSID와 SSID가 같았음
+
+#+BEGIN_EXAMPLE
+$ cat /etc/network/interfaces
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto WIRELESS_LAN_NAME
+iface WIRELESS_LAN_NAME inet dhcp
+wpa-ssid KT_xxxxxxx
+wpa-key_mgmt WPA-PSK KT_xxxxxx
+wpa-psk 암호
+#+END_EXAMPLE
+- reboot하면 무선랜이 잡힘
 ** 참고 링크
-- [[https://simryang.tistory.com/m/entry/%EB%AC%B4%EC%84%A0-%EB%9E%9C%EC%B9%B4%EB%93%9C-IPTime-A3000UA-2-Ubuntu-1604-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0][simryang.tistory.com]]
+- device driver 설치 : [[https://simryang.tistory.com/m/entry/%EB%AC%B4%EC%84%A0-%EB%9E%9C%EC%B9%B4%EB%93%9C-IPTime-A3000UA-2-Ubuntu-1604-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0][simryang.tistory.com]]
 
