@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: BOJ 1058
+#+HTML: title: BOJ 1058 친구
 #+HTML: tags: dfs
 #+HTML: ---
 #+OPTIONS: ^:nil
