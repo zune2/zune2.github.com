@@ -15,7 +15,7 @@
 2. 올바른 문자열이면 주어진대로 계산
 #+END_EXAMPLE
 
-** 코드
+** 코드 - 1st
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
 using namespace std;
