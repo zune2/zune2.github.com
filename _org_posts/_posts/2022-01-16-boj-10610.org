@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 10610 30
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 10610 30
+- 숫자가 주어질때, 가장 큰 30의 배수로 만들어 출력 없으면 -1 출력
+
+** 접근하기
+#+BEGIN_EXAMPLE
+30의 배수판별 조건
+1. 모든 자리수의 합이 3의 배수여야 함
+2. 마지막 자리가 0어야 함
+
+최대로 크다는 의미
+큰 자리수에 큰 숫자가 위치, 작은 자리수에 더 작은 숫자가 위치 -> 내림차순 정렬
+#+END_EXAMPLE
+
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+char str[100010];
+
+bool cmp(char p1, char p2)
+{
+	return p1 > p2;
+}
+
+int main(int argc, char* argv[])
+{
+	scanf("%s", str);
+	int sum = 0;
+
+	bool lastzero = 0;
+	int pos = 0;
+	for(int i=0;str[i];i++) {
+		sum += str[i] - '0';
+		pos++;
+	}
+	sort(str, str+pos, cmp);
+	if (sum %3 == 0 && str[pos-1] == '0') {
+		printf("%s\n", str);
+	} else {
+		printf("-1\n");
+	}
+
+	return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/10610
+
+** 참고자료
+- [[https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%88%98_%ED%8C%90%EC%A0%95%EB%B2%95][배수판정법]] 
