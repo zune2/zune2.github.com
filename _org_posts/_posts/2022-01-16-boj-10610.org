@@ -8,6 +8,11 @@
 ** BOJ 10610 30
 - 숫자가 주어질때, 가장 큰 30의 배수로 만들어 출력 없으면 -1 출력
 
+** 위키에 나온 설명
+- [[https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%88%98_%ED%8C%90%EC%A0%95%EB%B2%95][배수판정법]] 
+  - 30의 배수는 3의 배수이면서 일의자리가 0인 수이다.
+  - 3의 배수는 각 자리 숫자의 합이 3의 배수인 수이다.
+
 ** 접근하기
 #+BEGIN_EXAMPLE
 30의 배수판별 조건
@@ -56,5 +61,8 @@ int main(int argc, char* argv[])
 ** 문제 링크
 - https://www.acmicpc.net/problem/10610
 
+** 풀이/설명참고
+- https://sihyungyou.github.io/baekjoon-10610/
+
 ** 참고자료
-- [[https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%88%98_%ED%8C%90%EC%A0%95%EB%B2%95][배수판정법]] 
+
