@@ -1,0 +1,128 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 8892 팰린드롬
+#+HTML: tags: 완전탐색 문자열
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 8892 팰린드롬
+- 문자열을 조합해서 팰린드롬인지 알아내기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+N이 100 N*N을 해도 10000번 반복
+두 문자열을 붙여서 팰린드롬인지 체크한다.
+#+END_EXAMPLE
+
+** 코드 - STL 24 m/s
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int T;
+int N;
+string str[101];
+
+void solve()
+{
+    cin >> N;
+    for(int i=0;i<N;i++)
+        cin >> str[i];
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            if (i == j) continue;
+            string tmp = str[i] + str[j];
+            bool same = true;
+            for(int s=0, e=(int)tmp.size()-1; s < e && s<(int)tmp.size() && e>=0;s++, e--) {
+                if (tmp[s] != tmp[e]) {
+                    same = false;
+                    break;
+                }
+            }
+
+            if (same) {
+                cout << tmp << "\n";
+                return;
+            }
+        }
+    }
+    cout << "0" << "\n";
+}
+
+int main(int argc, char* argv[])
+{
+    // 28 m/s였으나, 아래를 추가하면 4 m/s 감소
+    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    cin >> T;
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 코드 - 구현 8 m/s
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int T;
+int N;
+
+char str[101][10001];
+int len[101];
+char tmp[10010];
+
+void my_strcpy(char* p1, char* p2)
+{
+    while(*p2 != '\0') {
+        *p1 = *p2;
+        p1++;
+        p2++;
+    }
+    *p1 = '\0';
+}
+
+void solve()
+{
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%s", str[i]);
+
+        len[i] = 0;
+        for(;str[i][len[i]];len[i]++); }
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            if (i == j) continue;
+            
+            my_strcpy(tmp, str[i]);
+            my_strcpy(tmp+len[i], str[j]);
+            bool same = true;
+            for(int s=0, e=(int)(len[i]+len[j]-1); s < e && s<(int)(len[i]+len[j]) && e>=0;s++, e--) {
+                if (tmp[s] != tmp[e]) {
+                    same = false;
+                    break;
+                }
+            }
+
+            if (same) {
+                printf("%s\n", tmp);
+                return;
+            }
+        }
+    }
+    printf("0\n");
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/8892
