@@ -1,7 +1,7 @@
 ---
 layout: post
 title: BOJ 9655 돌게임
-tags: 수학
+tags: DP 수학
 ---
 
 <div id="outline-container-orgb1648a6" class="outline-2">
@@ -37,9 +37,9 @@ A B B B A  -&gt; A
 </div>
 </div>
 
-<div id="outline-container-orgfc55cee" class="outline-2">
-<h2 id="orgfc55cee">코드</h2>
-<div class="outline-text-2" id="text-orgfc55cee">
+<div id="outline-container-org24f3864" class="outline-2">
+<h2 id="org24f3864">코드1 - 홀짝</h2>
+<div class="outline-text-2" id="text-org24f3864">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
 
@@ -60,11 +60,61 @@ A B B B A  -&gt; A
 </div>
 </div>
 
+
+<div id="outline-container-orgd9a08cd" class="outline-2">
+<h2 id="orgd9a08cd">코드2 - dp</h2>
+<div class="outline-text-2" id="text-orgd9a08cd">
+<ul class="org-ul">
+<li>홀짝 규칙을 점화식으로</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1001];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    dp[0] = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    dp[1] = 1;  <span style="color: #888a85;">// </span><span style="color: #888a85;">Win SK</span>
+    dp[2] = 0;
+    dp[3] = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=4;i&lt;=N;i++) {
+        dp[i] = !dp[i-1];
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (dp[N]) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"SK\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"CY\n"</span>);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org97c81e5" class="outline-2">
+<h2 id="org97c81e5">코드3 -</h2>
+</div>
+
 <div id="outline-container-org4f065a1" class="outline-2">
 <h2 id="org4f065a1">문제 링크</h2>
 <div class="outline-text-2" id="text-org4f065a1">
 <ul class="org-ul">
 <li><a href="https://www.acmicpc.net/problem/1922">https://www.acmicpc.net/problem/1922</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1617447" class="outline-2">
+<h2 id="org1617447">풀이/설명 참고</h2>
+<div class="outline-text-2" id="text-org1617447">
+<ul class="org-ul">
+<li><a href="https://beginnerdeveloper-lit.tistory.com/83">https://beginnerdeveloper-lit.tistory.com/83</a></li>
 </ul>
 </div>
 </div>

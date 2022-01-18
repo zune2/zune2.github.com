@@ -1,8 +1,7 @@
-
 #+HTML: ---
 #+HTML: layout: post
 #+HTML: title: BOJ 9655 돌게임
-#+HTML: tags: 수학
+#+HTML: tags: DP 수학
 #+HTML: ---
 #+OPTIONS: ^:nil
 
@@ -29,7 +28,7 @@ A B B B A  -> A
 
 #+END_EXAMPLE
 
-** 코드
+** 코드1 - 홀짝
 #+BEGIN_SRC cpp
 #include <stdio.h>
 
@@ -47,6 +46,40 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+
+** 코드2 - dp 
+- 홀짝 규칙을 점화식으로
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int N;
+
+int dp[1001];
+
+int main(int argc, char* argv[])
+{
+    dp[0] = 0;
+    scanf("%d", &N);
+    dp[1] = 1;  // Win SK
+    dp[2] = 0;
+    dp[3] = 1;
+    for(int i=4;i<=N;i++) {
+        dp[i] = !dp[i-1];
+    }
+    if (dp[N]) {
+        printf("SK\n");
+    } else {
+        printf("CY\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+
+** 코드3 - 
+
 ** 문제 링크
 - https://www.acmicpc.net/problem/1922
 
+** 풀이/설명 참고
+- https://beginnerdeveloper-lit.tistory.com/83
