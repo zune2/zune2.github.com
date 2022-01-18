@@ -1,0 +1,52 @@
+
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 9655 돌게임
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 돌게임
+- 1, 3개의 돌을 순서대로 가져갈 때 승자 구하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+
+1개
+A
+
+3개
+A A A -> A
+
+4개    -> B
+A B B B
+A A A B
+
+5개
+A B B B A  -> A
+
+규칙대로 써보면, 홀수이면 A, 짝수이면 B가 이김
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    if (N%2 == 1) {
+        printf("SK\n");
+    } else {
+        printf("CY\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1922
+
