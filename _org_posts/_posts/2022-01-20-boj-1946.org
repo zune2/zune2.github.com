@@ -1,0 +1,65 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1946 신입사원
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1946 신입사원
+
+** 접근하기
+#+BEGIN_SRC 
+서류심사 성적과 면접시험 성적 중 적어도 하나가
+다른 지원자보다 떨어지지 않는 자만 선발
+
+-> 둘중 하나가 남보다 높다.
+-> 1번째 성적으로 sort하고, 2번째 성적으로 check
+
+7
+1 4  -> 무조건 고름 1 
+2 5  -> 4 > 5 X
+3 6  -> 4 > 6 X
+4 2  -> 4 > 2 O 고름 2
+5 7  -> 2 > 7 X
+6 1  -> 2 > 1 O 고름 3
+7 3  
+#+END_SRC
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int T, N;
+
+void solve()
+{
+    scanf("%d", &N);
+    vector<pair<int, int>> v(N);
+    for(int i=0;i<N;i++) {
+        scanf("%d %d", &v[i].first, &v[i].second);
+    }
+    sort(v.begin(), v.end());
+
+    int cnt = 1;
+    int mv = v[0].second;
+    for(int i=1;i<(int)v.size();i++) {
+        if (mv > v[i].second) {
+            mv = v[i].second;
+            cnt += 1;
+        }
+    }
+    printf("%d\n", cnt);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1946
