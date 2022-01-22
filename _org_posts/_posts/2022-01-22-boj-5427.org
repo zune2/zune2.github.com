@@ -1,0 +1,152 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 5427 불
+#+HTML: tags: BFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 5427 불
+- BFS로 풀면 된다.
+
+** 주의사항
+1. F(불)은 여러개 있을 수 있다.
+2. 맨 가장자리에서 SG가 곧바로 나올 수 있다. 
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+#include <vector>
+using namespace std;
+
+int T;
+
+int W, H;
+
+char a[1010][1010];
+char str[1010];
+
+int f_vis[1010][1010];
+bool vis[1010][1010];
+
+typedef struct Node {
+    int y;
+    int x;
+    int dist;
+} Node;
+
+Node sg;
+vector <Node> fire;
+
+int dy[4] = {1, -1, 0, 0};
+int dx[4] = {0, 0, 1, -1};
+
+bool safe(int y, int x)
+{
+    return (0<=x && x<W) && (0<=y && y<H); 
+}
+
+void bfs_f()
+{
+    queue<Node> q;
+    for(auto& o: fire) {
+        q.push({o.y, o.x, 0});
+        f_vis[o.y][o.x] = 0;
+    }
+
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+            if (safe(ny, nx) && a[ny][nx] != '#') {
+                if (f_vis[ny][nx] > f_vis[cur.y][cur.x] + 1) {
+                    f_vis[ny][nx] = f_vis[cur.y][cur.x] + 1;
+                    q.push({ny,nx, 0});
+                }
+            }
+        }
+    }
+}
+
+int bfs_sg()
+{
+    queue<Node> q;
+    q.push({sg.y, sg.x, 0});
+    vis[sg.y][sg.x] = true;
+    while(!q.empty()) {
+        Node cur = q.front();
+        q.pop();
+        if (cur.y == 0 || cur.y == H-1 || cur.x == 0 || cur.x == W-1) {
+            return cur.dist + 1;
+        } 
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+            if (safe(ny, nx) && a[ny][nx] != '#') {
+                if (f_vis[ny][nx] > cur.dist + 1 && vis[ny][nx] == false) {
+                    vis[ny][nx] = true;
+                    q.push({ny, nx, cur.dist + 1});
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+
+void init(int W, int H)
+{
+    for(int i=0;i<H;i++) {
+        for(int j=0;j<W;j++) {
+            f_vis[i][j] = 0;
+            vis[i][j] = false;
+        }
+    }
+    fire.clear();
+}
+
+void solve()
+{
+    scanf("%d %d", &W, &H);
+    init(W, H);
+
+    for(int i=0;i<H;i++) {
+        scanf("%s", str);
+        for(int j=0;str[j];j++) {
+            a[i][j] = str[j]; 
+
+            if (a[i][j] == '@') {
+                sg.y = i;
+                sg.x = j;
+            } else if (a[i][j] == '*') {
+                fire.push_back({i, j, 0});
+            }
+            f_vis[i][j] = 987654321;
+        }
+    }
+    
+    bfs_f();
+    int ans = bfs_sg();
+    if (ans == -1)
+        printf("IMPOSSIBLE\n");
+    else
+        printf("%d\n", ans);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/5427
+
