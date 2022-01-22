@@ -16,6 +16,127 @@
 ** 접근하기
 #+BEGIN_SRC 
 #+END_SRC
+
+** 코드 2
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+#include <vector>
+using namespace std;
+
+int R, C;
+#define SIZE 1010
+char a[SIZE][SIZE];
+char str[SIZE];
+
+int  jvis[SIZE][SIZE];
+int  fvis[SIZE][SIZE];
+int  vis[SIZE][SIZE];
+
+typedef struct Node {
+    int y;
+    int x;
+} Node;
+
+Node jh;
+vector<Node> fire;
+
+int dy[4] = {1, -1, 0, 0};
+int dx[4] = {0, 0, 1, -1};
+
+bool safe(int y, int x)
+{
+    return ( 0<=x && x<C && 0<=y && y<R );
+}
+
+void bfs_f()
+{
+    queue<Node> q;
+    for(auto& o:fire) {
+        fvis[o.y][o.x] = 0;
+        q.push({o.y, o.x}); 
+    }    
+
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+            if (safe(ny, nx) && a[ny][nx] != '#') {
+                if (fvis[ny][nx] > fvis[cur.y][cur.x] + 1) {
+                    fvis[ny][nx] = fvis[cur.y][cur.x] + 1;
+                    q.push({ny, nx});
+                }        
+            }
+        }
+    }
+}
+
+int bfs_jh()
+{
+    queue<Node> q;
+    q.push({jh.y, jh.x}); 
+    jvis[jh.y][jh.x] = 0;
+    vis[jh.y][jh.x] = 1;
+
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+
+        if (cur.y == 0 || cur.y == R -1 || cur.x == 0 || cur.x == C -1) {
+            return jvis[cur.y][cur.x] + 1;
+        }
+
+        for(int i=0;i<4;i++) {
+            int ny = cur.y + dy[i];
+            int nx = cur.x + dx[i];
+
+	    // vis조건이 없으면 메모리 초과 오류
+            if (safe(ny, nx) && a[ny][nx] != '#' && vis[ny][nx] == 0) {
+                if (fvis[ny][nx] > jvis[cur.y][cur.x] + 1) {
+                    vis[ny][nx] = 1;
+                    jvis[ny][nx] = jvis[cur.y][cur.x] + 1;
+                    q.push({ny,nx});
+                }
+            }
+        }
+    }
+
+    return -1;
+}
+
+int main(int argc, char* argv[])
+{
+//    freopen("input.txt", "r", stdin);
+    scanf("%d %d", &R, &C);
+
+    for(int i=0;i<R;i++) {
+        scanf("%s", str); 
+        for(int j=0;str[j];j++) {
+            a[i][j] = str[j];
+
+            if (a[i][j] == 'J') {
+                jh.y = i;
+                jh.x = j;
+            } else if (a[i][j] == 'F') {
+                fire.push_back({i, j});
+            } else if (a[i][j] == '#') {
+                // do nothing
+            }
+            fvis[i][j] = 987654321;       // 최대로 놓고 시작
+        }
+    }
+    bfs_f();
+    int ret =bfs_jh();
+    dbg();
+    if (ret == -1)
+        printf("IMPOSSIBLE\n");
+    else
+        printf("%d\n", ret);
+    return 0;
+}
+#+END_SRC
+
 ** 코드
 #+BEGIN_SRC cpp
 #include <cstdio>
