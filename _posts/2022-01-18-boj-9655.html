@@ -107,7 +107,7 @@ dp[k] : k번째 턴에서 최소 게임의 횟수
 
 dp[0] = 0 
 dp[1] = 1
-dp[2] = 1, 1 = 2
+dp[2] = 2
 dp[3] = min(dp[3-3], dp[3-1]) + 1
 ...
 dp[k] = min(dp[k-3], dp[k-1]) + 1
@@ -118,13 +118,10 @@ dp[k] = min(dp[k-3], dp[k-1]) + 1
 <span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
 
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
-
-<span style="color: #888a85;">// </span><span style="color: #888a85;">1, 3</span>
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1010]; <span style="color: #888a85;">// </span><span style="color: #888a85;">dp[k] : &#52572;&#49548; &#44172;&#51076;&#51032; &#54943;&#49688;</span>
 
 <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
 {
-    <span style="color: #888a85;">// </span><span style="color: #888a85;">0 1 1 1 2 3</span>
     scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
     dp[0] = 0;
     dp[1] = 1;
@@ -132,13 +129,6 @@ dp[k] = min(dp[k-3], dp[k-1]) + 1
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i++) {
         dp[i] = min(dp[i-1], dp[i-3]) + 1;
     }
-
-<span style="color: #729fcf;">#if</span> 0
-    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
-        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, dp[i]);
-    }
-    print(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
-<span style="color: #729fcf;">#endif</span>
 
     <span style="color: #729fcf; font-weight: bold;">if</span> (dp[N] % 2 == 1) 
         printf(<span style="color: #ad7fa8; font-style: italic;">"SK\n"</span>);
