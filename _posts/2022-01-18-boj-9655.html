@@ -95,12 +95,59 @@ A B B B A  -&gt; A
 </div>
 </div>
 
-<div id="outline-container-org8151370" class="outline-2">
-<h2 id="org8151370">코드3 - dp</h2>
-<div class="outline-text-2" id="text-org8151370">
+<div id="outline-container-orgd51ea29" class="outline-2">
+<h2 id="orgd51ea29">코드3 - dp - 최소 게임의 횟수를 dp[k]로 놓기</h2>
+<div class="outline-text-2" id="text-orgd51ea29">
 <ul class="org-ul">
 <li>거리를 기준으로 하는 점화식 표현 가능</li>
 </ul>
+
+<pre class="example">
+dp[k] : k번째 턴에서 최소 게임의 횟수
+
+dp[0] = 0 
+dp[1] = 1
+dp[2] = 1, 1 = 2
+dp[3] = min(dp[3-3], dp[3-1]) + 1
+...
+dp[k] = min(dp[k-3], dp[k-1]) + 1
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">1, 3</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1010]; <span style="color: #888a85;">// </span><span style="color: #888a85;">dp[k] : &#52572;&#49548; &#44172;&#51076;&#51032; &#54943;&#49688;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">0 1 1 1 2 3</span>
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    dp[0] = 0;
+    dp[1] = 1;
+    dp[2] = 2;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i++) {
+        dp[i] = min(dp[i-1], dp[i-3]) + 1;
+    }
+
+<span style="color: #729fcf;">#if</span> 0
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, dp[i]);
+    }
+    print(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+<span style="color: #729fcf;">#endif</span>
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (dp[N] % 2 == 1) 
+        printf(<span style="color: #ad7fa8; font-style: italic;">"SK\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        printf(<span style="color: #ad7fa8; font-style: italic;">"CY\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
 </div>
 </div>
 <div id="outline-container-org4f065a1" class="outline-2">
