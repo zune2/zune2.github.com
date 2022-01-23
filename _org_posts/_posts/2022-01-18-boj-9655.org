@@ -46,7 +46,6 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
-
 ** 코드2 - dp 
 - 홀짝 규칙을 점화식으로
 #+BEGIN_SRC cpp
@@ -75,11 +74,10 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
-
-** TODO 코드3
+** 코드3 - dp 
 - 거리를 기준으로 하는 점화식 표현 가능
 ** 문제 링크
-- https://www.acmicpc.net/problem/1922
+- https://www.acmicpc.net/problem/9655
 
 ** 풀이/설명 참고
 - https://beginnerdeveloper-lit.tistory.com/83
