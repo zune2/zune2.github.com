@@ -14,47 +14,48 @@
 ** 코드
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
-using namespace std;
 
 typedef long long ll;
-
 int N, M;
 int a[1000010];
 
-bool check(int mid)
+bool check(int height)
 {
-    ll sum = 0;
+    ll cnt = 0; // int이면 WA
     for(int i=0;i<N;i++) {
-        int val = a[i] - mid;
-        if (val > 0) {
-            sum += val;    
-        }
-    } 
-    return (sum >= M);
+        int namu = a[i] - height;
+        if (namu > 0) cnt += namu;
+    }
+
+    return (cnt >= M);
 }
 
 int main(int argc, char* argv[])
 {
     scanf("%d %d", &N, &M);
-    
+    int mv = 0;
     for(int i=0;i<N;i++) {
         scanf("%d", &a[i]);
+        if (mv < a[i]) mv = a[i];
     }
 
     int s = 0;
-    int e = 1000000010;
+    int e = mv; 
+
     int ans = 0;
-    while(s+1 < e) {
-        int mid = (s+e)/2;
+    while(s + 1 < e) {
+        int mid = (s + e) / 2;
 
         if (check(mid)) {
+            //printf("%d\n", mid);
             ans = mid;
-            s = mid; 
+            s = mid;
         } else {
-            e = mid; 
+            e = mid;
         }
     }
     printf("%d\n", ans);
+
     return 0;
 }
 #+END_SRC

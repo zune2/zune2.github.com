@@ -1,0 +1,64 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1654 랜선 자르기
+#+HTML: tags: 이분탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1654 랜선 자르기
+
+** 접근하기
+#+BEGIN_SRC 
+이분탐색
+#+END_SRC
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+ll K;
+ll N;
+
+int a[10010];
+
+bool check(ll mid)  // int mid하면 틀림
+{
+    ll cnt = 0;
+    for(int i=0;i<K;i++) {
+        cnt += a[i]/mid;
+    }
+    return (cnt >= N);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%lld %lld", &K, &N);
+    for(int i=0;i<K;i++) {
+        scanf("%d", &a[i]);
+    }
+   
+    ll s = 1; 
+    ll e = ll(1e10) + 7;
+    long long ans = s;      // ans = 0 이면 틀림
+    while(s+1 < e) {
+        ll mid = (s+e)/2;
+
+        if (check(mid)) {
+            ans = mid;
+            s = mid;
+        } else {
+            e = mid;
+        }
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1654
+
+** 해설/코드참고
+- https://blog.naver.com/jinhan814/222607789392
