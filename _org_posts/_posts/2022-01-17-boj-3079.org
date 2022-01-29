@@ -34,6 +34,52 @@ M = 4 + 2 가 된다. ->최적 값
  
 #+END_EXAMPLE
 
+
+** 코드 2
+- https://www.acmicpc.net/blog/view/109 보고 바꿈
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+ll N, M;
+int a[100010];
+
+bool check(ll num)
+{
+    ll cnt = 0;
+    for(int i=0;i<N;i++) {
+        cnt += num/a[i];
+    }
+
+    return (cnt >= M);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%lld %lld", &N, &M);
+
+    for(int i=0;i<N;i++) {
+        scanf("%d",&a[i]);
+    }    
+    sort(a, a+N);
+    ll s = 0;
+    ll e = a[N-1] * M;
+    ll ans = e;
+    while(s + 1 < e) {
+        ll mid = (s+e)/2;
+
+        if (check(mid)) {
+            ans = min(ans, mid);
+            e = mid;
+        } else {
+            s = mid;
+        }
+    }
+    printf("%lld\n", ans);
+}
+#+END_SRC
 ** 코드
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
