@@ -27,28 +27,24 @@ int s[100010];
 
 int main(int argc, char* argv[])
 {
-    //freopen("input.txt", "r", stdin);
-    //freopen("input2.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     scanf("%d", &N);
     for(int i=1;i<=N;i++) {
         scanf("%d", &a[i]);
     }
+
     s[1] = a[1];
     for(int i=2;i<=N;i++) {
         s[i] = s[i-1] + a[i];
     }
 
-    // 1. 벌, 벌, [벌통]
     int ans = 0;
     for(int i=2;i<N;i++) {
-        ans = max(ans, s[N] - a[1] - a[i] + s[N] - s[i]);
+        ans = max(ans, s[N] - a[1] - a[i] + s[N] - s[i]); 
     }
-    // 2. [벌통], 벌, 벌
     for(int i=2;i<N;i++) {
-        ans = max(ans, s[N] - a[N] + s[i-1] - a[i]);
+        ans = max(ans, s[i-1] + s[N] - a[N] - a[i]);
     }
-    
-    // 3. 벌, [벌통], 벌
     for(int i=2;i<N;i++) {
         ans = max(ans, s[i] - a[1] + s[N] - s[i-1] - a[N]);
     }
