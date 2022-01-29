@@ -37,17 +37,14 @@ int main(int argc, char* argv[])
     for(int i=2;i<=N;i++) {
         s[i] = s[i-1] + a[i];
     }
-
     int ans = 0;
+
     for(int i=2;i<N;i++) {
-        ans = max(ans, s[N] - a[1] - a[i] + s[N] - s[i]); 
-    }
-    for(int i=2;i<N;i++) {
-        ans = max(ans, s[i-1] + s[N] - a[N] - a[i]);
-    }
-    for(int i=2;i<N;i++) {
+        ans = max(ans, s[N] - a[1] - a[i] + s[N] - s[i-1] - a[i]);
+        ans = max(ans, s[N] - a[N] - a[i] + s[i-1]);
         ans = max(ans, s[i] - a[1] + s[N] - s[i-1] - a[N]);
     }
+
     printf("%d\n", ans);
     return 0;
 }
