@@ -59,5 +59,10 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+
+** TODO 코드 - 이분탐색
+#+BEGIN_SRC cpp
+#+END_SRC
+
 ** 문제 링크
 - https://www.acmicpc.net/problem/1789
