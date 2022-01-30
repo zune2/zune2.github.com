@@ -10,6 +10,14 @@
 ** 접근하기
 #+BEGIN_SRC 
 이분탐색
+
+- 톱의 높이를 up -> 나무가 줄어듬
+- 톱의 높이를 down -> 나무가 많아짐
+
+- down <-  톱의 높이 --> up
+-    T T T T T F F F F F
+
+- 조건을 만족하는 가장 높은 높이
 #+END_SRC
 ** 코드
 #+BEGIN_SRC cpp
