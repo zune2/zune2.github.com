@@ -1,6 +1,6 @@
 #+HTML: ---
 #+HTML: layout: post
-#+HTML: title: abc235 D - LR insertion
+#+HTML: title: abc237 D - LR insertion
 #+HTML: tags: AtCoder STL 리스트
 #+HTML: ---
 #+OPTIONS: ^:nil
