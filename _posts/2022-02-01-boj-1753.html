@@ -1,0 +1,198 @@
+---
+layout: post
+title: BOJ 1753 최단경로
+tags: 최단거리
+---
+
+<div id="outline-container-org001236f" class="outline-2">
+<h2 id="org001236f">BOJ 1753 최단경로</h2>
+<div class="outline-text-2" id="text-org001236f">
+<ul class="org-ul">
+<li>다익스트라 알고리즘으로 구함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbaeaf74" class="outline-2">
+<h2 id="orgbaeaf74">접근하기</h2>
+<div class="outline-text-2" id="text-orgbaeaf74">
+<pre class="example">
+1. 그래프에서 edge의 가중치가 양수
+2. 최단거리를 구하기
+
+-&gt; 다익스트라 알고리즘으로 구할 수 있음
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8981db8" class="outline-2">
+<h2 id="org8981db8">코드 - heap 직접구현</h2>
+<div class="outline-text-2" id="text-org8981db8">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">V</span>, <span style="color: #ff6347;">E</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">S</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span>
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">next</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MAX_V</span> 20001
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MAX_E</span> (300010*2)
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[MAX_E];
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">list</span>[MAX_V];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>[MAX_V];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">CreateNode</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = &amp;pool[idx++];
+    ptr-&gt;to = to;
+    ptr-&gt;val = val;
+    ptr-&gt;next = <span style="color: #8ae234;">NULL</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">HeapNode</span>
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>;
+} <span style="color: #8ae234; font-weight: bold;">HeapNode</span>;
+
+<span style="color: #729fcf; font-weight: bold;">class</span> <span style="color: #8ae234; font-weight: bold;">MinHeap</span>
+{
+<span style="color: #729fcf; font-weight: bold;">private</span>:
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">heap_size</span>;
+    <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #ff6347;">heap</span>[MAX_E];
+<span style="color: #729fcf; font-weight: bold;">public</span>:
+    <span style="color: #edd400; font-weight: bold;">MinHeap</span>() {
+        heap_size = 0;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">push</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = ++heap_size;    
+        heap[idx].to = to;
+        heap[idx].val = val;
+
+        <span style="color: #729fcf; font-weight: bold;">while</span>(idx != 1 &amp;&amp; heap[idx].val &lt; heap[idx/2].val) {
+            <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #ff6347;">tmp</span> = heap[idx];
+            heap[idx] = heap[idx/2];
+            heap[idx/2] = tmp;
+
+            idx = idx / 2;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">empty</span>()
+    {
+        <span style="color: #729fcf; font-weight: bold;">return</span> heap_size == 0;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">size</span>()
+    {
+        <span style="color: #729fcf; font-weight: bold;">return</span> heap_size;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #edd400; font-weight: bold;">top</span>() {
+        <span style="color: #729fcf; font-weight: bold;">return</span> heap[1];
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #edd400; font-weight: bold;">pop</span>() {
+        <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #ff6347;">ret</span> = heap[1];
+        heap[1] = heap[heap_size--];
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">parent</span> = 1;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">child</span> = parent * 2;
+
+        <span style="color: #729fcf; font-weight: bold;">while</span>(child &lt;= heap_size) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (child+1 &lt;= heap_size &amp;&amp; heap[child].val &gt; heap[child+1].val) {
+                child++;
+            }
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (heap[child].val &lt; heap[parent].val) {
+                <span style="color: #8ae234; font-weight: bold;">HeapNode</span> <span style="color: #ff6347;">tmp</span> = heap[child];
+                heap[child] = heap[parent];
+                heap[parent] = tmp;
+            }
+
+            parent = child;
+            child *= 2;
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> ret;
+    }
+};
+
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    idx = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;V, &amp;E);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;S);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=V;i++) {
+        d[i] = 1e9;
+    }
+    d[S] = 0; 
+    <span style="color: #8ae234; font-weight: bold;">MinHeap</span> <span style="color: #ff6347;">q</span>;
+    q.push(S, 0);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">from</span>, <span style="color: #ff6347;">to</span>, <span style="color: #ff6347;">val</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;E;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;from, &amp;to, &amp;val);
+        <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = CreateNode(to, val);
+        ptr-&gt;next = list[from];
+        <span style="color: #8ae234; font-weight: bold;">list</span>[from] = ptr;
+    }
+
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.top().to;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span> = q.top().val;
+        q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (d[cur] &lt; val) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+
+        <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = list[cur];
+        <span style="color: #729fcf; font-weight: bold;">while</span>(ptr) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (d[ptr-&gt;to] &gt; val + ptr-&gt;val) {
+                d[ptr-&gt;to] = val + ptr-&gt;val;
+                q.push(ptr-&gt;to, val + ptr-&gt;val);
+
+            }
+            ptr = ptr-&gt;next;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=V;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (d[i] == 1e9)
+            printf(<span style="color: #ad7fa8; font-style: italic;">"INF\n"</span>);
+        <span style="color: #729fcf; font-weight: bold;">else</span>
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, d[i]);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d80bb8" class="outline-2">
+<h2 id="org6d80bb8">문제 링크</h2>
+<div class="outline-text-2" id="text-org6d80bb8">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1753">https://www.acmicpc.net/problem/1753</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfaacdf2" class="outline-2">
+<h2 id="orgfaacdf2">해설 링크</h2>
+<div class="outline-text-2" id="text-orgfaacdf2">
+<ul class="org-ul">
+<li><a href="https://yabmoons.tistory.com/364">https://yabmoons.tistory.com/364</a></li>
+</ul>
+</div>
+</div>
