@@ -25,6 +25,66 @@ tags: 최단거리
 </div>
 </div>
 
+<div id="outline-container-orgec3969c" class="outline-2">
+<h2 id="orgec3969c">코드 - STL priority queue 이용</h2>
+<div class="outline-text-2" id="text-orgec3969c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">V</span>, <span style="color: #ff6347;">E</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">S</span>;
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">G</span>[20020];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>[20020];
+
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; &gt; <span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+    cin &gt;&gt; V &gt;&gt; E; 
+    cin &gt;&gt; S;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;E;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>, <span style="color: #ff6347;">cost</span>;
+        cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; cost;
+        G[p1].push_back({cost, p2});
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=V;i++) {
+        d[i] = INF;
+    } 
+    d[S] = 0; 
+    pq.emplace(0, S);    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#49884;&#51089;&#51216;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!pq.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cost</span> = pq.top().first; 
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">id</span> = pq.top().second; 
+        pq.pop();
+        <span style="color: #729fcf; font-weight: bold;">if</span> (d[id] &lt; cost) <span style="color: #729fcf; font-weight: bold;">continue</span>;         
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">i</span>:G[id]) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nid</span> = i.second;       <span style="color: #888a85;">// </span><span style="color: #888a85;">id</span>
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ncost</span> = i.first;      <span style="color: #888a85;">// </span><span style="color: #888a85;">cost</span>
+            <span style="color: #729fcf; font-weight: bold;">if</span> (d[nid] &gt; cost + ncost) {
+                d[nid] = cost + ncost;
+                pq.emplace(d[nid], nid);
+            }
+        }
+    } 
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=V;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (d[i] == INF)
+            cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"INF"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+        <span style="color: #729fcf; font-weight: bold;">else</span>
+            cout &lt;&lt; d[i] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
 <div id="outline-container-org8981db8" class="outline-2">
 <h2 id="org8981db8">코드 - heap 직접구현</h2>
 <div class="outline-text-2" id="text-org8981db8">
