@@ -1,0 +1,98 @@
+---
+layout: post
+title: BOJ 11404 플로이드
+tags: 최단거리
+---
+
+<div id="outline-container-org458d481" class="outline-2">
+<h2 id="org458d481">BOJ 11404 플로이드</h2>
+</div>
+
+<div id="outline-container-org483ba6d" class="outline-2">
+<h2 id="org483ba6d">접근하기</h2>
+<div class="outline-text-2" id="text-org483ba6d">
+<pre class="example">
+- 플로이드 와샬 알고리즘으로 모든 정점간의 최단거리 구하기
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org600858f" class="outline-2">
+<h2 id="org600858f">코드</h2>
+<div class="outline-text-2" id="text-org600858f">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[101][101];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    cin &gt;&gt; N;
+    cin &gt;&gt; M;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i != j) dp[i][j] = INF;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>, <span style="color: #ff6347;">cost</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; cost;
+        <span style="color: #729fcf; font-weight: bold;">if</span>(dp[p1][p2] &gt; cost) {
+            dp[p1][p2] = cost;
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][j] &gt; dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][j] == INF)
+                cout &lt;&lt; 0 &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+            <span style="color: #729fcf; font-weight: bold;">else</span>
+                cout &lt;&lt; dp[i][j] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+        }
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b9b07a" class="outline-2">
+<h2 id="org1b9b07a">문제 링크</h2>
+<div class="outline-text-2" id="text-org1b9b07a">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11404">https://www.acmicpc.net/problem/11404</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf7a76bf" class="outline-2">
+<h2 id="orgf7a76bf">알고리즘 해설</h2>
+<div class="outline-text-2" id="text-orgf7a76bf">
+<ul class="org-ul">
+<li><a href="https://dongdd.tistory.com/107">https://dongdd.tistory.com/107</a></li>
+</ul>
+</div>
+</div>
