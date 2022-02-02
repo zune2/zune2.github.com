@@ -126,15 +126,197 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+** 코드 - DFS + 플로이드 와샬
 
-** TODO 코드 - DFS + 플로이드 와샬
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 987654321
 
+int N, M;
+int dp[101][101];
+int vis[101];
+vector<int> ans;   
 
-** TODO 코드 - UnionFind + 플로이드 와샬
+void dfs(int cur)
+{
+    vis[cur] = 1;
+    ans.push_back(cur);
+    for(int i=1;i<=N;i++) {
+        if (dp[cur][i] != INF && vis[i] == 0) {
+            dfs(i);
+        }
+    }
+}
 
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N;
+    cin >> M;
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            if (i!=j) dp[i][j] = INF;
+        }
+    }
+
+    int p1, p2;
+    for(int i=0;i<M;i++) {
+        cin >> p1 >> p2;
+        dp[p1][p2] = 1;
+        dp[p2][p1] = 1;
+    }
+
+    for(int k=1;k<=N;k++) {
+        for(int i=1;i<=N;i++) {
+            for(int j=1;j<=N;j++) {
+                if (dp[i][j] > dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    vector<int> result; 
+    for(int i=1;i<=N;i++) {
+        ans.clear();
+        if (vis[i]) continue;
+        dfs(i);
+        if ((int)ans.size() == 0) continue;
+        // 1 2 3
+        int mv = INF;
+        int mv_id = -1;
+        for(auto& from:ans) {
+            int sum = 0;
+            for(int to=1;to<=N;to++) {
+                if (from != to && dp[from][to] != INF) {
+                    // HINT : https://www.acmicpc.net/board/view/8953
+                    // 모든 참석자들의 의사전달시간중 최대값이 최소가 되도록 하기
+                    //sum += dp[from][to];          // 이렇게 하면 틀림
+                    sum = max(sum, dp[from][to]);
+                }
+            }
+            if (mv > sum) {
+                mv = sum;
+                mv_id = from;
+            }
+        } 
+        if (mv_id != -1) result.push_back(mv_id);
+    }
+    cout << result.size() << '\n';
+    sort(result.begin(), result.end());
+    for(auto &o : result) {
+        cout << o << '\n';
+    }
+    return 0;
+}
+#+END_SRC
+** 코드 - UnionFind + 플로이드 와샬
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 987654321
+
+int N, M;
+int dp[101][101];
+int vis[101];
+
+int Find(int a)
+{
+    if (vis[a] < 0) return a;
+    return vis[a] = Find(vis[a]);
+}
+
+void Union(int a, int b)
+{
+    a = Find(a);
+    b = Find(b);
+
+    if (a == b) return;
+
+    if (vis[a] <= vis[b]) {
+        vis[a] += vis[b];
+        vis[b] = a;
+    } else {
+        vis[b] += vis[a];
+        vis[a] = b;
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    cin >> N;
+    cin >> M;
+    
+    for(int i=1;i<=N;i++) {
+        vis[i] = -1;
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            if (i!=j) dp[i][j] = INF;
+        }
+    }
+
+    int p1, p2;
+    for(int i=0;i<M;i++) {
+        cin >> p1 >> p2;
+        dp[p1][p2] = 1;
+        dp[p2][p1] = 1;
+
+        Union(p1, p2);
+    }
+
+    for(int k=1;k<=N;k++) {
+        for(int i=1;i<=N;i++) {
+            for(int j=1;j<=N;j++) {
+                if (dp[i][j] > dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    vector<int> lst[101];
+    for(int i=1;i<=N;i++) {
+        int k = Find(i);
+        lst[k].push_back(i);
+    }
+
+    vector<int> result; 
+    for(int i=1;i<=N;i++) {
+        if (lst[i].size() == 0) continue;
+        // 1 2 3
+        int mv = INF;
+        int mv_id = -1;
+        for(auto& from:lst[i]) {
+            int sum = 0;
+            for(int to=1;to<=N;to++) {
+                if (from != to && dp[from][to] != INF) {
+                    sum = max(sum, dp[from][to]);
+                }
+            }
+            if (mv > sum) {
+                mv = sum;
+                mv_id = from;
+            }
+        } 
+        if (mv_id != -1) result.push_back(mv_id);
+    }
+    cout << result.size() << '\n';
+    sort(result.begin(), result.end());
+    for(auto &o : result) {
+        cout << o << '\n';
+    }
+
+    return 0;
+}
+#+END_SRC
 ** 문제 링크
 - https://www.acmicpc.net/problem/1956
-
 
 ** 디버깅 참고
 - https://www.acmicpc.net/board/view/8953
