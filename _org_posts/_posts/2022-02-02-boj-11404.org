@@ -73,4 +73,5 @@ int main(int argc, char* argv[])
 - https://www.acmicpc.net/problem/11404
 
 ** 알고리즘 해설
+- http://egloos.zum.com/printf/v/776269
 - https://dongdd.tistory.com/107

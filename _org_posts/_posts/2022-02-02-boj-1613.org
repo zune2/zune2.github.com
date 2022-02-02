@@ -1,0 +1,74 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1613 역사
+#+HTML: tags: 최단거리
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1613 역사
+- a(1000) < b(1919)  -> -1
+- b(1919) < a(1000)  -> 1
+- 모르면             -> 0
+
+** 접근하기
+#+BEGIN_EXAMPLE
+- 플로이드 와샬 알고리즘으로 선후 관계를 알 수 있음
+
+G[a][b] = -1;
+G[b][a] = 1; 로 입력의 선후관계 지정
+
+플로이드 와샬 알고리즘 
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+int N;
+int K;
+int S;
+
+int dp[401][401];
+int a[401][401];
+
+int main(int argc, char* argv[])
+{
+    cin >> N >> K;
+
+    int p1, p2;
+    for(int i=1;i<=K;i++) {
+        cin >> p1 >> p2;
+        dp[p1][p2] = -1;
+        dp[p2][p1] = 1;
+    } 
+
+    for(int k=1;k<=N;k++) {
+        for(int i=1;i<=N;i++) {
+            for(int j=1;j<=N;j++) {
+
+                if (dp[i][j] == 0) {
+                    if (dp[i][k] == 1 && dp[k][j] == 1) {
+                        dp[i][j] = 1;
+                    }
+                    if (dp[i][k] == -1 && dp[k][j] == -1) {
+                        dp[i][j] = -1;
+                    }
+                }
+            }
+        }
+    }
+
+    cin >> S;
+    for(int i=0;i<S;i++) {
+        cin >> p1 >> p2;
+        if (dp[p1][p2] == INF)
+            cout << 0 << '\n';
+        else
+            cout << dp[p1][p2] << '\n';
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1613
