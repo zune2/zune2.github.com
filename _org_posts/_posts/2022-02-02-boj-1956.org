@@ -1,0 +1,70 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1956 운동
+#+HTML: tags: 최단거리
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1956 운동
+
+** 접근하기
+#+BEGIN_EXAMPLE
+플로이드 와샬 알고리즘에서
+dp[2][2] = 2번에서 2번으로 이동하는 최단거리를 의미 -> cycle 
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+
+#define INF 1e9
+
+int V, E;
+int dp[401][401];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#endif
+    cin >> V >> E;
+    for(int i=1;i<=V;i++) {
+        for(int j=1;j<=V;j++) {
+            dp[i][j] = INF;       
+        }
+    }
+    
+    int p1, p2, cost;
+    for(int i=0;i<E;i++) {
+        cin >> p1 >> p2 >> cost;
+        dp[p1][p2] = cost;
+    }
+
+    for(int k=1;k<=V;k++) {
+        for(int i=1;i<=V;i++) {
+            for(int j=1;j<=V;j++) {
+                if (dp[i][j] > dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    int ans = INF;
+    for(int i=1;i<=V;i++) {
+        ans = min(ans, dp[i][i]); 
+    }
+    if (ans == INF)
+        cout << -1 << '\n';
+    else
+        cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1956
