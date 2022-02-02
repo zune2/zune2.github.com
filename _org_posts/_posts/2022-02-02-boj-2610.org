@@ -1,4 +1,4 @@
-#+HTML: ---
+#+Html: ---
 #+HTML: layout: post
 #+HTML: title: BOJ 2610 회의준비
 #+HTML: tags: 최단거리
@@ -9,11 +9,14 @@
 
 ** 접근하기
 #+BEGIN_EXAMPLE
-1-2-3
-4-5-6-7
-8
 
-3개의 그룹이 생김
+   1-2-3
+
+   4-5-6-7
+
+   8
+
+3개의 그룹이 생김 (그룹을 확인하기 - dfs/bfs/union-find)
 
 각 그룹을 graph로 나타내고, 플로이드와샬로 최단거리를 구함.
 
