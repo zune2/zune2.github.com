@@ -20,7 +20,7 @@ G[b][a] = 1; 로 입력의 선후관계 지정
 플로이드 와샬 알고리즘 
 #+END_EXAMPLE
 
-** 코드
+** 코드 - 플로이드 와샬(Floyd-Warshall)
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -70,5 +70,7 @@ int main(int argc, char* argv[])
 }
 #+END_SRC
 
+** TODO 코드 - 위상정렬(Topological sort)이용
+** TODO 코드 - DFS로 풀기
 ** 문제 링크
 - https://www.acmicpc.net/problem/1613
