@@ -1,0 +1,62 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2740 행렬 곱셈
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2740 행렬 곱셈
+** 접근하기
+- 행렬 곱셈 수학식을 2차원 배열로 코딩
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N, M, K;
+int a[110][110];
+int b[110][110];
+int c[110][110];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N >> M;
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=M;j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    cin >> M >> K;
+    for(int i=1;i<=M;i++) {
+        for(int j=1;j<=K;j++) {
+            cin >> b[i][j];
+        }
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=K;j++) {
+            for(int k=1;k<=M;k++) {
+                c[i][j] += a[i][k]*b[k][j];
+            }
+        }
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=K;j++) {
+            cout << c[i][j] << " ";
+        }
+        cout << '\n';
+    }
+
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2740
