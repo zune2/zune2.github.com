@@ -9,6 +9,19 @@
 ** 접근하기
 - 행렬 곱셈 수학식을 2차원 배열로 코딩
 
+#+BEGIN_EXAMPLE
+A = 3 x 2 
+
+B = 2 x 3
+
+C = 3 x 3 행렬이 된다.
+
+y-> A세로 = 3
+x-> B가로 = 3
+
+
+
+#+END_EXAMPLE
 ** 코드
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
@@ -39,9 +52,9 @@ int main(int argc, char* argv[])
         }
     }
 
-    for(int i=1;i<=N;i++) {
-        for(int j=1;j<=K;j++) {
-            for(int k=1;k<=M;k++) {
+    for(int i=1;i<=N;i++) {          // 1 ~ 3
+        for(int j=1;j<=K;j++) {      // 1 ~ 3
+            for(int k=1;k<=M;k++) {  // 1 ~ 2
                 c[i][j] += a[i][k]*b[k][j];
             }
         }
