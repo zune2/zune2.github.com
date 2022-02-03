@@ -19,7 +19,57 @@ dp[i] : 1~i까지의 제일 짦은 거리 (지름길)
 }
 #+END_EXAMPLE
 
-** 코드
+** 코드 - vector
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 987654321
+
+int N, D;
+typedef struct Node {
+    int s;
+    int e;
+    int c;
+} Node;
+
+vector< Node > vec;
+
+int dp[10010];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N >> D;
+    for(int i=0;i<10010;i++) {
+        dp[i] = INF;
+    }
+
+    int p1, p2, cost;
+    for(int i=0;i<N;i++) {
+        cin >> p1 >> p2 >> cost;
+        if (p2 > D) continue;
+        if (p2 -p1 < cost) continue;
+        vec.push_back({p1, p2, cost});
+    }
+
+    dp[0] = 0;
+
+    for(int i=1;i<=D;i++) {
+        dp[i] = min(dp[i], dp[i-1] + 1);
+        for(auto o:vec) {
+            if (o.e == i && dp[i] > dp[o.s] + o.c)
+                dp[i] = dp[o.s] + o.c;
+        }
+    }
+
+    cout << dp[D] << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 코드 - vector arr
 #+BEGIN_SRC cpp
 i#include <bits/stdc++.h>
 using namespace std;
