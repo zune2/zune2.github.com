@@ -6,7 +6,7 @@
 #+OPTIONS: ^:nil
 
 ** BOJ 11053 가장 긴 증가하는 부분 수열
-
+- dp로 LIS풀기
 
 ** 접근하기
 - DP로 풀기
@@ -59,3 +59,7 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://www.acmicpc.net/problem/11053
+
+** LIS 알고리즘 해설
+- https://source-sc.tistory.com/14
+- https://jason9319.tistory.com/113
