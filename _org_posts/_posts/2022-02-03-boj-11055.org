@@ -51,9 +51,6 @@ int dp[1010];
 int main(int argc, char* argv[])
 {
     FASTIO
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-#endif
     cin >> N;
     for(int i=1;i<=N;i++) {
         cin >> a[i];
