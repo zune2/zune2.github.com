@@ -1,0 +1,81 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 2981 검문
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2981 검문
+** 접근하기
+#+BEGIN_EXAMPLE
+A = aM + r
+B = bM + r
+C = cM + r
+...
+
+B - A = (b - a)xM      (r이 소거됨)
+C - B = (c - b)xM      (r이 소거됨)
+...
+
+gcd( B-A, C-B, D-C, ...) ->최대공약수
+
+최대공약수의 약수 -> 공약수의 목록
+#+END_EXAMPLE
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+int a[110];
+
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a%b);
+}
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    //freopen("input.txt", "r", stdin);
+    freopen("input2.txt", "r", stdin);
+#endif
+    cin >> N;
+    for(int i=0;i<N;i++) {
+        cin >> a[i];
+    }
+    sort(a, a+N);
+    
+    int cur = a[1] - a[0];
+    for(int i=2;i<N;i++) {
+        cur = gcd(cur, a[i] - a[i-1]);
+    }
+    
+    set<int> sp;
+    for(int i=2;i*i<=cur;i++) {
+        if (cur%i == 0) {
+            sp.insert(i);
+            sp.insert(cur/i);
+        }
+    }
+    sp.insert(cur);
+    for(auto o:sp) {
+        cout << o << " ";
+    }
+    cout << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 해설 참고
+- https://kjwan4435.tistory.com/59
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2981
