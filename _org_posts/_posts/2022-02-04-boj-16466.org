@@ -1,0 +1,84 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 16466 콘서트
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 16466 콘서트
+- 1번부터 N번까지 표가 팔렸을 때, 가장 작은 안팔린 표의 번호 구하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+5
+1 2 3 4 5
+
+출력 : 6 <- 틀리기 쉬운 반례
+#+END_EXAMPLE
+
+** 코드 2
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+int a[1000010];
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N;
+    for(int i=0;i<N;i++) {
+        cin >> a[i];
+    }
+    sort(a, a+N);
+    int num = 1;
+    for(int i=0;i<N;i++) {
+        if (a[i] != num) {
+            cout << num << '\n'; 
+            return 0;
+        }
+        num += 1;
+    }
+    cout << num << '\n'; 
+    return 0;
+}
+#+END_SRC
+** 코드 1
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+set<ll> sp;
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N;
+    ll a;
+    for(int i=0;i<N;i++) {
+        cin >> a;
+        sp.insert(a);
+    }
+
+    long long num = 1;
+    for(auto& o :sp) {
+        if (num != o) {
+            cout << num << '\n';
+            return 0;
+        } else {
+            num += 1;
+        }
+    }
+    cout << num << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/16466
