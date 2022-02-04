@@ -1,0 +1,70 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 12355 Ocean View (Large)
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 12355 Ocean View (Large)
+- dp로 LIS풀기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+
+서쪽에 호수 동쪽에 Hill
+
+4 5 6 1 7
+1 2 3   4 
+
+LIS(N) = 4 
+N = 5 
+N-LIS(N) = 1
+#+END_EXAMPLE
+
+** 코드 - DP로 풀이
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+#define ARRSIZE 1010
+
+ll N;
+ll a[ARRSIZE];
+ll dp[ARRSIZE];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N;
+    for(int i=1;i<=N;i++) {
+        cin >> a[i];
+    }
+
+    for(int i=1;i<=N;i++) {
+        dp[i] = 1;
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=i;j++) {
+            if (a[i] > a[j] && dp[i] < dp[j] + 1) {
+                dp[i] = dp[j] + 1;
+            }
+        }
+    }
+    ll ans = dp[1];
+    for(int i=1;i<=N;i++) {
+        ans = max(ans, dp[i]);
+    }
+
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** TODO 코드 - lower_bound로 풀이
+
+** 문제 링크
+- https://www.acmicpc.net/problem/12355
