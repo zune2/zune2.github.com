@@ -83,7 +83,7 @@ tags: 최단거리
     <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>, <span style="color: #ff6347;">cost</span>;
     <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
         cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; cost;
-        edge.push_back({{p1, p2}, cost});
+        edge.push_back({p1, p2}, cost);
     }
 
     bf();
