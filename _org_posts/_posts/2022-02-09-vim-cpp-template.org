@@ -8,7 +8,11 @@
 ** 용도
 - BOJ 문제 풀때 vim에서 사용
 
+** 사용법
+- 파일이 열린 상태에서 ,tt를 입력하면, 모든 파일 내용을 지우고, template를 로딩
+
 ** vim에서 ,tt 키 입력으로 template code로딩
+- ~/.vimrc에 다음 줄을 추가
 #+BEGIN_SRC vim
 map ,tt <ESC>: 1,$ d <ESC>:r ~/template.cpp <CR> 1Gdd <CR>
 #+END_SRC

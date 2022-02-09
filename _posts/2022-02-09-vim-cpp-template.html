@@ -13,9 +13,21 @@ tags: vim
 </div>
 </div>
 
+<div id="outline-container-org84b364b" class="outline-2">
+<h2 id="org84b364b">사용법</h2>
+<div class="outline-text-2" id="text-org84b364b">
+<ul class="org-ul">
+<li>파일이 열린 상태에서 ,tt를 입력하면, 모든 파일 내용을 지우고, template를 로딩</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-orgddce353" class="outline-2">
 <h2 id="orgddce353">vim에서 ,tt 키 입력으로 template code로딩</h2>
 <div class="outline-text-2" id="text-orgddce353">
+<ul class="org-ul">
+<li>~/.vimrc에 다음 줄을 추가</li>
+</ul>
 <div class="org-src-container">
 <pre class="src src-vim">map ,tt &lt;ESC&gt;: 1,$ d &lt;ESC&gt;:r ~/template.cpp &lt;CR&gt; 1Gdd &lt;CR&gt;
 </pre>
