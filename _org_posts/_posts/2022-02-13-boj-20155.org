@@ -1,0 +1,43 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 20155 우리 집 밑에 편의점이 있는데
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 20155 우리 집 밑에 편의점이 있는
+** 접근하기
+#+BEGIN_EXAMPLE
+최빈값을 구하는 문제
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N, M;
+int a[1010];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#endif
+    cin >> N >> M;
+    int num;         
+    for(int i=0;i<N;i++) {
+        cin >> num;
+        a[num] += 1;
+    }
+    cout << *max_element(a, a+N) << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/20155
