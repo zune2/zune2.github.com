@@ -1,0 +1,99 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: BOJ 1213 팰린드롬 만들기
+#+HTML: tags: 수학 구현
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1213 팰린드롬 만들기
+** 접근하기
+#+BEGIN_EXAMPLE
+
+1) 팰린드롬 가능여부 확인
+문자열의 길이가 짝수일때, 모든 문자가 짝수이어야 팰린드롬 가능
+문자열의 길이가 홀수일 때, 홀수에서 한글자를 뺀 나머지 문자가 짝수여야 팰린드롬 가능
+ -> 뺀 문자가 가운데록 가야함
+
+2) 사전순으로 배열
+- 우선순위 queue에 넣어서 맨앞과 맨뒤에 번갈아가며 추가하도록 함
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+char str[60];
+char a[60];
+char table[26];
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+//    freopen("input.txt", "r", stdin);
+#endif
+    cin >> str; 
+    int len = 0;
+    for(len=0;str[len];len++) {
+        table[(int)str[len] - 'A'] += 1;
+    }
+    int oddcnt = 0;
+    for(int i=0;i<26;i++) {
+        if (table[i] == 0) continue;
+        if (table[i]%2 == 1) oddcnt += 1; 
+    }
+
+    if (oddcnt > 1) {
+        cout << "I'm Sorry Hansoo" << '\n';
+        return 0;
+    }
+
+    priority_queue < char, vector<char>, greater<char> > pq;
+    char mid = 0;
+    for(int i=0;i<26;i++) {
+        if (table[i] == 0) continue;
+        if (table[i]%2 == 1) {
+            mid = i + 'A';
+            table[i]--;
+            if (table[i]) {
+                for(int j=0;j<table[i];j++) {
+                    pq.push(i + 'A');
+                }
+            }
+        } else {
+            for(int j=0;j<table[i];j++) {
+                pq.push(i + 'A');
+            }
+        }
+    }
+
+    int cnt = 0;
+    int lidx = 0;
+    int ridx = 0;
+    while(!pq.empty()) {
+        char cur = pq.top(); pq.pop();
+
+        if((++cnt)%2 != 0) {
+            a[lidx] = cur;
+            lidx++;
+        } else {
+            ridx++;
+            a[len - ridx] = cur;
+        }
+    } 
+    if (len%2 == 1) {
+        a[len/2] = mid;
+    }
+    a[len] = '\0';
+    cout << a << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1213
