@@ -11,7 +11,10 @@
 BFS로 최단거리
 #+END_EXAMPLE
 
-** 코드
+** TODO 코드 - 다익스트라로 풀이
+- cost를 1로 주변 다익스트라로 풀이 가능함
+
+** 코드 - BFS로 풀이
 #+BEGIN_SRC cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -68,3 +71,6 @@ int main(int argc, char* argv[])
 
 ** 문제 링크
 - https://www.acmicpc.net/problem/14496
+
+** 풀이참고
+- 다익스트라 - https://codecollector.tistory.com/953
