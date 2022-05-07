@@ -5,10 +5,9 @@
 #+HTML: ---
 #+OPTIONS: ^:nil
 
-** STL set에 struct pointer를 넣고 sort하기
+** STL set에 struct pointer
 - 객체풀을 이용해서 포인터를 넣기
 
-** 코드
 #+BEGIN_SRC cpp
 #include <map>
 #include <set>
@@ -42,7 +41,6 @@ struct Compare {
 // Compare 객체 넣기, 1번째로 Node*
 multiset<Node*, Compare> s
 #+END_SRC
-
 ** insert하기
 #+BEGIN_SRC cpp
 Node* ptr = CreateNode(id, score);
