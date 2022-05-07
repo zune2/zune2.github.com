@@ -1,0 +1,79 @@
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: STL set에 struct pointer 이용
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** STL set에 struct pointer를 넣고 sort하기
+- 객체풀을 이용해서 포인터를 넣기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <map>
+#include <set>
+#include <iostream>
+#include <utility>
+using namespace std;
+
+typedef struct Node {
+    int id;
+    int score;
+} Node;
+
+Node pool[1000];
+int idx;
+
+Node* CreateNode(int id, int score)
+{
+    Node* ptr = &pool[idx++];
+    ptr->id = id;
+    ptr->score = score;
+    return ptr;
+}
+
+// Node*를 입력으로 받는 Compare struct 만들기
+struct Compare {
+    bool operator()(Node* a, Node* b) {
+        return a->score < b->score;
+    }
+};
+
+// Compare 객체 넣기, 1번째로 Node*
+multiset<Node*, Compare> s
+#+END_SRC
+
+** insert하기
+#+BEGIN_SRC cpp
+Node* ptr = CreateNode(id, score);
+s.insert(ptr);
+#+END_SRC
+
+** find & erase & size
+#+BEGIN_SRC cpp
+if (s.find(ptr) != s.end()) {
+   // erase
+   s[ptr->grade][ptr->gender].erase(ptr);
+
+   // size
+   if (s.size()) {
+#+END_SRC
+
+** min / max 구하기
+- https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/
+
+
+** lower bound 구하기
+
+#+BEGIN_SRC cpp
+    tmp.score = score;
+    tmp.id = 0;
+
+    auto it = s.lower_bound(&tmp);
+    if (it != s.end()) {
+  
+    // (*it)->score
+    // (*it)->id
+#+END_SRC
+
+
