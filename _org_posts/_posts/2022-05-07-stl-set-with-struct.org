@@ -51,7 +51,7 @@ s.insert(ptr);
 #+BEGIN_SRC cpp
 if (s.find(ptr) != s.end()) {
    // erase
-   s[ptr->grade][ptr->gender].erase(ptr);
+   s.erase(ptr);
 
    // size
    if (s.size()) {
@@ -59,7 +59,6 @@ if (s.find(ptr) != s.end()) {
 
 ** min / max 구하기
 - https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/
-
 
 ** lower bound 구하기
 

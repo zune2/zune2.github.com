@@ -64,7 +64,7 @@ s.insert(ptr);
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #729fcf; font-weight: bold;">if</span> (s.find(ptr) != s.end()) {
    <span style="color: #888a85;">// </span><span style="color: #888a85;">erase</span>
-   s[ptr-&gt;grade][ptr-&gt;gender].erase(ptr);
+   s.erase(ptr);
 
    <span style="color: #888a85;">// </span><span style="color: #888a85;">size</span>
    <span style="color: #729fcf; font-weight: bold;">if</span> (s.size()) {
@@ -81,7 +81,6 @@ s.insert(ptr);
 </ul>
 </div>
 </div>
-
 
 <div id="outline-container-org0900e89" class="outline-2">
 <h2 id="org0900e89">lower bound 구하기</h2>
