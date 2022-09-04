@@ -201,10 +201,6 @@
 <lastmod>2020-01-12T21:32:54+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/etc/git_error/</loc>
-<lastmod>2020-01-17T16:00:00+09:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/org-mode-jekyll-pub-blog/</loc>
 <lastmod>2020-01-17T00:00:00+09:00</lastmod>
 </url>
@@ -1401,7 +1397,7 @@
 <lastmod>2022-05-05T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/code/stl-set-with-struct/</loc>
+<loc>http://localhost:4000/stl-set-with-struct/</loc>
 <lastmod>2022-05-07T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -1613,8 +1609,5 @@
 </url>
 <url>
 <loc>http://localhost:4000/page70/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/page71/</loc>
 </url>
 </urlset>
