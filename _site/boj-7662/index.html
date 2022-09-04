@@ -1,0 +1,108 @@
+<div id="outline-container-orgdbe8f0a" class="outline-2">
+<h2 id="orgdbe8f0a">BOJ 7662 이중 우선순위 큐</h2>
+</div>
+
+<div id="outline-container-orgfdff603" class="outline-2">
+<h2 id="orgfdff603">접근하기</h2>
+<div class="outline-text-2" id="text-orgfdff603">
+<ul class="org-ul">
+<li>STL multiset을 이용해서 풀이</li>
+<li>정렬된 순서로 저장함. set과 달리 중복을 허용하는 자료구조</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4d25cd3" class="outline-2">
+<h2 id="org4d25cd3">코드</h2>
+<div class="outline-text-2" id="text-org4d25cd3">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">multiset</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;&gt; <span style="color: #ff6347;">sp</span>;
+
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">ch</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">" %c %d"</span>, &amp;ch, &amp;num);
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ch == <span style="color: #ad7fa8; font-style: italic;">'I'</span>) {
+            sp.insert(num);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (ch == <span style="color: #ad7fa8; font-style: italic;">'D'</span>) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (sp.size() != 0) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (num == -1) {
+                    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = sp.end();
+                    it--;
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; "min:" &lt;&lt;  *it &lt;&lt; endl;</span>
+                    sp.erase(it);
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; "size:" &lt;&lt;  sp.size() &lt;&lt; endl;</span>
+                } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (num == 1) {
+                    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = sp.begin();
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; "max:" &lt;&lt;  *it &lt;&lt; endl;</span>
+                    sp.erase(it);
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; "size:" &lt;&lt;  sp.size() &lt;&lt; endl;</span>
+                }
+            }
+        }
+    } 
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sp.size() == 0) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"EMPTY\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">left</span> = sp.begin();
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)*left);
+        <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">right</span> = sp.end();
+        right--; 
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)*right);
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf923a2f" class="outline-2">
+<h2 id="orgf923a2f">생각</h2>
+<div class="outline-text-2" id="text-orgf923a2f">
+<ul class="org-ul">
+<li>set을 이용해서 풀었는데, 틀림</li>
+<li>같은 데이터가 여러번 들어올 수 있겠다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga0dfad1" class="outline-2">
+<h2 id="orga0dfad1"><span class="todo TODO">TODO</span> min heap / max heap을 조합해서 풀이</h2>
+<div class="outline-text-2" id="text-orga0dfad1">
+<ul class="org-ul">
+<li>풀이방법 생각해보기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d89a7d" class="outline-2">
+<h2 id="org6d89a7d">문제 링크</h2>
+<div class="outline-text-2" id="text-org6d89a7d">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/7662">https://www.acmicpc.net/problem/7662</a></li>
+</ul>
+</div>
+</div>

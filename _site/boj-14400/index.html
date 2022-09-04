@@ -1,0 +1,82 @@
+<div id="outline-container-org47ef2b1" class="outline-2">
+<h2 id="org47ef2b1">BOJ 14400 편의점 2</h2>
+</div>
+<div id="outline-container-org5f6dc6b" class="outline-2">
+<h2 id="org5f6dc6b">접근하기</h2>
+<div class="outline-text-2" id="text-org5f6dc6b">
+<pre class="example">
+n명의 주요 고객들의 위치 (xi,yi)이 주어질 때,
+모든 고객들의 거리 합을 최소로 하는 위치에 편의점을 세우는 위치
+
+-&gt; 중앙값(median)의 점을 찾는다.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4cd245c" class="outline-2">
+<h2 id="org4cd245c">코드</h2>
+<div class="outline-text-2" id="text-org4cd245c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>[100000];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>[100000];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+<span style="color: #729fcf;">#endif</span>
+    cin &gt;&gt; N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; x[i] &gt;&gt; y[i];
+    }
+
+    sort(x, x+N);
+    sort(y, y+N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x1</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y1</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">if</span> (N%2 == 1) {
+         x1 = x[N/2]; 
+        y1 = y[N/2]; 
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        x1 = (x[N/2 - 1] + x[N/2]) / 2; 
+        y1 = (y[N/2 - 1] + y[N/2]) / 2; 
+    }
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        ans += abs(x1 - x[i]) + abs(y1 - y[i]);
+    }
+    cout &lt;&lt; ans &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org25f8d89" class="outline-2">
+<h2 id="org25f8d89">수학/중앙값 설명</h2>
+<div class="outline-text-2" id="text-org25f8d89">
+<ul class="org-ul">
+<li><a href="https://mathbang.net/116">https://mathbang.net/116</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfafc2cf" class="outline-2">
+<h2 id="orgfafc2cf">문제 링크</h2>
+<div class="outline-text-2" id="text-orgfafc2cf">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/14400">https://www.acmicpc.net/problem/14400</a></li>
+</ul>
+</div>
+</div>

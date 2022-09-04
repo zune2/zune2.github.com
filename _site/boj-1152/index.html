@@ -1,0 +1,52 @@
+<div id="outline-container-org68c1073" class="outline-2">
+<h2 id="org68c1073">BOJ 1152 단어의 개수</h2>
+</div>
+
+<div id="outline-container-org4433348" class="outline-2">
+<h2 id="org4433348">접근하기</h2>
+<div class="outline-text-2" id="text-org4433348">
+<ul class="org-ul">
+<li>getline으로 줄 단위로 받아서 string에 저장</li>
+<li>istringstream을 이용해서, token으로 분리</li>
+<li>vector에 token을 저장하지 않고, cnt를 세면 된다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org115bffa" class="outline-2">
+<h2 id="org115bffa">코드</h2>
+<div class="outline-text-2" id="text-org115bffa">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;sstream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">s</span>;
+    getline(cin &gt;&gt; ws, s);
+
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">split_char</span> = <span style="color: #ad7fa8; font-style: italic;">' '</span>;
+    <span style="color: #8ae234; font-weight: bold;">istringstream</span> <span style="color: #ff6347;">split</span>(s);
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">vector&lt;string&gt; tok;</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">each</span>; getline(split, each, split_char);cnt+=1);
+    cout &lt;&lt; cnt &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org024094c" class="outline-2">
+<h2 id="org024094c">문제 링크</h2>
+<div class="outline-text-2" id="text-org024094c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1152">https://www.acmicpc.net/problem/1152</a></li>
+</ul>
+</div>
+</div>

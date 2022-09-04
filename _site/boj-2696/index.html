@@ -1,0 +1,92 @@
+<div id="outline-container-org534d76b" class="outline-2">
+<h2 id="org534d76b">BOJ 2696 중앙값 구하기</h2>
+</div>
+
+<div id="outline-container-org4e45ad1" class="outline-2">
+<h2 id="org4e45ad1">접근하기</h2>
+<div class="outline-text-2" id="text-org4e45ad1">
+<ul class="org-ul">
+<li>Running Median 문제를 STL로 풀어보기</li>
+<li>홀수 일때만 값을 출력하면 된다.</li>
+<li>max heap, min heap을 STL로 구성하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6ad24ee" class="outline-2">
+<h2 id="org6ad24ee">코드</h2>
+<div class="outline-text-2" id="text-org6ad24ee">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;&gt; <span style="color: #ff6347;">min_heap</span>;
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">less</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;&gt; <span style="color: #ff6347;">max_heap</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">ans</span>;
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num); 
+        min_heap.push(num);   <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52572;&#49548;&#55193;&#50640; &#44050;&#51012; &#47924;&#51312;&#44148; &#45347;&#46020;&#47197; &#54632;</span>
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">min heap&#51060; &#53356;&#47732; max heap&#51004;&#47196; &#54616;&#45208; &#51060;&#46041;</span>
+        <span style="color: #729fcf; font-weight: bold;">if</span> (max_heap.size() &lt; min_heap.size()) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span> = min_heap.top();
+            min_heap.pop();
+            max_heap.push(tmp);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (max_heap.size() == min_heap.size()) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span> = min_heap.top();
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span> = max_heap.top();
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (left &gt; right) {
+                min_heap.pop();
+                max_heap.pop();
+                max_heap.push(right);
+                min_heap.push(left);
+            }
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> ((max_heap.size() + min_heap.size()) %2 == 1) {
+            ans.push_back(max_heap.top());
+        }
+    }
+
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)ans.size());
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:ans) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, o);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (++cnt%10 == 0) printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd3f8825" class="outline-2">
+<h2 id="orgd3f8825">문제 링크</h2>
+<div class="outline-text-2" id="text-orgd3f8825">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2696">https://www.acmicpc.net/problem/2696</a></li>
+</ul>
+</div>
+</div>

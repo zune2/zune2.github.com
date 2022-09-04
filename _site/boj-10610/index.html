@@ -1,0 +1,97 @@
+<div id="outline-container-org1821b66" class="outline-2">
+<h2 id="org1821b66">BOJ 10610 30</h2>
+<div class="outline-text-2" id="text-org1821b66">
+<ul class="org-ul">
+<li>숫자가 주어질때, 가장 큰 30의 배수로 만들어 출력 없으면 -1 출력</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3ae30a3" class="outline-2">
+<h2 id="org3ae30a3">위키에 나온 설명</h2>
+<div class="outline-text-2" id="text-org3ae30a3">
+<ul class="org-ul">
+<li><a href="https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%88%98_%ED%8C%90%EC%A0%95%EB%B2%95">배수판정법</a> 
+<ul class="org-ul">
+<li>30의 배수는 3의 배수이면서 일의자리가 0인 수이다.</li>
+<li>3의 배수는 각 자리 숫자의 합이 3의 배수인 수이다.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org141fc46" class="outline-2">
+<h2 id="org141fc46">접근하기</h2>
+<div class="outline-text-2" id="text-org141fc46">
+<pre class="example">
+30의 배수판별 조건
+1. 모든 자리수의 합이 3의 배수여야 함
+2. 마지막 자리가 0어야 함
+
+최대로 크다는 의미
+큰 자리수에 큰 숫자가 위치, 작은 자리수에 더 작은 숫자가 위치 -&gt; 내림차순 정렬
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org9e5b1ce" class="outline-2">
+<h2 id="org9e5b1ce">코드</h2>
+<div class="outline-text-2" id="text-org9e5b1ce">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[100010];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp</span>(<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">p2</span>)
+{
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1 &gt; p2;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+
+        <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">lastzero</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pos</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+                sum += str[i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>;
+                pos++;
+        }
+        sort(str, str+pos, cmp);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (sum %3 == 0 &amp;&amp; str[pos-1] == <span style="color: #ad7fa8; font-style: italic;">'0'</span>) {
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%s\n"</span>, str);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                printf(<span style="color: #ad7fa8; font-style: italic;">"-1\n"</span>);
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab2a7b8" class="outline-2">
+<h2 id="orgab2a7b8">문제 링크</h2>
+<div class="outline-text-2" id="text-orgab2a7b8">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/10610">https://www.acmicpc.net/problem/10610</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f0f95e" class="outline-2">
+<h2 id="org2f0f95e">풀이/설명참고</h2>
+<div class="outline-text-2" id="text-org2f0f95e">
+<ul class="org-ul">
+<li><a href="https://sihyungyou.github.io/baekjoon-10610/">https://sihyungyou.github.io/baekjoon-10610/</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d34b4d" class="outline-2">
+<h2 id="org6d34b4d">참고자료</h2>
+</div>

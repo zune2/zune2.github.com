@@ -1,0 +1,350 @@
+<div id="outline-container-org97343e6" class="outline-2">
+<h2 id="org97343e6">BOJ 2610 회의준비</h2>
+</div>
+
+<div id="outline-container-org043e253" class="outline-2">
+<h2 id="org043e253">접근하기</h2>
+<div class="outline-text-2" id="text-org043e253">
+<pre class="example">
+
+   1-2-3
+
+   4-5-6-7
+
+   8
+
+3개의 그룹이 생김 (그룹을 확인하기 - dfs/bfs/union-find)
+
+각 그룹을 graph로 나타내고, 플로이드와샬로 최단거리를 구함.
+
+다른 점과의 최대 거리가 가장 짧은 점을 골라야 한다.
+
+다른 모든 점과의 최단거리를 구하는 문제가 아님(실수) 
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5cbe6e2" class="outline-2">
+<h2 id="org5cbe6e2">코드 - BFS + 플로이드 와샬</h2>
+<div class="outline-text-2" id="text-org5cbe6e2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 987654321
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[101][101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">vis</span>[101];
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">ans</span>;   
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">start</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">vis</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; "[bfs]\n"; </span>
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">q</span>;
+    q.push(start);
+    vis[start] = 1;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    ans.push_back(start);
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; cur &lt;&lt; '\n';</span>
+        cnt += 1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (dp[cur][i] != INF &amp;&amp; vis[i] == 0) {
+                vis[i] = 1;
+                q.push(i);
+                ans.push_back(i);
+            }
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> cnt;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+<span style="color: #888a85;">//    </span><span style="color: #888a85;">freopen("input2.txt", "r", stdin);</span>
+<span style="color: #729fcf;">#endif</span>
+    cin &gt;&gt; N;
+    cin &gt;&gt; M;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i!=j) dp[i][j] = INF;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        cin &gt;&gt; p1 &gt;&gt; p2;
+        dp[p1][p2] = 1;
+        dp[p2][p1] = 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][j] &gt; dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">result</span>; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        ans.clear();
+        <span style="color: #729fcf; font-weight: bold;">if</span> (vis[i]) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = bfs(i, vis);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ret == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">1 2 3</span>
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv</span> = INF;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv_id</span> = -1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">from</span>:ans) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>=1;to&lt;=N;to++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (from != to &amp;&amp; dp[from][to] != INF) {
+                    <span style="color: #888a85;">// </span><span style="color: #888a85;">HINT : https://www.acmicpc.net/board/view/8953</span>
+                    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47784;&#46304; &#52280;&#49437;&#51088;&#46308;&#51032; &#51032;&#49324;&#51204;&#45804;&#49884;&#44036;&#51473; &#52572;&#45824;&#44050;&#51060; &#52572;&#49548;&#44032; &#46104;&#46020;&#47197; &#54616;&#44592;</span>
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">sum += dp[from][to];          // &#51060;&#47111;&#44172; &#54616;&#47732; &#53952;&#47548;</span>
+                    sum = max(sum, dp[from][to]);
+                }
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (mv &gt; sum) {
+                mv = sum;
+                mv_id = from;
+            }
+        } 
+        <span style="color: #729fcf; font-weight: bold;">if</span> (mv_id != -1) result.push_back(mv_id);
+    }
+    cout &lt;&lt; result.size() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    sort(result.begin(), result.end());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> &amp;<span style="color: #ff6347;">o</span> : result) {
+        cout &lt;&lt; o &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeddd0b0" class="outline-2">
+<h2 id="orgeddd0b0">코드 - DFS + 플로이드 와샬</h2>
+<div class="outline-text-2" id="text-orgeddd0b0">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 987654321
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[101][101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">vis</span>[101];
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">ans</span>;   
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span>)
+{
+    vis[cur] = 1;
+    ans.push_back(cur);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (dp[cur][i] != INF &amp;&amp; vis[i] == 0) {
+            dfs(i);
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+    <span style="color: #ff6347;">cin</span> &gt;&gt; N;
+    cin &gt;&gt; M;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i!=j) dp[i][j] = INF;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        cin &gt;&gt; p1 &gt;&gt; p2;
+        dp[p1][p2] = 1;
+        dp[p2][p1] = 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][j] &gt; dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">result</span>; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        ans.clear();
+        <span style="color: #729fcf; font-weight: bold;">if</span> (vis[i]) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        dfs(i);
+        <span style="color: #729fcf; font-weight: bold;">if</span> ((<span style="color: #8ae234; font-weight: bold;">int</span>)ans.size() == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">1 2 3</span>
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv</span> = INF;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv_id</span> = -1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">from</span>:ans) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>=1;to&lt;=N;to++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (from != to &amp;&amp; dp[from][to] != INF) {
+                    <span style="color: #888a85;">// </span><span style="color: #888a85;">HINT : https://www.acmicpc.net/board/view/8953</span>
+                    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47784;&#46304; &#52280;&#49437;&#51088;&#46308;&#51032; &#51032;&#49324;&#51204;&#45804;&#49884;&#44036;&#51473; &#52572;&#45824;&#44050;&#51060; &#52572;&#49548;&#44032; &#46104;&#46020;&#47197; &#54616;&#44592;</span>
+                    <span style="color: #888a85;">//</span><span style="color: #888a85;">sum += dp[from][to];          // &#51060;&#47111;&#44172; &#54616;&#47732; &#53952;&#47548;</span>
+                    sum = max(sum, dp[from][to]);
+                }
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (mv &gt; sum) {
+                mv = sum;
+                mv_id = from;
+            }
+        } 
+        <span style="color: #729fcf; font-weight: bold;">if</span> (mv_id != -1) result.push_back(mv_id);
+    }
+    cout &lt;&lt; result.size() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    sort(result.begin(), result.end());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> &amp;<span style="color: #ff6347;">o</span> : result) {
+        cout &lt;&lt; o &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fc8ce3" class="outline-2">
+<h2 id="org5fc8ce3">코드 - UnionFind + 플로이드 와샬</h2>
+<div class="outline-text-2" id="text-org5fc8ce3">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 987654321
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[101][101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">vis</span>[101];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">Find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (vis[a] &lt; 0) <span style="color: #729fcf; font-weight: bold;">return</span> a;
+    <span style="color: #729fcf; font-weight: bold;">return</span> vis[a] = Find(vis[a]);
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">Union</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>)
+{
+    a = Find(a);
+    b = Find(b);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a == b) <span style="color: #729fcf; font-weight: bold;">return</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (vis[a] &lt;= vis[b]) {
+        vis[a] += vis[b];
+        vis[b] = a;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        vis[b] += vis[a];
+        vis[a] = b;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cin &gt;&gt; N;
+    cin &gt;&gt; M;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        vis[i] = -1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i!=j) dp[i][j] = INF;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        cin &gt;&gt; p1 &gt;&gt; p2;
+        dp[p1][p2] = 1;
+        dp[p2][p1] = 1;
+
+        Union(p1, p2);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][j] &gt; dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                }
+            }
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">lst</span>[101];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span> = Find(i);
+        lst[k].push_back(i);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">result</span>; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (lst[i].size() == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">1 2 3</span>
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv</span> = INF;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mv_id</span> = -1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">from</span>:lst[i]) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">to</span>=1;to&lt;=N;to++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (from != to &amp;&amp; dp[from][to] != INF) {
+                    sum = max(sum, dp[from][to]);
+                }
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (mv &gt; sum) {
+                mv = sum;
+                mv_id = from;
+            }
+        } 
+        <span style="color: #729fcf; font-weight: bold;">if</span> (mv_id != -1) result.push_back(mv_id);
+    }
+    cout &lt;&lt; result.size() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    sort(result.begin(), result.end());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> &amp;<span style="color: #ff6347;">o</span> : result) {
+        cout &lt;&lt; o &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae60662" class="outline-2">
+<h2 id="orgae60662">문제 링크</h2>
+<div class="outline-text-2" id="text-orgae60662">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1956">https://www.acmicpc.net/problem/1956</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org84127a7" class="outline-2">
+<h2 id="org84127a7">디버깅 참고</h2>
+<div class="outline-text-2" id="text-org84127a7">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/board/view/8953">https://www.acmicpc.net/board/view/8953</a></li>
+</ul>
+</div>
+</div>

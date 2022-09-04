@@ -1,0 +1,94 @@
+<div id="outline-container-orgeeb75bf" class="outline-2">
+<h2 id="orgeeb75bf">BOJ 21939 문제 추천 시스템 Version 1</h2>
+</div>
+
+<div id="outline-container-org846e09c" class="outline-2">
+<h2 id="org846e09c">접근하기</h2>
+<div class="outline-text-2" id="text-org846e09c">
+<ul class="org-ul">
+<li>set에 정렬된 순서로 데이터를 저장
+<ul class="org-ul">
+<li>set의 맨 처음 element 출력</li>
+<li>set의 맨 마지막 element 출력</li>
+</ul></li>
+<li>map에 id를 이용해서 난이도를 얻는 룩업테이블 구성</li>
+<li>solve하면, set과 map 각각 지우기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbcbf21b" class="outline-2">
+<h2 id="orgbcbf21b">코드</h2>
+<div class="outline-text-2" id="text-orgbcbf21b">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;utility&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">set</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt;&gt;&gt; <span style="color: #ff6347;">sp</span>;
+<span style="color: #8ae234; font-weight: bold;">map</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">mp</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">id</span>, <span style="color: #ff6347;">difficulty</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;id, &amp;difficulty);
+        mp[id] = difficulty;
+        sp.insert(make_pair(difficulty, id));
+    }
+
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;M);
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">cmd</span>[20];
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">order</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, cmd);
+
+        <span style="color: #729fcf; font-weight: bold;">switch</span>(cmd[0]) {
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'a'</span>:   <span style="color: #888a85;">// </span><span style="color: #888a85;">add</span>
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;id, &amp;difficulty);
+            mp[id] = difficulty;
+            sp.insert(make_pair(difficulty, id));
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'r'</span>:   <span style="color: #888a85;">// </span><span style="color: #888a85;">recommend</span>
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;order);
+            <span style="color: #729fcf; font-weight: bold;">if</span> (order == 1) {
+                <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = sp.begin();
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, it-&gt;second);
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (order == -1) {
+                <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = sp.end();
+                it--;
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, it-&gt;second);
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'s'</span>:   <span style="color: #888a85;">// </span><span style="color: #888a85;">solved</span>
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;id);
+             <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = sp.find(make_pair((<span style="color: #8ae234; font-weight: bold;">int</span>)mp[id], id));
+            <span style="color: #729fcf; font-weight: bold;">if</span> (it != sp.end()){
+                sp.erase(it);
+                mp.erase(id);
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1cf24ff" class="outline-2">
+<h2 id="org1cf24ff">문제 링크</h2>
+<div class="outline-text-2" id="text-org1cf24ff">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/21939">https://www.acmicpc.net/problem/21939</a></li>
+</ul>
+</div>
+</div>

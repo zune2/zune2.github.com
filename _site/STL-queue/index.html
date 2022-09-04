@@ -1,0 +1,43 @@
+<div id="outline-container-orgbb8d692" class="outline-2">
+<h2 id="orgbb8d692">STL queue</h2>
+<div class="outline-text-2" id="text-orgbb8d692">
+<ul class="org-ul">
+<li>맨 뒤에 데이터를 추가하고, 맨 앞에서 데이터를 꺼내는 자료구조</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> *<span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt; <span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #ff6347;">q</span>;
+
+    q.push(1); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#46244;&#50640; &#45936;&#51060;&#53552; &#52628;&#44032;</span>
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#50526;&#50640;&#49436; 3&#44060; &#44732;&#45236;&#49436;, &#47592; &#46244;&#47196; &#52264;&#47168;&#45824;&#47196; push&#54616;&#44592;</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 3;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(cnt-- &amp;&amp; !q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.front();  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#50526;&#50640;&#49436; &#45936;&#51060;&#53552; &#44032;&#51256;&#50724;&#44592;</span>
+        q.pop();              <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47592; &#50526; &#45936;&#51060;&#53552; queue&#50640;&#49436; &#51228;&#44144;</span>
+        q.push(cur);          <span style="color: #888a85;">// </span><span style="color: #888a85;">queue&#51032; &#47592; &#46244;&#50640; &#52628;&#44032;</span>
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">queue&#50640;&#49436; &#54616;&#45208;&#50473; &#44732;&#45236;&#49436; &#52636;&#47141;&#54616;&#44592;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cur</span> = q.front();
+        cout &lt;&lt; cur &lt;&lt; endl;
+        q.pop();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>

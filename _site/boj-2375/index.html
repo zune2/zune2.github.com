@@ -1,0 +1,101 @@
+<div id="outline-container-orgb33246e" class="outline-2">
+<h2 id="orgb33246e">BOJ 2357 농구 골대 세우기</h2>
+<div class="outline-text-2" id="text-orgb33246e">
+<ul class="org-ul">
+<li>X축으로 위치를 늘어놓고 가운데 고르기</li>
+<li>Y축으로 위치를 늘어놓고 가운데 고르기
+<ul class="org-ul">
+<li>모든 마을에서 합이 최소화되는 위치임</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6117f7" class="outline-2">
+<h2 id="orgd6117f7">접근하기</h2>
+<div class="outline-text-2" id="text-orgd6117f7">
+<pre class="example">
+1, 2, 3, 4, 5   N=5일 때의 중앙값은?
+
+1, 2, 3, 4      N=4일 때의 중앙값은? -&gt; (2+3)/2를 해줘야 한다.
+
+하지만, 문제의 조건에서 좌표가 작은쪽을 고르라고 함. -&gt; 중앙값에서 작은쪽 찾기
+</pre>
+
+<ul class="org-ul">
+<li>문제의 조건에서 pi가 1000까지여서 100000*1000을 생각했는데, 메모리가 넘침</li>
+<li>10000001 까지만 해주면 accept가 된다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd7420d7" class="outline-2">
+<h2 id="orgd7420d7">코드</h2>
+<div class="outline-text-2" id="text-orgd7420d7">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>[1000001];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>[1000001];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+<span style="color: #729fcf;">#endif</span>
+    cin &gt;&gt; N;
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>=0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; cnt;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=idx;j&lt;idx+cnt;j++) {
+            x[j] = p1;
+            y[j] = p2;
+        }
+        idx += cnt;
+    }
+
+    sort(x, x+idx);
+    sort(y, y+idx);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51473;&#50521;&#44050;</span>
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">1 2 3 4 5 -&gt; &#54848;&#49688;&#44060;, N=5</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">(N+1)/2 - 1 =&gt; 2</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">1 2 3 4 -&gt; &#51677;&#49688;&#44060;, N=4</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">(N)/2 - 1 =&gt; 1</span>
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (idx %2 != 0) idx += 1;
+    cout &lt;&lt; x[idx/2 -1] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span> &lt;&lt; y[idx/2 -1] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57b0276" class="outline-2">
+<h2 id="org57b0276">해설 참고</h2>
+<div class="outline-text-2" id="text-org57b0276">
+<ul class="org-ul">
+<li><a href="https://boomrabbit.tistory.com/88">https://boomrabbit.tistory.com/88</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org270014c" class="outline-2">
+<h2 id="org270014c">문제 링크</h2>
+<div class="outline-text-2" id="text-org270014c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2375">https://www.acmicpc.net/problem/2375</a></li>
+</ul>
+</div>
+</div>

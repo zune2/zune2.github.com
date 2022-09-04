@@ -1,0 +1,68 @@
+<div id="outline-container-org462f713" class="outline-2">
+<h2 id="org462f713">BOJ 1417 국회의원 선거</h2>
+<div class="outline-text-2" id="text-org462f713">
+<ul class="org-ul">
+<li>N명의 후보중 1번 후보가 당선되기 위해, 다른 후보들에게 가져와야 할 표의 총 수</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga9d1901" class="outline-2">
+<h2 id="orga9d1901">접근하기</h2>
+<div class="outline-text-2" id="text-orga9d1901">
+<ul class="org-ul">
+<li>우선순위 큐에 2~N번까지를 넣는다.</li>
+<li>1번보다 많으면, 1씩 뺀다.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4941f03" class="outline-2">
+<h2 id="org4941f03">코드</h2>
+<div class="outline-text-2" id="text-org4941f03">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">first</span>, <span style="color: #ff6347;">org</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (i == 1) {
+            org = first = num;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            pq.push(num);
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!pq.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = pq.top(); pq.pop();    
+        <span style="color: #729fcf; font-weight: bold;">if</span> (first &lt;= num) {
+            first += 1;
+            pq.push(num-1);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> { <span style="color: #888a85;">//</span><span style="color: #888a85;">first &gt; num</span>
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, first - org);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org54fbb1b" class="outline-2">
+<h2 id="org54fbb1b">문제 링크</h2>
+<div class="outline-text-2" id="text-org54fbb1b">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1417">https://www.acmicpc.net/problem/1417</a></li>
+</ul>
+</div>
+</div>

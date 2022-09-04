@@ -1,0 +1,125 @@
+<div id="outline-container-org1319e9e" class="outline-2">
+<h2 id="org1319e9e">집합의 표현</h2>
+<div class="outline-text-2" id="text-org1319e9e">
+<ul class="org-ul">
+<li>집합을 합치는 연산을 어떻게 처리하는지 보기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org12ba40c" class="outline-2">
+<h2 id="org12ba40c">문제 링크</h2>
+<div class="outline-text-2" id="text-org12ba40c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1717">https://www.acmicpc.net/problem/1717</a></li>
+</ul>
+
+<p>
+문제에 주어진 입력을 Weighted Union Find로 구현.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48ed79e" class="outline-2">
+<h2 id="org48ed79e">설명</h2>
+<div class="outline-text-2" id="text-org48ed79e">
+<pre class="example">
+# 1-3-6-7 연결이 Path compression 됨
+# 4-2 연결
+
+5: p[1] = -4   # 1번은 자신 포함 4개 -&gt; root 노드
+6: p[2] = 4    # 2번의 부모는 4
+7: p[3] = 1    # 3번의 부모는 1
+8: p[4] = -2   # 4번은 자신 포함 2개 -&gt; root 노드
+9: p[5] = -1   # 자식노드가 없는 혼자df
+10: p[6] = 7   # 6번의 부모는 7
+11: p[7] = 1   # 7번의 부모는 1
+
+
+첫번째 집합의 크기는 4
+
+[R]
+(1) --- (7)
+     \     \
+     (3)    (6)
+
+두번째 집합의 크기는 2
+ 
+[R]
+(4) - (2)
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc540e35" class="outline-2">
+<h2 id="orgc540e35">코드</h2>
+<div class="outline-text-2" id="text-orgc540e35">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p</span>[1000010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">Find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>)
+{
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">p[a]&#44032; &#51020;&#49688;&#51060;&#47732;, a&#45716; root&#45432;&#46300;&#51076;</span>
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51020;&#49688;&#44032; &#51665;&#54633;&#51032; &#45432;&#46300; &#44060;&#49688;&#47484; &#51032;&#48120;&#54632;</span>
+    <span style="color: #729fcf; font-weight: bold;">if</span> (p[a] &lt; 0) <span style="color: #729fcf; font-weight: bold;">return</span> a;
+    <span style="color: #729fcf; font-weight: bold;">return</span> p[a] = Find(p[a]); <span style="color: #888a85;">// </span><span style="color: #888a85;">path compression</span>
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">Union</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>)
+{
+    a = Find(a);    
+    b = Find(b);    
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a == b) <span style="color: #729fcf; font-weight: bold;">return</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (p[a] &lt;= p[b]) { <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51089;&#51008; &#44050;&#51012; &#48512;&#47784;&#47196; &#50732;&#47548;</span>
+        p[a] += p[b];   <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51089;&#51008; &#44050;&#51008; &#51088;&#49885; &#45432;&#46300;&#51032; &#44060;&#49688;&#47484; &#45572;&#51201;</span>
+        p[b] = a;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        p[b] += p[a];
+        p[a] = b;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52488;&#44592;&#44050;&#51012; -1&#47196; &#51648;&#51221;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N;i++) {
+        p[i] = -1;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cmd</span>, <span style="color: #ff6347;">a</span>, <span style="color: #ff6347;">b</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;cmd, &amp;a, &amp;b);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 0) {
+            Union(a, b);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 1) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (Find(a) == Find(b)){
+                printf(<span style="color: #ad7fa8; font-style: italic;">"YES\n"</span>);
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                printf(<span style="color: #ad7fa8; font-style: italic;">"NO\n"</span>);
+            }
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org65da06e" class="outline-2">
+<h2 id="org65da06e">참고자료</h2>
+<div class="outline-text-2" id="text-org65da06e">
+<ul class="org-ul">
+<li><a href="https://www.apexcel.blog/algorithm/graph/union-find/union-find/">유니온 파인드</a></li>
+<li><a href="https://m.blog.naver.com/kks227/220791837179">Ries - Union Find</a></li>
+</ul>
+</div>
+</div>

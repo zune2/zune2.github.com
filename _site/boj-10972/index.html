@@ -1,0 +1,65 @@
+<div id="outline-container-orgd4633e0" class="outline-2">
+<h2 id="orgd4633e0">BOJ 10972 다음 순열</h2>
+<div class="outline-text-2" id="text-orgd4633e0">
+<ul class="org-ul">
+<li>다음으로 나오는 순열 구하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c43792" class="outline-2">
+<h2 id="org9c43792">접근하기</h2>
+<div class="outline-text-2" id="text-org9c43792">
+<ul class="org-ul">
+<li>STL next_permutation을 이용</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org12cae65" class="outline-2">
+<h2 id="org12cae65">코드 - STL next permutation 이용함</h2>
+<div class="outline-text-2" id="text-org12cae65">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">a</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        a[i] = num;
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (next_permutation(a.begin(), a.end())) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:a) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, o);
+        } 
+        printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"-1\n"</span>);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb88d723" class="outline-2">
+<h2 id="orgb88d723"><span class="todo TODO">TODO</span> 코드 - 그냥 구현하기</h2>
+</div>
+
+<div id="outline-container-orga0dc431" class="outline-2">
+<h2 id="orga0dc431">문제 링크</h2>
+<div class="outline-text-2" id="text-orga0dc431">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/10972">https://www.acmicpc.net/problem/10972</a></li>
+</ul>
+</div>
+</div>

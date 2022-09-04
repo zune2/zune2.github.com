@@ -1,0 +1,124 @@
+<div id="outline-container-org7790323" class="outline-2">
+<h2 id="org7790323">BOJ 9466 텀프로젝트</h2>
+<div class="outline-text-2" id="text-org7790323">
+<ul class="org-ul">
+<li>DFS를 이용해서 cycle을 detect하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0e4bc00" class="outline-2">
+<h2 id="org0e4bc00">접근하기</h2>
+<div class="outline-text-2" id="text-org0e4bc00">
+<pre class="example">
+dfs에서
+visit배열과 함께
+finish 배열을 유지함
+
+f(1) -&gt; f(2) -&gt; f(3)
+
+visit  1 1 1
+finish 1 1 1
+
+f(1) -&gt; f(2) -&gt; f(3) -&gt; f(1) 형태 cycle이 있으면
+
+visit  1 1 1
+finish 0 0 0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4f907ad" class="outline-2">
+<h2 id="org4f907ad">코드</h2>
+<div class="outline-text-2" id="text-org4f907ad">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">ARRSIZE</span> 100010
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[ARRSIZE];
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">G</span>[ARRSIZE];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[ARRSIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">finish</span>[ARRSIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    visit[num] = cnt++;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">next</span>: G[num]) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (visit[next] == 0) {
+            dfs(next);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (!finish[next]) {
+            ans += visit[num] - visit[next] + 1;
+        }
+    }
+    finish[num] = 1;
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    cnt = 0;
+    ans = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        G[i].push_back(num);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (visit[i]) dfs(i);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, N-ans);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        visit[i] = 0;
+        finish[i] = 0;
+        G[i].clear();
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>1초 가까운 시간이 걸림</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge68ff77" class="outline-2">
+<h2 id="orge68ff77"><span class="todo TODO">TODO</span> 최적 풀이 300ms이내</h2>
+<div class="outline-text-2" id="text-orge68ff77">
+<ul class="org-ul">
+<li>boj 답 참고할 것</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbaeb9cf" class="outline-2">
+<h2 id="orgbaeb9cf">문제 링크</h2>
+<div class="outline-text-2" id="text-orgbaeb9cf">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/9466">https://www.acmicpc.net/problem/9466</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,151 @@
+<div id="outline-container-orgb9bddf7" class="outline-2">
+<h2 id="orgb9bddf7">C - Shapes</h2>
+<div class="outline-text-2" id="text-orgb9bddf7">
+<ul class="org-ul">
+<li>S map, T map을 주고 그 안에 #으로 이뤄진 도형을 줌</li>
+<li>90도씩 회전했을때, S와 T가 같은지 판단하는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf1f921a" class="outline-2">
+<h2 id="orgf1f921a">접근하기</h2>
+<div class="outline-text-2" id="text-orgf1f921a">
+<ul class="org-ul">
+<li>N의 범위가 작으므로, 완전탐색으로 해볼 수 있다.</li>
+<li>#의 개수를 세었을 때, 개수가 다르면 다른 도형</li>
+<li>S도형은 그대로, T도형은 90, 180, 270, 360으로 회전해서 비교</li>
+<li>처음 위치가 다를 수 있는데, offset만큼을 이동해서 비교한다.
+<ul class="org-ul">
+<li>offset이 양수, 음수와 무관하게 거리를 나타낸다.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc8503c8" class="outline-2">
+<h2 id="orgc8503c8">코드</h2>
+<div class="outline-text-2" id="text-orgc8503c8">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">ARR_SIZE</span> 201
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">S</span>[ARR_SIZE][ARR_SIZE];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">T</span>[ARR_SIZE][ARR_SIZE];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">tmp</span>[ARR_SIZE][ARR_SIZE];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[ARR_SIZE];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">rot90</span>(<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">map</span>[][ARR_SIZE], <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">tmp</span>[][ARR_SIZE])
+{
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            tmp[j][N-i-1] = map[i][j];
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #8ae234; font-weight: bold;">map</span>[i][j] = tmp[i][j];
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">S map</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt1</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            S[i][j] = str[j];
+            <span style="color: #729fcf; font-weight: bold;">if</span> (S[i][j] == <span style="color: #ad7fa8; font-style: italic;">'#'</span>) cnt1++;
+        }
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">T map</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt2</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            T[i][j] = str[j];
+            <span style="color: #729fcf; font-weight: bold;">if</span> (T[i][j] == <span style="color: #ad7fa8; font-style: italic;">'#'</span>) cnt2++;
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (cnt1 != cnt2) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"No\n"</span>);
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">stop_x</span>, <span style="color: #ff6347;">stop_y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ttop_x</span>, <span style="color: #ff6347;">ttop_y</span>;
+
+    stop_x = 0, stop_y = 0; 
+    ttop_x = 0, ttop_y = 0;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+
+        rot90(T, tmp);
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">get top left</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;N;k++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (S[j][k] == <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                    stop_y = j;
+                    stop_x = k;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+        }
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">get top left</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;N;k++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (T[j][k] == <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                    ttop_y = j;
+                    ttop_x = k;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+        }
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">offset_y</span> = ttop_y - stop_y;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">offset_x</span> = ttop_x - stop_x;
+
+        <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">found</span> = <span style="color: #8ae234;">true</span>;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;N;k++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (j + offset_y &gt;= 0 &amp;&amp; j + offset_y &lt; N &amp;&amp; k + offset_x &gt;= 0 &amp;&amp; k + offset_x &lt; N) {
+                    <span style="color: #729fcf; font-weight: bold;">if</span> (S[j][k] != T[j + offset_y][k + offset_x]) {
+                        found = <span style="color: #8ae234;">false</span>;
+                        <span style="color: #729fcf; font-weight: bold;">break</span>;
+                    }
+                }
+            }
+        }
+        <span style="color: #729fcf; font-weight: bold;">if</span> (found) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"Yes\n"</span>);
+            <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        }
+    }    
+    printf(<span style="color: #ad7fa8; font-style: italic;">"No\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org787b4c7" class="outline-2">
+<h2 id="org787b4c7">문제 링크</h2>
+<div class="outline-text-2" id="text-org787b4c7">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc218/tasks/abc218_c">https://atcoder.jp/contests/abc218/tasks/abc218_c</a></li>
+</ul>
+</div>
+</div>

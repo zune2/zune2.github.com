@@ -1,0 +1,239 @@
+<div id="outline-container-orgf00789f" class="outline-2">
+<h2 id="orgf00789f">일곱 난쟁이</h2>
+<div class="outline-text-2" id="text-orgf00789f">
+<ul class="org-ul">
+<li>bit를 이용한 power set을 이용해서 반복함</li>
+<li>완전탐색으로 조합순서를 만들기 가능
+<ul class="org-ul">
+<li>가지치기를 적용해볼 수 있음</li>
+</ul></li>
+<li>sum - 100이 되도록 두 수를 찾아도 됨</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7539c44" class="outline-2">
+<h2 id="org7539c44">bitmask 이용 powerset</h2>
+<div class="outline-text-2" id="text-org7539c44">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[9];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+    sort(a, a+9);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;(1&lt;&lt;9);i++) {
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i &amp; (1&lt;&lt;j)) {
+                sum += a[j]; 
+                cnt += 1;
+            }
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cnt == 7 &amp;&amp; sum == 100) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;9;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (i &amp; (1&lt;&lt;j)) {
+                    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, a[j]);
+                }
+            }
+            <span style="color: #729fcf; font-weight: bold;">goto</span> <span style="color: #8ae234;">exit</span>;
+        }
+    } 
+<span style="color: #8ae234;">exit</span>: 
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org58d0aaf" class="outline-2">
+<h2 id="org58d0aaf">완전탐색 + quicksort 구현</h2>
+<div class="outline-text-2" id="text-org58d0aaf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[9];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">partition</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[], <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pivot</span> = left;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = left-1;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span> = right+1;
+
+        <span style="color: #729fcf; font-weight: bold;">while</span>(1)
+        {
+                <span style="color: #729fcf; font-weight: bold;">do</span> {
+                        i++;
+                } <span style="color: #729fcf; font-weight: bold;">while</span> (a[i] &lt; a[pivot]);
+
+                <span style="color: #729fcf; font-weight: bold;">do</span> {
+                        j--;
+                } <span style="color: #729fcf; font-weight: bold;">while</span> (a[j] &gt; a[pivot]);
+
+                <span style="color: #729fcf; font-weight: bold;">if</span> (i&gt;=j)       <span style="color: #729fcf; font-weight: bold;">return</span> j;
+
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">t</span> = a[i];
+                a[i] = a[j];
+                a[j] = t;
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> j;
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">quicksort</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[], <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+        <span style="color: #729fcf; font-weight: bold;">if</span> (left &lt; right) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p</span> = partition(a, left, right);
+                quicksort(a, left, p);
+                quicksort(a, p+1, right);
+        }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bt</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span>) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( ans ) <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( sum &gt; 100) <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (7 == k) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (sum == 100) {
+                        quicksort(b, 0, 6);
+                        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0; i&lt;7;i++) {
+                                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, b[i]);
+                        }
+                        ans = 1;
+                }
+                <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (visit[i] == 0) {
+                        visit[i] = 1;
+                        b[k] = a[i];
+                        bt(k+1, sum+a[i]);
+                        visit[i] = 0;
+
+                }
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+                scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        }
+        bt(0, 0);
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7938b0c" class="outline-2">
+<h2 id="org7938b0c">powerset이용 bactracking + bound이용 최적화</h2>
+<div class="outline-text-2" id="text-org7938b0c">
+<ul class="org-ul">
+<li>powerset을 구하는 bactracking코드</li>
+<li>100보다 크면 제외하기</li>
+<li>앞으로 나올값과 현재값을 더했을때 100이 될 가능성이 없으면 제외</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[9];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">run</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">f</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">remaining</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (run == 0) <span style="color: #729fcf; font-weight: bold;">return</span>;
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum &gt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;  <span style="color: #888a85;">// </span><span style="color: #888a85;">100&#48372;&#45796; &#53356;&#47732;, &#51228;&#50808;</span>
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum + remaining &lt; 100) <span style="color: #729fcf; font-weight: bold;">return</span>;   <span style="color: #888a85;">// </span><span style="color: #888a85;">&#54788;&#51116; + &#50526;&#51004;&#47196; &#44032;&#45733;&#54620; &#44050;&#51060; 100&#48372;&#45796; &#51089;&#51004;&#47732; &#51228;&#50808;</span>
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (idx == 9) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cnt == 7 &amp;&amp; sum == 100) {
+            sort(b, b+9);
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (b[i]) printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, b[i]);
+            }
+            run = 0;
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span>;
+    }
+
+    b[idx] = 0;
+    f(idx+1, sum, remaining, cnt);
+
+    b[idx] = a[idx];
+    f(idx+1, sum + a[idx], remaining - a[idx], cnt + 1);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;9;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        sum += a[i];
+    }
+
+    run = 1;
+    f(0, 0, sum, 0);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2f2cda3" class="outline-2">
+<h2 id="org2f2cda3"><span class="todo TODO">TODO</span> 두수를 뺐을 때, 100이 되게하는 목록 만들기</h2>
+<div class="outline-text-2" id="text-org2f2cda3">
+<ul class="org-ul">
+<li>이중 loop에서 두 숫자 x, y를 구함</li>
+<li>sum - x - y == 100이면, 전체 목록에서 x, y를 제거하고 출력하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1728b7f" class="outline-2">
+<h2 id="org1728b7f"><span class="todo TODO">TODO</span> sort하고, 두 수를 찾기</h2>
+<div class="outline-text-2" id="text-org1728b7f">
+<ul class="org-ul">
+<li>두수의 합이 sum - 100이 되도록 하는 두 수 찾기</li>
+<li>알고리즘 이름이 뭐였더라?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdbf5420" class="outline-2">
+<h2 id="orgdbf5420">참고자료</h2>
+<div class="outline-text-2" id="text-orgdbf5420">
+<ul class="org-ul">
+<li><a href="https://mygumi.tistory.com/361">비트마스크(BitMask) 는 무엇인가?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb8e8367" class="outline-2">
+<h2 id="orgb8e8367">문제 링크</h2>
+<div class="outline-text-2" id="text-orgb8e8367">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2309">https://www.acmicpc.net/problem/2309</a></li>
+</ul>
+</div>
+</div>

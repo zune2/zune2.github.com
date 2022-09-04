@@ -1,0 +1,57 @@
+<div id="outline-container-org0919fb6" class="outline-2">
+<h2 id="org0919fb6">BOJ 2979 트럭주차</h2>
+<div class="outline-text-2" id="text-org0919fb6">
+<ul class="org-ul">
+<li>시작시간 끝 시간을 주고 겹치는 구간을 세기</li>
+<li>1대 겹침, 2대 겹침, 3대 겹침</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org34376ca" class="outline-2">
+<h2 id="org34376ca">접근하기</h2>
+</div>
+
+<div id="outline-container-org5782d53" class="outline-2">
+<h2 id="org5782d53">코드</h2>
+<div class="outline-text-2" id="text-org5782d53">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>[4];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[101];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;c[0], &amp;c[1], &amp;c[2]);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s</span>, <span style="color: #ff6347;">e</span>;
+    c[1] *= 2;
+    c[2] *= 3;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;3;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;s, &amp;e);
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=s;i&lt;e;i++) {
+            a[i] += 1;
+        }
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;100;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (a[i]) sum += c[a[i]-1];     
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, sum);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ade9dd" class="outline-2">
+<h2 id="org8ade9dd">문제 링크</h2>
+<div class="outline-text-2" id="text-org8ade9dd">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2979">https://www.acmicpc.net/problem/2979</a></li>
+</ul>
+</div>
+</div>

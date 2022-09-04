@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-04T23:08:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zune2</title><subtitle>Life Note</subtitle><author><name>MyoungJune Park</name></author><entry><title type="html">STL set에 struct pointer 이용</title><link href="http://localhost:4000/code/stl-set-with-struct/" rel="alternate" type="text/html" title="STL set에 struct pointer 이용" /><published>2022-05-07T00:00:00+09:00</published><updated>2022-05-07T00:00:00+09:00</updated><id>http://localhost:4000/code/stl-set-with-struct</id><content type="html" xml:base="http://localhost:4000/code/stl-set-with-struct/">&lt;div id=&quot;outline-container-orgeed7b6e&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgeed7b6e&quot;&gt;STL set에 struct pointer&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgeed7b6e&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;객체풀을 이용해서 포인터를 넣기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;map&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;set&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;utility&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;struct&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt; {
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;id&lt;/span&gt;;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;score&lt;/span&gt;;
+} &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;pool&lt;/span&gt;[1000];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;idx&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;* &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;CreateNode&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;id&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;score&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;ptr&lt;/span&gt; = &amp;amp;pool[idx++];
+    ptr-&amp;gt;id = id;
+    ptr-&amp;gt;score = score;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; ptr;
+}
+
+&lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;Node*&amp;#47484; &amp;#51077;&amp;#47141;&amp;#51004;&amp;#47196; &amp;#48155;&amp;#45716; Compare struct &amp;#47564;&amp;#46308;&amp;#44592;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;struct&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Compare&lt;/span&gt; {
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;bool&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;operator&lt;/span&gt;&lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;()&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;b&lt;/span&gt;) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; a-&amp;gt;score &amp;lt; b-&amp;gt;score;
+    }
+};
+
+&lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;Compare &amp;#44061;&amp;#52404; &amp;#45347;&amp;#44592;, 1&amp;#48264;&amp;#51704;&amp;#47196; Node*&lt;/span&gt;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;multiset&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;*, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Compare&lt;/span&gt;&amp;gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;s&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org3ce5106&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org3ce5106&quot;&gt;insert하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org3ce5106&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;Node&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;ptr&lt;/span&gt; = CreateNode(id, score);
+s.insert(ptr);
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org86630a1&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org86630a1&quot;&gt;find &amp;amp; erase &amp;amp; size&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org86630a1&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (s.find(ptr) != s.end()) {
+   &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;erase&lt;/span&gt;
+   s.erase(ptr);
+
+   &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;size&lt;/span&gt;
+   &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (s.size()) {
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org2999599&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org2999599&quot;&gt;min / max 구하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org2999599&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/&quot;&gt;https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org0900e89&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org0900e89&quot;&gt;lower bound 구하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org0900e89&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;tmp.score = score;
+tmp.id = 0;
+
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;auto&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;it&lt;/span&gt; = s.lower_bound(&amp;amp;tmp);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (it != s.end()) {
+
+&lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;(*it)-&amp;gt;score&lt;/span&gt;
+&lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;(*it)-&amp;gt;id&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="code" /><category term="STL" /><summary type="html">STL set에 struct pointer 객체풀을 이용해서 포인터를 넣기</summary></entry><entry><title type="html">Language Reactor Chrome 플러그인</title><link href="http://localhost:4000/language-reactor-chrome/" rel="alternate" type="text/html" title="Language Reactor Chrome 플러그인" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/language-reactor-chrome</id><content type="html" xml:base="http://localhost:4000/language-reactor-chrome/">&lt;div id=&quot;outline-container-org8e268e8&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org8e268e8&quot;&gt;Language Reactor&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org8e268e8&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/language-reactor/hoombieeljmmljlkjmnheibnpciblicm?hl=ko&quot;&gt;https://chrome.google.com/webstore/detail/language-reactor/hoombieeljmmljlkjmnheibnpciblicm?hl=ko&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Youtube로 영여공부하기 좋게 자막을 보여준다.&lt;/li&gt;
+&lt;li&gt;설치 완료&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org368c34f&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org368c34f&quot;&gt;사용법 가이드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org368c34f&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://nekrataa.tistory.com/93&quot;&gt;https://nekrataa.tistory.com/93&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div id=&quot;outline-container-org880d1fe&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org880d1fe&quot;&gt;영어자막 + manual 한글자막&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org880d1fe&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org0c43dfd&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0c43dfd&quot;&gt;Youtuber recommendations for LEARNING ENGLISH&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0c43dfd&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=I3fSIbyyj28&quot;&gt;https://www.youtube.com/watch?v=I3fSIbyyj28&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org24c7807&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org24c7807&quot;&gt;“영어 브이로그” 로 영어회화 깨기✨ | How to improve spoken English with vlogs&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org24c7807&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=K4-8BCn61pc&quot;&gt;https://www.youtube.com/watch?v=K4-8BCn61pc&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org6a1cf42&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6a1cf42&quot;&gt;The Ultimate Notion Tour&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6a1cf42&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=abpFmOu1eHk&quot;&gt;https://www.youtube.com/watch?v=abpFmOu1eHk&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgf8ee178&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgf8ee178&quot;&gt;영어자막 + auto 한글자막&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgf8ee178&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org4e829be&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org4e829be&quot;&gt;How I Organize My Life with Notion (school, youtube, life)&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org4e829be&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=eEX1RDs-lTs&amp;amp;t=77s&quot;&gt;https://www.youtube.com/watch?v=eEX1RDs-lTs&amp;amp;t=77s&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org43bf3ad&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org43bf3ad&quot;&gt;&quot;아마존 프라임 1위&quot; 교도소에 간 전직 특수 요원(결말포함)&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org43bf3ad&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=c8kJ3mKapAc&quot;&gt;https://www.youtube.com/watch?v=c8kJ3mKapAc&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id=&quot;outline-container-org7089320&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org7089320&quot;&gt;유튜브 추천&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org7089320&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org0aac4c3&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org0aac4c3&quot;&gt;WanderJess&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org0aac4c3&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://www.youtube.com/c/WanderJess%EC%9E%AC%EC%9D%B4&quot;&gt;https://www.youtube.com/c/WanderJess재이&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgd48e4c1&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgd48e4c1&quot;&gt;Briddy li&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgd48e4c1&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/BeautybyBriddy&quot;&gt;https://youtube.com/c/BeautybyBriddy&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgcd45e86&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgcd45e86&quot;&gt;Ur mom ashely&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgcd45e86&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/urmomashley&quot;&gt;https://youtube.com/c/urmomashley&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org1161e95&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org1161e95&quot;&gt;Oh no nina&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org1161e95&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/ohnonina&quot;&gt;https://youtube.com/c/ohnonina&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgdaaa1ff&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgdaaa1ff&quot;&gt;Michelle choi&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgdaaa1ff&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/user/michellechoii&quot;&gt;https://youtube.com/user/michellechoii&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgd1e232b&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orgd1e232b&quot;&gt;Jenn Im&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orgd1e232b&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/clothesencounters&quot;&gt;https://youtube.com/c/clothesencounters&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org6cc1789&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;org6cc1789&quot;&gt;Jessica vu&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-org6cc1789&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/JessicaVu&quot;&gt;https://youtube.com/c/JessicaVu&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orga3775db&quot; class=&quot;outline-3&quot;&gt;
+&lt;h3 id=&quot;orga3775db&quot;&gt;Yoora Jung&lt;/h3&gt;
+&lt;div class=&quot;outline-text-3&quot; id=&quot;text-orga3775db&quot;&gt;
+&lt;p&gt;
+&lt;a href=&quot;https://youtube.com/c/Yoora&quot;&gt;https://youtube.com/c/Yoora&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="영어공부" /><summary type="html">Language Reactor https://chrome.google.com/webstore/detail/language-reactor/hoombieeljmmljlkjmnheibnpciblicm?hl=ko Youtube로 영여공부하기 좋게 자막을 보여준다. 설치 완료</summary></entry><entry><title type="html">abc239 C - Night Fork</title><link href="http://localhost:4000/abc239-c-upsolving/" rel="alternate" type="text/html" title="abc239 C - Night Fork" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-02-20T00:00:00+09:00</updated><id>http://localhost:4000/abc239-c-upsolving</id><content type="html" xml:base="http://localhost:4000/abc239-c-upsolving/">&lt;div id=&quot;outline-container-org7386c78&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org7386c78&quot;&gt;C - Knight Fork&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org409a868&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org409a868&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org409a868&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;x1, y1을 기준으로 -2 ~ +2 범위만큼을 완전탐색&lt;/li&gt;
+&lt;li&gt;x2, y2에서는 그 안에 들어오게된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orge51d297&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orge51d297&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orge51d297&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;calc&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x1&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y1&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x2&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y2&lt;/span&gt;)
+{
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; abs(x1 - x2) * abs(x1 - x2) + abs(y1 - y2) * abs(y1 - y2);
+}
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x1&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;y1&lt;/span&gt;;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x2&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;y2&lt;/span&gt;;
+    cin &amp;gt;&amp;gt; x1 &amp;gt;&amp;gt; y1 &amp;gt;&amp;gt; x2 &amp;gt;&amp;gt; y2;
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;string&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ans&lt;/span&gt; = &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;No&quot;&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y&lt;/span&gt;=y1-2;y&amp;lt;=y1+2;y++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x&lt;/span&gt;=x1-2;x&amp;lt;=x1+2;x++) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; ( calc(x1, y1, x, y) == calc(x2, y2, x, y) &amp;amp;&amp;amp; calc(x1, y1, x, y) == 5) {
+                ans = &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;Yes&quot;&lt;/span&gt;;
+            }
+        } 
+    } 
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org61a647c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org61a647c&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org61a647c&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://atcoder.jp/contests/abc239/tasks/abc239_c&quot;&gt;https://atcoder.jp/contests/abc239/tasks/abc239_c&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="AtCoder" /><summary type="html">C - Knight Fork</summary></entry><entry><title type="html">BOJ 1213 팰린드롬 만들기</title><link href="http://localhost:4000/boj-1213/" rel="alternate" type="text/html" title="BOJ 1213 팰린드롬 만들기" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj-1213</id><content type="html" xml:base="http://localhost:4000/boj-1213/">&lt;div id=&quot;outline-container-org49b1957&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org49b1957&quot;&gt;BOJ 1213 팰린드롬 만들기&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org114484a&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org114484a&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org114484a&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+
+1) 팰린드롬 가능여부 확인
+문자열의 길이가 짝수일때, 모든 문자가 짝수이어야 팰린드롬 가능
+문자열의 길이가 홀수일 때, 홀수에서 한글자를 뺀 나머지 문자가 짝수여야 팰린드롬 가능
+ -&amp;gt; 뺀 문자가 가운데록 가야함
+
+2) 사전순으로 배열
+- 우선순위 queue에 넣어서 맨앞과 맨뒤에 번갈아가며 추가하도록 함
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org29aca99&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org29aca99&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org29aca99&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;str&lt;/span&gt;[60];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[60];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;table&lt;/span&gt;[26];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+&lt;span style=&quot;color: #888a85;&quot;&gt;//    &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;cin&lt;/span&gt; &amp;gt;&amp;gt; str; 
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;len&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(len=0;str[len];len++) {
+        table[(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt;)str[len] - &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'A'&lt;/span&gt;] += 1;
+    }
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;oddcnt&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;26;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i] == 0) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;continue&lt;/span&gt;;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i]%2 == 1) oddcnt += 1; 
+    }
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (oddcnt &amp;gt; 1) {
+        cout &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;I'm Sorry Hansoo&quot;&lt;/span&gt; &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+    }
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;priority_queue&lt;/span&gt; &amp;lt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;vector&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;&amp;gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;greater&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;&amp;gt; &amp;gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;pq&lt;/span&gt;;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;mid&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;26;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i] == 0) &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;continue&lt;/span&gt;;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i]%2 == 1) {
+            mid = i + &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'A'&lt;/span&gt;;
+            table[i]--;
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (table[i]) {
+                &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=0;j&amp;lt;table[i];j++) {
+                    pq.push(i + &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'A'&lt;/span&gt;);
+                }
+            }
+        } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;else&lt;/span&gt; {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=0;j&amp;lt;table[i];j++) {
+                pq.push(i + &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'A'&lt;/span&gt;);
+            }
+        }
+    }
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cnt&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;lidx&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ridx&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt;(!pq.empty()) {
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cur&lt;/span&gt; = pq.top(); pq.pop();
+
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt;((++cnt)%2 != 0) {
+            a[lidx] = cur;
+            lidx++;
+        } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;else&lt;/span&gt; {
+            ridx++;
+            a[len - ridx] = cur;
+        }
+    } 
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (len%2 == 1) {
+        a[len/2] = mid;
+    }
+    a[len] = &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\0'&lt;/span&gt;;
+    cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgd8e0aa7&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd8e0aa7&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd8e0aa7&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1213&quot;&gt;https://www.acmicpc.net/problem/1213&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="수학" /><category term="구현" /><summary type="html">BOJ 1213 팰린드롬 만들기 접근하기</summary></entry><entry><title type="html">BOJ 14496 그대 그머가 되어</title><link href="http://localhost:4000/boj-14496/" rel="alternate" type="text/html" title="BOJ 14496 그대 그머가 되어" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj-14496</id><content type="html" xml:base="http://localhost:4000/boj-14496/">&lt;div id=&quot;outline-container-org75cf58c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org75cf58c&quot;&gt;BOJ 14496 그대 그머가 되어&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org8d9b1f8&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org8d9b1f8&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org8d9b1f8&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+BFS로 최단거리
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org8c0b69b&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org8c0b69b&quot;&gt;&lt;span class=&quot;todo TODO&quot;&gt;TODO&lt;/span&gt; 코드 - 다익스트라로 풀이&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org8c0b69b&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;cost를 1로 주변 다익스트라로 풀이 가능함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org0cb2260&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org0cb2260&quot;&gt;코드 - BFS로 풀이&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org0cb2260&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;A&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;B&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;M&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;vector&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt;&amp;gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;G&lt;/span&gt;[1001];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;vis&lt;/span&gt;[1001];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+    &lt;span style=&quot;color: #888a85;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;cin&lt;/span&gt; &amp;gt;&amp;gt; A &amp;gt;&amp;gt; B;
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;p1&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;p2&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;M;i++) {
+        cin &amp;gt;&amp;gt; p1 &amp;gt;&amp;gt; p2;
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;queue&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt;&amp;gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;q&lt;/span&gt;;
+    q.push(A); 
+    vis[A] = 1;
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;while&lt;/span&gt;(!q.empty()) {
+        &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cur&lt;/span&gt; = q.front(); q.pop();
+
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;auto&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;next&lt;/span&gt;:G[cur]) {
+            &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (!vis[next]) {
+                vis[next] = vis[cur] + 1;
+                q.push(next);
+            }
+        }
+    }
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (vis[B]) {
+        cout &amp;lt;&amp;lt; vis[B] - 1 &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;else&lt;/span&gt; {
+        cout &amp;lt;&amp;lt; -1 &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    }
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgcfd7cc9&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgcfd7cc9&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgcfd7cc9&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14496&quot;&gt;https://www.acmicpc.net/problem/14496&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgf9e4363&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgf9e4363&quot;&gt;풀이참고&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgf9e4363&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;다익스트라 - &lt;a href=&quot;https://codecollector.tistory.com/953&quot;&gt;https://codecollector.tistory.com/953&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="BFS" /><summary type="html">BOJ 14496 그대 그머가 되어 접근하기 BFS로 최단거리</summary></entry><entry><title type="html">BOJ 20155 우리 집 밑에 편의점이 있는데</title><link href="http://localhost:4000/boj-20155/" rel="alternate" type="text/html" title="BOJ 20155 우리 집 밑에 편의점이 있는데" /><published>2022-02-13T00:00:00+09:00</published><updated>2022-02-13T00:00:00+09:00</updated><id>http://localhost:4000/boj-20155</id><content type="html" xml:base="http://localhost:4000/boj-20155/">&lt;div id=&quot;outline-container-orgc964d4e&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgc964d4e&quot;&gt;BOJ 20155 우리 집 밑에 편의점이 있는&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-orgc19a6dd&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgc19a6dd&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgc19a6dd&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+최빈값을 구하는 문제
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgddf57fe&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgddf57fe&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgddf57fe&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;M&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;a&lt;/span&gt;[1010];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;freopen&lt;/span&gt;(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;input.txt&quot;&lt;/span&gt;, &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;r&quot;&lt;/span&gt;, stdin);
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+    cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; M;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;num&lt;/span&gt;;         
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        cin &amp;gt;&amp;gt; num;
+        a[num] += 1;
+    }
+    cout &amp;lt;&amp;lt; *max_element(a, a+N) &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org6195315&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org6195315&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org6195315&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/20155&quot;&gt;https://www.acmicpc.net/problem/20155&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="수학" /><summary type="html">BOJ 20155 우리 집 밑에 편의점이 있는 접근하기 최빈값을 구하는 문제</summary></entry><entry><title type="html">BOJ 14400 편의점 2</title><link href="http://localhost:4000/boj-14400/" rel="alternate" type="text/html" title="BOJ 14400 편의점 2" /><published>2022-02-12T00:00:00+09:00</published><updated>2022-02-12T00:00:00+09:00</updated><id>http://localhost:4000/boj-14400</id><content type="html" xml:base="http://localhost:4000/boj-14400/">&lt;div id=&quot;outline-container-org47ef2b1&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org47ef2b1&quot;&gt;BOJ 14400 편의점 2&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org5f6dc6b&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org5f6dc6b&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org5f6dc6b&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+n명의 주요 고객들의 위치 (xi,yi)이 주어질 때,
+모든 고객들의 거리 합을 최소로 하는 위치에 편의점을 세우는 위치
+
+-&amp;gt; 중앙값(median)의 점을 찾는다.
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org4cd245c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org4cd245c&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org4cd245c&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x&lt;/span&gt;[100000];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y&lt;/span&gt;[100000];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;freopen&lt;/span&gt;(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;input.txt&quot;&lt;/span&gt;, &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;r&quot;&lt;/span&gt;, stdin);
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+    cin &amp;gt;&amp;gt; N;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        cin &amp;gt;&amp;gt; x[i] &amp;gt;&amp;gt; y[i];
+    }
+
+    sort(x, x+N);
+    sort(y, y+N);
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x1&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y1&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (N%2 == 1) {
+         x1 = x[N/2]; 
+        y1 = y[N/2]; 
+    } &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;else&lt;/span&gt; {
+        x1 = (x[N/2 - 1] + x[N/2]) / 2; 
+        y1 = (y[N/2 - 1] + y[N/2]) / 2; 
+    }
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ans&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        ans += abs(x1 - x[i]) + abs(y1 - y[i]);
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id=&quot;outline-container-org25f8d89&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org25f8d89&quot;&gt;수학/중앙값 설명&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org25f8d89&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://mathbang.net/116&quot;&gt;https://mathbang.net/116&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgfafc2cf&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgfafc2cf&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgfafc2cf&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/14400&quot;&gt;https://www.acmicpc.net/problem/14400&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="수학" /><summary type="html">BOJ 14400 편의점 2 접근하기 n명의 주요 고객들의 위치 (xi,yi)이 주어질 때, 모든 고객들의 거리 합을 최소로 하는 위치에 편의점을 세우는 위치</summary></entry><entry><title type="html">BOJ 2357 농구 골대 세우기</title><link href="http://localhost:4000/boj-2375/" rel="alternate" type="text/html" title="BOJ 2357 농구 골대 세우기" /><published>2022-02-09T00:00:00+09:00</published><updated>2022-02-09T00:00:00+09:00</updated><id>http://localhost:4000/boj-2375</id><content type="html" xml:base="http://localhost:4000/boj-2375/">&lt;div id=&quot;outline-container-orgb33246e&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgb33246e&quot;&gt;BOJ 2357 농구 골대 세우기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgb33246e&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;X축으로 위치를 늘어놓고 가운데 고르기&lt;/li&gt;
+&lt;li&gt;Y축으로 위치를 늘어놓고 가운데 고르기
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;모든 마을에서 합이 최소화되는 위치임&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgd6117f7&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd6117f7&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd6117f7&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+1, 2, 3, 4, 5   N=5일 때의 중앙값은?
+
+1, 2, 3, 4      N=4일 때의 중앙값은? -&amp;gt; (2+3)/2를 해줘야 한다.
+
+하지만, 문제의 조건에서 좌표가 작은쪽을 고르라고 함. -&amp;gt; 중앙값에서 작은쪽 찾기
+&lt;/pre&gt;
+
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;문제의 조건에서 pi가 1000까지여서 100000*1000을 생각했는데, 메모리가 넘침&lt;/li&gt;
+&lt;li&gt;10000001 까지만 해주면 accept가 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgd7420d7&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgd7420d7&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgd7420d7&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;x&lt;/span&gt;[1000001];
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;y&lt;/span&gt;[1000001];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;freopen&lt;/span&gt;(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;input.txt&quot;&lt;/span&gt;, &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;r&quot;&lt;/span&gt;, stdin);
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+    cin &amp;gt;&amp;gt; N;
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;p1&lt;/span&gt;, &lt;span style=&quot;color: #ff6347;&quot;&gt;p2&lt;/span&gt;;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cnt&lt;/span&gt;;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;idx&lt;/span&gt;=0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        cin &amp;gt;&amp;gt; p1 &amp;gt;&amp;gt; p2 &amp;gt;&amp;gt; cnt;
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;j&lt;/span&gt;=idx;j&amp;lt;idx+cnt;j++) {
+            x[j] = p1;
+            y[j] = p2;
+        }
+        idx += cnt;
+    }
+
+    sort(x, x+idx);
+    sort(y, y+idx);
+
+    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;&amp;#51473;&amp;#50521;&amp;#44050;&lt;/span&gt;
+
+    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;1 2 3 4 5 -&amp;gt; &amp;#54848;&amp;#49688;&amp;#44060;, N=5&lt;/span&gt;
+    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;(N+1)/2 - 1 =&amp;gt; 2&lt;/span&gt;
+    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;1 2 3 4 -&amp;gt; &amp;#51677;&amp;#49688;&amp;#44060;, N=4&lt;/span&gt;
+    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;(N)/2 - 1 =&amp;gt; 1&lt;/span&gt;
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (idx %2 != 0) idx += 1;
+    cout &amp;lt;&amp;lt; x[idx/2 -1] &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot; &quot;&lt;/span&gt; &amp;lt;&amp;lt; y[idx/2 -1] &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org57b0276&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org57b0276&quot;&gt;해설 참고&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org57b0276&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://boomrabbit.tistory.com/88&quot;&gt;https://boomrabbit.tistory.com/88&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;outline-container-org270014c&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org270014c&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org270014c&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2375&quot;&gt;https://www.acmicpc.net/problem/2375&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="수학," /><category term="중앙값" /><summary type="html">BOJ 2357 농구 골대 세우기 X축으로 위치를 늘어놓고 가운데 고르기 Y축으로 위치를 늘어놓고 가운데 고르기 모든 마을에서 합이 최소화되는 위치임</summary></entry><entry><title type="html">vim에서 template.cpp코드 불러오기</title><link href="http://localhost:4000/vim-cpp-template/" rel="alternate" type="text/html" title="vim에서 template.cpp코드 불러오기" /><published>2022-02-09T00:00:00+09:00</published><updated>2022-02-09T00:00:00+09:00</updated><id>http://localhost:4000/vim-cpp-template</id><content type="html" xml:base="http://localhost:4000/vim-cpp-template/">&lt;div id=&quot;outline-container-org4df3289&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org4df3289&quot;&gt;용도&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org4df3289&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;BOJ 문제 풀때 vim에서 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org84b364b&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org84b364b&quot;&gt;사용법&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org84b364b&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;파일이 열린 상태에서 ,tt를 입력하면, 모든 파일 내용을 지우고, template를 로딩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgddce353&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgddce353&quot;&gt;vim에서 ,tt 키 입력으로 template code로딩&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgddce353&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;~/.vimrc에 다음 줄을 추가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-vim&quot;&gt;map ,tt &amp;lt;ESC&amp;gt;: 1,$ d &amp;lt;ESC&amp;gt;:r ~/template.cpp &amp;lt;CR&amp;gt; 1Gdd &amp;lt;CR&amp;gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;mapp ,tt 로 매핑한다.&lt;/li&gt;
+&lt;li&gt;esc : 명령 모드로&lt;/li&gt;
+&lt;li&gt;기존에 버퍼 내용을 모두 지운다. ( 1, $ d)&lt;/li&gt;
+&lt;li&gt;esc :명령 모드로&lt;/li&gt;
+&lt;li&gt;~/template.cpp를 로드한다.&lt;/li&gt;
+&lt;li&gt;CR (리턴 입력)&lt;/li&gt;
+&lt;li&gt;1Gdd : 1번 줄로 이동하고, 줄을 지우기 (공백이 생겨서 지움)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org9fb845e&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org9fb845e&quot;&gt;template.cpp&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org9fb845e&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#if&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;def&lt;/span&gt; ONLINE_JUDGE
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;freopen&lt;/span&gt;(&lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;input.txt&quot;&lt;/span&gt;, &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&quot;r&quot;&lt;/span&gt;, stdin);
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#endif&lt;/span&gt;
+
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="vim" /><summary type="html">용도 BOJ 문제 풀때 vim에서 사용</summary></entry><entry><title type="html">abc238 B - Pizza</title><link href="http://localhost:4000/abc-b-upsolving/" rel="alternate" type="text/html" title="abc238 B - Pizza" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/abc-b-upsolving</id><content type="html" xml:base="http://localhost:4000/abc-b-upsolving/">&lt;div id=&quot;outline-container-org5be95ba&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org5be95ba&quot;&gt;B - Pizza&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-orgecc9106&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;orgecc9106&quot;&gt;접근하기&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-orgecc9106&quot;&gt;
+&lt;pre class=&quot;example&quot;&gt;
+피자를 회전(시계방향)해서 12시 방향에서 cut하기는 생각하기 어렵다.
+
+이미 cut되어 있는 방향을 돌린다고 생각(반시계방향)
+
+처음 위치 ang[0] = 1
+
+ang[0 + p1] = 1
+
+ang[0 + p1 + p2] = 1 
+
+...
+
+(0 + p1 + p2 ...) % 360을 하면, 원래 위치를 넘어서 cut할 수 있다.
+
+1인 두 점 사이의 거리가 가장 큰 것을 구해서 출력x
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;outline-container-org1466fc6&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org1466fc6&quot;&gt;코드&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org1466fc6&quot;&gt;
+&lt;div class=&quot;org-src-container&quot;&gt;
+&lt;pre class=&quot;src src-cpp&quot;&gt;&lt;span style=&quot;color: #729fcf;&quot;&gt;#include&lt;/span&gt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;using&lt;/span&gt; &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;namespace&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;std&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;FASTIO&lt;/span&gt; &lt;span style=&quot;color: #8ae234;&quot;&gt;ios_base&lt;/span&gt;::sync_with_stdio(&lt;span style=&quot;color: #8ae234;&quot;&gt;false&lt;/span&gt;); cin.tie(&lt;span style=&quot;color: #8ae234;&quot;&gt;NULL&lt;/span&gt;);
+&lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;typedef&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;long&lt;/span&gt; &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;ll&lt;/span&gt;;
+&lt;span style=&quot;color: #729fcf;&quot;&gt;#define&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;INF&lt;/span&gt; 1e9
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;N&lt;/span&gt;;
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ang&lt;/span&gt;[360];
+
+&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #edd400; font-weight: bold;&quot;&gt;main&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;argc&lt;/span&gt;, &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;char&lt;/span&gt;* &lt;span style=&quot;color: #ff6347;&quot;&gt;argv&lt;/span&gt;[])
+{
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;FASTIO&lt;/span&gt;
+
+    &lt;span style=&quot;color: #ff6347;&quot;&gt;ang&lt;/span&gt;[0] = 1;
+
+    cin &amp;gt;&amp;gt; N;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;cur&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;num&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=0;i&amp;lt;N;i++) {
+        cin &amp;gt;&amp;gt; num;
+        cur += num;
+        cur = cur % 360;    &lt;span style=&quot;color: #888a85;&quot;&gt;// &lt;/span&gt;&lt;span style=&quot;color: #888a85;&quot;&gt;&amp;#50896;&amp;#54805;&amp;#51004;&amp;#47196; &amp;#46028;&amp;#47532;&amp;#45716; &amp;#44163; 360 -&amp;gt; 0&lt;/span&gt;
+        ang[cur] = 1;
+    }
+
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;prev&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;ans&lt;/span&gt; = 0;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;for&lt;/span&gt;(&lt;span style=&quot;color: #8ae234; font-weight: bold;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #ff6347;&quot;&gt;i&lt;/span&gt;=1;i&amp;lt;=360;i++) {
+        &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;if&lt;/span&gt; (ang[i%360] != 0) {
+            ans = max(ans, i - prev);
+            prev = i;
+        }
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; &lt;span style=&quot;color: #ad7fa8; font-style: italic;&quot;&gt;'\n'&lt;/span&gt;;
+    &lt;span style=&quot;color: #729fcf; font-weight: bold;&quot;&gt;return&lt;/span&gt; 0;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id=&quot;outline-container-org676a26d&quot; class=&quot;outline-2&quot;&gt;
+&lt;h2 id=&quot;org676a26d&quot;&gt;문제 링크&lt;/h2&gt;
+&lt;div class=&quot;outline-text-2&quot; id=&quot;text-org676a26d&quot;&gt;
+&lt;ul class=&quot;org-ul&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;https://atcoder.jp/contests/abc238/tasks/abc238_b&quot;&gt;https://atcoder.jp/contests/abc238/tasks/abc238_b&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>MyoungJune Park</name></author><category term="수학" /><summary type="html">B - Pizza</summary></entry></feed>

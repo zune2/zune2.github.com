@@ -1,0 +1,61 @@
+<div id="outline-container-org381ab6c" class="outline-2">
+<h2 id="org381ab6c">C - Not Equal</h2>
+</div>
+
+<div id="outline-container-org7e39ea3" class="outline-2">
+<h2 id="org7e39ea3">접근하기</h2>
+<div class="outline-text-2" id="text-org7e39ea3">
+<ul class="org-ul">
+<li>정렬한 후 곱하면, 답이 되는 규칙을 찾음</li>
+</ul>
+<pre class="example">
+4
+0 1 2 3
+3 3 4 4
+
+3 * 2 * 2 * 1 = 12
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org52e3ac3" class="outline-2">
+<h2 id="org52e3ac3">코드</h2>
+<div class="outline-text-2" id="text-org52e3ac3">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MOD</span> 1000000007
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[200010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+
+    sort(a, a+N);
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">cnt</span> = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cnt *= (a[i]-i) % MOD;
+        cnt = cnt % MOD;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org819a145" class="outline-2">
+<h2 id="org819a145">문제 링크</h2>
+<div class="outline-text-2" id="text-org819a145">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc209/tasks/abc209_c">https://atcoder.jp/contests/abc209/tasks/abc209_c</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,73 @@
+<div id="outline-container-org6cd4ed9" class="outline-2">
+<h2 id="org6cd4ed9">최소, 최대</h2>
+<div class="outline-text-2" id="text-org6cd4ed9">
+<p>
+배열에서 최소, 최대값 구하기 (STL)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org41351f7" class="outline-2">
+<h2 id="org41351f7">코드 - STL max_element / STL min_element 이용</h2>
+<div class="outline-text-2" id="text-org41351f7">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        v[i] = num;
+    }
+    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">minv</span> = min_element(v.begin(), v.end());
+    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">maxv</span> = max_element(v.begin(), v.end());
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d %d\n"</span>, *minv, *maxv);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org674fa8c" class="outline-2">
+<h2 id="org674fa8c">코드 - 그냥 구현</h2>
+<div class="outline-text-2" id="text-org674fa8c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> *<span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);    
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">minv</span> = 1000000;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">maxv</span> = -1000000;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a);        
+        <span style="color: #729fcf; font-weight: bold;">if</span> (a &lt; minv) minv = a;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (a &gt; maxv) maxv = a;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d %d\n"</span>, minv, maxv);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8d7e273" class="outline-2">
+<h2 id="org8d7e273">문제 링크</h2>
+<div class="outline-text-2" id="text-org8d7e273">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/10818">https://www.acmicpc.net/problem/10818</a></li>
+</ul>
+</div>
+</div>

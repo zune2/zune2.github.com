@@ -1,0 +1,60 @@
+<div id="outline-container-orge4f8f1c" class="outline-2">
+<h2 id="orge4f8f1c">BOJ 1673 치킨 쿠폰</h2>
+<div class="outline-text-2" id="text-orge4f8f1c">
+<ul class="org-ul">
+<li>쿠폰과 도장 두 변수를 잘 컨트롤하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgae88d00" class="outline-2">
+<h2 id="orgae88d00">코드</h2>
+<div class="outline-text-2" id="text-orgae88d00">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K) != EOF) {
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">coupon</span> = N;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">stamp</span> = 0;
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">while</span>(coupon) {
+        ans += coupon;       <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52824;&#53416; &#53216;&#54256; N&#51109; &#45813;&#50640; &#54252;&#54632;</span>
+            stamp += coupon; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52824;&#53416; &#53216;&#54256; N&#51109;&#51008; &#46020;&#51109; &#48155;&#51020;</span>
+
+            coupon = stamp / K; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46020;&#51109;&#51032; &#49688;/K =&gt; &#49352;&#47196; &#47784;&#51008; &#53216;&#54256;&#49688;</span>
+            stamp = stamp % K;  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46020;&#51109;&#51032; &#49688;%K =&gt; &#49352;&#47196; &#47784;&#51008; &#46020;&#51109;&#49688;</span>
+
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga773486" class="outline-2">
+<h2 id="orga773486">문제 링크</h2>
+<div class="outline-text-2" id="text-orga773486">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1673">https://www.acmicpc.net/problem/1673</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb89d8be" class="outline-2">
+<h2 id="orgb89d8be">풀이참고</h2>
+<div class="outline-text-2" id="text-orgb89d8be">
+<ul class="org-ul">
+<li><a href="https://codecollector.tistory.com/901">https://codecollector.tistory.com/901</a></li>
+</ul>
+</div>
+</div>

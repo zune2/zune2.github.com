@@ -1,0 +1,69 @@
+<div id="outline-container-org2f066cc" class="outline-2">
+<h2 id="org2f066cc">STL priority queue</h2>
+<div class="outline-text-2" id="text-org2f066cc">
+<ul class="org-ul">
+<li>Max heap, Min heap이 필요할 때</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad31144" class="outline-2">
+<h2 id="orgad31144">헤더 추가하기</h2>
+<div class="outline-text-2" id="text-orgad31144">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13d97cb" class="outline-2">
+<h2 id="org13d97cb">Min heap 변수 선언</h2>
+<div class="outline-text-2" id="text-org13d97cb">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; &gt;<span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; &gt;<span style="color: #ff6347;">pq</span>;
+</pre>
+</div>
+
+<p>
+pair는 first를 기준으로 정렬된다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd13b9d6" class="outline-2">
+<h2 id="orgd13b9d6">Max heap 변수 선언</h2>
+<div class="outline-text-2" id="text-orgd13b9d6">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">less</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt;, <span style="color: #8ae234; font-weight: bold;">less</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; &gt;<span style="color: #ff6347;">pq</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org404e216" class="outline-2">
+<h2 id="org404e216">우선순위큐 empty 될 때까지 loop</h2>
+<div class="outline-text-2" id="text-org404e216">
+<div class="org-src-container">
+<pre class="src src-cpp">
+<span style="color: #729fcf; font-weight: bold;">while</span>( ! pq.empty() )
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cost</span> = pq.top().first;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = pq.top.second;
+    pq.pop();
+
+    ...
+    ...
+    pq.push(make_pair(x, y));
+}
+</pre>
+</div>
+</div>
+</div>

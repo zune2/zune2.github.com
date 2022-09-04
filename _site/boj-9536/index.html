@@ -1,0 +1,96 @@
+<div id="outline-container-orgc2eef6a" class="outline-2">
+<h2 id="orgc2eef6a">BOJ 9536 여우는 어떻게 울지?</h2>
+</div>
+
+<div id="outline-container-orgcc55d44" class="outline-2">
+<h2 id="orgcc55d44">접근하기</h2>
+<div class="outline-text-2" id="text-orgcc55d44">
+<ul class="org-ul">
+<li>stdin의 처음부터 마지막까지 getline으로 입력받기</li>
+<li>첫번재 줄 입력에서
+<ul class="org-ul">
+<li>공백으로 구분된 string 전체를 받기</li>
+<li>string을 token으로 분리하기</li>
+</ul></li>
+<li>두번째 줄 입력에서</li>
+<li>3번째 단어만 vector에 저장</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdfca890" class="outline-2">
+<h2 id="orgdfca890">코드</h2>
+<div class="outline-text-2" id="text-orgdfca890">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;sstream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">split_char</span> = <span style="color: #ad7fa8; font-style: italic;">' '</span>;
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">s</span>;
+    getline(cin &gt;&gt; ws, s);
+
+    <span style="color: #8ae234; font-weight: bold;">istringstream</span> <span style="color: #ff6347;">split</span>(s);
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">tokens</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">each</span>; getline(split, each, split_char);tokens.push_back(each));
+
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">input</span>;
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">arr</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(getline(cin &gt;&gt; ws, input)) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (input == string(<span style="color: #ad7fa8; font-style: italic;">"what does the fox say?"</span>)) <span style="color: #729fcf; font-weight: bold;">break</span>;
+
+        <span style="color: #8ae234; font-weight: bold;">istringstream</span> <span style="color: #ff6347;">split2</span>(input);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = 1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">each</span>; getline(split2, each, split_char);i++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i % 3 == 0) arr.push_back(each);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">e</span>:arr) {
+        <span style="color: #729fcf; font-weight: bold;">while</span>(1) {
+            <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = find(tokens.begin(), tokens.end(), e);
+            <span style="color: #729fcf; font-weight: bold;">if</span> (it != tokens.end()) {
+                tokens.erase(it);
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                <span style="color: #729fcf; font-weight: bold;">break</span>;
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">e</span>:tokens) {
+        cout &lt;&lt; e.c_str() &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+    }
+    cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234;">ios</span>::sync_with_stdio(0);
+    cin.tie(0);
+    cin &gt;&gt; T;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca6e67f" class="outline-2">
+<h2 id="orgca6e67f">문제 링크</h2>
+<div class="outline-text-2" id="text-orgca6e67f">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/9536">https://www.acmicpc.net/problem/9536</a></li>
+</ul>
+</div>
+</div>

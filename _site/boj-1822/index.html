@@ -1,0 +1,66 @@
+<div id="outline-container-org40ae8a0" class="outline-2">
+<h2 id="org40ae8a0">BOJ 1822 차집합</h2>
+</div>
+
+<div id="outline-container-orgf3a47b0" class="outline-2">
+<h2 id="orgf3a47b0">접근하기</h2>
+<div class="outline-text-2" id="text-orgf3a47b0">
+<ul class="org-ul">
+<li>STL의 binary_search 이용하기</li>
+<li>A - B는 A의 원소이면서, B의 원소가 아닌 경우를 센다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd4b0826" class="outline-2">
+<h2 id="orgd4b0826">코드</h2>
+<div class="outline-text-2" id="text-orgd4b0826">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[500050];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[500050];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cin &gt;&gt; N &gt;&gt; M;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; a[i];
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        cin &gt;&gt; b[i];
+    }
+    sort(b, b+M);
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">ans</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (!binary_search(b, b+M, a[i])) {
+            ans.push_back(a[i]);
+        }
+    }
+    cout &lt;&lt; ans.size() &lt;&lt; endl;
+    sort(ans.begin(), ans.end());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:ans) {
+        cout &lt;&lt; o &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+    }
+    cout &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e707cb" class="outline-2">
+<h2 id="org4e707cb">문제 링크</h2>
+<div class="outline-text-2" id="text-org4e707cb">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1822">https://www.acmicpc.net/problem/1822</a></li>
+</ul>
+</div>
+</div>

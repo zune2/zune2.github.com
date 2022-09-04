@@ -1,0 +1,136 @@
+<div id="outline-container-org315a33e" class="outline-2">
+<h2 id="org315a33e">BOJ 1761 정점들의 거리</h2>
+</div>
+
+<div id="outline-container-orga07ba02" class="outline-2">
+<h2 id="orga07ba02">접근하기</h2>
+<div class="outline-text-2" id="text-orga07ba02">
+<ul class="org-ul">
+<li>Sparse table을 구성해서, LCA를 구하는 문제</li>
+</ul>
+<pre class="example">
+
+Root에서 노드1사이의 거리 = a
+Root에서 노드2사이의 거리 = b
+Root에서 노드 1,2의 LCA사이의 거리 = lca
+
+=&gt; Tree에서 두 노드 사이의 거리 = a + b - 2 x lca
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org084c811" class="outline-2">
+<h2 id="org084c811">코드</h2>
+<div class="outline-text-2" id="text-org084c811">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">LOG_SIZE</span> 16
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[LOG_SIZE+1][40040];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visited</span>[40040];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span>[40040];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">depth</span>[40040];
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cost</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">G</span>[40040];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">w</span>)
+{
+        visited[idx] = 1;
+        depth[idx] = d;
+        dist[idx] = w;
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:G[idx]) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">next</span> = o.num;
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cost</span> = o.cost;
+                <span style="color: #729fcf; font-weight: bold;">if</span> (!visited[next]) {
+                        dp[0][next] = idx;
+                        dfs(next, d+1, w+cost);
+                }
+        } 
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">LCA</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p2</span>)
+{
+        <span style="color: #729fcf; font-weight: bold;">if</span> (depth[p1] &lt; depth[p2]) {
+                swap(p1, p2);
+        }
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">diff</span> = depth[p1] - depth[p2];
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=LOG_SIZE;i&gt;=0;--i) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (diff &amp; (1 &lt;&lt; i)) {
+                        p1 = dp[i][p1];
+                }
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (p1 != p2) {
+                <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=LOG_SIZE;i&gt;=0;--i) {
+                        <span style="color: #729fcf; font-weight: bold;">if</span> (dp[i][p1] != dp[i][p2]) {
+                                p1 = dp[i][p1];
+                                p2 = dp[i][p2];
+                        }
+                }               
+                p1 = dp[0][p1];
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+        freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>, <span style="color: #ff6347;">w</span>;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-1;i++) {
+                scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;p1, &amp;p2, &amp;w);
+                G[p1].push_back({p2, w});
+                G[p2].push_back({p1, w});
+        }
+
+        dfs(1, 0, 0); <span style="color: #888a85;">// </span><span style="color: #888a85;">dp[0][i] &#52292;&#50880;</span>
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">sparse table &#52292;&#50880;</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=LOG_SIZE;i++) {
+                <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span> = dp[i-1][j];
+                        dp[i][j] = dp[i-1][tmp];
+                }               
+        }
+
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;M);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+                scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">lca</span> = LCA(p1, p2);
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dist[p1]+dist[p2] - 2*dist[lca]);
+        }
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge63e168" class="outline-2">
+<h2 id="orge63e168">문제 링크</h2>
+<div class="outline-text-2" id="text-orge63e168">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1761">https://www.acmicpc.net/problem/1761</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge3d37e1" class="outline-2">
+<h2 id="orge3d37e1">풀이/해설참고</h2>
+<div class="outline-text-2" id="text-orge3d37e1">
+<ul class="org-ul">
+<li><a href="https://justicehui.github.io/ps/2019/04/22/BOJ1761/">https://justicehui.github.io/ps/2019/04/22/BOJ1761/</a></li>
+</ul>
+</div>
+</div>

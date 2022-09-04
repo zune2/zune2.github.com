@@ -1,0 +1,87 @@
+<div id="outline-container-org713885c" class="outline-2">
+<h2 id="org713885c">BOJ 2740 행렬 곱셈</h2>
+</div>
+<div id="outline-container-org54a0eb5" class="outline-2">
+<h2 id="org54a0eb5">접근하기</h2>
+<div class="outline-text-2" id="text-org54a0eb5">
+<ul class="org-ul">
+<li>행렬 곱셈 수학식을 2차원 배열로 코딩</li>
+</ul>
+
+<pre class="example">
+A = 3 x 2 
+
+B = 2 x 3
+
+C = 3 x 3 행렬이 된다.
+
+y-&gt; A세로 = 3
+x-&gt; B가로 = 3
+
+
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orge587bb8" class="outline-2">
+<h2 id="orge587bb8">코드</h2>
+<div class="outline-text-2" id="text-orge587bb8">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[110][110];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[110][110];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>[110][110];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+    <span style="color: #ff6347;">cin</span> &gt;&gt; N &gt;&gt; M;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=M;j++) {
+            cin &gt;&gt; a[i][j];
+        }
+    }
+
+    cin &gt;&gt; M &gt;&gt; K;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=M;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=K;j++) {
+            cin &gt;&gt; b[i][j];
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {          <span style="color: #888a85;">// </span><span style="color: #888a85;">1 ~ 3</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=K;j++) {      <span style="color: #888a85;">// </span><span style="color: #888a85;">1 ~ 3</span>
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=M;k++) {  <span style="color: #888a85;">// </span><span style="color: #888a85;">1 ~ 2</span>
+                c[i][j] += a[i][k]*b[k][j];
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=K;j++) {
+            cout &lt;&lt; c[i][j] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+        }
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfab239b" class="outline-2">
+<h2 id="orgfab239b">문제 링크</h2>
+<div class="outline-text-2" id="text-orgfab239b">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2740">https://www.acmicpc.net/problem/2740</a></li>
+</ul>
+</div>
+</div>

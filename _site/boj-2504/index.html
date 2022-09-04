@@ -1,0 +1,145 @@
+<div id="outline-container-org6cd8308" class="outline-2">
+<h2 id="org6cd8308">BOJ 2504 괄호의 값</h2>
+<div class="outline-text-2" id="text-org6cd8308">
+<ul class="org-ul">
+<li>올바른 문자열인지 아닌지 체크</li>
+<li>올바른 문자열이라면 계산 값 리턴</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdfea4c3" class="outline-2">
+<h2 id="orgdfea4c3">접근하기</h2>
+<div class="outline-text-2" id="text-orgdfea4c3">
+<pre class="example">
+1. check에서 string을 모두 stack에서 pair를 맞춰봐서 스택이 비면, 올바른 문자열
+2. 올바른 문자열이면 주어진대로 계산
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org793e128" class="outline-2">
+<h2 id="org793e128">코드 - 1st</h2>
+<div class="outline-text-2" id="text-org793e128">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">0 : num</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">[ : 1</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">] : 2</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">( : 3</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">) : 4</span>
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">type</span>;           <span style="color: #888a85;">// </span><span style="color: #888a85;">1 : [ ( ) ]      // 2 : val</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[40];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">check</span>(<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">stack</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt; <span style="color: #ff6347;">s</span>;  
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        <span style="color: #729fcf; font-weight: bold;">switch</span>(str[i]) {
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'['</span>:
+            s.push(str[i]);
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'('</span>:
+            s.push(str[i]);
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">')'</span>:
+            <span style="color: #729fcf; font-weight: bold;">if</span> (s.empty()) {
+                s.push(str[i]);
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top() == <span style="color: #ad7fa8; font-style: italic;">'('</span>) {
+                s.pop();
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">']'</span>:
+            <span style="color: #729fcf; font-weight: bold;">if</span> (s.empty()) {
+                s.push(str[i]);
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top() == <span style="color: #ad7fa8; font-style: italic;">'['</span>) {
+                s.pop();
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> s.empty();
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">work</span>(<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">stack</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">s</span>;  
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        <span style="color: #729fcf; font-weight: bold;">switch</span>(str[i]) {
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'('</span>:               <span style="color: #888a85;">// </span><span style="color: #888a85;">3</span>
+            s.push({3, 0});
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">')'</span>:               <span style="color: #888a85;">// </span><span style="color: #888a85;">4</span>
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top().type == 3) {      <span style="color: #888a85;">// </span><span style="color: #888a85;">() -&gt;2</span>
+                s.pop();
+                s.push({0, 2});
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top().type == 0) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tot</span> = 0;
+                <span style="color: #729fcf; font-weight: bold;">while</span> (!s.empty() &amp;&amp; s.top().type != 3) {      <span style="color: #888a85;">// </span><span style="color: #888a85;">() -&gt;2</span>
+                    tot = tot + s.top().num;
+                    s.pop();
+                }
+                s.pop();        <span style="color: #888a85;">// </span><span style="color: #888a85;">remove '('</span>
+                s.push({0, tot*2});
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'['</span>:               <span style="color: #888a85;">// </span><span style="color: #888a85;">1</span>
+            s.push({1, 0});
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">']'</span>:               <span style="color: #888a85;">// </span><span style="color: #888a85;">2</span>
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top().type == 1) {      <span style="color: #888a85;">// </span><span style="color: #888a85;">[] -&gt;3</span>
+                s.pop();
+                s.push({0, 3});
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (!s.empty() &amp;&amp; s.top().type == 0) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tot</span> = 0;
+                <span style="color: #729fcf; font-weight: bold;">while</span> (!s.empty() &amp;&amp; s.top().type != 1) {      <span style="color: #888a85;">// </span><span style="color: #888a85;">[] -&gt;2</span>
+                    tot = tot + s.top().num;
+                    s.pop();
+                }
+                s.pop();        <span style="color: #888a85;">// </span><span style="color: #888a85;">remove '['</span>
+                s.push({0, tot*3});
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        } 
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>( !s.empty()) {
+        ans += s.top().num;
+        s.pop();
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    <span style="color: #729fcf; font-weight: bold;">if</span> (check(str)) {
+        work(str);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"0\n"</span>);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org215c81e" class="outline-2">
+<h2 id="org215c81e">문제 링크</h2>
+<div class="outline-text-2" id="text-org215c81e">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2504">https://www.acmicpc.net/problem/2504</a></li>
+</ul>
+</div>
+</div>

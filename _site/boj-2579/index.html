@@ -1,0 +1,134 @@
+<div id="outline-container-org44ff9ac" class="outline-2">
+<h2 id="org44ff9ac">BOJ 2579 계단 오르기</h2>
+<div class="outline-text-2" id="text-org44ff9ac">
+<ul class="org-ul">
+<li>한번에 두개 연속밝거나, 하나 밟고, 뛰어넘을 수 있음.</li>
+<li>세개 연속 밟을 수 없음</li>
+<li>마지막 도착 계단은 꼭 밟아야 함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd673692" class="outline-2">
+<h2 id="orgd673692">접근하기 1</h2>
+<div class="outline-text-2" id="text-orgd673692">
+<ul class="org-ul">
+<li>문제에 주어진 내용을 점화식(Recurrence relation)으로 나타내야 함</li>
+</ul>
+
+<pre class="example">
+
+d[i] : i번째 계단 까지 뛰었을 때의 최대값
+
+d[0] : 출발점
+
+d[1] : a[1] 1번째 계단 밟음
+d[2] : a[1] + a[2] 두개 연속 밟음
+
+a[i] + a[i-1] + d[i-3] : 두개 연속 밟기
+a[i] + d[i-2] : 현재 밟고, i-2에서 점프에서 오기
+</pre>
+</div>
+</div>
+<div id="outline-container-org61c6fff" class="outline-2">
+<h2 id="org61c6fff">코드 - dp[i]로 풀기</h2>
+<div class="outline-text-2" id="text-org61c6fff">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[310];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[310];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]); 
+    } 
+
+    dp[0] = 0;
+    dp[1] = a[1];
+    dp[2] = a[1]+a[2];
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i++) {
+        dp[i] = max(dp[i], a[i] + a[i-1] + dp[i-3]); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51216;&#54532; &#54980; &#46160;&#44060; &#50672;&#49549; &#48159;&#44592;</span>
+        dp[i] = max(dp[i], a[i] + dp[i-2]); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51216;&#54532; &#54980; &#54616;&#45208; &#50672;&#49549; &#48159;&#44592;</span>
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[N]);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org341d2ad" class="outline-2">
+<h2 id="org341d2ad">접근하기 2</h2>
+<div class="outline-text-2" id="text-org341d2ad">
+<pre class="example">
+d[i][1] : 1번 연속밟아서 i번쨰 옴
+d[i][2] : 2번 연속밟아서 i번째 옴
+
+dp[i][1] = max(dp[i-2][1], dp[i-2][2]) + a[i];
+// i-2에서 점프해서 i번째 밟음(이전에 1번, 2번 무관 큰값 고르기)
+
+dp[i][2] = dp[i-1][1] + a[i];
+// i-1에서 1번연속 밟은 상태 -&gt;  점프해서 i번째 밟음
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org26dd062" class="outline-2">
+<h2 id="org26dd062">코드 - dp[i][1,2]로 풀기</h2>
+<div class="outline-text-2" id="text-org26dd062">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[310];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[310][3]; <span style="color: #888a85;">// </span>
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">dp[i][1] : &#54616;&#45208; &#48159;&#51020;</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">dp[i][2] : &#46160;&#48264; &#48159;&#51020;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++)
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+
+    dp[1][1] = a[1];
+    dp[1][2] = a[1];
+
+    dp[2][1] = a[2];
+    dp[2][2] = dp[1][1] + a[2];
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i++) {
+        dp[i][1] = max(dp[i-2][1], dp[i-2][2]) + a[i]; <span style="color: #888a85;">// </span><span style="color: #888a85;">i-2&#50640;&#49436; &#51216;&#54532;&#54644;&#49436; i&#48264;&#51704; &#48159;&#51020;</span>
+        dp[i][2] = dp[i-1][1] + a[i]; <span style="color: #888a85;">// </span><span style="color: #888a85;">i-1&#50640;&#49436; &#51216;&#54532;&#54644;&#49436; i&#48264;&#51704; &#48159;&#51020;</span>
+    } 
+
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, max(dp[N][1], dp[N][2]));
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7aa06da" class="outline-2">
+<h2 id="org7aa06da">문제 링크</h2>
+<div class="outline-text-2" id="text-org7aa06da">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2579">https://www.acmicpc.net/problem/2579</a></li>
+</ul>
+</div>
+</div>

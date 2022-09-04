@@ -1,0 +1,76 @@
+<div id="outline-container-orgcc50365" class="outline-2">
+<h2 id="orgcc50365">BOJ 18353 병사 배치하기</h2>
+<div class="outline-text-2" id="text-orgcc50365">
+<ul class="org-ul">
+<li>dp로 LIS풀기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org729b054" class="outline-2">
+<h2 id="org729b054">접근하기</h2>
+<div class="outline-text-2" id="text-org729b054">
+<pre class="example">
+N = 전체 병사의 수
+
+값이 연속적으로 감소하는 최대 길이 = LIS(N)
+
+열외해야할 병사의 수 = N - LIS(N)
+</pre>
+</div>
+</div>
+<div id="outline-container-org3b1f8b2" class="outline-2">
+<h2 id="org3b1f8b2">코드</h2>
+<div class="outline-text-2" id="text-org3b1f8b2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">ARRSIZE</span> 2020
+
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">a</span>[ARRSIZE];
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">dp</span>[ARRSIZE];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+    <span style="color: #ff6347;">cin</span> &gt;&gt; N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        cin &gt;&gt; a[i];
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        dp[i] = 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=i;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[i] &lt; a[j] &amp;&amp; dp[i] &lt; dp[j] + 1) {
+                dp[i] = dp[j] + 1;
+            }
+        }
+    }
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">ans</span> = dp[1];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        ans = max(ans, dp[i]);
+    }
+    cout &lt;&lt; N - ans &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5825609" class="outline-2">
+<h2 id="org5825609">문제 링크</h2>
+<div class="outline-text-2" id="text-org5825609">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/18353">https://www.acmicpc.net/problem/18353</a></li>
+</ul>
+</div>
+</div>

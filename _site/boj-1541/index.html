@@ -1,0 +1,72 @@
+<div id="outline-container-orga3fc1a1" class="outline-2">
+<h2 id="orga3fc1a1">BOJ 1541 잃어버린 괄호</h2>
+</div>
+
+<div id="outline-container-org712cf2d" class="outline-2">
+<h2 id="org712cf2d">접근하기</h2>
+<div class="outline-text-2" id="text-org712cf2d">
+<ul class="org-ul">
+<li>마이너스 기호가 나오면, 그 뒤에 모든 +를 마이너스로 바꾸면, 작은 수가 됨.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org49f63e1" class="outline-2">
+<h2 id="org49f63e1">코드</h2>
+<div class="outline-text-2" id="text-org49f63e1">
+<ul class="org-ul">
+<li>맨 앞의 숫자는 그냥 ans에 더해야 하는 것을 생각하기 어려웠음
+<ul class="org-ul">
+<li>is_minus로 마이너스 기호가 나왔다는 표시를 함</li>
+<li>맨 앞의 마이너스가 나와도 한번은 더하게 하기</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[100];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+
+    <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">is_minus</span> = <span style="color: #8ae234;">false</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span>;    
+    <span style="color: #729fcf; font-weight: bold;">for</span>(len = 0;str[len];len++);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=len;i++)
+    {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] &gt;= <span style="color: #ad7fa8; font-style: italic;">'0'</span> &amp;&amp; str[i] &lt;= <span style="color: #ad7fa8; font-style: italic;">'9'</span>)
+            num = num * 10 + (str[i]-<span style="color: #ad7fa8; font-style: italic;">'0'</span>);
+        <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] == <span style="color: #ad7fa8; font-style: italic;">'-'</span> || str[i] == <span style="color: #ad7fa8; font-style: italic;">'+'</span> || len == i) {
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (is_minus)
+            {
+                ans -= num;
+                num = 0;
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                ans += num;
+                num = 0;                
+            }   
+        }
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] == <span style="color: #ad7fa8; font-style: italic;">'-'</span>) is_minus = <span style="color: #8ae234;">true</span>;        
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ccfb83" class="outline-2">
+<h2 id="org4ccfb83">문제 링크</h2>
+<div class="outline-text-2" id="text-org4ccfb83">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1541">https://www.acmicpc.net/problem/1541</a></li>
+</ul>
+</div>
+</div>

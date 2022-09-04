@@ -1,0 +1,94 @@
+<div id="outline-container-orgc0ca9c0" class="outline-2">
+<h2 id="orgc0ca9c0">BOJ 2583 영역 구하기</h2>
+</div>
+
+<div id="outline-container-org878c297" class="outline-2">
+<h2 id="org878c297">접근하기</h2>
+<div class="outline-text-2" id="text-org878c297">
+<ul class="org-ul">
+<li>dfs로 0인 영역을 구하고, sort해서 출력</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2fe2c92" class="outline-2">
+<h2 id="org2fe2c92">코드</h2>
+<div class="outline-text-2" id="text-org2fe2c92">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">M</span>, <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">map</span>[101][101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[101][101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x1</span>, <span style="color: #ff6347;">y1</span>, <span style="color: #ff6347;">x2</span>, <span style="color: #ff6347;">y2</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0,  0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = {0,  0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (0&lt;=x &amp;&amp; x&lt;N) &amp;&amp; (0&lt;=y &amp;&amp; y&lt;M);
+}
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 1;
+    visit[y][x] = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = y + dy[i];
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = x + dx[i];
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; visit[ny][nx] == 0 &amp;&amp; map[ny][nx] == 0) {
+            cnt += dfs(ny, nx);    
+        }        
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> cnt;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;M, &amp;N, &amp;K);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d %d"</span>, &amp;x1, &amp;y1, &amp;x2, &amp;y2);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>=y1;y&lt;y2;y++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>=x1;x&lt;x2;x++) {
+                <span style="color: #8ae234; font-weight: bold;">map</span>[y][x] = 1;
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {   
+            <span style="color: #729fcf; font-weight: bold;">if</span> (visit[i][j] == 0 &amp;&amp; map[i][j] == 0) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = dfs(i, j);
+                v.push_back(ret);
+                <span style="color: #888a85;">//</span><span style="color: #888a85;">printf("ret:%d\n", ret);</span>
+            }
+        }        
+    }
+    sort(v.begin(), v.end());
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)v.size());
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:v) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, o);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);    
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org964e286" class="outline-2">
+<h2 id="org964e286">문제 링크</h2>
+<div class="outline-text-2" id="text-org964e286">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2583">https://www.acmicpc.net/problem/2583</a></li>
+</ul>
+</div>
+</div>

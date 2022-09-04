@@ -1,0 +1,84 @@
+<div id="outline-container-org7c59f06" class="outline-2">
+<h2 id="org7c59f06">D - Online games</h2>
+</div>
+
+<div id="outline-container-org5ad70b0" class="outline-2">
+<h2 id="org5ad70b0">접근하기</h2>
+<div class="outline-text-2" id="text-org5ad70b0">
+<ul class="org-ul">
+<li>날자의 구간(시작, 끝)을 각각 주고, 겹치는 구간을 세서, 배열에 저장하는 방법</li>
+<li>시작날자에 1로 표기, 마지막날+1에 -1로 표기하면, 구간 표시가 가능함</li>
+<li>sort해서 1과 -1로 counter의 index를 이동하면서, 시작일의 차를 더하면, 사람수를 세는게 된다.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0454cc3" class="outline-2">
+<h2 id="org0454cc3">코드</h2>
+<div class="outline-text-2" id="text-org0454cc3">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">start</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[200010*2];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>[200010];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (p1.start == p2.start) {
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1.len &lt; p2.len;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        <span style="color: #729fcf; font-weight: bold;">return</span> p1.start &lt; p2.start;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N); 
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #ff6347;">b</span>;
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;a, &amp;b);
+        pool[idx].start = a;
+        pool[idx].len = 1;
+        idx++;
+
+        pool[idx].start = a + b;
+        pool[idx].len = -1;
+        idx++;
+    }
+    sort(pool, pool+idx, cmp);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;idx-1;i++) {
+        cnt += pool[i].len;
+        d[cnt] += (pool[i+1].start - pool[i].start);
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, d[i]);
+    } 
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73bdba6" class="outline-2">
+<h2 id="org73bdba6">문제 링크</h2>
+<div class="outline-text-2" id="text-org73bdba6">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc221/tasks/abc221_c">https://atcoder.jp/contests/abc221/tasks/abc221_c</a></li>
+</ul>
+</div>
+</div>

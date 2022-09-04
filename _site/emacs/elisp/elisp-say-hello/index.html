@@ -1,0 +1,33 @@
+<h2 id="elisp로-hello-world-출력하기">elisp로 hello world 출력하기</h2>
+
+<p>M-x ielm으로 모드를 진입하고, 함수를 만들어 본다.</p>
+
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">***</span> <span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">IELM</span> <span class="vg">***</span>  <span class="nv">Type</span> <span class="p">(</span><span class="nv">describe-mode</span><span class="p">)</span> <span class="nv">for</span> <span class="nv">help.</span>
+<span class="nv">ELISP&gt;</span> <span class="p">(</span><span class="nb">defun</span> <span class="nv">say-hello</span> <span class="p">()</span>
+<span class="s">"hello"</span><span class="p">)</span>
+<span class="nv">say-hello</span>
+<span class="nv">ELISP&gt;</span> <span class="p">(</span><span class="nv">say-hello</span><span class="p">)</span>
+<span class="s">"hello"</span>
+</code></pre></div></div>
+
+<h2 id="list를-만들기">list를 만들기</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ELISP&gt; '(rose violet daisy buttercup) 
+(rose violet daisy buttercup) 
+ELISP&gt;
+</code></pre></div></div>
+
+<h2 id="emacs에서-22-evalute하기">emacs에서 2+2 evalute하기</h2>
+
+<p>블럭을 지정한 후, C-x C-e하면 evalute된다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(+ 2 2)
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a></li>
+  <li><a href="http://ergoemacs.org/emacs/elisp_basics.html">elisp_basics</a></li>
+  <li><a href="http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-next/">Emacs Lisp for Hackers: Hello World</a></li>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/Lisp-Lists.html#Lisp-Lists">Manual &gt; Lisp-Lists</a></li>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/Run-a-Program.html#Run-a-Program">Manual &gt; Run-a-Program</a></li>
+</ul>

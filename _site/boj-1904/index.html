@@ -1,0 +1,69 @@
+<div id="outline-container-org0069031" class="outline-2">
+<h2 id="org0069031">BOJ 1904 01타일</h2>
+<div class="outline-text-2" id="text-org0069031">
+<ul class="org-ul">
+<li>00, 1을 이용해서 N자리 숫자를 만드는 경우의 수 구하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org270864b" class="outline-2">
+<h2 id="org270864b">접근하기</h2>
+<div class="outline-text-2" id="text-org270864b">
+<pre class="example">
+00,1 로만 숫자를 만들기
+
+N = 1     1                           1 
+N = 2     00 11                       2
+N = 3     001 100 111                 3
+N = 4     0011 0000 1001 1100 1111    5
+
+피보나치 수열 점화식이 나옴
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgff541ff" class="outline-2">
+<h2 id="orgff541ff">코드</h2>
+<div class="outline-text-2" id="text-orgff541ff">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#if</span> 0
+N = 1     1                           1 
+N = 2     00 11                       2
+N = 3     001 100 111                 3
+N = 4     0011 0000 1001 1100 1111    5
+<span style="color: #729fcf;">#endif</span>
+
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> N;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1000010];
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MOD</span> 15746
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    dp[1] = 1;
+    dp[2] = 2;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=3;i&lt;=N;i++) {
+        dp[i] = dp[i-1]%MOD + dp[i-2]%MOD;
+        dp[i] %= MOD;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[N]);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org685915c" class="outline-2">
+<h2 id="org685915c">문제 링크</h2>
+<div class="outline-text-2" id="text-org685915c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1904">https://www.acmicpc.net/problem/1904</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,92 @@
+<div id="outline-container-orgcd47234" class="outline-2">
+<h2 id="orgcd47234">BOJ 2213 트리의 독립집합</h2>
+<div class="outline-text-2" id="text-orgcd47234">
+<ul class="org-ul">
+<li>그리디 방법으로 문제의 성질을 파악하는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4ed6f8e" class="outline-2">
+<h2 id="org4ed6f8e">접근하기</h2>
+<div class="outline-text-2" id="text-org4ed6f8e">
+<pre class="example">
+- 작은 값 두개씩 더하기를 반복하면, 최적임을 발견해야 한다.
+- 쉽게 보이지 않았음.
+- 값의 범위가 int를 넘을 수 있음. long long으로 변경
+
+40 30 30 50
+
+30 + 30 = 60  ......... (1)
+
+40 60 50
+
+40 + 50 = 90  ......... (2)
+
+90 60 
+
+90 60 = 150   ......... (3)
+
+150        // 하나 남으면 종료
+
+60 + 90 + 150 = 300
+
+ans = 150
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org8abb0ae" class="outline-2">
+<h2 id="org8abb0ae">코드</h2>
+<div class="outline-text-2" id="text-org8abb0ae">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">ll</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">ll</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">ll</span>&gt; &gt; <span style="color: #ff6347;">pq</span>;
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">num</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%lld"</span>, &amp;num);
+        pq.push(num);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>((<span style="color: #8ae234; font-weight: bold;">int</span>)pq.size() &gt;= 2){
+        <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">n1</span> = pq.top(); pq.pop();
+        <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">n2</span> = pq.top(); pq.pop();
+        sum += n1+n2;
+        pq.push(n1+n2);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, sum);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9077e74" class="outline-2">
+<h2 id="org9077e74">문제 링크</h2>
+<div class="outline-text-2" id="text-org9077e74">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/13975">https://www.acmicpc.net/problem/13975</a></li>
+</ul>
+</div>
+</div>

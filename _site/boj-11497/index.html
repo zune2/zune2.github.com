@@ -1,0 +1,76 @@
+<div id="outline-container-orgfa67fb5" class="outline-2">
+<h2 id="orgfa67fb5">BOJ 2872</h2>
+<div class="outline-text-2" id="text-orgfa67fb5">
+<ul class="org-ul">
+<li>규칙을 발견해야 함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f812db" class="outline-2">
+<h2 id="org2f812db">접근</h2>
+<div class="outline-text-2" id="text-org2f812db">
+<pre class="example">
+2, 9, 7, 4, 5 이 연결되어 있을 때, 각 구간의 차이가 최소가 되도록 했을 때,
+
+최대값은?
+
+2 9 7 4 5 --&gt; 9와 2에서 7
+2 5 9 7 4 --&gt; 9와 5에서 4
+
+sort하고 앞뒤로 비교하면, 0번째와 N-1번째의 차이가 크게됨
+
+0 2 4 3 1 형태로 구성하면 최적
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9b5f8f4" class="outline-2">
+<h2 id="org9b5f8f4">코드</h2>
+<div class="outline-text-2" id="text-org9b5f8f4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[10010];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+    sort(a, a+N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=2;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = a[i] - a[i-2];
+        ans = max(ans, cnt);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf2ceb8" class="outline-2">
+<h2 id="orgdf2ceb8">문제 링크</h2>
+<div class="outline-text-2" id="text-orgdf2ceb8">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11497">https://www.acmicpc.net/problem/11497</a></li>
+</ul>
+</div>
+</div>

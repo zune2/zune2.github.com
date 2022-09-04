@@ -1,0 +1,81 @@
+<div id="outline-container-orga40fb51" class="outline-2">
+<h2 id="orga40fb51">C - Friends and Travel cost</h2>
+<div class="outline-text-2" id="text-orga40fb51">
+<ul class="org-ul">
+<li>0번에서 K만큼의 돈을 가지고 이동</li>
+<li>A번 노드에서 B만큼의 돈을 보충 가능</li>
+<li>노드 하나 이동할 때, 1씩 비용 듬</li>
+<li>얼마나 갈 수 있을까?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0e48bad" class="outline-2">
+<h2 id="org0e48bad">접근하기</h2>
+<div class="outline-text-2" id="text-org0e48bad">
+<ul class="org-ul">
+<li>0번에서 A번 노드까지의 거리보다 현재 가진돈이 많거나 같아야 이동</li>
+<li>마지막 노드에 왔을때, 돈이 남았으면, 돈 만큼 더 이동 가능</li>
+<li>하나의 노드에서 여러번 돈을 보충할 수 있는 것에 주의</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf600518" class="outline-2">
+<h2 id="orgf600518">코드</h2>
+<div class="outline-text-2" id="text-orgf600518">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">A</span>;
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">B</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[200020];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (p1.A &lt; p2.A);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%lld %lld"</span>, &amp;pool[i].A, &amp;pool[i].B);
+    }
+    sort(pool, pool+N, cmp);
+
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">pos</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">coin</span> = K;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (coin - (pool[i].A - pos) &gt;= 0) {
+            coin -= (pool[i].A - pos);
+            pos += (pool[i].A - pos);
+            coin += pool[i].B;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, pos + coin);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd543fd9" class="outline-2">
+<h2 id="orgd543fd9">문제 링크</h2>
+<div class="outline-text-2" id="text-orgd543fd9">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc203/tasks/abc203_c">https://atcoder.jp/contests/abc203/tasks/abc203_c</a></li>
+</ul>
+</div>
+</div>

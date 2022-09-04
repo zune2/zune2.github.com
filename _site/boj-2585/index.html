@@ -1,0 +1,170 @@
+<div id="outline-container-orgb586f0a" class="outline-2">
+<h2 id="orgb586f0a">BOJ 2585 경비행기</h2>
+<div class="outline-text-2" id="text-orgb586f0a">
+<ul class="org-ul">
+<li>출발지 S에서 목적지 S로 중간 주유소를 거쳐서 갈 때, K번 이하로 갈 수 있으면, 최소 연료통 크기 구하기</li>
+<li>직선거리를 기준으로 하고, 연료통 크기 x 10만큼의 거리를 감</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf7e604d" class="outline-2">
+<h2 id="orgf7e604d">접근하기</h2>
+<div class="outline-text-2" id="text-orgf7e604d">
+<pre class="example">
+1. 연료통 크기를 이분탐색 0~ (0,0) ~ (10000, 10000)까지의 거리
+2. mid값을 이용해서 bfs
+   - 시작점부터 끝점까지 가지는지 반복한다.
+   - N이 1000정도로 작음, 매번 N번씩 loop돌면서, 다음 방문 위치를 찾기
+   - visit배열을 이용해서, 이미 방문한 곳은 제외
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6ddc673" class="outline-2">
+<h2 id="org6ddc673">코드 - binsearch recursive - memo 적용 (28 m/s -&gt; 12 m/s)</h2>
+<div class="outline-text-2" id="text-org6ddc673">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">SIZE</span> 1010
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">a</span>[SIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visited</span>[SIZE];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">memo</span>[SIZE][SIZE]; <span style="color: #888a85;">// </span><span style="color: #888a85;">28 m/s -&gt; 12 m/s</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">calc_oil</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx1</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (memo[idx1][idx2]) <span style="color: #729fcf; font-weight: bold;">return</span> memo[idx1][idx2];
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span> = ceil(sqrt(pow(a[idx2].x - a[idx1].x, 2) 
+                + pow(a[idx2].y - a[idx1].y, 2)));
+    <span style="color: #729fcf; font-weight: bold;">if</span>(dist % 10 == 0){
+        <span style="color: #729fcf; font-weight: bold;">return</span> memo[idx1][idx2] = dist/10;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        <span style="color: #729fcf; font-weight: bold;">return</span> memo[idx1][idx2] = dist/10+1;
+    }
+}
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Point</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#54788;&#51116; &#50948;&#52824;</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#49884;&#51089;&#51216;&#48512;&#53552; &#47751;&#48264; &#44040;&#50500;&#53460;&#45716;&#51648;</span>
+} <span style="color: #8ae234; font-weight: bold;">Point</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tongkgi</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) visited[i] = 0;
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Point</span>&gt; <span style="color: #ff6347;">q</span>;
+
+    q.push({0,0});      <span style="color: #888a85;">// </span><span style="color: #888a85;">index, &#51473;&#44036;&#44553;&#50976; &#54943;&#49688;</span>
+    visited[0] = 1;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Point</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (calc_oil(cur.idx, N-1) &lt;= tongkgi)
+            <span style="color: #729fcf; font-weight: bold;">return</span> 1;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cur.cnt &gt; K) <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">next</span>=1;next&lt;N-1;next++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (!visited[next] &amp;&amp; calc_oil(cur.idx, next) &lt;= tongkgi) {
+                visited[next] = 1;
+                q.push({next, cur.cnt + 1});
+            }
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">binary_search</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (left &gt; right) <span style="color: #729fcf; font-weight: bold;">return</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mid</span> = (left + right) / 2;
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (bfs(mid) != 0) {
+        ans = mid;
+        binary_search(left, mid-1);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        binary_search(mid+1, right);            
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K);
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51473;&#44036; &#48708;&#54665;&#51109; &#51077;&#47141;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;a[i].x, &amp;a[i].y);
+    }   
+    a[0].y = 0;
+    a[0].x = 0;
+
+    a[N+1].y = 10000;
+    a[N+1].x = 10000;
+    N = N + 2;  
+
+    binary_search(0, 14143);
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">14143&#51008; (0, 0) ~ (10000, 10000)&#44620;&#51648;&#51032; &#51649;&#49440;&#44144;&#47532;</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">math.sqrt(pow(10000, 2) + pow(10000, 2))                                                         </span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">14142.13562373095 -&gt; 14143</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org926e81c" class="outline-2">
+<h2 id="org926e81c">코드 - binsearch iterative - memo 적용 (12 m/s -&gt; 8 m/s)</h2>
+<div class="outline-text-2" id="text-org926e81c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">binary_search</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">while</span>(left &lt;= right)
+    {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">mid</span> = (left + right) / 2;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (bfs(mid) != 0) {
+            ans = mid;
+            right = mid - 1;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            left = mid + 1;
+        }       
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org77a56a8" class="outline-2">
+<h2 id="org77a56a8">문제 링크</h2>
+<div class="outline-text-2" id="text-org77a56a8">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2585">https://www.acmicpc.net/problem/2585</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc9e13cf" class="outline-2">
+<h2 id="orgc9e13cf">풀이/해설 참고</h2>
+<div class="outline-text-2" id="text-orgc9e13cf">
+<ul class="org-ul">
+<li><a href="https://velog.io/@pjh612/%EB%B0%B1%EC%A4%80-2585%EB%B2%88-%EA%B2%BD%EB%B9%84%ED%96%89%EA%B8%B0">https://velog.io/@pjh612/백준-2585번-경비행기</a></li>
+<li><a href="https://chan-7uly.tistory.com/11">https://chan-7uly.tistory.com/11</a></li>
+</ul>
+</div>
+</div>

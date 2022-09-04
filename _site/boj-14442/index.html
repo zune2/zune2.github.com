@@ -1,0 +1,126 @@
+<div id="outline-container-org000c835" class="outline-2">
+<h2 id="org000c835">BOJ 14442</h2>
+<div class="outline-text-2" id="text-org000c835">
+<ul class="org-ul">
+<li>NxM 맵이 주어질 때, K번 부수고, 0,0에서 N-1,M-1로 이동하는지 체크</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgb03b8be" class="outline-2">
+<h2 id="orgb03b8be">접근하기</h2>
+<div class="outline-text-2" id="text-orgb03b8be">
+<pre class="example">
+visit[y][x][cnt] : cnt번 부수고 이동함
+
+현재 위치도 방문 안했을 때, 구동해야 함
+--&gt; visit[ny][nx][cnt] == 0
+
+현재보다 다음에 한번 더 부수고 이동할 때도, 방문 안했어야 함
+--&gt; visit[ny][nx][cnt + 1] == 0
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4c55ba5" class="outline-2">
+<h2 id="org4c55ba5">코드</h2>
+<div class="outline-text-2" id="text-org4c55ba5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>, <span style="color: #ff6347;">K</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">SIZE</span> 1010
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">m</span>[SIZE][SIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visited</span>[SIZE][SIZE][11];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0, 0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = {0, 0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dbg</span>()
+{
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;M;j++) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, m[i][j]);
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    }
+}
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt_broke</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">Start</span>;
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">return (0&lt;=x &amp;&amp; x&lt;M) &amp;&amp; (0&lt;=y &amp;&amp; y&lt;N);</span>
+    <span style="color: #729fcf; font-weight: bold;">return</span> (0&lt;=x &amp;&amp; x&lt;N) &amp;&amp; (0&lt;=y &amp;&amp; y&lt;M);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bfs</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    q.push({0, 0, 0, 1});
+    visited[0][0][0] = 1;
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();    
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cur.x == N - 1 &amp;&amp; cur.y == M -1) {
+            <span style="color: #729fcf; font-weight: bold;">return</span> cur.dist;
+        } 
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">broke</span> = cur.cnt_broke;
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span> = cur.dist;
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; !visited[nx][ny][broke]) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (m[nx][ny] == 1) {
+                    <span style="color: #729fcf; font-weight: bold;">if</span> (broke &lt; K &amp;&amp; !visited[nx][ny][broke+1]) {
+                        visited[nx][ny][broke+1] = 1;
+                        q.push({nx, ny, broke+1, dist+1});
+                    }
+                } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (m[nx][ny] == 0) {
+                    visited[nx][ny][broke] = 1;
+                    q.push({nx, ny, broke, dist+1});
+                }
+            }
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> -1;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;N, &amp;M, &amp;K); 
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[1010];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            m[i][j] = str[j] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, bfs());
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgec34263" class="outline-2">
+<h2 id="orgec34263">문제 링크</h2>
+<div class="outline-text-2" id="text-orgec34263">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/14442">https://www.acmicpc.net/problem/14442</a></li>
+</ul>
+</div>
+</div>

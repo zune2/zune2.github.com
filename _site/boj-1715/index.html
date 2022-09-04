@@ -1,0 +1,58 @@
+<div id="outline-container-org0e9728e" class="outline-2">
+<h2 id="org0e9728e">BOJ 1715 카드 정렬하기</h2>
+</div>
+
+<div id="outline-container-org15a2d1d" class="outline-2">
+<h2 id="org15a2d1d">접근하기</h2>
+<div class="outline-text-2" id="text-org15a2d1d">
+<ul class="org-ul">
+<li>STL priority queue로 Min Heap을 선언해서 사용한다.</li>
+<li>작은 값을 두개씩 꺼내서, 계속 더한다. 1개가 남을 때까지</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org27092a5" class="outline-2">
+<h2 id="org27092a5">코드</h2>
+<div class="outline-text-2" id="text-org27092a5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #888a85;">// </span><span style="color: #888a85;">int &#51088;&#47308;&#54805;&#51032; min heap</span>
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">q</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;num);
+        q.push(num);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(q.size() &gt;= 2) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span> = q.top(); q.pop();
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n2</span> = q.top(); q.pop();
+        sum += n1 + n2;
+        q.push(n1+n2);
+    } 
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, sum);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49fe5e4" class="outline-2">
+<h2 id="org49fe5e4">문제 링크</h2>
+<div class="outline-text-2" id="text-org49fe5e4">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1715">https://www.acmicpc.net/problem/1715</a></li>
+</ul>
+</div>
+</div>

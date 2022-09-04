@@ -1,0 +1,124 @@
+<p>주로 쓰는 vim 명령어 정리</p>
+
+<h2 id="basic-command">basic command</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>CMD</th>
+      <th>DESC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>:w filename</td>
+      <td>파일 이름으로 저장</td>
+    </tr>
+    <tr>
+      <td>Ctrl-v 커서 이동 + y</td>
+      <td>visual block만들고 copy</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>paste 하기</td>
+    </tr>
+    <tr>
+      <td>:find text.txt</td>
+      <td>sub dir에서 파일 찾기</td>
+    </tr>
+    <tr>
+      <td>:g/^$/d</td>
+      <td>empty line 지우기</td>
+    </tr>
+    <tr>
+      <td>:v/./d</td>
+      <td>empty line 지우기</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="plugin이용-command">plugin이용 command</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>CMD</th>
+      <th>DESC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ctrl-p</td>
+      <td>ctrlp로 파일 찾기</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="cc용-키맵-gnu-global">C/C++용 키맵 (GNU global)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>CMD</th>
+      <th>DESC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>,gd ,ld</td>
+      <td>definition으로 점프</td>
+    </tr>
+    <tr>
+      <td>,gr ,lr</td>
+      <td>reference로 점프</td>
+    </tr>
+    <tr>
+      <td>,gs ,ls</td>
+      <td>string 검색</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="text-object-예제">Text Object 예제</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>CMD</th>
+      <th>DESC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>6+</td>
+      <td>6 줄 다음으로 이동</td>
+    </tr>
+    <tr>
+      <td>6-</td>
+      <td>6 줄 이전으로 이동</td>
+    </tr>
+    <tr>
+      <td>gUaW</td>
+      <td>단어 전체를 대문자화</td>
+    </tr>
+    <tr>
+      <td>guaW</td>
+      <td>단어 전체를 소문자화</td>
+    </tr>
+    <tr>
+      <td>4$</td>
+      <td>4줄 뒤 맨뒤로 이동</td>
+    </tr>
+    <tr>
+      <td>#</td>
+      <td>paren, bracket, #ifdef의 match되는 곳으로 이동</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://www.youtube.com/watch?v=E-ZbrtoSuzw">Talk on going mouseless with Vim, Tmux, and Hotkeys</a></p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://vim.fandom.com/wiki/Remove_unwanted_empty_lines">Remove_unwanted_empty_line</a></li>
+</ul>

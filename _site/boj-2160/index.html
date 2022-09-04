@@ -1,0 +1,158 @@
+<div id="outline-container-orgf1a571f" class="outline-2">
+<h2 id="orgf1a571f">BOJ 2160 그림 비교</h2>
+<div class="outline-text-2" id="text-orgf1a571f">
+<ul class="org-ul">
+<li>5X7 배열 여러개를 비교해서 가장 차이가 작은 번호쌍을 구하기</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org48f95a1" class="outline-2">
+<h2 id="org48f95a1">접근하기</h2>
+</div>
+
+<div id="outline-container-org7c9f508" class="outline-2">
+<h2 id="org7c9f508">코드 - 2차원 배열을 비교</h2>
+<div class="outline-text-2" id="text-org7c9f508">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[51];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">map</span>[51][5][7];
+
+<span style="color: #729fcf; font-weight: bold;">inline</span> <span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">input_one</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[10]; 
+    a[idx] = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;5;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span>(str[j] == <span style="color: #ad7fa8; font-style: italic;">'X'</span>) {
+                <span style="color: #8ae234; font-weight: bold;">map</span>[idx][i][j] = 1;
+            }
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">comp</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n2</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">diff</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;5;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;7;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (<span style="color: #8ae234; font-weight: bold;">map</span>[n1][i][j] != map[n2][i][j]) diff += 1;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> diff;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        input_one(i);
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans_cnt</span> = 987654321;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pic1</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pic2</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">register</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-1;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">register</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;N;j++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span> = comp(i, j);
+            <span style="color: #729fcf; font-weight: bold;">if</span> (ans_cnt &gt; tmp) {
+                ans_cnt = tmp;
+                pic1 = i;
+                pic2 = j;
+            }
+            <span style="color: #888a85;">//</span><span style="color: #888a85;">printf("%d\n", tmp);</span>
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d %d\n"</span>, pic1+1, pic2+1);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6dd7e21" class="outline-2">
+<h2 id="org6dd7e21">코드 - bit 연산으로 풀이</h2>
+<div class="outline-text-2" id="text-org6dd7e21">
+<ul class="org-ul">
+<li>5x7 = 35 35개의 bit로 나타낸 숫자를 이용</li>
+<li>64 bit로 shift할 때는 1이 아니라 1ULL을 써야 함(unsigned long long)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">a</span>[60];
+
+<span style="color: #729fcf; font-weight: bold;">inline</span> <span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">count_bit</span>(<span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">n</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (n == 0)
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">if last bit set add 1 else add 0</span>
+        <span style="color: #729fcf; font-weight: bold;">return</span> (n &amp; 1ULL) + count_bit(n &gt;&gt; 1ULL);
+}
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">5*7 = 35</span>
+<span style="color: #729fcf; font-weight: bold;">inline</span> <span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">input_one</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>)
+{
+    a[idx] = 0ULL;
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[20]; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;5;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;7;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span>(str[j] == <span style="color: #ad7fa8; font-style: italic;">'X'</span>) {
+                a[idx] |= (1ULL &lt;&lt; ((7*i) + j));
+            }
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">" %d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        input_one(i);
+    }
+    <span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans_cnt</span> = 987654321;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pic1</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pic2</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-1;i++) {
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;N;j++) {
+            <span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = count_bit(a[i]^a[j]);
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (ans_cnt &gt; cnt) {
+                ans_cnt = cnt;
+                pic1 = i;
+                pic2 = j;
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d %d\n"</span>, pic1+1, pic2+1);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga37142e" class="outline-2">
+<h2 id="orga37142e">문제 링크</h2>
+<div class="outline-text-2" id="text-orga37142e">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2160">https://www.acmicpc.net/problem/2160</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,113 @@
+<div id="outline-container-orgb17a228" class="outline-2">
+<h2 id="orgb17a228">BOJ 1339 단어 수학</h2>
+<div class="outline-text-2" id="text-orgb17a228">
+<ul class="org-ul">
+<li>그리디 방법으로 문제의 성질을 파악하는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgae6c878" class="outline-2">
+<h2 id="orgae6c878">접근하기</h2>
+<div class="outline-text-2" id="text-orgae6c878">
+<pre class="example">
+  GCF
+ACDEB
+
+A = 10000               // 10000의 자리에 A가 나옴
+C = 1010  = 1000 + 10   // 1000의 자리, 10의 자리에 한번씩 나옴
+D = 100
+G = 100
+E = 10
+F = 1
+B = 1
+
+이렇게 자릿수를 표현하고 정렬하면
+
+10000 1010 100 100  10   1   1
+  A    C    D   G    E   F   B
+  9    8    7   6    5   4   3 &lt;- 9부터 차례로 매핑
+
+98753
+  684
+-----
+99437
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3a946cc" class="outline-2">
+<h2 id="org3a946cc">코드</h2>
+<div class="outline-text-2" id="text-org3a946cc">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[10];
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #edd400; font-weight: bold;">pow10</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">ans</span> = 1; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=n;i++) {
+        ans *= 10;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> ans;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input3.txt", "r", stdin);</span>
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input4.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input2.txt", "r", stdin);</span>
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">table</span>[26] = {0};
+
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">result</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++);
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;len;j++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = str[j] - <span style="color: #ad7fa8; font-style: italic;">'A'</span>;
+            table[idx] += pow10(len-j-1);
+        }
+
+    }
+    sort(table, table+26);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 9;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=25;i&gt;=0;i--) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i] == 0) <span style="color: #729fcf; font-weight: bold;">break</span>;
+        result += (table[i] * cnt--);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, result);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ed12bc" class="outline-2">
+<h2 id="org9ed12bc">문제 링크</h2>
+<div class="outline-text-2" id="text-org9ed12bc">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1339">https://www.acmicpc.net/problem/1339</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org250751e" class="outline-2">
+<h2 id="org250751e">풀이참고</h2>
+<div class="outline-text-2" id="text-org250751e">
+<ul class="org-ul">
+<li><a href="https://pskpsk.tistory.com/entry/%EB%B0%B1%EC%A4%801339-%EB%8B%A8%EC%96%B4-%EC%88%98%ED%95%99">https://pskpsk.tistory.com/entry/백준1339-단어-수학</a></li>
+<li><a href="https://mygumi.tistory.com/156">https://mygumi.tistory.com/156</a></li>
+</ul>
+</div>
+</div>
