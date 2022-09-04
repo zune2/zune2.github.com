@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: The Tim Ferris Show Pod
 #+HTML: tags: StudyEnglish
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1446 지름길
 #+HTML: tags: 최단거리 DP
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 3055 탈출
 #+HTML: tags: bfs 그래프
 #+HTML: ---

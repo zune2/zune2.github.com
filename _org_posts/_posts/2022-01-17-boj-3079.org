@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 3079 입국심사
 #+HTML: tags: 이분탐색
 #+HTML: ---

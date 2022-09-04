@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 10451 순열 사이클
 #+HTML: tags: DFS
 #+HTML: ---

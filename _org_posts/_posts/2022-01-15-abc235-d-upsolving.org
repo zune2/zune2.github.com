@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc235 D - Multiply and Rotate
 #+HTML: tags: AtCoder BFS
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1003 피보나치 함수
 #+HTML: tags: DP
 #+HTML: ---

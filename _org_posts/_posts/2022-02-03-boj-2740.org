@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2740 행렬 곱셈
 #+HTML: tags: 수학
 #+HTML: ---

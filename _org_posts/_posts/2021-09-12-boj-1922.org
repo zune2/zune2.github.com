@@ -1,6 +1,5 @@
 
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1922 네트워크 연결
 #+HTML: tags: MST UnionFind
 #+HTML: ---

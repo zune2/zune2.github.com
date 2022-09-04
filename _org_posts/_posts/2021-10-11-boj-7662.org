@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 7662 이중 우선순위 큐
 #+HTML: tags: STL multiset
 #+HTML: ---

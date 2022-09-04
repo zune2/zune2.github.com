@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 3234. 준환이의 양팔저울
 #+HTML: tags: SWEA DP 완전탐색
 #+HTML: ---

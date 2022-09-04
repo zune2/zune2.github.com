@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1822 차집합
 #+HTML: tags: STL
 #+HTML: ---

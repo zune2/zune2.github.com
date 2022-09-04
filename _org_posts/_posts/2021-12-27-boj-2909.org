@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2909 캔디 구매
 #+HTML: tags: 수학 구현
 #+HTML: ---

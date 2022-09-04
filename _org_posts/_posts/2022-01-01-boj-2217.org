@@ -1,5 +1,4 @@
 #+Html: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2217 로프
 #+HTML: tags: 그리디
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11054 가장 긴 바이토닉 부분 수열
 #+HTML: tags: DP
 #+HTML: ---

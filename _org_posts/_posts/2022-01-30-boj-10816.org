@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 10816 숫자카드 2
 #+HTML: tags: 이분탐색
 #+HTML: ---

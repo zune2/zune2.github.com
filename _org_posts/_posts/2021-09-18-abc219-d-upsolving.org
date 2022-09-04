@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: D - Strange Lunchbox
 #+HTML: tags: AtCoder DP
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1213 팰린드롬 만들기
 #+HTML: tags: 수학 구현
 #+HTML: ---

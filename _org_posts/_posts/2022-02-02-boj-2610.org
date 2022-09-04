@@ -1,5 +1,4 @@
 #+Html: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2610 회의준비
 #+HTML: tags: 최단거리
 #+HTML: ---

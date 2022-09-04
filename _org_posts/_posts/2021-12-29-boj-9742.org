@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9742 순열
 #+HTML: tags: STL 완전탐색
 #+HTML: ---

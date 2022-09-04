@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Luke English Podcast
 #+HTML: tags: StudyEnglish
 #+HTML: ---

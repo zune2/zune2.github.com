@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc239 C - Night Fork
 #+HTML: tags: AtCoder
 #+HTML: ---

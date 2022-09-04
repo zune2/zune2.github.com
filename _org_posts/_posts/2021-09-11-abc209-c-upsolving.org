@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - Not Equal
 #+HTML: tags: AtCoder
 #+HTML: ---

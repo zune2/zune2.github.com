@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: ox-gfm으로 org를 markdown변환하기
 #+HTML: tags: org-mode
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 동적계획법 문제 모음
 #+HTML: tags: Bookmarks
 #+HTML: ---

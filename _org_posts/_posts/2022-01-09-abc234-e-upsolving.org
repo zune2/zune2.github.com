@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc234 E - Arithmetic Number
 #+HTML: tags: AtCoder 수학
 #+HTML: ---

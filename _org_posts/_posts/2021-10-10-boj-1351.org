@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1351 무한 수열
 #+HTML: tags: STL DP
 #+HTML: ---

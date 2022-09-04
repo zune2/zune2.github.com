@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1449 수리공 항승
 #+HTML: tags: 그리디
 #+HTML: ---

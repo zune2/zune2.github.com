@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - Final Day
 #+HTML: tags: AtCoder
 #+HTML: ---

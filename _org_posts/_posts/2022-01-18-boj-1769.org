@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1769 3의 배수
 #+HTML: tags: 수학
 #+HTML: ---

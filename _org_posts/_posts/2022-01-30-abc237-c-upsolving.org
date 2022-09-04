@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc237 C - kasaka
 #+HTML: tags: AtCoder STL
 #+HTML: ---

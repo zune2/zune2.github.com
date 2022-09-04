@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2792 보석 상자
 #+HTML: tags: 이분탐색
 #+HTML: ---

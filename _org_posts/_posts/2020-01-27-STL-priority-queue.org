@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: STL priority queue
-#+HTML: tags: STL
+#+HTML: tag: STL
 #+HTML: ---
 
 ** STL priority queue

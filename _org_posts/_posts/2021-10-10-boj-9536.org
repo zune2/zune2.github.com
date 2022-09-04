@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9536 여우는 어떻게 울지?
 #+HTML: tags: STL
 #+HTML: ---

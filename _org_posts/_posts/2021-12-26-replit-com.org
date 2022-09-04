@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 온라인 컴파일러 (replit)
 #+HTML: tags: repl.it
 #+HTML: ---

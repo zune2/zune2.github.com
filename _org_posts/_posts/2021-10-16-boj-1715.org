@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1715 카드 정렬하기
 #+HTML: tags: STL priority_queue
 #+HTML: ---

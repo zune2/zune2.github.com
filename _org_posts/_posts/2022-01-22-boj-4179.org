@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 4179 불!
 #+HTML: tags: BFS
 #+HTML: ---

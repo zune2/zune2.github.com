@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Nvim 설치하기
 #+HTML: tags: nvim
 #+HTML: ---

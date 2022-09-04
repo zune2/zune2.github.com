@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1904 01타일
 #+HTML: tags: DP
 #+HTML: ---

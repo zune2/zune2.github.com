@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 16929 Two Dots
 #+HTML: tags: dfs
 #+HTML: ---

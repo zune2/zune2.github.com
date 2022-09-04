@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: vim에서 C++14 파일 compile
 #+HTML: tags: vim
 #+HTML: ---

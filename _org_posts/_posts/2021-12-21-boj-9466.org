@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9466 텀 프로젝트
 #+HTML: tags: DFS
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: STL pair와 vector 같이 쓰기
 #+HTML: tags: STL
 #+HTML: ---

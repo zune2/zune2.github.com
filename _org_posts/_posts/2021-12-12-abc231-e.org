@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: TODO E - Minimal payments
 #+HTML: tags: AtCoder DP TODO
 #+HTML: ---

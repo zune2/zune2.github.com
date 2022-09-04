@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1493 박스 채우기
 #+HTML: tags: 분할정복
 #+HTML: ---

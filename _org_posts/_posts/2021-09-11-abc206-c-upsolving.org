@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc206 C - Swappable
 #+HTML: tags: AtCoder
 #+HTML: ---

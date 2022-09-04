@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9184 신나는 함수 실행
 #+HTML: tags: DP
 #+HTML: ---

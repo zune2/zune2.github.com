@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 5635 생일
 #+HTML: tags: STL
 #+HTML: ---

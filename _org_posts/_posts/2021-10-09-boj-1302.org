@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1302 베스트셀러
 #+HTML: tags: STL
 #+HTML: ---

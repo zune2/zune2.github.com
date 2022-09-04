@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc234 C - Happy New Year!
 #+HTML: tags: AtCoder 수학
 #+HTML: ---

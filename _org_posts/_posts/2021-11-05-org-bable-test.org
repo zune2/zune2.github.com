@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: org-babel로 script 구동하기
 #+HTML: tags: org-mode
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 13335 트럭
 #+HTML: tags: 시뮬레이션 Queue
 #+HTML: ---

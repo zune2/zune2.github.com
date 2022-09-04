@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1339 단어 수학
 #+HTML: tags: 그리디
 #+HTML: ---

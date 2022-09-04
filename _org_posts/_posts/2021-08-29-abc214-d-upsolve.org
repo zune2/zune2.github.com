@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: D - Sum of Maximum Weights
 #+HTML: tags: AtCoder
 #+HTML: ---

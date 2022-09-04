@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 20년 영어듣기
 #+HTML: tags: StudyEnglish
 #+HTML: ---

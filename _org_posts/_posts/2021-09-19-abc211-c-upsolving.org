@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - chokudai
 #+HTML: tags: AtCoder DP
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 17478 재귀함수가 뭔가요?
 #+HTML: tags: 재귀
 #+HTML: ---

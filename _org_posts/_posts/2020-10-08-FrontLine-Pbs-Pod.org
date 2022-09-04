@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: FRONTLINE
 #+HTML: tags: StudyEnglish
 #+HTML: ---

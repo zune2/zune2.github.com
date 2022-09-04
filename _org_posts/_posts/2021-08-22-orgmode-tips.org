@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: OrgMode Tips 정리
 #+HTML: tags: orgmode
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: AdeptEnglish Pod
 #+HTML: tags: StudyEnglish
 #+HTML: ---

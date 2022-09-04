@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 15681 트리와 쿼리
 #+HTML: tags: DP Tree
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2638 치즈
 #+HTML: tags: BFS
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9440 숫자 더하기
 #+HTML: tags: 그리디
 #+HTML: ---

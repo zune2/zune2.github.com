@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: D - Rectangles
 #+HTML: tags: AtCoder
 #+HTML: ---

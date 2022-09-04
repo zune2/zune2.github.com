@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2981 검문
 #+HTML: tags: 수학
 #+HTML: ---

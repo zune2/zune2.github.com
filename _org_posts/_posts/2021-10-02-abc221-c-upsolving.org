@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc221 C - Select Mul
 #+HTML: tags: AtCoder 완전탐색
 #+HTML: ---

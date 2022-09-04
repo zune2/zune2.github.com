@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 15688 수 정렬하기 5
 #+HTML: tags: STL
 #+HTML: ---

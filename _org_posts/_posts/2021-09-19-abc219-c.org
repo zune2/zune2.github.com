@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - Neo-lexicographic Ordering
 #+HTML: tags: AtCoder
 #+HTML: ---

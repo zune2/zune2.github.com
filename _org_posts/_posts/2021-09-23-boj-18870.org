@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 18870 좌표압축
 #+HTML: tags: 좌표압축
 #+HTML: ---

@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc235 C - The Kth Time Query
-#+HTML: tags: AtCoder STL
+#+HTML: tag: AtCoder STL
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 14496 그대 그머가 되어
 #+HTML: tags: BFS
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1251 단어 나누기
 #+HTML: tags: STL
 #+HTML: ---

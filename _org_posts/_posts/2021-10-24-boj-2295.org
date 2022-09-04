@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2295 세 수의 합
 #+HTML: tags: 구현
 #+HTML: ---

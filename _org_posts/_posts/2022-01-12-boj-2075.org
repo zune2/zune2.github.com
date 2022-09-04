@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2075 N번째 큰수
-#+HTML: tags: STL
+#+HTML: tag: STL
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: TODO E - LEQ
 #+HTML: tags: AtCoder SegmentTree BinaryIndexTree
 #+HTML: ---

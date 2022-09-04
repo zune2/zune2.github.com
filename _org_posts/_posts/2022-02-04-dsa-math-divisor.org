@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 약수 출력하기
 #+HTML: tags: DSA 수학
 #+HTML: ---

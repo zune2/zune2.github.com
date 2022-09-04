@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 13701 중복제거
 #+HTML: tags: STL bitset 비트연산 메모리최적화
 #+HTML: ---

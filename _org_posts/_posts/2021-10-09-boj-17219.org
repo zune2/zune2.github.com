@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 17219 비밀번호 찾기
 #+HTML: tags: STL
 #+HTML: ---

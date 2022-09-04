@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Bit operation 정리
 #+HTML: tags: bit연산
 #+HTML: ---

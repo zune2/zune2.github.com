@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 영어듣기 자료 + 자막
 #+HTML: tags: English
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11722 가장 긴 감소하는 부분 수열
 #+HTML: tags: DP
 #+HTML: ---

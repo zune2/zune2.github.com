@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1526 가장 큰 금민수
 #+HTML: tags: 구현
 #+HTML: ---

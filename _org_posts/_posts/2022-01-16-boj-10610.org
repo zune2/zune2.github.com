@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 10610 30
 #+HTML: tags: 수학
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: org mode와 deft를 같이 쓰기
 #+HTML: tags: deft
 #+HTML: ---

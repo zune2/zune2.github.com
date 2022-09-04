@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 12813 이진수 연산
 #+HTML: tags: STL bitest
 #+HTML: ---

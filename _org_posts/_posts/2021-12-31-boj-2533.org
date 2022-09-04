@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2533 사회망 서비스(SNS)
 #+HTML: tags: DP dfs Tree
 #+HTML: ---

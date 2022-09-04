@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: A. Way Too Long Word
 #+HTML: tags: CodeForces
 #+HTML: ---

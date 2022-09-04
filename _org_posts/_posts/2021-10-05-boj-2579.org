@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2579 계단 오르기
 #+HTML: tags: DP
 #+HTML: ---

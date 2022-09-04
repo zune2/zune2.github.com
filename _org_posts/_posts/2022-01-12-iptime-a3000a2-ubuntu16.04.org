@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: IPTime A3000UA-2 Ubuntu 16.04 드라이버 설치
 #+HTML: tags: LinuxDeviceDriver
 #+HTML: ---

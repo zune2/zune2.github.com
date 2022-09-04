@@ -1,5 +1,4 @@
 #+Html: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1826 연료 채우기
 #+HTML: tags: 그리디
 #+HTML: ---

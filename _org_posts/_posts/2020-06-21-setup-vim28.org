@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Vim28 설치하기
 #+HTML: tags: vim
 #+HTML: ---

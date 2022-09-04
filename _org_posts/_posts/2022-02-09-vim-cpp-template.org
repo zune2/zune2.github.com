@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: vim에서 template.cpp코드 불러오기
 #+HTML: tags: vim
 #+HTML: ---

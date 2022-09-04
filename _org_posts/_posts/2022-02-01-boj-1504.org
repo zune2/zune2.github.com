@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1504 특정한 최단경로
 #+HTML: tags: 최단거리
 #+HTML: ---

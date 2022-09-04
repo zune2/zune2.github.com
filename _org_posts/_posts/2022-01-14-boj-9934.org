@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9934 완전 이진트리
 #+HTML: tags: Tree
 #+HTML: ---

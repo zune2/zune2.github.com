@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 14425 문자열 집합
 #+HTML: tags: STL
 #+HTML: ---

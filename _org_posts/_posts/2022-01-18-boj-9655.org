@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 9655 돌게임
 #+HTML: tags: DP 수학
 #+HTML: ---

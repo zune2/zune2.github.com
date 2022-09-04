@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 5557 1학년
 #+HTML: tags: DP 
 #+HTML: ---

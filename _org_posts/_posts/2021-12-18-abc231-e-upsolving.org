@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc231 E - Minimal payments
 #+HTML: tags: DP dfs
 #+HTML: ---

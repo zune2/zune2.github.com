@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 13977 이항계수와 쿼리
 #+HTML: tags: 분할정복 조합론
 #+HTML: ---

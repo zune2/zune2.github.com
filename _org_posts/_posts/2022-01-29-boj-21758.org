@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 21758 꿀 따기
 #+HTML: tags: 부분합 그리디
 #+HTML: ---

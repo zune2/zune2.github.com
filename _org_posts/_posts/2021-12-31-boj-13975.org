@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 13975 파일 합치기 3
 #+HTML: tags: 그리디
 #+HTML: ---

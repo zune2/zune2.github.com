@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11966 2의 제곱인가?
 #+HTML: tags: 비트연산
 #+HTML: ---

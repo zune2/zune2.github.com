@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 5567 결혼식
 #+HTML: tags: DFS
 #+HTML: ---

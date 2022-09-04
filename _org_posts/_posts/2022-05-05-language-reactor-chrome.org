@@ -1,7 +1,8 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Language Reactor Chrome 플러그인
 #+HTML: tags: 영어공부
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 
@@ -18,42 +19,42 @@
 ** 영어자막 + manual 한글자막
 
 *** Youtuber recommendations for LEARNING ENGLISH
- https://www.youtube.com/watch?v=I3fSIbyyj28
+- https://www.youtube.com/watch?v=I3fSIbyyj28
 
 *** “영어 브이로그” 로 영어회화 깨기✨ | How to improve spoken English with vlogs
- https://www.youtube.com/watch?v=K4-8BCn61pc
+- https://www.youtube.com/watch?v=K4-8BCn61pc
 
 *** The Ultimate Notion Tour 
- https://www.youtube.com/watch?v=abpFmOu1eHk
+- https://www.youtube.com/watch?v=abpFmOu1eHk
 
 ** 영어자막 + auto 한글자막
 *** How I Organize My Life with Notion (school, youtube, life)
- https://www.youtube.com/watch?v=eEX1RDs-lTs&t=77s
+- https://www.youtube.com/watch?v=eEX1RDs-lTs&t=77s
 
 *** "아마존 프라임 1위" 교도소에 간 전직 특수 요원(결말포함)
- https://www.youtube.com/watch?v=c8kJ3mKapAc
+- https://www.youtube.com/watch?v=c8kJ3mKapAc
 
 
 ** 유튜브 추천
 *** WanderJess
-https://www.youtube.com/c/WanderJess재이
+- https://www.youtube.com/c/WanderJess재이
 *** Briddy li
- https://youtube.com/c/BeautybyBriddy
+- https://youtube.com/c/BeautybyBriddy
 
 *** Ur mom ashely
- https://youtube.com/c/urmomashley
+- https://youtube.com/c/urmomashley
 
 *** Oh no nina
- https://youtube.com/c/ohnonina
+- https://youtube.com/c/ohnonina
 
 *** Michelle choi
- https://youtube.com/user/michellechoii
+- https://youtube.com/user/michellechoii
 
 *** Jenn Im
- https://youtube.com/c/clothesencounters
+- https://youtube.com/c/clothesencounters
 
 *** Jessica vu
- https://youtube.com/c/JessicaVu
+- https://youtube.com/c/JessicaVu
 
 *** Yoora Jung
- https://youtube.com/c/Yoora
+- https://youtube.com/c/Yoora

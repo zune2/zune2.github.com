@@ -1,5 +1,4 @@
 #+Html: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 3078 좋은 친구
 #+HTML: tags: STL queue
 #+HTML: ---

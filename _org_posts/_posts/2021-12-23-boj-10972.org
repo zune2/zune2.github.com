@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 10972 다음 순열
 #+HTML: tags: STL
 #+HTML: ---

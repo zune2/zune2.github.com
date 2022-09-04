@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11660 구간 합 구하기 5
 #+HTML: tags: DP 누적합
 #+HTML: ---

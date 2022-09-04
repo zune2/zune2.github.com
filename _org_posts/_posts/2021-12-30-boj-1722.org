@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1722 순열의 순서
 #+HTML: tags: 조합
 #+HTML: ---

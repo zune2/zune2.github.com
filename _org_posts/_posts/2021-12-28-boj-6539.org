@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 6359 만취한 상범
 #+HTML: tags: DP 
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 카운팅소트
 #+HTML: tags: 정렬
 #+HTML: ---

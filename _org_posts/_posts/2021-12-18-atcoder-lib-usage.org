@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: AtCoder Library
 #+HTML: tags: AtCoder
 #+HTML: ---

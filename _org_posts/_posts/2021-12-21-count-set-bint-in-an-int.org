@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 정수의 bit표현에서 1의 개수 세기
 #+HTML: tags: Bit연산
 #+HTML: ---

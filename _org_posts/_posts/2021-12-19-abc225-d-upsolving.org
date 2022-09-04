@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc225 D - Play Train
 #+HTML: tags: AtCoder
 #+HTML: ---

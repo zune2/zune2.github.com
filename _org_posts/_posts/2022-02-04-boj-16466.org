@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 16466 콘서트
 #+HTML: tags: STL
 #+HTML: ---

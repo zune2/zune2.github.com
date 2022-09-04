@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: STL set에 struct pointer 이용
-#+HTML: tags: STL
+#+HTML: tag: STL
 #+HTML: ---
 #+OPTIONS: ^:nil
 

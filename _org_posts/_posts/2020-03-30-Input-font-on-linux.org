@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Input font 설치하기
 #+HTML: tags: font
 #+HTML: ---

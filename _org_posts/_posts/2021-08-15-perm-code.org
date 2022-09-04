@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: permutation을 구하는 코드
 #+HTML: tags: coding
 #+HTML: ---

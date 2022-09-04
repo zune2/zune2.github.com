@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - Shapes
 #+HTML: tags: AtCoder
 #+HTML: ---

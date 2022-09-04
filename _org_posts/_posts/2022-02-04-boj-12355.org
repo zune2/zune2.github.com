@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 12355 Ocean View (Large)
 #+HTML: tags: DP
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1613 역사
 #+HTML: tags: 최단거리
 #+HTML: ---

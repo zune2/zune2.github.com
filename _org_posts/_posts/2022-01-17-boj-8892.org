@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 8892 팰린드롬
 #+HTML: tags: 완전탐색 문자열
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11568 민균이의 계략
 #+HTML: tags: DP
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1744 수 묶기
 #+HTML: tags: 그리디
 #+HTML: ---

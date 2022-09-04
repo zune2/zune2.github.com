@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1253 좋다
 #+HTML: tags: STL 투포인터
 #+HTML: ---

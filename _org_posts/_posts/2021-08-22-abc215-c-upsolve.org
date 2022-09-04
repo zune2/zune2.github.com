@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: C - One More aab aba baa
 #+HTML: tags: AtCoder
 #+HTML: ---

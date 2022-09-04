@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc210 C - Colorful Candies
 #+HTML: tags: AtCoder
 #+HTML: ---

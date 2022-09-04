@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2635 수 이어가기
 #+HTML: tags: 수학 dfs
 #+HTML: ---

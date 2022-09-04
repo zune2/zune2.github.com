@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 2696 중앙값 구하기
 #+HTML: tags: STL
 #+HTML: ---

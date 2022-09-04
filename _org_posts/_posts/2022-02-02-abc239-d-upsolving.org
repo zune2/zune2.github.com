@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc239 D - Prime Sum Game
 #+HTML: tags: AtCoder
 #+HTML: ---

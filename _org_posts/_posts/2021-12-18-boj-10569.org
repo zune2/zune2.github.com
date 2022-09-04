@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 10569 다면체
 #+HTML: tags: 최적화
 #+HTML: ---

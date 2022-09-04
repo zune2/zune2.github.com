@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Emacs26 설치
 #+HTML: tags: Emacs
 #+HTML: ---

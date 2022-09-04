@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 대본이 제공되는 Podcast
 #+HTML: tags: StudyEnglish
 #+HTML: ---

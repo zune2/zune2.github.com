@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc224 C - Triangle?
 #+HTML: tags: AtCoder
 #+HTML: ---

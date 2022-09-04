@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11051 이항계수 2
 #+HTML: tags: DP
 #+HTML: ---

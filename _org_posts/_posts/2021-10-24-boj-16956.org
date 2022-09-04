@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 16956 늑대와 양
 #+HTML: tags: 구현
 #+HTML: ---

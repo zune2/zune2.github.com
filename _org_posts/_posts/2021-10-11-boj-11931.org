@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11931 수 정렬하기 4
 #+HTML: tags: STL
 #+HTML: ---

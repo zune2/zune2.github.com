@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: 달의 연인(보보경심 려)
 #+HTML: tags: culture
 #+HTML: ---

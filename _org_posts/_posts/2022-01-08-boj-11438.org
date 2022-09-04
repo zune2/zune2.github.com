@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 11438 LCA 2
-#+HTML: tags: dfs LCA
+#+HTML: tag: dfs LCA
 #+HTML: ---
 #+OPTIONS: ^:nil
 

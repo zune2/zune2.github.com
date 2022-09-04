@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc200 D - Happy Birthday! 2
 #+HTML: tags: AtCoder
 #+HTML: ---

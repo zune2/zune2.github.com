@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 1719 택배
-#+HTML: tags: 최단거리
+#+HTML: tag: 최단거리
 #+HTML: ---
 #+OPTIONS: ^:nil
 

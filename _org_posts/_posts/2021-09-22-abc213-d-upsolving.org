@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: D - Takahashi Tour
 #+HTML: tags: AtCoder
 #+HTML: ---

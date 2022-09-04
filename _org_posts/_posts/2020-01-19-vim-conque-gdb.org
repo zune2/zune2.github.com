@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: vim + conqueGDB 이용
 #+HTML: tags: vim
 #+HTML: ---

@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: abc225 C - Calendar Validator
 #+HTML: tags: AtCoder
 #+HTML: ---

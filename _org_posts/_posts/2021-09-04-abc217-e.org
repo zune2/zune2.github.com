@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: E - Sorting Query
 #+HTML: tags: AtCoder
 #+HTML: ---

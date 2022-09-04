@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: Atcoder / Codeforces 문제 list
 #+HTML: tags: ProblemList
 #+HTML: ---

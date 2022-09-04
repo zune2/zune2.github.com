@@ -1,5 +1,4 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 13913 숨바꼭질 4
 #+HTML: tags: STL BFS
 #+HTML: ---

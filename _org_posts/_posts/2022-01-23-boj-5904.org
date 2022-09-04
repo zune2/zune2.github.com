@@ -1,7 +1,6 @@
 #+HTML: ---
-#+HTML: layout: post
 #+HTML: title: BOJ 5904 Moo 게임
-#+HTML: tags: 분할정복
+#+HTML: tag: 분할정복
 #+HTML: ---
 #+OPTIONS: ^:nil
 
