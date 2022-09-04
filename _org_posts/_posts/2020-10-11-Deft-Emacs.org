@@ -24,6 +24,3 @@ F8j을 눌러서, orgmode를 편집할 수 있다.
 #+END_SRC
 
 
-
-** 참고
-- [[2020-10-11-Deft-Emacs.org][Deft 설치 글]]
