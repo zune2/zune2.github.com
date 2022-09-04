@@ -24,3 +24,7 @@ F8j을 눌러서, orgmode를 편집할 수 있다.
 #+END_SRC
 
 
+
+
+* 참고자료
+- https://zaiste.net/courses/emacs-doom/emacs-doom-23-deft-emacs/
