@@ -9,7 +9,7 @@
 
 설치하라는대로 하면 된다.
 
-F8을 눌러서, orgmode를 편집할 수 있다.
+F8j을 눌러서, orgmode를 편집할 수 있다.
 
 검색기능이 있다는 것이 편리
 
@@ -22,3 +22,8 @@ F8을 눌러서, orgmode를 편집할 수 있다.
 (setq deft-directory "XXXXXXX/work/github/YYYYYYYY/_org_posts/_posts")
 (setq deft-recursive t)
 #+END_SRC
+
+
+
+** 참고
+- [[2020-10-11-Deft-Emacs.org][Deft 설치 글]]
