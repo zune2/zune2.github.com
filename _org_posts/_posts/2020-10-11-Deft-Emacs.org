@@ -14,10 +14,11 @@ F8을 눌러서, orgmode를 편집할 수 있다.
 검색기능이 있다는 것이 편리
 
 ** F8로 키맵하고 directory 지정하기
-#+BEGIN_EXAMPLE
+
+#+BEGIN_SRC elisp
 ; Deft
 (global-set-key [f8] 'deft)
 (setq deft-extensions '("org"))
 (setq deft-directory "XXXXXXX/work/github/YYYYYYYY/_org_posts/_posts")
 (setq deft-recursive t)
-#+END_EXAMPLE
+#+END_SRC

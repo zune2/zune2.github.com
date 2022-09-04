@@ -11,7 +11,6 @@
 - plain text note를 관리하는 시스템
 - F8로 orgmode 파일을 저장하는 위치에 연결했음
 
-
 ** 사용법
 - 파일이름을 치면 검색이 됨
 - 새로운 파일 이름이면 만들어짐
@@ -21,4 +20,12 @@
 | C-c C-r | 파일 이름 변경   |
 | C-c C-q | 종료             |
 
-
+** .emacs 지정
+#+BEGIN_SRC elisp
+; Deft
+(global-set-key [f8] 'deft)
+(setq deft-extensions '("org"))
+;(setq deft-directory "~/Dropbox/orgzly")
+(setq deft-directory "/home/mjpark/work/github/zune2.github.com/_org_posts/_posts")
+(setq deft-recursive t)
+#+END_SRC
