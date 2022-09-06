@@ -1,0 +1,120 @@
+---
+layout: post
+title: D - Neighbors
+tags: AtCoder UnionFind
+---
+
+<div id="outline-container-org56150b2" class="outline-2">
+<h2 id="org56150b2">D - Neighbors</h2>
+<div class="outline-text-2" id="text-org56150b2">
+<p>
+N명의 사람의 줄세울 때, 서로 인접하게 줄 세우기
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf460535" class="outline-2">
+<h2 id="orgf460535">접근하기</h2>
+<div class="outline-text-2" id="text-orgf460535">
+<p>
+인접은 서로다른 두명만 있어야 조건에 만족
+</p>
+<pre class="example">
+1 2 3
+3 2 1
+</pre>
+<p>
+cycle이 있어서도 안됨. -&gt; UnionFind나 Dfs로 Cycle을 만드는지 확인하기
+</p>
+</div>
+</div>
+
+<div id="outline-container-org28667a4" class="outline-2">
+<h2 id="org28667a4">코드1 - UnionFind 이용</h2>
+<div class="outline-text-2" id="text-org28667a4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">ARRSIZE</span> 100010
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">table</span>[ARRSIZE];
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">Union Find</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">parent</span>[ARRSIZE];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">Init</span>()
+{
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N;i++) {
+        parent[i] = -1;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">Find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (parent[a] &lt; 0) <span style="color: #729fcf; font-weight: bold;">return</span> a;
+    <span style="color: #729fcf; font-weight: bold;">return</span> parent[a] = Find(parent[a]);
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">Union</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>)
+{
+    a = Find(a);
+    b = Find(b);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a == b) <span style="color: #729fcf; font-weight: bold;">return</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (parent[a] &lt;= parent[b]) {
+        parent[a] += parent[b];
+        parent[b] = a;
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        parent[b] += parent[a];
+        parent[a] = b;
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span>, <span style="color: #ff6347;">n2</span>;
+
+    Init();
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;n1, &amp;n2);
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp1</span> = Find(n1);
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp2</span> = Find(n2);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (tmp1 == tmp2) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"No\n"</span>);
+            <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        }
+        Union(n1, n2);
+        table[n1]++;
+        table[n2]++;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i] &gt; 2) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"No\n"</span>);
+            <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"Yes\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7136213" class="outline-2">
+<h2 id="org7136213">문제 링크</h2>
+<div class="outline-text-2" id="text-org7136213">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc231/tasks/abc231_d">https://atcoder.jp/contests/abc231/tasks/abc231_d</a></li>
+</ul>
+</div>
+</div>

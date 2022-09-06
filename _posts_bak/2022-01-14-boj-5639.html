@@ -1,0 +1,96 @@
+---
+layout: post
+title: BOJ 5639 이진 검색 트리
+tags: Tree
+---
+
+<div id="outline-container-org2fbd208" class="outline-2">
+<h2 id="org2fbd208">BOJ 5639 이진 검색 트리</h2>
+<div class="outline-text-2" id="text-org2fbd208">
+<ul class="org-ul">
+<li>이진 검색 트리의 규칙에 맞게 전위순회가 주어질 때, 후위 순회하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org07d6d2f" class="outline-2">
+<h2 id="org07d6d2f">접근하기</h2>
+<div class="outline-text-2" id="text-org07d6d2f">
+<ul class="org-ul">
+<li>전위 순회로 tree구성</li>
+<li>후위순회 찍기</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc60da15" class="outline-2">
+<h2 id="orgc60da15">코드</h2>
+<div class="outline-text-2" id="text-orgc60da15">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span>
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">left</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">right</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[10010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">New</span>() {
+    <span style="color: #729fcf; font-weight: bold;">return</span> &amp;pool[idx++];
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">print</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (ptr) {
+        print(ptr-&gt;left);
+        print(ptr-&gt;right);
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ptr-&gt;num);
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">walk</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (ptr == <span style="color: #8ae234;">NULL</span>) {
+        ptr = New();
+        ptr-&gt;num = num;
+        ptr-&gt;left = <span style="color: #8ae234;">NULL</span>;
+        ptr-&gt;right = <span style="color: #8ae234;">NULL</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (num &lt; ptr-&gt;num) {
+        ptr-&gt;left = walk(ptr-&gt;left, num);    
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        ptr-&gt;right = walk(ptr-&gt;right, num);    
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    idx = 0;
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">root</span> = <span style="color: #8ae234;">NULL</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;val) != EOF) {
+        root = walk(root, val);     
+    }
+    print(root);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9a6bee4" class="outline-2">
+<h2 id="org9a6bee4">문제 링크</h2>
+<div class="outline-text-2" id="text-org9a6bee4">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/5639">https://www.acmicpc.net/problem/5639</a></li>
+</ul>
+</div>
+</div>

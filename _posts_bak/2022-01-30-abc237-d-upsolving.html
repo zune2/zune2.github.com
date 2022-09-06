@@ -1,0 +1,173 @@
+---
+layout: post
+title: abc237 D - LR insertion
+tags: AtCoder STL 리스트
+---
+
+<div id="outline-container-orgcad93c3" class="outline-2">
+<h2 id="orgcad93c3">D - LR insertion</h2>
+</div>
+
+<div id="outline-container-org641119e" class="outline-2">
+<h2 id="org641119e">접근하기</h2>
+<div class="outline-text-2" id="text-org641119e">
+<pre class="example">
+5
+LRRLR
+
+0
+L  0 앞에 1  1 0
+R  1 뒤에 2  1 2 0
+R  2 뒤에 3  1 2 3 0
+L  3 앞에 4  1 2 4 3 0
+R  4 뒤에 5  1 2 4 5 3 0
+
+빈 list에 0을 넣고, 마지막으로 넣은 위치를 cursor로 가리키며, 추가
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6a7b149" class="outline-2">
+<h2 id="org6a7b149">코드 - STL list</h2>
+<div class="outline-text-2" id="text-org6a7b149">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">nullptr</span>);
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">s</span>;
+<span style="color: #8ae234; font-weight: bold;">list</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">lst</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span> * <span style="color: #ff6347;">argv</span>[]) {
+    FASTIO;
+    cin &gt;&gt; N &gt;&gt; s;
+    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">cursor</span> = lst.insert(lst.begin(), 0);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span> (<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = 0; i &lt; N; ++i) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (s[i] == <span style="color: #ad7fa8; font-style: italic;">'R'</span>) {
+            cursor = lst.insert(++cursor, i + 1);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            cursor = lst.insert(cursor, i + 1);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span> (<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span> : lst) {
+        cout &lt;&lt; x &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+    }
+    cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd4ad816" class="outline-2">
+<h2 id="orgd4ad816">코드 - list 구현</h2>
+<div class="outline-text-2" id="text-orgd4ad816">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[500005];
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">prev</span>;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">next</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[500005];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">CreateNode</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = &amp;pool[idx++];
+    ptr-&gt;num = num;
+    ptr-&gt;prev = <span style="color: #8ae234;">NULL</span>;
+    ptr-&gt;next = <span style="color: #8ae234;">NULL</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">insert_next</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">cursor</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = CreateNode(num);
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">before</span> = cursor;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">after</span> = cursor-&gt;next;
+
+    before-&gt;next = ptr;
+    ptr-&gt;prev = before;
+
+    ptr-&gt;next = after;
+    after-&gt;prev = ptr;
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">insert_prev</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">cursor</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = CreateNode(num);
+
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">before</span> = cursor-&gt;prev;
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">after</span> = cursor;
+
+    before-&gt;next = ptr;
+    ptr-&gt;prev = before;
+
+    ptr-&gt;next = after;
+    after-&gt;prev = ptr;
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    idx = 0;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">head</span> = CreateNode(-1);
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">tail</span> = CreateNode(-1);
+
+    head-&gt;next = tail;
+    head-&gt;prev = head;
+
+    tail-&gt;prev = head;
+    tail-&gt;next = tail;
+
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">cursor</span> = head;
+    cursor = insert_next(cursor, 0);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] == <span style="color: #ad7fa8; font-style: italic;">'L'</span>){ <span style="color: #888a85;">// </span><span style="color: #888a85;">left -&gt; before</span>
+            cursor = insert_prev(cursor, i+1);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {            <span style="color: #888a85;">// </span><span style="color: #888a85;">right -&gt; after</span>
+            cursor = insert_next(cursor, i+1);
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = head-&gt;next;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(ptr != ptr-&gt;next) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, ptr-&gt;num); 
+        ptr = ptr-&gt;next;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org47e3e17" class="outline-2">
+<h2 id="org47e3e17">문제 링크</h2>
+<div class="outline-text-2" id="text-org47e3e17">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc237/tasks/abc237_d">https://atcoder.jp/contests/abc237/tasks/abc237_d</a></li>
+</ul>
+</div>
+</div>

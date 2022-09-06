@@ -1,0 +1,73 @@
+---
+layout: post
+title: BOJ 20001 고무오리 디버깅
+tags: STL
+---
+
+<div id="outline-container-orgd24383b" class="outline-2">
+<h2 id="orgd24383b">BOJ 20001 고무오리 디버깅</h2>
+</div>
+
+<div id="outline-container-orgb73e442" class="outline-2">
+<h2 id="orgb73e442">접근하기</h2>
+<div class="outline-text-2" id="text-orgb73e442">
+<ul class="org-ul">
+<li>STL stack 이용하기</li>
+<li>pair를 맞추는 문제</li>
+<li>문제가 없이 고무오리만 있으면, 문제 두개 추가 -&gt; 코드로 생각하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c08a3e" class="outline-2">
+<h2 id="org1c08a3e">코드</h2>
+<div class="outline-text-2" id="text-org1c08a3e">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stack&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stack&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input.txt", "r", stdin);    </span>
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">line</span>;
+    <span style="color: #8ae234; font-weight: bold;">stack</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">st</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(getline(cin, line)) {
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">cout &lt;&lt; line &lt;&lt; endl;</span>
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (line == <span style="color: #ad7fa8; font-style: italic;">"&#47928;&#51228;"</span>)  {
+            st.push(line);
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (line == <span style="color: #ad7fa8; font-style: italic;">"&#44256;&#47924;&#50724;&#47532;"</span>) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (st.size() == 0) {
+                st.push(<span style="color: #ad7fa8; font-style: italic;">"&#47928;&#51228;"</span>);
+                st.push(<span style="color: #ad7fa8; font-style: italic;">"&#47928;&#51228;"</span>);
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                st.pop();
+            }
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (line == <span style="color: #ad7fa8; font-style: italic;">"&#44256;&#47924;&#50724;&#47532; &#46356;&#48260;&#44613; &#45149;"</span>) {
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (st.size() == 0) {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"&#44256;&#47924;&#50724;&#47532;&#50556; &#49324;&#46993;&#54644;"</span> &lt;&lt; endl; 
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"&#55197;&#44396;"</span> &lt;&lt; endl; 
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ef5aeb" class="outline-2">
+<h2 id="org5ef5aeb">문제 링크</h2>
+<div class="outline-text-2" id="text-org5ef5aeb">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/20001">https://www.acmicpc.net/problem/20001</a></li>
+</ul>
+</div>
+</div>

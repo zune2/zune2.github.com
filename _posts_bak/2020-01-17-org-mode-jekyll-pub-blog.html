@@ -1,0 +1,158 @@
+---
+layout: post
+title: OrgMode를 이용한 Jekyll 블로그 쓰기
+tags: Emacs
+---
+
+<div id="outline-container-orgb0a81a7" class="outline-2">
+<h2 id="orgb0a81a7">org mode를 이용한 블로그 쓰기</h2>
+<div class="outline-text-2" id="text-orgb0a81a7">
+<ul class="org-ul">
+<li>이 페이지는 emacs org mode로 만들어짐</li>
+<li>이맥스 에디터 안에서 블로그 글을 모두 작성하고, preview 가능한 구조 구축</li>
+<li>글이 완성되면 git push를 하면 된다.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb548453" class="outline-3">
+<h3 id="orgb548453">emacs config 내용</h3>
+<div class="outline-text-3" id="text-orgb548453">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: #729fcf; font-weight: bold;">setq</span> org-publish-project-alist
+      '(
+        (<span style="color: #ad7fa8; font-style: italic;">"org-site"</span> 
+         <span style="color: #888a85;">;; </span><span style="color: #888a85;">Path to your org files.</span>
+         <span style="color: #729fcf;">:base-directory</span> <span style="color: #ad7fa8; font-style: italic;">"~/work/github/JEKYLLDIR/_org_post/"</span>
+         <span style="color: #729fcf;">:base-extension</span> <span style="color: #ad7fa8; font-style: italic;">"org"</span>
+
+         <span style="color: #888a85;">;; </span><span style="color: #888a85;">Path to your Jekyll project.</span>
+         <span style="color: #729fcf;">:publishing-directory</span> <span style="color: #ad7fa8; font-style: italic;">"~/work/github/JEKYLLDIR/"</span>
+         <span style="color: #729fcf;">:recursive</span> t
+         <span style="color: #729fcf;">:publishing-function</span> org-html-publish-to-html
+         <span style="color: #729fcf;">:html-extension</span> <span style="color: #ad7fa8; font-style: italic;">"html"</span>
+         <span style="color: #729fcf;">:body-only</span> t <span style="color: #888a85;">;; </span><span style="color: #888a85;">Only export section between &lt;body&gt; &lt;/body&gt;</span>
+
+         <span style="color: #729fcf;">:section-numbers</span> nil
+         <span style="color: #729fcf;">:with-toc</span> nil
+         <span style="color: #729fcf;">:auto-index</span> nil
+         <span style="color: #729fcf;">:auto-preamble</span> nil
+         <span style="color: #729fcf;">:body-only</span> t
+         <span style="color: #729fcf;">:auto-postamble</span> nil
+         )
+
+        (<span style="color: #ad7fa8; font-style: italic;">"org-static-site"</span>
+         <span style="color: #729fcf;">:base-directory</span> <span style="color: #ad7fa8; font-style: italic;">"~/work/github/JEKYLLDIR/_org_post/"</span>
+         <span style="color: #729fcf;">:base-extension</span> <span style="color: #ad7fa8; font-style: italic;">"css</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">\\</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">|</span><span style="color: #ad7fa8; font-style: italic;">js</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">\\</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">|</span><span style="color: #ad7fa8; font-style: italic;">png</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">\\</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">|</span><span style="color: #ad7fa8; font-style: italic;">jpg</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">\\</span><span style="color: #ad7fa8; font-weight: bold; font-style: italic;">|</span><span style="color: #ad7fa8; font-style: italic;">gif"</span>
+         <span style="color: #729fcf;">:publishing-directory</span> <span style="color: #ad7fa8; font-style: italic;">"~/work/JEKYLLDIR/"</span>
+         <span style="color: #729fcf;">:recursive</span> t
+         <span style="color: #729fcf;">:publishing-function</span> org-publish-attachment
+         )
+
+        (<span style="color: #ad7fa8; font-style: italic;">"mysite"</span> <span style="color: #729fcf;">:components</span> (
+          <span style="color: #ad7fa8; font-style: italic;">"org-site"</span>
+          <span style="color: #ad7fa8; font-style: italic;">"org-static-site"</span>
+        )
+      )
+    )
+)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf820a54" class="outline-3">
+<h3 id="orgf820a54">page마다 front matter 쓰기</h3>
+<div class="outline-text-3" id="text-orgf820a54">
+<p>
+맨 위에 다음을 추가한다.
+</p>
+
+<pre class="example">
+#+HTML: ---
+#+HTML: layout: post
+#+HTML: title: org mode를 이용한 블로그 쓰기
+#+HTML: tags: OrgMode
+#+HTML: ---
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9af488c" class="outline-3">
+<h3 id="org9af488c">C++ 소스 쓰기</h3>
+<div class="outline-text-3" id="text-org9af488c">
+<div class="org-src-container">
+<pre class="src src-c++">
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"Hello World"</span> &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0c5237a" class="outline-3">
+<h3 id="org0c5237a">생성 방법</h3>
+<div class="outline-text-3" id="text-org0c5237a">
+<p>
+C-c C-e P x 후 현재 등록된 proejct를 고른다.(org-zune)
+</p>
+</div>
+</div>
+<div id="outline-container-org30b0829" class="outline-3">
+<h3 id="org30b0829"><span class="done DONE">DONE</span> image 추가하기</h3>
+<div class="outline-text-3" id="text-org30b0829">
+<pre class="example">
+[[../assets/imgs/test.jpeg]]
+</pre>
+
+
+<div class="figure">
+<p><img src="../assets/imgs/test.jpeg" alt="test.jpeg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf420427" class="outline-3">
+<h3 id="orgf420427"><span class="todo TODO">TODO</span> orgmode로 표 추가하기</h3>
+<div class="outline-text-3" id="text-orgf420427">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">Name</td>
+<td class="org-right">Phone</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga6f6496" class="outline-2">
+<h2 id="orga6f6496">참고자료</h2>
+<div class="outline-text-2" id="text-orga6f6496">
+<ul class="org-ul">
+<li><a href="https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/">https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/</a></li>
+<li><a href="https://orgmode.org/worg/org-tutorials/org-jekyll.html">https://orgmode.org/worg/org-tutorials/org-jekyll.html</a></li>
+</ul>
+</div>
+</div>

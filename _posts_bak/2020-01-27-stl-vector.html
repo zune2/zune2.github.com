@@ -1,0 +1,99 @@
+---
+layout: post
+title: STL vector 이용
+tags: STL
+---
+
+<div id="outline-container-orgbac6688" class="outline-2">
+<h2 id="orgbac6688">STL Vector</h2>
+<div class="outline-text-2" id="text-orgbac6688">
+<ul class="org-ul">
+<li>동적 배열 형태로 사용함.</li>
+<li>이번에 정리해서 매번 찾아보지 말자. -_-</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb168638" class="outline-3">
+<h3 id="orgb168638">헤더 추가하기</h3>
+<div class="outline-text-3" id="text-orgb168638">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9276dbf" class="outline-3">
+<h3 id="org9276dbf">1차원 int 배열 초기화</h3>
+<div class="outline-text-3" id="text-org9276dbf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span> = {1, 2, 3, 4, 5};
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1da464b" class="outline-3">
+<h3 id="org1da464b">int 배열을 loop 하면서 push back으로 추가</h3>
+<div class="outline-text-3" id="text-org1da464b">
+<p>
+원래 하던 방식
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbbcb29d" class="outline-3">
+<h3 id="orgbbcb29d">int 배열을 받아서 vector 초기화</h3>
+<div class="outline-text-3" id="text-orgbbcb29d">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #edd400; font-weight: bold;">vt</span>(a, a + <span style="color: #729fcf; font-weight: bold;">sizeof</span>(a)/<span style="color: #729fcf; font-weight: bold;">sizeof</span>(<span style="color: #8ae234; font-weight: bold;">int</span>));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd8f173" class="outline-3">
+<h3 id="orgcd8f173">1차원 int 배열 iteration</h3>
+<div class="outline-text-3" id="text-orgcd8f173">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;::<span style="color: #8ae234; font-weight: bold;">iterator</span> <span style="color: #ff6347;">iter</span> = vt.begin();iter != vt.end();iter++) {
+     cout &lt;&lt; *iter &lt;&lt; endl;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae38879" class="outline-3">
+<h3 id="orgae38879">3*3 2차원 배열 형태로 접근하기</h3>
+<div class="outline-text-3" id="text-orgae38879">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">a</span>(3, vector&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt;(3));
+</pre>
+</div>
+
+<p>
+이차원 배열 쓰듯, 접근이 가능함
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+<span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;3;i++) {
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;3;j++) {
+        a[i][j] = ++cnt;
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf83b91e" class="outline-3">
+<h3 id="orgf83b91e">Reference</h3>
+<div class="outline-text-3" id="text-orgf83b91e">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/2236197/what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-elements">what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-element</a></li>
+</ul>
+</div>
+</div>
+</div>

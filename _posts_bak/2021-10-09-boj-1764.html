@@ -1,0 +1,124 @@
+---
+layout: post
+title: BOJ 1764 듣보잡
+tags: STL
+---
+
+<div id="outline-container-org3021314" class="outline-2">
+<h2 id="org3021314">BOJ 1764 듣보잡</h2>
+</div>
+
+<div id="outline-container-org6603ce0" class="outline-2">
+<h2 id="org6603ce0">접근하기</h2>
+<div class="outline-text-2" id="text-org6603ce0">
+<ul class="org-ul">
+<li>STL을 이용해서 다양하게 풀어보자.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org241a19f" class="outline-2">
+<h2 id="org241a19f">코드 - STL vector 이용하기 492 m/s</h2>
+<div class="outline-text-2" id="text-org241a19f">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cin &gt;&gt; N &gt;&gt; M;
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">v</span>(N+M);
+
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">str</span>;
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">N&#47564;&#53372; vector&#50640; &#52628;&#44032; </span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; str;
+        v[i] = str;
+    }
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">M&#47564;&#53372; &#46244;&#50640; &#51060;&#50612;&#49436; &#52628;&#44032;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=N;i&lt;N+M;i++) {
+        cin &gt;&gt; str;
+        v[i] = str;
+    }
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">sort</span>
+    sort(v.begin(), v.end());
+
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">N+M&#47564;&#53372; &#48152;&#48373;&#54616;&#47732;&#49436;, &#50526;&#46244;&#47196; &#44057;&#51004;&#47732; ret&#50640; &#51200;&#51109;</span>
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">ret</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;(<span style="color: #8ae234; font-weight: bold;">int</span>)v.size();i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (v[i-1] == v[i]) {
+            ret.push_back(v[i]);
+        }
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52636;&#47141;</span>
+    cout &lt;&lt; ret.size() &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:ret) {
+        cout &lt;&lt; o &lt;&lt; endl;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc3d3236" class="outline-2">
+<h2 id="orgc3d3236">코드 - STL set 이용하기 500m/s</h2>
+<div class="outline-text-2" id="text-orgc3d3236">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">set</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">s</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>; 
+        cin &gt;&gt; tmp;
+        s.insert(tmp);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">set</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">s2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>; 
+        cin &gt;&gt; tmp;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (s.find(tmp) != s.end()) { <span style="color: #888a85;">// </span><span style="color: #888a85;">find&#54644;&#49436; &#50630;&#51004;&#47732;</span>
+            s2.insert(tmp);
+        }
+    }
+
+    cout &lt;&lt; s2.size() &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">for</span> (<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span> :s2) { <span style="color: #888a85;">// </span><span style="color: #888a85;">set&#44061;&#52404; iteration</span>
+        cout &lt;&lt; o &lt;&lt; endl; 
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5dd853c" class="outline-2">
+<h2 id="org5dd853c">문제 링크</h2>
+<div class="outline-text-2" id="text-org5dd853c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1764">https://www.acmicpc.net/problem/1764</a></li>
+</ul>
+</div>
+</div>

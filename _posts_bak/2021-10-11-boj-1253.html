@@ -1,0 +1,133 @@
+---
+layout: post
+title: BOJ 1253 좋다
+tags: STL 투포인터
+---
+
+<div id="outline-container-org820e258" class="outline-2">
+<h2 id="org820e258">BOJ 1253 좋다.</h2>
+</div>
+
+<div id="outline-container-org1368ddf" class="outline-2">
+<h2 id="org1368ddf">접근하기 1</h2>
+<div class="outline-text-2" id="text-org1368ddf">
+<ul class="org-ul">
+<li>서로 다른 두 수의 합으로 나타내기 -&gt; 값 한개가 이미 답인 경우를 제외</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org78c0ac4" class="outline-2">
+<h2 id="org78c0ac4">코드 - map 객체에 index정보 저장</h2>
+<div class="outline-text-2" id="text-org78c0ac4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[2020];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #8ae234; font-weight: bold;">map</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">bool</span>&gt;&gt; <span style="color: #ff6347;">mp</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        mp[a[i]] = {i, <span style="color: #8ae234;">false</span>};
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;N;j++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = a[i] + a[j];
+            <span style="color: #729fcf; font-weight: bold;">if</span> (mp.count(sum)) {
+                <span style="color: #888a85;">// </span><span style="color: #888a85;">sum&#51060; &#50500;&#45772; &#54616;&#45208;&#47196; &#44396;&#49457;&#46108; &#44221;&#50864; skip</span>
+                <span style="color: #729fcf; font-weight: bold;">if</span> (mp[sum].first == i || mp[sum].first == j) <span style="color: #729fcf; font-weight: bold;">continue</span>; 
+                mp[sum].second = <span style="color: #8ae234;">true</span>;
+            }
+        }
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (mp[a[i]].second == <span style="color: #8ae234;">true</span>) cnt++;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3e8ebd7" class="outline-2">
+<h2 id="org3e8ebd7">접근하기 2</h2>
+<div class="outline-text-2" id="text-org3e8ebd7">
+<ul class="org-ul">
+<li>투 포인터로 두수의 값이 K일 때를 찾아 카운트</li>
+<li>for loop를 하면서, a[0] ~ a[N-1]까지를 K로 놓기</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge51295b" class="outline-2">
+<h2 id="orge51295b">코드 - 투 포인터 이용 풀이</h2>
+<div class="outline-text-2" id="text-orge51295b">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[2020];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">find</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span> = N-1;
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(left &lt; right) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (a[left] + a[right] == num) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i != left &amp;&amp; i != right){
+                ans = 1;
+                <span style="color: #729fcf; font-weight: bold;">break</span>;
+            }
+            <span style="color: #729fcf; font-weight: bold;">if</span> (left == i) left++;
+            <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> ( right == i) right--;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (a[left] + a[right] &lt; num) {
+            left++;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (a[left] + a[right] &gt; num) {
+            right--;
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> ans;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+    sort(a, a+N);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        sum += find(a[i], i); 
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, sum);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7d4ccb5" class="outline-2">
+<h2 id="org7d4ccb5">문제 링크</h2>
+<div class="outline-text-2" id="text-org7d4ccb5">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1253">https://www.acmicpc.net/problem/1253</a></li>
+</ul>
+</div>
+</div>

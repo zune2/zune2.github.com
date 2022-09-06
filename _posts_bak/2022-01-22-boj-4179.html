@@ -1,0 +1,332 @@
+---
+layout: post
+title: BOJ 4179 불!
+tags: BFS
+---
+
+<div id="outline-container-orgcd55254" class="outline-2">
+<h2 id="orgcd55254">BOJ 4179 불!</h2>
+<div class="outline-text-2" id="text-orgcd55254">
+<ul class="org-ul">
+<li>반례를 파악하기 어려워서 힘들었던 문제</li>
+<li>BFS로 풀면 된다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc31ee3b" class="outline-2">
+<h2 id="orgc31ee3b">주의사항</h2>
+<div class="outline-text-2" id="text-orgc31ee3b">
+<ol class="org-ol">
+<li>F(불)은 여러개 있을 수 있다.</li>
+<li>맨 가장자리에서 JH가 곧바로 나올 수 있다.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgabd0bda" class="outline-2">
+<h2 id="orgabd0bda">접근하기</h2>
+<div class="outline-text-2" id="text-orgabd0bda">
+<pre class="example">
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd5cb502" class="outline-2">
+<h2 id="orgd5cb502">코드 2</h2>
+<div class="outline-text-2" id="text-orgd5cb502">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">R</span>, <span style="color: #ff6347;">C</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">SIZE</span> 1010
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">a</span>[SIZE][SIZE];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[SIZE];
+
+<span style="color: #8ae234; font-weight: bold;">int</span>  <span style="color: #ff6347;">jvis</span>[SIZE][SIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span>  <span style="color: #ff6347;">fvis</span>[SIZE][SIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span>  <span style="color: #ff6347;">vis</span>[SIZE][SIZE];
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">jh</span>;
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">fire</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0, 0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = {0, 0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> ( 0&lt;=x &amp;&amp; x&lt;C &amp;&amp; 0&lt;=y &amp;&amp; y&lt;R );
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">bfs_f</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span>:fire) {
+        fvis[o.y][o.x] = 0;
+        q.push({o.y, o.x}); 
+    }    
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; a[ny][nx] != <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (fvis[ny][nx] &gt; fvis[cur.y][cur.x] + 1) {
+                    fvis[ny][nx] = fvis[cur.y][cur.x] + 1;
+                    q.push({ny, nx});
+                }        
+            }
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bfs_jh</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    q.push({jh.y, jh.x}); 
+    jvis[jh.y][jh.x] = 0;
+    vis[jh.y][jh.x] = 1;
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cur.y == 0 || cur.y == R -1 || cur.x == 0 || cur.x == C -1) {
+            <span style="color: #729fcf; font-weight: bold;">return</span> jvis[cur.y][cur.x] + 1;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+
+            <span style="color: #888a85;">// </span><span style="color: #888a85;">vis&#51312;&#44148;&#51060; &#50630;&#51004;&#47732; &#47700;&#47784;&#47532; &#52488;&#44284; &#50724;&#47448;</span>
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; a[ny][nx] != <span style="color: #ad7fa8; font-style: italic;">'#'</span> &amp;&amp; vis[ny][nx] == 0) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (fvis[ny][nx] &gt; jvis[cur.y][cur.x] + 1) {
+                    vis[ny][nx] = 1;
+                    jvis[ny][nx] = jvis[cur.y][cur.x] + 1;
+                    q.push({ny,nx});
+                }
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> -1;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+<span style="color: #888a85;">//    </span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;R, &amp;C);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;R;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str); 
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            a[i][j] = str[j];
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[i][j] == <span style="color: #ad7fa8; font-style: italic;">'J'</span>) {
+                jh.y = i;
+                jh.x = j;
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (a[i][j] == <span style="color: #ad7fa8; font-style: italic;">'F'</span>) {
+                fire.push_back({i, j});
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (a[i][j] == <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                <span style="color: #888a85;">// </span><span style="color: #888a85;">do nothing</span>
+            }
+            fvis[i][j] = 987654321;       <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52572;&#45824;&#47196; &#45459;&#44256; &#49884;&#51089;</span>
+        }
+    }
+    bfs_f();
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> =bfs_jh();
+    dbg();
+    <span style="color: #729fcf; font-weight: bold;">if</span> (ret == -1)
+        printf(<span style="color: #ad7fa8; font-style: italic;">"IMPOSSIBLE\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ret);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2066ca9" class="outline-2">
+<h2 id="org2066ca9">코드</h2>
+<div class="outline-text-2" id="text-org2066ca9">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">R</span>, <span style="color: #ff6347;">C</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MS</span> 1010
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[MS];
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">a</span>[MS][MS];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">jvis</span>[MS][MS];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">fire</span>[MS][MS];
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">jh</span>;
+<span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">f</span>;
+<span style="color: #888a85;">//</span><span style="color: #888a85;">Node f;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0, 0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = { 0, 0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (0&lt;=x &amp;&amp; x&lt;C) &amp;&amp;(0&lt;=y &amp;&amp; y&lt;R);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bfs_jh</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    q.push({jh.y, jh.x, 0});
+    jvis[jh.y][jh.x] = 1;
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cur.y == 0 || cur.y == R -1 || cur.x == 0 || cur.x == C-1) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (cur.dist + 1 &lt; fire[cur.y][cur.x]) 
+                <span style="color: #729fcf; font-weight: bold;">return</span> cur.dist + 1;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; jvis[ny][nx] == 0 &amp;&amp; a[ny][nx] != <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (cur.dist + 1 &lt; fire[ny][nx] ) {
+                    jvis[ny][nx] = 1;
+                    q.push({ny, nx, cur.dist + 1});
+                }
+            }
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span>  -1;
+}
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">J : JH&#51032; &#50948;&#52824;</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">F : &#48520;&#51032; &#50948;&#52824;</span>
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">bfs_f</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> &amp; <span style="color: #ff6347;">o</span> : f) {
+        q.push({o.y, o.x, 0});
+        fire[o.y][o.x] = 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx) &amp;&amp; a[ny][nx] != <span style="color: #ad7fa8; font-style: italic;">'#'</span>) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (fire[ny][nx] &gt; fire[cur.y][cur.x] + 1 ) {
+                    fire[ny][nx] = fire[cur.y][cur.x] + 1;
+                    q.push({ny, nx, 0});
+                }
+            }
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;R, &amp;C);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;R;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;C;j++) {
+            a[i][j] = str[j];
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[i][j] == <span style="color: #ad7fa8; font-style: italic;">'J'</span>) {
+                jh.y = i; 
+                jh.x = j; 
+                fire[i][j] = 987654321;     <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51648;&#54984;&#51060; &#52488;&#44592;&#50948;&#52824;</span>
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (a[i][j] == <span style="color: #ad7fa8; font-style: italic;">'F'</span>) {
+                f.push_back({i, j, 0});
+                fire[i][j] = 0;
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                fire[i][j] = 987654321;
+            }
+        }
+    } 
+    bfs_f();
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = bfs_jh();
+    <span style="color: #729fcf; font-weight: bold;">if</span> (ret == -1) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"IMPOSSIBLE\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ret);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf53a76c" class="outline-2">
+<h2 id="orgf53a76c">문제 링크</h2>
+<div class="outline-text-2" id="text-orgf53a76c">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/4179">https://www.acmicpc.net/problem/4179</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc0a3e0f" class="outline-2">
+<h2 id="orgc0a3e0f">반례</h2>
+<div class="outline-text-2" id="text-orgc0a3e0f">
+<pre class="example">
+5 5
+....F
+....#
+....#
+....#
+J..#.
+답 : 1
+</pre>
+
+<pre class="example">
+5 5
+....F
+...J#
+....#
+....#
+...#.
+답 : 4
+</pre>
+
+<pre class="example">
+10 10
+F........F
+F........F
+F........F
+F........F
+F...J....F
+F........F
+F........F
+F........F
+F........F
+F........F
+답 : IMPOSSIBLE
+</pre>
+</div>
+</div>

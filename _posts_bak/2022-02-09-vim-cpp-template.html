@@ -1,0 +1,71 @@
+---
+layout: post
+title: vim에서 template.cpp코드 불러오기
+tags: vim
+---
+
+<div id="outline-container-org4df3289" class="outline-2">
+<h2 id="org4df3289">용도</h2>
+<div class="outline-text-2" id="text-org4df3289">
+<ul class="org-ul">
+<li>BOJ 문제 풀때 vim에서 사용</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org84b364b" class="outline-2">
+<h2 id="org84b364b">사용법</h2>
+<div class="outline-text-2" id="text-org84b364b">
+<ul class="org-ul">
+<li>파일이 열린 상태에서 ,tt를 입력하면, 모든 파일 내용을 지우고, template를 로딩</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgddce353" class="outline-2">
+<h2 id="orgddce353">vim에서 ,tt 키 입력으로 template code로딩</h2>
+<div class="outline-text-2" id="text-orgddce353">
+<ul class="org-ul">
+<li>~/.vimrc에 다음 줄을 추가</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-vim">map ,tt &lt;ESC&gt;: 1,$ d &lt;ESC&gt;:r ~/template.cpp &lt;CR&gt; 1Gdd &lt;CR&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li>mapp ,tt 로 매핑한다.</li>
+<li>esc : 명령 모드로</li>
+<li>기존에 버퍼 내용을 모두 지운다. ( 1, $ d)</li>
+<li>esc :명령 모드로</li>
+<li>~/template.cpp를 로드한다.</li>
+<li>CR (리턴 입력)</li>
+<li>1Gdd : 1번 줄로 이동하고, 줄을 지우기 (공백이 생겨서 지움)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9fb845e" class="outline-2">
+<h2 id="org9fb845e">template.cpp</h2>
+<div class="outline-text-2" id="text-org9fb845e">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+<span style="color: #729fcf;">#endif</span>
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>

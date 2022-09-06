@@ -1,0 +1,103 @@
+---
+title: STL set에 struct pointer 이용
+tags: STL
+categories: code
+comment: false
+toc: true
+toc_sticky: true
+---
+
+<div id="outline-container-orgeed7b6e" class="outline-2">
+<h2 id="orgeed7b6e">STL set에 struct pointer</h2>
+<div class="outline-text-2" id="text-orgeed7b6e">
+<ul class="org-ul">
+<li>객체풀을 이용해서 포인터를 넣기</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;utility&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">id</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">score</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">pool</span>[1000];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #edd400; font-weight: bold;">CreateNode</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">id</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">score</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = &amp;pool[idx++];
+    ptr-&gt;id = id;
+    ptr-&gt;score = score;
+    <span style="color: #729fcf; font-weight: bold;">return</span> ptr;
+}
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">Node*&#47484; &#51077;&#47141;&#51004;&#47196; &#48155;&#45716; Compare struct &#47564;&#46308;&#44592;</span>
+<span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Compare</span> {
+    <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #729fcf; font-weight: bold;">operator</span><span style="color: #edd400; font-weight: bold;">()</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">a</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">b</span>) {
+        <span style="color: #729fcf; font-weight: bold;">return</span> a-&gt;score &lt; b-&gt;score;
+    }
+};
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">Compare &#44061;&#52404; &#45347;&#44592;, 1&#48264;&#51704;&#47196; Node*</span>
+<span style="color: #8ae234; font-weight: bold;">multiset</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>*, <span style="color: #8ae234; font-weight: bold;">Compare</span>&gt; <span style="color: #ff6347;">s</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ce5106" class="outline-2">
+<h2 id="org3ce5106">insert하기</h2>
+<div class="outline-text-2" id="text-org3ce5106">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #8ae234; font-weight: bold;">Node</span>* <span style="color: #ff6347;">ptr</span> = CreateNode(id, score);
+s.insert(ptr);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86630a1" class="outline-2">
+<h2 id="org86630a1">find &amp; erase &amp; size</h2>
+<div class="outline-text-2" id="text-org86630a1">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf; font-weight: bold;">if</span> (s.find(ptr) != s.end()) {
+   <span style="color: #888a85;">// </span><span style="color: #888a85;">erase</span>
+   s.erase(ptr);
+
+   <span style="color: #888a85;">// </span><span style="color: #888a85;">size</span>
+   <span style="color: #729fcf; font-weight: bold;">if</span> (s.size()) {
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2999599" class="outline-2">
+<h2 id="org2999599">min / max 구하기</h2>
+<div class="outline-text-2" id="text-org2999599">
+<ul class="org-ul">
+<li><a href="https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/">https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0900e89" class="outline-2">
+<h2 id="org0900e89">lower bound 구하기</h2>
+<div class="outline-text-2" id="text-org0900e89">
+<div class="org-src-container">
+<pre class="src src-cpp">tmp.score = score;
+tmp.id = 0;
+
+<span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">it</span> = s.lower_bound(&amp;tmp);
+<span style="color: #729fcf; font-weight: bold;">if</span> (it != s.end()) {
+
+<span style="color: #888a85;">// </span><span style="color: #888a85;">(*it)-&gt;score</span>
+<span style="color: #888a85;">// </span><span style="color: #888a85;">(*it)-&gt;id</span>
+</pre>
+</div>
+</div>
+</div>

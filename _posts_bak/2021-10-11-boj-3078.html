@@ -1,0 +1,151 @@
+---
+layout: post
+title: BOJ 3078 좋은 친구
+tags: STL queue
+---
+
+<div id="outline-container-org7851a63" class="outline-2">
+<h2 id="org7851a63">BOJ 3078 좋은 친구</h2>
+</div>
+
+<div id="outline-container-org0a193dc" class="outline-2">
+<h2 id="org0a193dc">접근하기</h2>
+<div class="outline-text-2" id="text-org0a193dc">
+<ul class="org-ul">
+<li>그냥 순서대로 K개씩 비교하면, 30만x30만으로 시간초과가 된다.</li>
+</ul>
+</div>
+
+<div id="outline-container-org56d91df" class="outline-3">
+<h3 id="org56d91df">등수가 순서대로 들어옴</h3>
+<div class="outline-text-3" id="text-org56d91df">
+<ul class="org-ul">
+<li>등수가 0에서 증가하는 순서로 입력이 들어온다는 성질을 이용한다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge9350fd" class="outline-3">
+<h3 id="orge9350fd">이름의 길이가 같아야 좋은 친구가 된다. (제약)</h3>
+<div class="outline-text-3" id="text-orge9350fd">
+<ul class="org-ul">
+<li>이름의 길이는 2~20글자 -&gt; queue의 배열을 만든다. (index는 이름의 길이)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org04abcb2" class="outline-3">
+<h3 id="org04abcb2">queue로 순서쌍을 count하는 방법 (중요!!)</h3>
+<div class="outline-text-3" id="text-org04abcb2">
+<ul class="org-ul">
+<li>Q의 노드들와 현재 노드의 등수차이가 K보다 크면 버린다.
+<ul class="org-ul">
+<li>Q에 1개 있으면, 1쌍이 가능 -&gt; cnt 증가</li>
+<li>Q에 2개 있으면, 2쌍이 가능 -&gt; cnt 증가</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc9dc0cd" class="outline-2">
+<h2 id="orgc9dc0cd">코드 - 시간초과</h2>
+<div class="outline-text-2" id="text-orgc9dc0cd">
+<ul class="org-ul">
+<li>300000 x 300000 -&gt; 2중 loop를 쓰면 안됨</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">a</span>[300010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input2.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    cin &gt;&gt; N &gt;&gt; K;    
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; a[i];
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N-K;i++) {
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">cout&lt;&lt; a[i] &lt;&lt; "----------" &lt;&lt;  endl;</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i+1;j&lt;=i+K &amp;&amp; j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[i].size() == a[j].size()) cnt++;
+        }
+    }
+    cout &lt;&lt; cnt &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org20526ff" class="outline-2">
+<h2 id="org20526ff">코드 - queue 이용 풀이</h2>
+<div class="outline-text-2" id="text-org20526ff">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">a</span>[300010];
+<span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">q</span>[21];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">//</span><span style="color: #888a85;">freopen("input2.txt", "r", stdin);</span>
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    cin &gt;&gt; N &gt;&gt; K;    
+
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">str</span>;
+
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; str;
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">size</span> = str.length();
+
+        <span style="color: #729fcf; font-weight: bold;">while</span> (!q[size].empty() &amp;&amp; i - q[size].front() &gt; K) {
+            q[size].pop();
+        }
+        cnt += q[size].size(); <span style="color: #888a85;">// </span><span style="color: #888a85;">queue&#50640; n&#44060; &#46308;&#50612;&#51080;&#51004;&#47732;, n&#49933;&#51060; &#47564;&#46308;&#50612;&#51664;</span>
+        q[size].push(i);
+    }
+
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c88d52" class="outline-2">
+<h2 id="org8c88d52">문제 링크</h2>
+<div class="outline-text-2" id="text-org8c88d52">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/3078">https://www.acmicpc.net/problem/3078</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org247faa4" class="outline-2">
+<h2 id="org247faa4">참고링크</h2>
+<div class="outline-text-2" id="text-org247faa4">
+<ul class="org-ul">
+<li><a href="https://blog.junu.dev/30">https://blog.junu.dev/30</a></li>
+<li><a href="https://sooooooyn.tistory.com/19">https://sooooooyn.tistory.com/19</a></li>
+</ul>
+</div>
+</div>

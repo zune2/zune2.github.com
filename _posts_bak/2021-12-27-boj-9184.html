@@ -1,0 +1,71 @@
+---
+layout: post
+title: BOJ 9184 신나는 함수 실행
+tags: DP
+---
+
+<div id="outline-container-org325d054" class="outline-2">
+<h2 id="org325d054">BOJ 9184 신나는 함수 실행</h2>
+<div class="outline-text-2" id="text-org325d054">
+<ul class="org-ul">
+<li>재귀함수 의사코드를 주고, 그대로 구현하는 문제</li>
+<li>메모이제이션을 해줘야 함</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52d0c87" class="outline-2">
+<h2 id="org52d0c87">접근하기</h2>
+<div class="outline-text-2" id="text-org52d0c87">
+<pre class="example">
+long long dp[21][21][21]로 메모이제이션
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1c0a2b1" class="outline-2">
+<h2 id="org1c0a2b1">코드</h2>
+<div class="outline-text-2" id="text-org1c0a2b1">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #ff6347;">b</span>, <span style="color: #ff6347;">c</span>;
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">dp</span>[21][21][21];
+
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #edd400; font-weight: bold;">f</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a &lt;=0 || b&lt;=0 || c&lt;= 0) <span style="color: #729fcf; font-weight: bold;">return</span> 1;
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a &gt; 20 || b&gt;20 || c&gt;20) <span style="color: #729fcf; font-weight: bold;">return</span> f(20, 20, 20);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (dp[a][b][c] !=0) <span style="color: #729fcf; font-weight: bold;">return</span> dp[a][b][c];
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (a &lt;b &amp;&amp; b &lt; c)
+        <span style="color: #729fcf; font-weight: bold;">return</span> dp[a][b][c] = f(a, b, c-1) + f(a, b-1, c-1) - f(a, b-1, c);
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> dp[a][b][c] = f(a-1, b, c) + f(a-1, b-1, c) + f(a-1, b, c-1) - f(a-1, b-1, c-1);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #729fcf; font-weight: bold;">while</span>(1) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;a, &amp;b, &amp;c);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (a == -1 &amp;&amp; b == -1 &amp;&amp; c == -1) {
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"w(%d, %d, %d) = %lld\n"</span>, a, b, c, f(a, b, c));
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb73ec5" class="outline-2">
+<h2 id="orgdb73ec5">문제 링크</h2>
+<div class="outline-text-2" id="text-orgdb73ec5">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/9184">https://www.acmicpc.net/problem/9184</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,54 @@
+---
+layout: post
+title: BOJ 1357 뒤집힌 덧셈
+tags: 구현
+---
+
+<div id="outline-container-org7c8a7cf" class="outline-2">
+<h2 id="org7c8a7cf">BOJ 1357 뒤집힌 덧셈</h2>
+</div>
+
+<div id="outline-container-orgac2256a" class="outline-2">
+<h2 id="orgac2256a">접근하기</h2>
+<div class="outline-text-2" id="text-orgac2256a">
+<ul class="org-ul">
+<li>숫자를 입력받아, 뒤집는 함수 만들기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd480abf" class="outline-2">
+<h2 id="orgd480abf">코드</h2>
+<div class="outline-text-2" id="text-orgd480abf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">rev</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span>)
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(tmp) {
+        ret = ret * 10 + (tmp%10);
+        tmp = tmp/10;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> ret;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n1</span>, <span style="color: #ff6347;">n2</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;n1, &amp;n2);
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, rev(rev(n1) + rev(n2)));
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9b505e2" class="outline-2">
+<h2 id="org9b505e2">문제 링크</h2>
+<div class="outline-text-2" id="text-org9b505e2">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1357">https://www.acmicpc.net/problem/1357</a></li>
+</ul>
+</div>
+</div>
