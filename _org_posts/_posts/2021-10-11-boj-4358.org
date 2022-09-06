@@ -1,0 +1,45 @@
+#+HTML: ---
+#+HTML: title: BOJ 4358 생태학
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 4358 생태학
+
+** 접근하기
+- getline으로 줄단위 입력으로 string 객체 받음
+- map 객체에 이름을 key로 빈도를 value로 받음
+- 오름차순 정렬의 set객체에 이름을 저장
+- set을 순회하면서, 빈도 출력
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <iostream>
+#include <set>
+#include <map>
+#include <string>
+using namespace std;
+
+map<string, int> mp;
+set<string, less<string>> st; // 집합객체, sorted상태 유지
+
+int main(int argc, char* argv[])
+{
+    string line;
+    int sum = 0;
+    while(getline(cin, line)) {
+        st.insert(line);
+        mp[line] += 1;
+        sum += 1;
+    }
+
+    for(auto& o:st) {
+        printf("%s %.4f\n", o.c_str(), 100* (float)mp[o]/sum);
+    }     
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/4358

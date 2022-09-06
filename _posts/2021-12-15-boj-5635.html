@@ -1,0 +1,105 @@
+---
+title: BOJ 5635 생일
+tags: STL
+---
+
+<div id="outline-container-org0a5f1b6" class="outline-2">
+<h2 id="org0a5f1b6">BOJ 5635</h2>
+<div class="outline-text-2" id="text-org0a5f1b6">
+<ul class="org-ul">
+<li>생일과 이름을 같이 저장, 정렬</li>
+<li>앞뒤 노드 얻기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org75f5ffd" class="outline-2">
+<h2 id="org75f5ffd">접근하기</h2>
+<div class="outline-text-2" id="text-org75f5ffd">
+<ul class="org-ul">
+<li>구조체를 선언하고 vector에 담기</li>
+<li>STL pair를 이용</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4540243" class="outline-2">
+<h2 id="org4540243">코드 - 구조체 선언 + vector</h2>
+<div class="outline-text-2" id="text-org4540243">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>;
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">name</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">cmp</span>(<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (p1.cnt &lt; p2.cnt);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+    cin &gt;&gt; N;
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">v</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">day</span>, <span style="color: #ff6347;">month</span>, <span style="color: #ff6347;">year</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; v[i].name &gt;&gt; day &gt;&gt; month &gt;&gt; year;    
+        v[i].cnt = (year*365) + (month*30) + day; 
+    }
+    sort(v.begin(), v.end(), cmp);
+    cout &lt;&lt; v.back().name &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    cout &lt;&lt; v.front().name &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge43e3d4" class="outline-2">
+<h2 id="orge43e3d4">코드 - STL pair를 이용</h2>
+<div class="outline-text-2" id="text-orge43e3d4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;utility&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+    cin &gt;&gt; N;
+
+    <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">string</span>&gt;&gt; <span style="color: #ff6347;">v</span>(N);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">day</span>, <span style="color: #ff6347;">month</span>, <span style="color: #ff6347;">year</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; v[i].second &gt;&gt; day &gt;&gt; month &gt;&gt; year;    
+        v[i].first = (year*365) + (month*30) + day; 
+    }
+    sort(v.begin(), v.end());
+    cout &lt;&lt; v.back().second &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    cout &lt;&lt; v.front().second &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93d622a" class="outline-2">
+<h2 id="org93d622a">문제 링크</h2>
+<div class="outline-text-2" id="text-org93d622a">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/5635">https://www.acmicpc.net/problem/5635</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,51 @@
+#+HTML: ---
+#+HTML: title: todo.txt 이용하기
+#+HTML: tags: vim
+#+HTML: ---
+
+** todo.txt-vim
+
+vim을 이용해서 todo.txt 포맷으로 할일 관리를 할 수 있는 플러그인
+
+** vim 키맵
+1. <localleader>s : Sort the file
+1. <localleader>s+ : 프로젝트를 sorting
+1. <localleader>s@ : 컨택스트로 sorting
+1. <localleader>sd : 날자로 sorting
+1. <localleader>sd : due date로 sorting
+1. <localleader>dd : 날자를 붙여준다
+1. <localleader>x : 현재 task에 완료 표시
+1. <localleader>d : 완료된 task를 done.txt로 보낸다.
+
+** config
+매핑을 F12로 해주었다.
+#+BEGIN_SRC vimrc
+let maplocalleader = "\\"
+map <F12> <ESC>:e ~/Dropbox/todo/todo.txt <CR>
+#+END_SRC
+
+** date로 정렬 역순으로 하게하기
+
+~/vim/bundle/todo.txt-vim/autoload/todo/todo.vim을 열어서
+sort를 %sort! 로 변경하면 역순으로 시간이 보이게 된다.
+#+BEGIN_SRC vim
+function! todo#txt#sort_by_date() range
+    let l:date_regex = "\\d\\{2,4\\}-\\d\\{2\\}-\\d\\{2\\}"
+    execute a:firstline . "," . a:lastline . "%sort! /" . l:date_regex . "/ r"
+    execute a:firstline . "," . a:lastline . "g!/" . l:date_regex . "/m" . a:lastline
+endfunction
+#+END_SRC
+
+** Reference
+- https://github.com/todotxt/todo.txt
+- https://github.com/freitass/todo.txt-vim
+
+** SimpleTask Cloud와 연동하기
+Dropbox에 저장한 파일을 Android app에서 편집하고, desktop에서 vim으로 편집을 할 수 있다.
+
+Dropbox/todo dir아래에 파일이 저장되는 것 같다.
+
+- [[https://play.google.com/store/apps/details?id=nl.mpcjanssen.simpletask&hl=ko][Simple Task App]]
+
+** 사용 소감
+orgmode는 project단위로 트리구조를 타고 내려가며 정리하기 좋은 구조라면, todo.txt는 할일관리를 날자 단위로 챙기기 좋게 되어있다.

@@ -1,0 +1,47 @@
+#+HTML: ---
+#+HTML: title: BOJ 17219 비밀번호 찾기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 17219 비밀번호 찾기
+
+
+
+** 접근하기
+- key, value가 모두 문자열로 된 데이터를 저장하고 검색
+- STL map을 써보는 문제
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <map>
+#include <string>
+
+using namespace std;
+int N, M;
+
+int main(int argc, char* argv[])
+{
+    char s1[22], s2[22];
+
+    scanf("%d %d", &N, &M);
+
+    map <string, string> mp;
+    for(int i=0;i<N;i++) {
+        scanf("%s %s", s1, s2);
+        mp[string(s1)] = string(s2);
+    }
+
+    char s3[22];
+    for(int i=0;i<M;i++) {
+        scanf("%s", s3);
+        printf("%s\n", mp[string(s3)].c_str());
+    }
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/17219

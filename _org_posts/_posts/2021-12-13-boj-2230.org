@@ -1,0 +1,77 @@
+#+HTML: ---
+#+HTML: title: BOJ 2230 수 고르기
+#+HTML: tags: 투포인터
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2230 수 고르기
+- 수열에서 두 수를 골랐을 때, 차이가 M이상이면서, 제일 작은 경우
+
+** 접근하기
+- 투 포인터를 응용해서 풀기
+#+BEGIN_EXAMPLE
+3 3
+1
+5
+3
+
+M=3
+정렬을 한다.
+a = 1 3 5
+
+left = 0
+right = 0
+
+while(left < N && right < N)    <= 이 조건 생각이 여러움
+
+1. 두수의 차이 <  M
+  -> right++ (N보다 작을때까지)
+
+2. 두수의 차이 >= M
+  -> ans에 최소값 저장 ( ans는 초기에 큰 값으로 지정 )
+  -> left++ (N보다 작을 때까지)
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N, M;
+int a[100010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+    int left = 0; 
+    int right = 0; 
+
+    long long ans = 2000000010;
+    while(left < N &&  right < N) {
+        long long diff = a[right] - a[left];
+        if (diff < M) {
+
+            if (right < N) right++; 
+
+        } else if (diff >= M) {
+            if (ans > diff) {
+                ans = diff;
+            }
+
+            if (left < N) left++; 
+        }
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2230

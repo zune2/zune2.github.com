@@ -1,0 +1,71 @@
+#+HTML: ---
+#+HTML: title: abc221 D - Online games
+#+HTML: tags: AtCoder Greedy
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Online games
+
+** 접근하기
+- 날자의 구간(시작, 끝)을 각각 주고, 겹치는 구간을 세서, 배열에 저장하는 방법
+- 시작날자에 1로 표기, 마지막날+1에 -1로 표기하면, 구간 표시가 가능함
+- sort해서 1과 -1로 counter의 index를 이동하면서, 시작일의 차를 더하면, 사람수를 세는게 된다.
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+
+using namespace std;
+
+int N;
+
+typedef struct Node {
+    int start;
+    int len;
+} Node;
+
+Node pool[200010*2];
+int d[200010];
+
+bool cmp(Node& p1, Node& p2)
+{
+    if (p1.start == p2.start) {
+        return p1.len < p2.len;
+    } else {
+        return p1.start < p2.start;
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N); 
+    
+    int idx = 0;
+    for(int i=0;i<N;i++) {
+        int a, b;
+        scanf("%d %d", &a, &b);
+        pool[idx].start = a;
+        pool[idx].len = 1;
+        idx++;
+
+        pool[idx].start = a + b;
+        pool[idx].len = -1;
+        idx++;
+    }
+    sort(pool, pool+idx, cmp);
+
+    int cnt = 0;
+    for(int i=0;i<idx-1;i++) {
+        cnt += pool[i].len;
+        d[cnt] += (pool[i+1].start - pool[i].start);
+    }
+    for(int i=1;i<=N;i++) {
+        printf("%d ", d[i]);
+    } 
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc221/tasks/abc221_c

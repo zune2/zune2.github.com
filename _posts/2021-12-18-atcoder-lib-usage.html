@@ -1,0 +1,68 @@
+---
+title: AtCoder Library
+tags: AtCoder
+---
+
+<div id="outline-container-org043f907" class="outline-2">
+<h2 id="org043f907">Atcoder Library</h2>
+<div class="outline-text-2" id="text-org043f907">
+<ul class="org-ul">
+<li>공식 사이트
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/posts/518">https://atcoder.jp/posts/518</a></li>
+</ul></li>
+<li>한글 설명자료
+<ul class="org-ul">
+<li><a href="https://blog.solarmagic.dev/algorithm/2020/09/08/aclibrary/">https://blog.solarmagic.dev/algorithm/2020/09/08/aclibrary/</a></li>
+</ul></li>
+
+<li>ac-library를 파일 하나로 합치는 방법
+<ul class="org-ul">
+<li><a href="https://github.com/TumoiYorozu/single-file-ac-library">https://github.com/TumoiYorozu/single-file-ac-library</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga1e3946" class="outline-2">
+<h2 id="orga1e3946">사용법</h2>
+<div class="outline-text-2" id="text-orga1e3946">
+<pre class="example">
+g++ -o code code.cpp -std=c++14 -I.
+python expander.py code.cpp
+
+$ ls
+atcoder  code.cpp  combined.cpp  document_en  expander.py
+code     combined  combined.o    document_ja  try1
+</pre>
+<ul class="org-ul">
+<li>combinded.cpp에 code가 copy됨</li>
+<li>atcoder/all을 include하면, header의 모든 내용이 copy됨 (코드가 길어짐)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd55eac0" class="outline-2">
+<h2 id="orgd55eac0">AtCoder Library Practice Contest</h2>
+<div class="outline-text-2" id="text-orgd55eac0">
+<p>
+<a href="https://atcoder.jp/contests/practice2/tasks">https://atcoder.jp/contests/practice2/tasks</a>
+여기 나오는 문제들을 모두 library로 풀 수 있다.
+</p>
+
+<ul class="org-ul">
+<li>A. Disjoint Set Union</li>
+<li>B. Fenwick Tree</li>
+<li>C. Floor Sum</li>
+<li>D. Maxflow</li>
+<li>E. MinCostFlow</li>
+<li>F. Convolusion</li>
+<li>G. SCC</li>
+<li>H. Two SAT</li>
+<li>I. Number of Substrings</li>
+<li>J. Segment Tree</li>
+<li>K. Range Affine Range Sum</li>
+<li>L. Lazy Segment Tree</li>
+</ul>
+</div>
+</div>

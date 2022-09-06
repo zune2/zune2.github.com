@@ -1,0 +1,86 @@
+#+HTML: ---
+#+HTML: title: BOJ 15681 트리와 쿼리
+#+HTML: tags: DP Tree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 15681
+- 정점 U를 root로 하는 sub tree에 속한 정점 수 구하기
+
+** 접근하기
+- 트리에 DP를 적용해서 풀기
+- dfs로 tree를 탐색하면서, dp 배열의 값을 점화 규칙에 맞게 채운다.
+
+#+BEGIN_EXAMPLE
+           5
+         /   \
+        4      6
+        |    / | \
+        3   7  8  9
+       / \
+      1   2
+
+U->5, 9
+U->4, 4
+U->9, 1
+
+tree의 모든 정점에 대해서
+dp[parent] = dp[parent] + dfs(child)
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+int N, R, Q;
+int U;
+vector<int> G[100010];
+int dp[100010];
+int visit[100010];
+
+int dfs(int num)
+{
+    if (visit[num]) return dp[num];
+    visit[num] = 1;
+    for(auto& next:G[num]) {
+        if (visit[next] == 0) {
+            dp[num] = dp[num] + dfs(next);  
+        }
+    }
+    return dp[num];
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d %d %d", &N, &R, &Q);
+
+    int p1, p2;
+    for(int i=0;i<N-1;i++) {
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+
+    for(int i=1;i<=N;i++) {
+        dp[i] = 1;
+    }
+
+    dfs(R);
+
+    for(int i=0;i<Q;i++) {
+        scanf("%d", &U); 
+        printf("%d\n", dp[U]);
+    }
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/15681
+
+** 참고자료
+- [[https://codeforces.com/blog/entry/20935][DP on Trees Tutorial]]
+- https://justicehui.github.io/hard-algorithm/2019/01/18/treeDP/
+- https://chanhuiseok.github.io/posts/algo-56/

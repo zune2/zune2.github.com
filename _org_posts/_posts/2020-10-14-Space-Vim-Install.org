@@ -1,0 +1,84 @@
+#+HTML: ---
+#+HTML: title: Space Vim 설치
+#+HTML: tags: SpaceVim
+#+HTML: ---
+
+* SpaceVim 설치
+** SpaceVim 설치 명령어
+#+BEGIN_EXAMPLE
+curl -sLf https://spacevim.org/install.sh | bash
+#+END_EXAMPLE
+
+vim하면 실행된다.
+
+vim, nvim 모두 설치된 환경에서 nvim에만 설치하기
+#+BEGIN_EXAMPLE
+curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim
+#+END_EXAMPLE
+
+** SpaceVim 지우기
+원래 있던 vim으로 연결해준다.
+#+BEGIN_EXAMPLE
+curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+#+END_EXAMPLE
+
+** 환경설정 파일 위치
+#+BEGIN_EXAMPLE
+~/.SpaceVim.d/init.toml
+#+END_EXAMPLE
+
+*** 내 config example
+
+#+BEGIN_EXAMPLE
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+   colorscheme = "codedark"
+    #colorscheme = "gruvbox"
+    # colorscheme = "onedark"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = false
+
+[[custom_plugins]]
+  name="tomasiser/vim-code-dark"
+  merged = 0
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+
+[[layers]]
+  name = 'fzf'
+#name = 'denite'
+
+[[layers]]
+  name = 'gtags'
+
+[[layers]]
+  name = 'tmux'
+
+[[layers]]
+  name = "lang#c"
+  enable_clang_syntax_highlight = true
+#+END_EXAMPLE
+
+** Referene
++ https://spacevim.org/quick-start-guide
++ https://velog.io/@ausg/monsters-use-vim

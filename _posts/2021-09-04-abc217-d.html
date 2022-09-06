@@ -1,0 +1,74 @@
+---
+title: D - Cutting Woods
+tags: AtCoder
+---
+
+<div id="outline-container-org512f217" class="outline-2">
+<h2 id="org512f217">D - Cutting Woods</h2>
+<div class="outline-text-2" id="text-org512f217">
+<ul class="org-ul">
+<li>큰 통나무가 있고, query를 통해</li>
+<li>통나무를 자른다.</li>
+<li>자른 통나무 조각의 길이를 잰다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org20ad2eb" class="outline-2">
+<h2 id="org20ad2eb">접근하기</h2>
+<div class="outline-text-2" id="text-org20ad2eb">
+<ul class="org-ul">
+<li>STL set을 이용해서 풀이</li>
+<li>set에 int를 insert하면, 정렬된 상태로 저장됨.</li>
+<li>upper_bound를 이용해서 x보다 큰 가장 가까운 값의 위치를 얻을 수 있음</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org405ee76" class="outline-2">
+<h2 id="org405ee76">코드</h2>
+<div class="outline-text-2" id="text-org405ee76">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">L</span>, <span style="color: #ff6347;">Q</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">set</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">st</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;L, &amp;Q);
+    st.insert(0);            <span style="color: #888a85;">// </span><span style="color: #888a85;">0&#51012; &#52628;&#44032;</span>
+    st.insert(L);            <span style="color: #888a85;">// </span><span style="color: #888a85;">L&#51012; &#52628;&#44032; -&gt; L - 0&#51008; &#51204;&#52404;&#51032; &#44600;&#51060;&#44032; &#46108;&#45796;.</span>
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>, <span style="color: #ff6347;">x</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;Q;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;c, &amp;x);
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (c == 1) {
+            st.insert(x);    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51221;&#47148;&#46108; &#49692;&#49436;&#47196; &#52628;&#44032;</span>
+        } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (c == 2) {
+            <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">i</span> = st.upper_bound(x);  <span style="color: #888a85;">// </span><span style="color: #888a85;">x&#48372;&#45796; &#53360; &#52395;&#48264;&#51705; &#44050;&#51032; &#50948;&#52824;&#47484; &#44396;&#54632;</span>
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">up</span> = *i;
+            i--;
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">down</span> = *i;
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, up - down);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbde70ca" class="outline-2">
+<h2 id="orgbde70ca">문제 링크</h2>
+<div class="outline-text-2" id="text-orgbde70ca">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc217/tasks/abc217_d">https://atcoder.jp/contests/abc217/tasks/abc217_d</a></li>
+</ul>
+</div>
+</div>

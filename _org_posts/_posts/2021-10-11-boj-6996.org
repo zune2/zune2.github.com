@@ -1,0 +1,47 @@
+#+HTML: ---
+#+HTML: title: BOJ 6996 에너그램
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 6996 에너그램
+
+** 접근하기
+- 에너그램 판단
+  - STL string을 sort로 정렬할 수 있음.
+  - 두 string을 sort한 후, 비교
+  
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    cin >> N;
+    string s1, s2;
+    for(int i=0;i<N;i++) {
+        cin >> s1 >> s2;   
+
+        string t1 = s1;
+        string t2 = s2;
+        sort(t1.begin(), t1.end());
+        sort(t2.begin(), t2.end());
+
+        if (t1 == t2){
+            cout << s1 << " & " << s2 << " are anagrams." << endl;
+        } else  {
+            cout << s1 << " & " << s2 << " are NOT anagrams." << endl;
+        }
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/6996

@@ -1,0 +1,43 @@
+#+HTML: ---
+#+HTML: title: BOJ 1673 치킨 쿠폰
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1673 치킨 쿠폰
+- 쿠폰과 도장 두 변수를 잘 컨트롤하기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N, K;
+
+int main(int argc, char* argv[])
+{
+    //freopen("input.txt", "r", stdin);
+    while(scanf("%d %d", &N, &K) != EOF) {
+
+        int coupon = N;
+        int stamp = 0;
+
+        int ans = 0;
+        while(coupon) {
+        ans += coupon;       // 치킨 쿠폰 N장 답에 포함
+            stamp += coupon; // 치킨 쿠폰 N장은 도장 받음
+
+            coupon = stamp / K; // 도장의 수/K => 새로 모은 쿠폰수
+            stamp = stamp % K;  // 도장의 수%K => 새로 모은 도장수
+
+        }
+        printf("%d\n", ans);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1673
+
+** 풀이참고
+- https://codecollector.tistory.com/901

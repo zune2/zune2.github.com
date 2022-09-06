@@ -1,0 +1,62 @@
+#+HTML: ---
+#+HTML: title: ABC233 C - Product
+#+HTML: tags: AtCoder DFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Product
+- N개의 가방에서 하나씩 공을 꺼내서 곱해서 값 X를 만드는 경우의 수 구하기
+** 코드
+- dfs스타일로 풀이 가능함 (에디토리얼 보고 생각함)
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+typedef long long ll;
+
+int N;
+ll X;
+ll cnt;
+
+vector< vector<ll> > G;
+
+void dfs(int idx, ll ans)
+{
+    if (idx == N) {
+        if (ans == X) {
+            cnt += 1;
+        }
+        return;
+    }
+
+    for(ll val:G[idx]) {
+        if (ans*val > X) continue;
+        dfs(idx+1, ans*val);
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    cnt = 0;
+    scanf("%d %lld", &N, &X);
+    G.resize(N);    
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num); 
+        G[i].resize(num);
+        for(int j=0;j<num;j++) {
+            ll val;
+            scanf("%lld", &val);
+            G[i][j] = val;
+        }
+    }
+    dfs(0, 1);
+    printf("%lld\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc233/tasks/abc233_c

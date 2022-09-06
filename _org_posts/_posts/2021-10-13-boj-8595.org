@@ -1,0 +1,75 @@
+#+HTML: ---
+#+HTML: title: BOJ 8595 히든넘버
+#+HTML: tags: 배열
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 8595 히든넘버
+
+** 접근하기
+- 숫자를 만나면, 배열에 담는다.
+- 문자를 만나면, 배열에서 숫자를 꺼내서 sum한다.
+- 맨 마지막 숫자를 처리가 안될 수 있믐을 주의
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+char str[5000050];
+int arr[10];
+int idx;
+int N;
+long long sum = 0;
+
+void calc()
+{
+    if (idx != 0) {
+        int num = 0;    
+        for(int i=0;i<idx;i++) {
+            num = num * 10 + arr[i];
+        }
+        idx = 0;
+        sum += num;
+    }  
+}
+
+int main(int argc, char* argv[])
+{
+    sum = 0;
+    idx = 0;
+    scanf("%d", &N); 
+    scanf("%s", str);
+    
+    for(int i=0;i<N;i++) {
+        if (str[i] >= '0' && str[i] <= '9') {
+            arr[idx++] = str[i] - '0'; 
+        } else {
+            calc();
+        } 
+    } 
+    calc(); // 맨 마지막 숫자는 무시되므로, loop뒤에 다시 check
+    printf("%lld\n", sum);
+}
+#+END_SRC
+
+
+** 코드 - 배열 끝에 marker를 주기 - calc를 한번만 호출 가능
+
+#+BEGIN_SRC cpp
+...
+    scanf("%d", &N); 
+    scanf("%s", str);
+    str[N++] = 'X'; // marker
+    for(int i=0;i<N;i++) {
+        if (str[i] >= '0' && str[i] <= '9') {
+            arr[idx++] = str[i] - '0'; 
+        } else {
+            calc();
+        } 
+    } 
+    printf("%lld\n", sum);
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/8595

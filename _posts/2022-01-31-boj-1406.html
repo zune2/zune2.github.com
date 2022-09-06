@@ -1,0 +1,109 @@
+---
+title: BOJ 1406 에디터
+tags: STL 리스트
+---
+
+<div id="outline-container-org698757a" class="outline-2">
+<h2 id="org698757a">BOJ 1406 에디터</h2>
+<div class="outline-text-2" id="text-org698757a">
+<ul class="org-ul">
+<li>STL list를 이용하는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd807068" class="outline-2">
+<h2 id="orgd807068">접근하기</h2>
+<div class="outline-text-2" id="text-orgd807068">
+<pre class="example">
+abcd
+3
+P x
+L
+P y
+
+lst = abcd($)       ($ == lst.end()에 cursor)
+P x
+lst = abcdx($)      // 커서는 그대로
+L
+lst = abcd(x)$
+P y 
+lst = abcdy(x)$
+</pre>
+<ul class="org-ul">
+<li>1. push_back후 맨 마지막에 cursor를 가리키기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb7de313" class="outline-2">
+<h2 id="orgb7de313">코드</h2>
+<div class="outline-text-2" id="text-orgb7de313">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">nullptr</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[100010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    FASTIO;
+    cin &gt;&gt; str;
+    cin &gt;&gt; N;
+    <span style="color: #8ae234; font-weight: bold;">list</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt; <span style="color: #ff6347;">l</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        l.push_back(str[i]);
+    }
+    <span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">cursor</span> = l.end();
+
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">cmd</span>;
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">ch</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; cmd;
+        <span style="color: #729fcf; font-weight: bold;">switch</span>(cmd) {
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'L'</span>:
+            <span style="color: #729fcf; font-weight: bold;">if</span> (l.begin() != cursor) {
+                cursor--; 
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'D'</span>:
+            <span style="color: #729fcf; font-weight: bold;">if</span> (l.end() != cursor) {
+                cursor++; 
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'B'</span>:
+            <span style="color: #729fcf; font-weight: bold;">if</span> (l.begin() != cursor) {
+                <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52964;&#49436; &#50812;&#51901;&#50640; &#51080;&#45716; &#47928;&#51088;&#47484; &#49325;&#51228;</span>
+                <span style="color: #888a85;">// </span><span style="color: #888a85;">&#52964;&#49436;&#51032; &#50724;&#47480;&#51901;&#50640; &#51080;&#45912; &#47928;&#51088;&#45716; &#44536;&#45824;&#47196;&#51076;</span>
+                cursor = l.erase(--cursor);  <span style="color: #888a85;">// </span><span style="color: #888a85;">remove left  </span>
+            }
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        <span style="color: #729fcf; font-weight: bold;">case</span> <span style="color: #ad7fa8; font-style: italic;">'P'</span>:
+            cin &gt;&gt; ch;
+            l.insert(cursor, ch);  <span style="color: #888a85;">// </span><span style="color: #888a85;">insert left  </span>
+            <span style="color: #729fcf; font-weight: bold;">break</span>;
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">o</span> : l) {
+        cout &lt;&lt; o;
+    }
+    cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbabaefc" class="outline-2">
+<h2 id="orgbabaefc">문제 링크</h2>
+<div class="outline-text-2" id="text-orgbabaefc">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1406">https://www.acmicpc.net/problem/1406</a></li>
+</ul>
+</div>
+</div>

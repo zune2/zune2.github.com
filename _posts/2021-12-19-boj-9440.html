@@ -1,0 +1,128 @@
+---
+title: BOJ 9440 숫자 더하기
+tags: 그리디
+---
+
+<div id="outline-container-orgc2e0a4d" class="outline-2">
+<h2 id="orgc2e0a4d">BOJ 9440 숫자 더하기</h2>
+<div class="outline-text-2" id="text-orgc2e0a4d">
+<ul class="org-ul">
+<li>한자리 숫자 2~14개를 주고, 두 숫자를 만들어서 더할 때, 가장 작은 수 만들기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org37c3cf7" class="outline-2">
+<h2 id="org37c3cf7">접근하기</h2>
+<div class="outline-text-2" id="text-org37c3cf7">
+<ul class="org-ul">
+<li>완전 탐색으로 풀어서 시간초과를 받음</li>
+
+<li>최소 힙에서 숫자를 하나씩 빼서, 숫자 배열을 만들기</li>
+<li>0이 여러개일 때 예외처리를 해줘야 한다.
+<ul class="org-ul">
+<li>0이 짝수개일 때</li>
+<li>0이 홀수개일 때</li>
+</ul></li>
+
+<li>문제가 되는 testcase를 찾기 어렵다.</li>
+</ul>
+
+<pre class="example">
+문제 case : 1 9 0 0 0 0 0 0 0 0 0 0 0
+
+0 0 0 0 0 0 1
+0 0 0 0 0 9
+
+1 0 0 0 0 0 0  &lt;- 0을 앞에 넣어준다.
+  9 0 0 0 0 0
+
+1 9 0 0 0 0 0
+</pre>
+</div>
+</div>
+<div id="outline-container-orge0d94ea" class="outline-2">
+<h2 id="orge0d94ea">코드</h2>
+<div class="outline-text-2" id="text-orge0d94ea">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt;&gt; <span style="color: #ff6347;">pq</span>;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(1) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+        <span style="color: #729fcf; font-weight: bold;">if</span> (N == 0) <span style="color: #729fcf; font-weight: bold;">break</span>;
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">zero</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">num</span>;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+            scanf(<span style="color: #ad7fa8; font-style: italic;">" %c"</span>, &amp;num);
+            <span style="color: #729fcf; font-weight: bold;">if</span> (num == <span style="color: #ad7fa8; font-style: italic;">'0'</span>) zero += 1;
+            pq.push(num);
+        }
+        <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">a</span>[2][14] = {0};
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span>[2] = {0};
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span> = 0;
+        <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">backup</span>;
+
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">zero&#44032; 1&#51060; &#50500;&#45772; &#54848;&#49688;&#44060;&#51060;&#47732;, &#54616;&#45208;&#47484; &#48764;&#49436; a[0]&#47196; &#48372;&#45236;&#44592;</span>
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( zero != 1 &amp;&amp; zero %2 == 1) {
+            backup = pq.top(); pq.pop();
+            a[0][cnt[0]++] = backup; 
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">while</span>(!pq.empty()) {
+            <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">val</span> = pq.top(); pq.pop();
+            a[idx%2][cnt[idx%2]++] = val; 
+            idx++;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;2;k++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;cnt[k];i++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (a[k][0] == <span style="color: #ad7fa8; font-style: italic;">'0'</span> &amp;&amp; a[k][i] != <span style="color: #ad7fa8; font-style: italic;">'0'</span>) {
+                    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">tmp</span> = a[k][0];
+                    a[k][0] = a[k][i];
+                    a[k][i] = tmp;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+        }
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span>[2] = {0,};
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;2;k++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;cnt[k];i++) {
+                ans[k] = ans[k] * 10 + (a[k][i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>);
+            }
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans[0]+ans[1]);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4722f6" class="outline-2">
+<h2 id="orge4722f6">문제 링크</h2>
+<div class="outline-text-2" id="text-orge4722f6">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/9440">https://www.acmicpc.net/problem/9440</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b87ba7" class="outline-2">
+<h2 id="org4b87ba7">TC 참고</h2>
+<div class="outline-text-2" id="text-org4b87ba7">
+<ul class="org-ul">
+<li><a href="https://kwanghyuk.tistory.com/76">https://kwanghyuk.tistory.com/76</a></li>
+</ul>
+</div>
+</div>

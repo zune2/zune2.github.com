@@ -1,0 +1,35 @@
+#+HTML: ---
+#+HTML: title: SpaceVim에 todo.txt 설치
+#+HTML: tags: SpaceVim
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+
+** 새로운 custom plugin 추가
+- custom plugins 섹션을 하나씩 추가하면 된다.
+- vim을 다시 켜면, 자동으로 설치한다.
+#+BEGIN_EXAMPLE
+[[custom_plugins]]
+   name = "tomasiser/vim-code-dark"
+   merged = 0
+
+[[custom_plugins]]
+   name = "freitass/todo.txt-vim"
+   merged = 0
+#+END_EXAMPLE
+
+** keymapping을 적어주기
+- 적어야 하는 파일 위치
+#+BEGIN_EXAMPLE
+.SpaceVim/init.vim 
+#+END_EXAMPLE
+
+- F12로 매핑
+#+BEGIN_EXAMPLE
+syntax on
+filetype plugin on
+
+" todo.txt
+let maplocalleader = "\\"
+map <F12> <ESC>:e ~/Dropbox/todo/todo.txt <CR>
+#+END_EXAMPLE

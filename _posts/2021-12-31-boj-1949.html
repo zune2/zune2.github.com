@@ -1,0 +1,101 @@
+---
+title: BOJ 1949 우수 마을
+tags: DP dfs Tree
+---
+
+<div id="outline-container-org37aa5d6" class="outline-2">
+<h2 id="org37aa5d6">BOJ 1949 우수 마을</h2>
+<div class="outline-text-2" id="text-org37aa5d6">
+<ul class="org-ul">
+<li>tree 구조에서 DP를 적용하는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb55207d" class="outline-2">
+<h2 id="orgb55207d">접근하기</h2>
+<div class="outline-text-2" id="text-orgb55207d">
+<pre class="example">
+1. Graph를 인접 리스트로 구성한다 -&gt; Tree가 나옴
+
+2. 1번부터 dfs로 이동한다.
+
+3. 방문한 노드에서 우수마을일때/아닐때를 나눠서 우수마을 주민수를 count한다
+
+    dp[k][0] : k 노드가 일반마을이라고 생각했을때, 최대 우수마을 주민수 총합
+               -&gt; 다음 방문할 마을은 일반마을/우수마을 모두 가능함.
+               -&gt; 두 경우에서 max의 값을 누적하면 된다.
+
+    dp[k][1] : k 노드가 우수마을이라고 생각했을때, 최대 우수마을 주민수 총합
+               -&gt; 인접한 마을은 모두 '일반'마을 이어야 한다.
+               -&gt; 우수마을일 수 없음(조건에 위배)
+
+4. dfs가 마무리되면, 1번의 dp[1][1], dp[1][0]에
+   각각 1번 노드가 우수마을 or 일반마을로 지정했을 때
+   값이 들어있음. max값을 출력
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org74ccb01" class="outline-2">
+<h2 id="org74ccb01">코드</h2>
+<div class="outline-text-2" id="text-org74ccb01">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #888a85;">//</span><span style="color: #888a85;">#include &lt;cstdio&gt;</span>
+<span style="color: #888a85;">//</span><span style="color: #888a85;">#include &lt;vector&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[10010];         <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51452;&#48124;&#49688;</span>
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">G</span>[10010]; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47560;&#51012;&#44036; &#50672;&#44288;&#51012; graph &#54364;&#49884;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">done</span>[10010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[10010][2];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>)
+{
+    done[num] = 1;
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#49884;&#51089;</span>
+    dp[num][0] = 0;         <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51068;&#48152;&#47560;&#51012;&#51060;&#47732; 0</span>
+    dp[num][1] = a[num];    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#50864;&#49688;&#47560;&#51012;&#51060;&#47732; &#51064;&#44396;&#49688; &#52628;&#44032;</span>
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">next</span>:G[num]) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (!done[next]) {
+            dfs(next);
+            dp[num][0] += max(dp[next][0], dp[next][1]);
+            dp[num][1] += dp[next][0];
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+    dfs(1);
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, max(dp[1][0], dp[1][1]));
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge53b6ad" class="outline-2">
+<h2 id="orge53b6ad">문제 링크</h2>
+<div class="outline-text-2" id="text-orge53b6ad">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1949">https://www.acmicpc.net/problem/1949</a></li>
+</ul>
+</div>
+</div>

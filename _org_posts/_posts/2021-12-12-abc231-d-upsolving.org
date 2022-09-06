@@ -1,0 +1,96 @@
+#+HTML: ---
+#+HTML: title: D - Neighbors
+#+HTML: tags: AtCoder UnionFind
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Neighbors
+N명의 사람의 줄세울 때, 서로 인접하게 줄 세우기
+
+** 접근하기
+인접은 서로다른 두명만 있어야 조건에 만족
+#+BEGIN_EXAMPLE
+1 2 3
+3 2 1
+#+END_EXAMPLE
+cycle이 있어서도 안됨. -> UnionFind나 Dfs로 Cycle을 만드는지 확인하기
+
+** 코드1 - UnionFind 이용
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <iostream>
+
+using namespace std;
+
+int N, M;
+
+#define ARRSIZE 100010
+int table[ARRSIZE];
+
+// Union Find
+int parent[ARRSIZE];
+
+void Init()
+{
+    for(int i=0;i<=N;i++) {
+        parent[i] = -1;
+    }
+}
+
+int Find(int a)
+{
+    if (parent[a] < 0) return a;
+    return parent[a] = Find(parent[a]);
+}
+
+void Union(int a, int b)
+{
+    a = Find(a);
+    b = Find(b);
+
+    if (a == b) return;
+
+    if (parent[a] <= parent[b]) {
+        parent[a] += parent[b];
+        parent[b] = a;
+    } else {
+        parent[b] += parent[a];
+        parent[a] = b;
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+
+    int n1, n2;
+
+    Init();
+    for(int i=0;i<M;i++) {
+        scanf("%d %d", &n1, &n2);
+
+        int tmp1 = Find(n1);
+        int tmp2 = Find(n2);
+        if (tmp1 == tmp2) {
+            printf("No\n");
+            return 0;
+        }
+        Union(n1, n2);
+        table[n1]++;
+        table[n2]++;
+    }
+
+    for(int i=0;i<=N;i++) {
+        if (table[i] > 2) {
+            printf("No\n");
+            return 0;
+        }
+    }
+    printf("Yes\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc231/tasks/abc231_d
+

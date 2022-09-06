@@ -1,0 +1,15 @@
+#+HTML: ---
+#+HTML: title: TODO E - LEQ
+#+HTML: tags: AtCoder SegmentTree BinaryIndexTree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** TODO E - LEQ
+Binary Index Tree/Segment Tree공부하고 다시 보기
+** 접근하기
+** 코드
+#+BEGIN_SRC cpp
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc221/tasks/abc221_e

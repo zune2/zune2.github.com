@@ -1,0 +1,67 @@
+#+HTML: ---
+#+HTML: title: BOJ 13335 트럭
+#+HTML: tags: 시뮬레이션 Queue
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 13335 트럭
+- 다리에 길이와 무게가 주어짐
+- 차량이 순서대로 통과할 때, 다리가 버틸 수 있는 무게보다 적게만 지나가야 함
+- 모든 트럭이 지나는데 걸리는 시간
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. queue를 이용해서 구현
+2. 매번 차량이 다리에 오르지 않는 조건을 어떻게 표시할 것인가?
+#+END_EXAMPLE
+
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, W, L;
+int a[1010];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &N, &W, &L); 
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+
+    queue<int> q;
+    int sum = 0;
+    int time = 0;
+    for(int i=0;i<N;i++) {
+        
+        while(1) {
+            int size = (int)q.size();
+            // 다리의 하중만큼 올라왔으면
+            if (size == W) {
+                int cur = q.front(); q.pop();
+                sum -= cur;     // 맨 앞의 차를 치운다.
+            }
+
+            // 새로운 차를 올릴 수 없으면, '0'을 올림
+            if (sum + a[i] <= L)
+                break;
+            else {
+                q.push(0);
+                time += 1;
+            }
+        }
+
+        // 새로운 차를 올릴 수 있으면 추가
+        q.push(a[i]);
+        sum += a[i];
+        time += 1;
+    }
+    printf("%d\n", time + W);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/13335

@@ -1,0 +1,19 @@
+#+HTML: ---
+#+HTML: title: vim + conqueGDB 이용
+#+HTML: tags: vim
+#+HTML: ---
+
+** 사용법
+vim에서 코딩하고, 빌드한 실행파일 이름을 적어준다.
+#+BEGIN_EXAMPLE
+:conqueGDB code
+#+END_EXAMPLE
+- code는 실행파일 이름
+- 화면을 split해서 하단에 gdb가 있는 형태
+
+** 느낀 점
+- 생각보다 자연스럽게 동작하는 것 같지 않음
+- 그냥 gdb CLI나 ddd를 쓰는게 나아보인다.
+
+** Reference
+https://github.com/vim-scripts/Conque-GDB

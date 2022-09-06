@@ -1,0 +1,52 @@
+#+HTML: ---
+#+HTML: title: BOJ 1417 국회의원 선거
+#+HTML: tags: 그리디
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1417 국회의원 선거
+- N명의 후보중 1번 후보가 당선되기 위해, 다른 후보들에게 가져와야 할 표의 총 수
+** 접근하기
+- 우선순위 큐에 2~N번까지를 넣는다.
+- 1번보다 많으면, 1씩 뺀다.
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+using namespace std;
+
+int N;
+priority_queue<int> pq;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+
+    int num;
+    int first, org;
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &num);
+        if (i == 1) {
+            org = first = num;
+        } else {
+            pq.push(num);
+        }
+    }
+
+    while(!pq.empty()) {
+        int num = pq.top(); pq.pop();    
+        if (first <= num) {
+            first += 1;
+            pq.push(num-1);
+        } else { //first > num
+            break;
+        }
+    }
+    printf("%d\n", first - org);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1417
+

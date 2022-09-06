@@ -1,0 +1,65 @@
+---
+title: BOJ 17219 비밀번호 찾기
+tags: STL
+---
+
+<div id="outline-container-orgda0f1d7" class="outline-2">
+<h2 id="orgda0f1d7">BOJ 17219 비밀번호 찾기</h2>
+</div>
+
+
+
+<div id="outline-container-org707d5c3" class="outline-2">
+<h2 id="org707d5c3">접근하기</h2>
+<div class="outline-text-2" id="text-org707d5c3">
+<ul class="org-ul">
+<li>key, value가 모두 문자열로 된 데이터를 저장하고 검색</li>
+<li>STL map을 써보는 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8525e9a" class="outline-2">
+<h2 id="org8525e9a">코드</h2>
+<div class="outline-text-2" id="text-org8525e9a">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;map&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">s1</span>[22], <span style="color: #ff6347;">s2</span>[22];
+
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+
+    <span style="color: #8ae234; font-weight: bold;">map</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>, <span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">mp</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s %s"</span>, s1, s2);
+        mp[string(s1)] = string(s2);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">s3</span>[22];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, s3);
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%s\n"</span>, mp[string(s3)].c_str());
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1887801" class="outline-2">
+<h2 id="org1887801">문제 링크</h2>
+<div class="outline-text-2" id="text-org1887801">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/17219">https://www.acmicpc.net/problem/17219</a></li>
+</ul>
+</div>
+</div>

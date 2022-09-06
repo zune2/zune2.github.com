@@ -1,0 +1,97 @@
+---
+title: BOJ 1464 뒤집기 3
+tags: 그리디
+---
+
+<div id="outline-container-org480d55f" class="outline-2">
+<h2 id="org480d55f">BOJ 1464 뒤집기 3</h2>
+<div class="outline-text-2" id="text-org480d55f">
+<ul class="org-ul">
+<li>조건대로 문자열 뒤집어서, 사전순으로 최소가 되도록 출력</li>
+<li>완전탐색으로 하면 시간초과가 남</li>
+
+<li>그리디하게 성질을 발견해야 하는 문제 (이해가 어렵다)</li>
+<li>다른 블로그 풀이를 <a href="https://kangminjun.tistory.com/entry/BOJ-1464-%EB%B2%88-%EB%92%A4%EC%A7%91%EA%B8%B0-3">참고</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0c80eef" class="outline-2">
+<h2 id="org0c80eef">접근하기</h2>
+<div class="outline-text-2" id="text-org0c80eef">
+<pre class="example">
+s = BCDAF
+
+ans = B
+
+if (ans [0] &lt; s[1]) // C
+    ans = C B
+
+if (ans [1] &lt; s[2]) // D
+    ans = D C B
+
+if (ans [2] &lt; s[3]) // A
+    ans = D C B A
+
+if (ans [3] &lt; s[4]) // F
+    ans = F D C B A
+
+reserse(ans) =&gt; A B C D F
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1c89b20" class="outline-2">
+<h2 id="org1c89b20">코드</h2>
+<div class="outline-text-2" id="text-org1c89b20">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[51];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(len = 0;str[len];len++);
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">ans</span> = <span style="color: #ad7fa8; font-style: italic;">""</span>;
+    ans += str[0];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;len;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (ans[i-1] &lt; str[i]) {
+            ans = str[i] + ans;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            ans = ans + str[i];
+        }
+    } 
+    reverse(ans.begin(), ans.end());
+    cout &lt;&lt; ans &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bb3758" class="outline-2">
+<h2 id="org2bb3758">문제 링크</h2>
+<div class="outline-text-2" id="text-org2bb3758">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1464">https://www.acmicpc.net/problem/1464</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgebad99f" class="outline-2">
+<h2 id="orgebad99f">풀이참고</h2>
+<div class="outline-text-2" id="text-orgebad99f">
+<ul class="org-ul">
+<li><a href="https://kangminjun.tistory.com/entry/BOJ-1464-%EB%B2%88-%EB%92%A4%EC%A7%91%EA%B8%B0-3">https://kangminjun.tistory.com/entry/BOJ-1464-번-뒤집기-3</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,43 @@
+#+HTML: ---
+#+HTML: title: AtCoder Library
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** Atcoder Library
+- 공식 사이트
+  - https://atcoder.jp/posts/518
+- 한글 설명자료
+  - https://blog.solarmagic.dev/algorithm/2020/09/08/aclibrary/
+
+- ac-library를 파일 하나로 합치는 방법
+  - https://github.com/TumoiYorozu/single-file-ac-library
+
+** 사용법
+#+BEGIN_EXAMPLE
+g++ -o code code.cpp -std=c++14 -I.
+python expander.py code.cpp
+
+$ ls
+atcoder  code.cpp  combined.cpp  document_en  expander.py
+code     combined  combined.o    document_ja  try1
+#+END_EXAMPLE
+- combinded.cpp에 code가 copy됨
+- atcoder/all을 include하면, header의 모든 내용이 copy됨 (코드가 길어짐) 
+
+** AtCoder Library Practice Contest
+https://atcoder.jp/contests/practice2/tasks
+여기 나오는 문제들을 모두 library로 풀 수 있다.
+
+- A. Disjoint Set Union
+- B. Fenwick Tree
+- C. Floor Sum
+- D. Maxflow
+- E. MinCostFlow
+- F. Convolusion
+- G. SCC
+- H. Two SAT
+- I. Number of Substrings
+- J. Segment Tree
+- K. Range Affine Range Sum
+- L. Lazy Segment Tree

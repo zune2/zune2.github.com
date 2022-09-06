@@ -1,0 +1,92 @@
+#+HTML: ---
+#+HTML: title: abc235 D - Multiply and Rotate
+#+HTML: tags: AtCoder BFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Multiply and Rotate
+
+** 접근하기
+#+BEGIN_EXAMPLE
+- BFS로 weight가 같을 때, 최단거리를 구할 수 있음
+- but, 숫자를 뒤집는 조건이 추가됨
+  - 숫자가 작아질 가능성이 있음 -> 무한루프?
+
+- 이 조건은 생각하기 어려웠음.
+  - 뒤집어도 원래 값보다 커져야 한다.
+    - 2자리수 이상이어야 한다.
+    - num%10 == 0인 경우, 10, 100, 1000 등은 뒤집으면 작아지므로 제외
+
+- visit 배열로 한번 접근한 값은 제외
+
+- BFS
+#+END_EXAMPLE
+
+** 코드 84 m/s
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int a;
+long long int N;
+typedef struct Node {
+    long long num;
+    int dist;
+} Node;
+
+queue<Node> q;
+map<long long, int> visited;  // 느림 vector로 바꾸면 빠름
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %lld", &a, &N);
+ //   vector<int> visited(1000000, 0);
+    
+    q.push({1, 0});
+    visited[1] = 1;
+
+    int ans = -1;
+    while(!q.empty()) {
+        Node cur = q.front(); q.pop();
+        visited[cur.num] = 1;
+        if (cur.num == N) {
+            ans = cur.dist;
+            break;
+        }
+
+        if (1000000 > cur.num * a) {
+            if(visited[cur.num*a] == 0) {
+                visited[cur.num*a] = 1;
+                q.push({cur.num*a, cur.dist+1});
+            }
+        } 
+        // 두자릿 수 이상,
+        // 뒤집었을때 짧아지지 않으려면, 10 100 처럼되면 안됨
+        if (cur.num >= 10 && cur.num%10 != 0) {
+            string S = to_string(cur.num);
+            rotate(S.begin(), S.end() - 1, S.end());
+            long long rnum = stoi(S);
+            if(visited[rnum] == 0) {
+                visited[rnum] = 1;
+                q.push({rnum, cur.dist+1});
+            }
+        }
+    }
+    printf("%d\n", ans);
+}
+#+END_SRC
+
+
+** 코드 31 m/s
+#+BEGIN_SRC cpp
+// 위 코드에서
+
+//map<long long, int> visited;  // 느림 vector로 바꾸면 빠름
+
+int main() {
+// map -> vector로 바꾸고, 미리 크기를 지정하면 빠름
+    vector<int> visited(1000000, 0);
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc235/tasks/abc235_d

@@ -1,0 +1,61 @@
+#+HTML: ---
+#+HTML: title: 약수 출력하기
+#+HTML: tags: DSA 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 약수 출력하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+N = 100 이면 1 ~ 100으로 %했을 때 0이 나오면 약수
+
+N의 제곱근까지 나눈다.
+
+ - 1 ~ N의 제곱근
+   - k 추가, N/k 추가
+   - ...
+
+1
+2
+4
+5
+10
+20
+25
+50
+100
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+    set <int> sp;
+    cin >> N;
+    for(int i=1;i*i <= N;i++) {
+        if (N %i == 0) {
+            sp.insert(i);
+            sp.insert(N/i);
+        }
+    }
+
+    for(auto o:sp) {
+        cout << o << '\n';
+    }
+    return 0;
+}
+#+END_SRC
+
+** 설명
+- https://kbw1101.tistory.com/32
+
+** 문제 링크
+- http://220.89.64.243/30stair/factor/factor.php?pname=factor

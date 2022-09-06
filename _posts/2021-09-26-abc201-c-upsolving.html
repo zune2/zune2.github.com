@@ -1,0 +1,85 @@
+---
+title: C - Secret Number
+tags: AtCoder 완전탐색
+---
+
+<div id="outline-container-orgc6d0584" class="outline-2">
+<h2 id="orgc6d0584">C - Secret Number</h2>
+</div>
+
+<div id="outline-container-orgc8a3adf" class="outline-2">
+<h2 id="orgc8a3adf">접근하기</h2>
+<div class="outline-text-2" id="text-orgc8a3adf">
+<ul class="org-ul">
+<li>0~9999까지 loop를 돌면서, 각 숫자를 체크</li>
+<li>o가 4개 있으면, 그 숫자로만 써야 한다.</li>
+<li>0이 포함되지 않으면, 모두 제외해준다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgca0f3d1" class="outline-2">
+<h2 id="orgca0f3d1">코드</h2>
+<div class="outline-text-2" id="text-orgca0f3d1">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[11];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=9999;i++) {
+
+        <span style="color: #8ae234; font-weight: bold;">unsigned</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">table</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (str[j] == <span style="color: #ad7fa8; font-style: italic;">'o'</span>) {
+                table |= (1 &lt;&lt; j);
+            }
+        }
+        <span style="color: #888a85;">// </span><span style="color: #888a85;">0001&#52376;&#47100; &#50526;&#50640; 0&#51060; &#51080;&#51004;&#47732;, table&#50640;&#49436; &#47560;&#53356;</span>
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table &amp; (1&lt;&lt;0)) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i &lt; 1000) table &amp;= ~(1 &lt;&lt; 0);
+        }
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = i; 
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">bok</span> = <span style="color: #8ae234;">true</span>;
+        <span style="color: #729fcf; font-weight: bold;">while</span>(num) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span> = num%10;
+            <span style="color: #729fcf; font-weight: bold;">if</span> (str[k] == <span style="color: #ad7fa8; font-style: italic;">'x'</span>) {
+                bok = <span style="color: #8ae234;">false</span>;
+                <span style="color: #729fcf; font-weight: bold;">break</span>;
+            } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (str[k] == <span style="color: #ad7fa8; font-style: italic;">'o'</span>) {
+                table &amp;= ~(1 &lt;&lt; k);
+            }
+            num = num / 10;
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table == 0 &amp;&amp; bok) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (str[0] == <span style="color: #ad7fa8; font-style: italic;">'x'</span>) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (i &gt;= 1000) {
+                    cnt += 1;
+                }
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                cnt += 1;
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt); 
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org092f2fb" class="outline-2">
+<h2 id="org092f2fb">문제 링크</h2>
+<div class="outline-text-2" id="text-org092f2fb">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc201/tasks/abc201_c">https://atcoder.jp/contests/abc201/tasks/abc201_c</a></li>
+</ul>
+</div>
+</div>

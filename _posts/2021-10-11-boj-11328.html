@@ -1,0 +1,62 @@
+---
+title: BOJ 11328 Strfry
+tags: STL
+---
+
+<div id="outline-container-orgd936c20" class="outline-2">
+<h2 id="orgd936c20">BOJ 11328 Strfry</h2>
+</div>
+
+<div id="outline-container-org41f1544" class="outline-2">
+<h2 id="org41f1544">접근하기</h2>
+<div class="outline-text-2" id="text-org41f1544">
+<ul class="org-ul">
+<li>STL string을 sort로 정렬할 수 있음.</li>
+<li>두 string을 sort한 후, 비교</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf8d173" class="outline-2">
+<h2 id="orgcf8d173">코드</h2>
+<div class="outline-text-2" id="text-orgcf8d173">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #888a85;">//</span><span style="color: #888a85;">#include &lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    cin &gt;&gt; N;
+    <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">s1</span>, <span style="color: #ff6347;">s2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; s1 &gt;&gt; s2; 
+
+        sort(s1.begin(), s1.end());
+        sort(s2.begin(), s2.end());
+        <span style="color: #729fcf; font-weight: bold;">if</span> (s1 == s2)
+            cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"Possible"</span> &lt;&lt; endl;
+        <span style="color: #729fcf; font-weight: bold;">else</span>
+            cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"Impossible"</span> &lt;&lt; endl;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org452c7b0" class="outline-2">
+<h2 id="org452c7b0">문제 링크</h2>
+<div class="outline-text-2" id="text-org452c7b0">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11328">https://www.acmicpc.net/problem/11328</a></li>
+</ul>
+</div>
+</div>

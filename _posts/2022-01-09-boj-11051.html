@@ -1,0 +1,76 @@
+---
+title: BOJ 11051 이항계수 2
+tags: DP
+---
+
+<div id="outline-container-org8e4a1b4" class="outline-2">
+<h2 id="org8e4a1b4">BOJ 11051 이항계수 2</h2>
+<div class="outline-text-2" id="text-org8e4a1b4">
+<ul class="org-ul">
+<li>N이 1000으로 크고, Mod연산 추가</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org84ea0c1" class="outline-2">
+<h2 id="org84ea0c1">접근하기</h2>
+<div class="outline-text-2" id="text-org84ea0c1">
+<pre class="example">
+이항계수의 성질 중 점화식 이용
+
+4C3은? 
+1고른 상태에서 남은 3개중 2개 고르기 = 3C2
+1 2 3 4     
+
+1안고른상태에서 남은 3개중  3개 고르기 = 3C3
+1 2 3 4
+
+dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcd04abf" class="outline-2">
+<h2 id="orgcd04abf">코드</h2>
+<div class="outline-text-2" id="text-orgcd04abf">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">K</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1001][1001];
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">MOD</span> 10007
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;K);
+    dp[0][0] = 1;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N;i++) {
+        dp[i][0] = 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=min(i, K);j++) {
+            dp[i][j] = dp[i-1][j-1]%MOD +  dp[i-1][j]%MOD;
+            dp[i][j] %= MOD;
+        }
+    }
+
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[N][K]);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org143e15d" class="outline-2">
+<h2 id="org143e15d">문제 링크</h2>
+<div class="outline-text-2" id="text-org143e15d">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11051">https://www.acmicpc.net/problem/11051</a></li>
+</ul>
+</div>
+</div>

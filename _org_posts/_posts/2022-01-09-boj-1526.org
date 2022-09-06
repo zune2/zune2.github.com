@@ -1,0 +1,73 @@
+#+HTML: ---
+#+HTML: title: BOJ 1526 가장 큰 금민수
+#+HTML: tags: 구현
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1526 금민수
+
+** 접근하기
+- 100에서 역순으로 줄이면서, 7이나 4로 남는 경우만 체크
+- dfs로 N보다 가장 작은 수로 이동해보기
+
+** 코드 - 100에서 역순으로
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int N;
+int main(int argc,char* argv[])
+{
+    scanf("%d", &N);
+    
+    for(int i=N;i>=4;--i) {
+        
+        int num = i;
+        int bok = 1;
+        while(num) {
+            int tmp = num % 10;
+            if (tmp != 4 && tmp != 7) {
+                bok = 0;
+                break;
+            }
+            num = num / 10;
+        }
+        if (bok) {
+            printf("%d\n", i);
+            break;
+        }
+    }
+    return 0;
+}
+#+END_SRC
+** 코드 - dfs이용
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int N;
+int ans = 0;
+
+void dfs(int num)
+{
+    if (num > N) return;
+    if (N >= num) {
+        if (ans < num) {
+            ans = num;
+        }    
+    }
+    dfs(num * 10 + 4);
+    dfs(num * 10 + 7);
+}
+
+int main(int argc,char* argv[])
+{
+    ans = 0;
+    scanf("%d", &N);
+
+    dfs(0);
+    printf("%d\n", ans); 
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1526

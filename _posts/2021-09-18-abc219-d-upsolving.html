@@ -1,0 +1,164 @@
+---
+title: D - Strange Lunchbox
+tags: AtCoder DP
+---
+
+<div id="outline-container-orga9b7247" class="outline-2">
+<h2 id="orga9b7247">D - Strange Lunchbox</h2>
+<div class="outline-text-2" id="text-orga9b7247">
+<ul class="org-ul">
+<li>도시락을 골라야 하는데, 두가지 메뉴가 있음</li>
+<li>X, Y로 원하는 개수를 주고, 그 이상을 먹을 수 있는 도시락의 수 구하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org641d29f" class="outline-2">
+<h2 id="org641d29f">접근하기</h2>
+<div class="outline-text-2" id="text-org641d29f">
+<ul class="org-ul">
+<li>메뉴가 하나 있는, 도시락을 고르는 DP문제로 생각하고 확장</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3769a84" class="outline-2">
+<h2 id="org3769a84">코드 - 3차원 dp로 풀기</h2>
+<div class="outline-text-2" id="text-org3769a84">
+<pre class="example">
+dp[i][j][k] : i번째 도시락을 먹었을 때, 메뉴1은 j만큼, 메뉴2는 k만큼
+
+dp[0][0][0] = 0
+</pre>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 987654321
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">X</span>, <span style="color: #ff6347;">Y</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[301];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[301];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[301][301][301];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;X, &amp;Y);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;a[i], &amp;b[i]);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=0;k&lt;=300;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=300;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;=300;j++) {
+                dp[k][i][j] = INF;
+            } 
+        } 
+    }
+
+    dp[0][0][0] = 0; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=300;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;=300;j++) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span> = min(i + a[k], X);
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span> = min(j + b[k], Y);
+                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1); <span style="color: #888a85;">// </span><span style="color: #888a85;">&#46020;&#49884;&#46973; &#44256;&#47492;</span>
+                dp[k][i][j] = min(dp[k][i][j], dp[k-1][i][j]);
+            } 
+        } 
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">minv</span> = INF;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = X; i&lt;=300; i++){
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span> = Y; j&lt;=300; j++){
+            minv = min(minv,dp[N][i][j]);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span>(minv &gt;= INF) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"-1\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, minv);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org87a1188" class="outline-2">
+<h2 id="org87a1188">코드 - 2차원 dp로 풀기</h2>
+<div class="outline-text-2" id="text-org87a1188">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 987654321
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">X</span>, <span style="color: #ff6347;">Y</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[301];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[301];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[301][301];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;X, &amp;Y);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;a[i], &amp;b[i]);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=300;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;=300;j++) {
+            dp[i][j] = INF;
+        } 
+    } 
+
+    dp[0][0] = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>=1;k&lt;=N;k++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=X;i&gt;=0;i--) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=Y;j&gt;=0;j--) {
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span> = min(i + a[k], X);
+                <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span> = min(j + b[k], Y);
+                dp[x][y] = min(dp[x][y], dp[i][j] + 1);
+            } 
+        } 
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">minv</span> = INF;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span> = X; i&lt;=300; i++){
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span> = Y; j&lt;=300; j++){
+            minv = min(minv,dp[i][j]);
+        }
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span>(minv &gt;= INF) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"-1\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, minv);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c2fcdb" class="outline-2">
+<h2 id="org2c2fcdb">문제 링크</h2>
+<div class="outline-text-2" id="text-org2c2fcdb">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc219/tasks/abc219_d">https://atcoder.jp/contests/abc219/tasks/abc219_d</a></li>
+<li><a href="https://qiita.com/u2dayo/items/36cc4ab4116532d0056c#d%E5%95%8F%E9%A1%8Cstrange-lunchbox">u2dayo 분석</a></li>
+</ul>
+</div>
+</div>

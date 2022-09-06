@@ -1,0 +1,85 @@
+---
+title: BOJ 1654 랜선 자르기
+tags: 이분탐색
+---
+
+<div id="outline-container-orgbc1dcee" class="outline-2">
+<h2 id="orgbc1dcee">BOJ 1654 랜선 자르기</h2>
+</div>
+
+<div id="outline-container-orgc3f807f" class="outline-2">
+<h2 id="orgc3f807f">접근하기</h2>
+<div class="outline-text-2" id="text-orgc3f807f">
+<pre class="example">
+이분탐색
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgca9285a" class="outline-2">
+<h2 id="orgca9285a">코드</h2>
+<div class="outline-text-2" id="text-orgca9285a">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #8ae234; font-weight: bold;">ll</span> = <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span>;
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">K</span>;
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[10010];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">check</span>(<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">mid</span>)  <span style="color: #888a85;">// </span><span style="color: #888a85;">int mid&#54616;&#47732; &#53952;&#47548;</span>
+{
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++) {
+        cnt += a[i]/mid;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> (cnt &gt;= N);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%lld %lld"</span>, &amp;K, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">s</span> = 1; 
+    <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">e</span> = ll(1e10) + 7;
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">ans</span> = s;      <span style="color: #888a85;">// </span><span style="color: #888a85;">ans = 0 &#51060;&#47732; &#53952;&#47548;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(s+1 &lt; e) {
+        <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">mid</span> = (s+e)/2;
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (check(mid)) {
+            ans = mid;
+            s = mid;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            e = mid;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga33890d" class="outline-2">
+<h2 id="orga33890d">문제 링크</h2>
+<div class="outline-text-2" id="text-orga33890d">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1654">https://www.acmicpc.net/problem/1654</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0ca92ca" class="outline-2">
+<h2 id="org0ca92ca">해설/코드참고</h2>
+<div class="outline-text-2" id="text-org0ca92ca">
+<ul class="org-ul">
+<li><a href="https://blog.naver.com/jinhan814/222607789392">https://blog.naver.com/jinhan814/222607789392</a></li>
+</ul>
+</div>
+</div>

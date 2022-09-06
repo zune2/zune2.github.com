@@ -1,0 +1,27 @@
+#+HTML: ---
+#+HTML: title: 대본이 제공되는 Podcast
+#+HTML: tags: StudyEnglish
+#+HTML: ---
+
+* 대본이 있는 포드캐스트
+
+** CNN New - Transcript - Erin Burnett
+ + podcast와 1일의 차이가 날 수 있음을 고려할 것
+ + http://transcripts.cnn.com/TRANSCRIPTS/2010/06/ebo.01.html
+** Play FM에서 제공하는 링크 참고, 매번 변경되는 듯
+ + https://player.fm/podcasts/Transcript
+** ThisAmericanLife
+ + https://www.thisamericanlife.org/587/transcript
+** StoryCops Org
+ + https://storycorps.org
+** NPR Weekend edition
+ + https://www.npr.org/transcripts/795660984
+
+** 99percentinvisible
+ + https://99percentinvisible.org/episode/ten-thousand-years/transcript/
+** Science-VS
+ + https://gimletmedia.com/shows/science-vs/o2hx57/sleep-all-aboard-the-snooze-cruise
+ + https://gimletmedia.com/shows/science-vs/6nh2zlk/sharks-sink-your-teeth-in-again
+
+* References
+ + https://soenglish.me/learn-english-podcasts/

@@ -1,0 +1,87 @@
+#+HTML: ---
+#+HTML: title: BOJ 13701 중복제거
+#+HTML: tags: STL bitset 비트연산 메모리최적화
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 13701 중복제거
+- 메모리제한 8M
+
+** 접근하기
+- 배열로 선언하고, 각 bit를 숫자로 매핑하는 방법 써야 함
+- 정수 A1, A2, ... An을 각 bit에 mapping하기
+
+** 배열의 byte 크기 계산
+
+| 단위   | byte 수    |
+|--------+------------|
+| 1 byte | 8 bits     |
+| 1 Kb   | 2^10 bytes |
+| 1 Mb   | 2^20 bytes |
+| 1 Gb   | 2^30 bytes |
+| 1 Tb   | 2^40 bytes |
+
+#+BEGIN_EXAMPLE
+unsigned int a[(1<<25)/32]; 크기 재기
+(gdb) p sizeof(a)
+$1 = 4194304
+(gdb) p sizeof(a) / 1048576 (1Mb를 bite로 표시)
+$3 = 4             # a배열크기 4MB
+
+(gdb) p sizeof(a) / (1<<20)
+$4 = 4
+#+END_EXAMPLE
+
+- 그냥 int 배열을 쓰면, 4*32만큼의 크기가 필요하므로 메모리 제한에 걸림
+#+BEGIN_EXAMPLE
+>>> # int배열 1<<25크기
+... 4*(1<<25) / 2**20
+128.0
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+>>> (4*(1<<25)/32)/2**20
+4.0
+#+END_EXAMPLE
+** 코드 - 배열 이용 풀이
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+unsigned int a[(1<<25)/32];
+
+int main(int argc, char*argv[])
+{
+    int num;
+    while(scanf("%d", &num) != EOF) {
+        if ((a[(num/32)] & (1<< num%32)) == 0) {
+            a[(num/32)] = a[(num/32)] | (1<< num%32);
+            printf("%d ", num);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+
+** 코드 - STL bitset 이용 풀이
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <bitset>
+using namespace std;
+
+int main(int argc, char*argv[])
+{
+    int num;
+    bitset<(1<<25)> s;
+    while(scanf("%d", &num) != EOF) {
+        if (s.test(num-1) == false) {
+            s.set(num-1, 1);
+            printf("%d ", num);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/13701

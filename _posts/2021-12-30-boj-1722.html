@@ -1,0 +1,167 @@
+---
+title: BOJ 1722 순열의 순서
+tags: 조합
+---
+
+<div id="outline-container-org393ff0c" class="outline-2">
+<h2 id="org393ff0c">BOJ 1722 순열의 순서</h2>
+<div class="outline-text-2" id="text-org393ff0c">
+<ul class="org-ul">
+<li>K번째 정렬된 순열을 출력하기</li>
+<li>순열이 주어지면, 몇번째인지 출력하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc25b26b" class="outline-2">
+<h2 id="orgc25b26b">접근하기</h2>
+<div class="outline-text-2" id="text-orgc25b26b">
+<ul class="org-ul">
+<li>정렬된 순열의 성질을 파악하고, fact만큼 이동하는 규칙을 찾기</li>
+</ul>
+</div>
+
+<div id="outline-container-orga21a5e2" class="outline-3">
+<h3 id="orga21a5e2">K번째 수열 찾기</h3>
+<div class="outline-text-3" id="text-orga21a5e2">
+<pre class="example">
+N = 4
+K = 3
+
+1 ... 6번 나옴 = 3x2 = 3!      1 ~  6
+2 ... 6번 나옴                 7 ~ 12
+3 ... 6번 나옴                13 ~ 18
+4 ... 6번 나옴                19 ~ 24
+
+K가 3!보다 작다는 것은 맨 앞 숫자가 1이라는 것을 의미
+K = 3
+ans = {1}
+
+K(3) &gt; 2!
+K가 2!보다 크다는 것은 앞서 선택한 1제외, 2제외
+K = K - 2! = 1
+
+1 2 3 4 -&gt; 제외
+1 2 4 3 -&gt; 제외
+1 3 2 4
+1 3 4 2
+1 4 2 3
+1 4 3 2
+
+K(1) == 1!
+ans = {1, 3} // 3추가
+
+K(1) == 1
+ans = {1, 3, 2}
+
+K(1) == 1
+ans = {1, 3, 2, 4}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org143abb3" class="outline-3">
+<h3 id="org143abb3">몇번째 수열인지 출력</h3>
+<div class="outline-text-3" id="text-org143abb3">
+<pre class="example">
+4
+2 1 3 2 4
+
+1 x x x = 0
+1 3 x x =&gt; 1 2 x x = 2!
+1 3 2 x =&gt; 1!
+           
+2! + 1! = 3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2abd9e5" class="outline-2">
+<h2 id="org2abd9e5">코드</h2>
+<div class="outline-text-2" id="text-org2abd9e5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cmd</span>;
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+
+<span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">fact</span>[21];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[21];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[21];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+
+    fact[0] = 1;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=20;i++) {
+        fact[i] = fact[i-1] * i;
+    }
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;cmd);
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (cmd == 1) {
+        <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">K</span>;
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%lld"</span>, &amp;K);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++)
+        {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (visit[j]) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+
+                <span style="color: #729fcf; font-weight: bold;">if</span> (K &gt; fact[N-1-i]) {
+                    K -= fact[N-1-i];       <span style="color: #888a85;">// </span><span style="color: #888a85;">3 --&gt; 1 --&gt; 0 --&gt; 0</span>
+                } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                    a[i] = j;
+                    visit[j] = 1;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, a[i]);
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    } <span style="color: #729fcf; font-weight: bold;">else</span> {  <span style="color: #888a85;">// </span><span style="color: #888a85;">cmd 2</span>
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+        }
+
+        <span style="color: #8ae234; font-weight: bold;">ll</span> <span style="color: #ff6347;">ans</span> = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;a[i];j++) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (visit[j]) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+                ans += fact[N-i-1];
+            }
+            visit[a[i]] = 1;
+        }
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, ans+1);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org64121a2" class="outline-2">
+<h2 id="org64121a2">문제 링크</h2>
+<div class="outline-text-2" id="text-org64121a2">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1722">https://www.acmicpc.net/problem/1722</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org631d0ac" class="outline-2">
+<h2 id="org631d0ac">참고자료</h2>
+<div class="outline-text-2" id="text-org631d0ac">
+<ul class="org-ul">
+<li><a href="https://kosaf04pyh.tistory.com/211">https://kosaf04pyh.tistory.com/211</a></li>
+</ul>
+</div>
+</div>

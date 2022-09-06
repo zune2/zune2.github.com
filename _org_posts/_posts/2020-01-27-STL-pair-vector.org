@@ -1,0 +1,37 @@
+#+HTML: ---
+#+HTML: title: STL pair와 vector 같이 쓰기
+#+HTML: tags: STL
+#+HTML: ---
+
+** STL Pair
+- first, second를 필드로 가짐
+- 컨테이너의 요소 하나에 두개의 데이터가 저장이 필요할 때 사용한다.
+
+** 헤더 추가하기
+
+#+BEGIN_SRC cpp
+#include <utility>
+using namespace std;
+#+END_SRC
+
+** pair를 요소로 가지는 vector 선언
+
+#+BEGIN_SRC cpp
+vector < pair<int, int> > vt;
+#+END_SRC
+
+** make pair로 만든 pair를 vector에 추가하기
+
+#+BEGIN_SRC cpp 
+vt.push_back(make_pair(1,3));
+vt.push_back(make_pair(3,1));
+vt.push_back(make_pair(2,2));
+#+END_SRC
+
+** sort는 동일하게 함
+
+#+BEGIN_SRC cpp
+sort(vt.begin(), vt.end());
+#+END_SRC
+
+

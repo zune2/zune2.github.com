@@ -1,0 +1,79 @@
+#+HTML: ---
+#+HTML: title: BOJ 21939 문제 추천 시스템 Version 1
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 21939 문제 추천 시스템 Version 1
+
+** 접근하기
+- set에 정렬된 순서로 데이터를 저장
+  - set의 맨 처음 element 출력
+  - set의 맨 마지막 element 출력
+- map에 id를 이용해서 난이도를 얻는 룩업테이블 구성
+- solve하면, set과 map 각각 지우기
+  
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <set>
+#include <map>
+#include <utility>
+using namespace std;
+
+int N, M;
+set< pair<int, int>, greater<pair<int, int>>> sp;
+map<int, int> mp;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+
+    int id, difficulty;
+    for(int i=0;i<N;i++) {
+        scanf("%d %d", &id, &difficulty);
+        mp[id] = difficulty;
+        sp.insert(make_pair(difficulty, id));
+    }
+    
+    scanf("%d", &M);
+    char cmd[20];
+    int order;
+
+    for(int i=0;i<M;i++) {
+        scanf("%s", cmd);
+
+        switch(cmd[0]) {
+        case 'a':   // add
+            scanf("%d %d", &id, &difficulty);
+            mp[id] = difficulty;
+            sp.insert(make_pair(difficulty, id));
+            break;
+        case 'r':   // recommend
+            scanf("%d", &order);
+            if (order == 1) {
+                auto it = sp.begin();
+                printf("%d\n", it->second);
+            } else if (order == -1) {
+                auto it = sp.end();
+                it--;
+                printf("%d\n", it->second);
+            }
+            break;
+        case 's':   // solved
+            scanf("%d", &id);
+             auto it = sp.find(make_pair((int)mp[id], id));
+            if (it != sp.end()){
+                sp.erase(it);
+                mp.erase(id);
+            }
+            break;
+        }
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/21939

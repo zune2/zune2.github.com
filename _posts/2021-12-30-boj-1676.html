@@ -1,0 +1,82 @@
+---
+title: BOJ 1676 팩토리얼 0의 개수
+tags: 수학
+---
+
+<div id="outline-container-org2276c95" class="outline-2">
+<h2 id="org2276c95">BOJ 1676 팩토리얼 0의 개수</h2>
+<div class="outline-text-2" id="text-org2276c95">
+<ul class="org-ul">
+<li>N!에서 처음 0이 아닌 숫자가 나올때까지 0의 개수 구하기</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org64b29b4" class="outline-2">
+<h2 id="org64b29b4">접근하기</h2>
+<div class="outline-text-2" id="text-org64b29b4">
+<ul class="org-ul">
+<li>소인수로 2,5 가 만나는 만큼 0이 생긴다. (이 성질을 알아야 풀 수 있는 문제)</li>
+</ul>
+<pre class="example">
+1 2 3 4 5 6 7 8 9 10
+--------------------
+  2   2 5     2   2
+      2       2   5 
+              2
+5 2개
+2 7개
+
+이중 작은 개수가 답 2 
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf5477e5" class="outline-2">
+<h2 id="orgf5477e5">코드</h2>
+<div class="outline-text-2" id="text-orgf5477e5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n2</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">n5</span> = 0;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=2;i&lt;=N;i*=2) { <span style="color: #888a85;">// </span><span style="color: #888a85;">2 4 8 16 32</span>
+        n2 += N/i;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=5;i&lt;=N;i*=5) { <span style="color: #888a85;">// </span><span style="color: #888a85;">5 25 125 ..</span>
+        n5 += N/i;
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (n5 &gt; n2) 
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, n2);
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, n5);    
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5102235" class="outline-2">
+<h2 id="org5102235">문제 링크</h2>
+<div class="outline-text-2" id="text-org5102235">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1676">https://www.acmicpc.net/problem/1676</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgff592ee" class="outline-2">
+<h2 id="orgff592ee">풀이 참고</h2>
+<div class="outline-text-2" id="text-orgff592ee">
+<ul class="org-ul">
+<li><a href="https://sihyungyou.github.io/baekjoon-1676/">https://sihyungyou.github.io/baekjoon-1676/</a></li>
+</ul>
+</div>
+</div>

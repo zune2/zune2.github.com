@@ -1,0 +1,13 @@
+#+HTML: ---
+#+HTML: title: A. Way Too Long Word
+#+HTML: tags: CodeForces
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** A. A. Way Too Long Words
+- 긴 문자열만 골라서 축약형 문자열을 만드는 문제
+- Let's consider a word too long, if its length is strictly more than 10 characters. 
+ - 10이 넘는 경우만 줄인다. (10을 포함하지 않음)
+
+** 문제 링크
+- https://codeforces.com/problemset/problem/71/A

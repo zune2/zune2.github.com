@@ -1,0 +1,86 @@
+#+HTML: ---
+#+HTML: title: BOJ 6118 숨바꼭질
+#+HTML: tags: 최단거리
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 6118 숨바꼭질
+
+** 접근하기
+- edge에 가중치가 없는 graph에서의 최단거리 -> BFS
+- 가장 먼 거리에 있는 번호
+- 가장 먼 거리의 길이 값
+- 가장 먼 거리를 공통으로 가진 노드의 수
+
+- 다익스트라로 푼 코드가 많음
+
+** 코드 - BFS
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N, M;
+
+vector <int> G[20020];
+int vis[20020];
+
+void bfs(int start)
+{
+    queue<int> q;
+    q.push(start); 
+    vis[start] = 1;
+    
+    while(!q.empty()) {
+        int cur = q.front(); q.pop();
+
+        for(auto next:G[cur]) {
+            if (vis[next] == 0) {
+                vis[next] = vis[cur] + 1;            
+                q.push(next);
+            }
+        }        
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#endif
+    cin >> N >> M;
+    int p1, p2;
+    for(int i=0;i<M;i++) {
+        cin >> p1 >> p2;
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+    bfs(1);
+    int maxv = 0;
+    int maxv_idx = 0;
+    for(int i=1;i<=N;i++) {
+        if (maxv < vis[i]) {
+            maxv = vis[i];
+            maxv_idx = i;
+        }
+    }
+    int ans = 0;
+    for(int i=1;i<=N;i++) {
+        if (vis[i] == maxv)
+            ans++; 
+    }
+
+    cout << maxv_idx << " ";
+    cout << maxv - 1 << " ";
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** TODO 코드 - 다익스트라
+
+** 문제 링크
+- https://www.acmicpc.net/problem/6118

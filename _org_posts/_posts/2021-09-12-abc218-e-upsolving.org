@@ -1,0 +1,109 @@
+#+HTML: ---
+#+HTML: title: E - Destruction
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** E - Destruction
+- undirected graph가 주어졌을 때, edge를 지우면서, 그 가중치를 얻을 수 있음
+- 큰 가중치를 지워야 하고, 작은 가중치는 연결해야 함.
+- 음수의 가중치는 무조건 연결해야 함 (이게 안보였던 조건)
+
+** 접근하기
+- 모든 가중치를 처음에 더해서 sum에 저장
+- Minimum Spanning Tree를 약간 변경해서 풀이
+  - Union Find와 크루스컬 알고리즘을 이용함
+- 음수 가중치는 무조건 연결하고, 양수 가중치는 작은 순서로 추가
+  - sort하고, 진행함
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N, M;
+#define ARR_SIZE 200020
+int parent[ARR_SIZE];
+
+typedef struct Node {
+    int s;
+    int e;
+    int cost;
+} Node;
+
+Node a[ARR_SIZE];
+
+bool comp(Node& p1, Node& p2)
+{
+    return (p1.cost - p2.cost) < 0; 
+}
+
+int find(int num)
+{
+    if (num == parent[num])
+        return num; 
+    else
+        return parent[num] = find(parent[num]);
+}
+
+void unite(int n1, int n2)
+{
+    int num1 = find(n1);
+    int num2 = find(n2);
+
+    if (num1 != num2) {
+        if (num1 > num2) {
+            parent[num1] = n2;
+        } else {
+            parent[num2] = n1;
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+
+    for(int i=0;i<=N;i++) {
+        parent[i] = i;
+    }
+
+    int s, e, cost;
+    long long sum = 0;
+    for(int i=0;i<M;i++) {
+        scanf("%d %d %d", &s, &e, &cost);
+        a[i].s = s;
+        a[i].e = e;
+        a[i].cost = cost;
+
+        sum += cost;
+    }
+    sort(a, a+M, comp); 
+    
+    for(int i=0;i<M;i++) {
+        int n1 = find(a[i].s);
+        int n2 = find(a[i].e);
+        int v = a[i].cost;
+
+        if (v <= 0) {// cost가 음수이면 무조건 추가
+            unite(n1, n2);
+            sum = sum - v;
+        } else {// cost가 양수이면 Minimum Spanning Tree로 추가
+            if (n1 != n2) {
+                unite(n1, n2);
+                sum = sum - v;
+            }
+        }
+    }
+    printf("%lld\n", sum);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc218/tasks/abc218_e
+
+** 참고자료
+- [[https://m.blog.naver.com/kks227/220799105543][라이 Minimum Spanning Tree]]
+

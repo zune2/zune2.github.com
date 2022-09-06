@@ -1,0 +1,64 @@
+---
+title: C - Distribution
+tags: AtCoder
+---
+
+<div id="outline-container-org39c018b" class="outline-2">
+<h2 id="org39c018b">C - Distribution</h2>
+<div class="outline-text-2" id="text-org39c018b">
+<ul class="org-ul">
+<li>원에 N개의 Snuke가 위치하고, t시간 간격에 이동조건이 주어질 때, gem을 첫번째로 받는 시간을 출력하는 문제</li>
+
+<li>원을 N*2만큼 회전해보면서, 생각하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4bddb4c" class="outline-2">
+<h2 id="org4bddb4c">코드</h2>
+<div class="outline-text-2" id="text-org4bddb4c">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s</span>[200010];
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">t</span>[200010];
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">a</span>[200010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;s[i]);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%lld"</span>, &amp;t[i]);
+    }
+
+    a[0] = t[0];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N*2;i++) {
+        a[i%N] = min(a[(i-1)%N] + s[(i-1)%N], t[i%N]);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, a[i]);
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org520af2c" class="outline-2">
+<h2 id="org520af2c">문제 링크</h2>
+<div class="outline-text-2" id="text-org520af2c">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc215/tasks/abc214_c">https://atcoder.jp/contests/abc215/tasks/abc214_c</a></li>
+</ul>
+</div>
+</div>

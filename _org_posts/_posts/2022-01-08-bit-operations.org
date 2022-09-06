@@ -1,0 +1,66 @@
+#+HTML: ---
+#+HTML: title: Bit operation 정리
+#+HTML: tags: bit연산
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+* Bit 연산 예제 정리
+
+** K번째 bit set여부 확인
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[])
+{
+	unsigned int val = 9;	// 1001
+	printf("%d\n", (val & (1<<0)) != 0);
+	printf("%d\n", (val & (1<<1)) != 0);
+	printf("%d\n", (val & (1<<2)) != 0);
+	printf("%d\n", (val & (1<<3)) != 0); // == 1이 아님. 주의
+	return 0;
+}
+#+END_SRC
+
+** 최하위 비트 찾기
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[])
+{
+	unsigned int val = 9;	// 1001
+	printf("%d\n", val&-val);
+	return 0;
+}
+#+END_SRC
+
+** 최하위 비트 지우기
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[])
+{
+	unsigned int val = 9;	// 1001
+	val = val & (val-1);
+	//   1010
+	// & 1001
+	//   1000
+	printf("%d\n", val);
+	return 0;
+}
+#+END_SRC
+
+** 모든 부분집합 순회
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[])
+{
+	int val = 15;
+	for(int a=val;a;a=a&(a-1))
+	{
+		printf("%d\n", a);
+	}
+	return 0;
+}
+#+END_SRC
+

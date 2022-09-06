@@ -1,0 +1,94 @@
+---
+title: BOJ 1080 행렬
+tags: 그리디
+---
+
+<div id="outline-container-org62810f6" class="outline-2">
+<h2 id="org62810f6">BOJ 1080 행렬</h2>
+<div class="outline-text-2" id="text-org62810f6">
+<ul class="org-ul">
+<li>NxM 행렬을 2개 주고, 3x3 부분행렬 뒤집어서 두번재 행렬과 같게 되는 뒤집기 회수 구하기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7cf5573" class="outline-2">
+<h2 id="org7cf5573">접근하기</h2>
+<div class="outline-text-2" id="text-org7cf5573">
+<ul class="org-ul">
+<li>같은 위치를 두번 뒤집으면 원래 모습 -&gt; 답이 될 수 없음</li>
+<li>3x3행렬을 처음부터 끝까지 적용해보기</li>
+</ul>
+<pre class="example">
+3 4
+(처음)
+0000
+0010
+0000
+
+(1,1에서 뒤집기)
+1110
+1100
+1110
+
+(2,2에서 뒤집기) -&gt; 목표와 같음
+1001
+1011
+1001
+
+(목표)
+1001
+1011
+1001
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org07a840f" class="outline-2">
+<h2 id="org07a840f">코드</h2>
+<div class="outline-text-2" id="text-org07a840f">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[100010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++)
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    sort(a, a+N);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=N-1, <span style="color: #ff6347;">cnt</span>=1;i&gt;=0;i--, cnt++) {
+        ans = max(ans, a[i]*cnt);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org76b6ebf" class="outline-2">
+<h2 id="org76b6ebf">문제 링크</h2>
+<div class="outline-text-2" id="text-org76b6ebf">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1080">https://www.acmicpc.net/problem/1080</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b293c8" class="outline-2">
+<h2 id="org0b293c8">풀이참고</h2>
+<div class="outline-text-2" id="text-org0b293c8">
+<ul class="org-ul">
+<li><a href="https://hongjw1938.tistory.com/178">https://hongjw1938.tistory.com/178</a></li>
+</ul>
+</div>
+</div>

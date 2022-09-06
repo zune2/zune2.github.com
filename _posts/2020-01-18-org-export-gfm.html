@@ -1,0 +1,44 @@
+---
+title: ox-gfm으로 org를 markdown변환하기
+tags: org-mode
+---
+
+<div id="outline-container-org713a584" class="outline-2">
+<h2 id="org713a584">org mode로 markdown page export 시도</h2>
+<div class="outline-text-2" id="text-org713a584">
+<pre class="example">
+M-x package install ox-gfm
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8941f32" class="outline-2">
+<h2 id="org8941f32">설치한 패키지 제거하기</h2>
+<div class="outline-text-2" id="text-org8941f32">
+<pre class="example">
+M-x package-list-packages
+ox-gfx d로 마크하고 x선택
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge1f65d3" class="outline-2">
+<h2 id="orge1f65d3">결과</h2>
+<div class="outline-text-2" id="text-orge1f65d3">
+<p>
+에러 발생함
+시간날 때 고쳐보자
+</p>
+<pre class="example">
+Symbol's function definition is void: org-export-custom-protocol-maybe
+</pre>
+
+<p>
+publish를 markdown으로 하도록 project config구성 필요함 (org-publish-project-alist)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7019fd" class="outline-2">
+<h2 id="orge7019fd">Reference</h2>
+</div>

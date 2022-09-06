@@ -1,0 +1,71 @@
+---
+title: BOJ 11660 구간 합 구하기 5
+tags: DP 누적합
+---
+
+<div id="outline-container-org9db9232" class="outline-2">
+<h2 id="org9db9232">BOJ 11660 구간 합 구하기 5</h2>
+</div>
+
+<div id="outline-container-org783c03b" class="outline-2">
+<h2 id="org783c03b">접근하기</h2>
+<div class="outline-text-2" id="text-org783c03b">
+<ul class="org-ul">
+<li>누적합 자체가 DP 점화식으로 표현된다.</li>
+</ul>
+
+<pre class="example">
+1 2 3 4     (1)   3    6  (10)
+2 3 4 5      3    8   15   24
+3 4 5 6     (6)  15   27   42
+4 5 6 7     10   24   42   64
+
+42 - 10 - 6 + 1 = 27 
+
+1은 가로/세로가 공유하므로 두번 더한 셈
+한번 빼줘야 함.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfcbf5fd" class="outline-2">
+<h2 id="orgfcbf5fd">코드</h2>
+<div class="outline-text-2" id="text-orgfcbf5fd">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[1026][1026];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">val</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=N;j++) {
+            scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;val);
+            dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1] + val; 
+        }        
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x1</span>, <span style="color: #ff6347;">y1</span>, <span style="color: #ff6347;">x2</span>, <span style="color: #ff6347;">y2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d %d"</span>, &amp;y1, &amp;x1, &amp;y2, &amp;x2);
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[y2][x2] - dp[y2][x1-1] - dp[y1-1][x2] + dp[y1-1][x1-1]);
+    }   
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge2d8fa0" class="outline-2">
+<h2 id="orge2d8fa0">문제 링크</h2>
+<div class="outline-text-2" id="text-orge2d8fa0">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11660">https://www.acmicpc.net/problem/11660</a></li>
+</ul>
+</div>
+</div>

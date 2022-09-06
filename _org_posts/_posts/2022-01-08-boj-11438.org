@@ -1,0 +1,113 @@
+#+HTML: ---
+#+HTML: title: BOJ 11438 LCA 2
+#+HTML: tag: dfs LCA
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11438 LCA 2 
+- 트리에 두 점이 주어질 때 가장 가까운 부모의 번호를 출력하기
+- N이 10만, O(N)으로 풀면 시간 초과가 난다.
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. 인접 리스트로 Graph 형태로 받음. N-1번 받는다.
+
+2. dfs로 1번(root)로부터의 거리만큼을 depth 배열에 저장하고, parent의 번호도 저장한다.
+   depth를 저장하고, dp[0][next]에 자신의 index를 저장한다.
+
+3. sparse table을 구성하는 dp 점화식을 적용한다.
+
+4. query에서 받은 두 점간의 depth를 비교한다.
+   - 긴 쪽을 위로 올린다. 2^k 단위로 올릴 수 있음
+
+5. 높이가 같아졌으면, dp 테이블을 이용해서 2^k단위로 올릴 수 있음
+   - 같으면, 
+#+END_EXAMPLE
+
+** sparse table 기법으로 풀이
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+vector<int> G[100010];
+
+#define LOG_SIZE 17
+
+int depth[100010];
+int dp[LOG_SIZE+1][100010];
+
+void dfs(int idx, int dep)
+{
+	depth[idx] = dep;
+	for(auto& next:G[idx]) {
+		if (depth[next] == 0) {
+			dp[0][next] = idx;
+			dfs(next, dep + 1);
+		}
+	}
+}
+
+int LCA(int p1, int p2)
+{
+	if (depth[p1] < depth[p2]) {
+		swap(p1, p2);
+	}
+	int diff = depth[p1] - depth[p2];
+
+	// 높이를 맞춤
+	for(int i=LOG_SIZE;i>=0;i--) {
+		if (diff & (1 << i)) {
+			p1 = dp[i][p1];
+		}
+	}
+
+	if (p1 != p2) {
+		for(int j=LOG_SIZE;j>=0;j--) {
+			if (dp[j][p1] != dp[j][p2]) {
+				p1 = dp[j][p1];
+				p2 = dp[j][p2];
+				//break;
+			}
+		}
+		p1 = dp[0][p1];
+		//p2 = dp[0][p2];
+	}
+	return p1;
+}
+
+int main(int argc, char* argv[])
+{
+	scanf("%d", &N);
+	for(int i=0;i<N-1;i++) {
+		int p1, p2;
+		scanf("%d %d", &p1, &p2);
+		G[p1].push_back(p2);
+		G[p2].push_back(p1);
+	}
+	
+	dfs(1, 1);
+
+	for(int i=1;i<=LOG_SIZE;i++) {
+		for(int j=1;j<=N;j++) {
+			int tmp = dp[i-1][j];
+			dp[i][j] = dp[i-1][tmp];
+		}
+	}
+
+	int M;
+	scanf("%d", &M);
+	for(int i=0;i<M;i++) {
+		int p1, p2;
+		scanf("%d %d", &p1, &p2);
+
+		int ret = LCA(p1, p2);
+		printf("%d\n", ret);
+	}
+	return 0;
+}
+#+END_SRC
+** TODO O(1) LCA 적용해보기
+[[http://www.secmem.org/blog/2019/03/27/fast-LCA-with-sparsetable/][- 바로가기]]
+** 문제 링크
+- https://www.acmicpc.net/problem/11438

@@ -1,0 +1,114 @@
+---
+title: BOJ 1213 팰린드롬 만들기
+tags: 수학 구현
+---
+
+<div id="outline-container-org49b1957" class="outline-2">
+<h2 id="org49b1957">BOJ 1213 팰린드롬 만들기</h2>
+</div>
+<div id="outline-container-org114484a" class="outline-2">
+<h2 id="org114484a">접근하기</h2>
+<div class="outline-text-2" id="text-org114484a">
+<pre class="example">
+
+1) 팰린드롬 가능여부 확인
+문자열의 길이가 짝수일때, 모든 문자가 짝수이어야 팰린드롬 가능
+문자열의 길이가 홀수일 때, 홀수에서 한글자를 뺀 나머지 문자가 짝수여야 팰린드롬 가능
+ -&gt; 뺀 문자가 가운데록 가야함
+
+2) 사전순으로 배열
+- 우선순위 queue에 넣어서 맨앞과 맨뒤에 번갈아가며 추가하도록 함
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org29aca99" class="outline-2">
+<h2 id="org29aca99">코드</h2>
+<div class="outline-text-2" id="text-org29aca99">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">ll</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[60];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">a</span>[60];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">table</span>[26];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+<span style="color: #888a85;">//    </span><span style="color: #888a85;">freopen("input.txt", "r", stdin);</span>
+<span style="color: #729fcf;">#endif</span>
+    <span style="color: #ff6347;">cin</span> &gt;&gt; str; 
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(len=0;str[len];len++) {
+        table[(<span style="color: #8ae234; font-weight: bold;">int</span>)str[len] - <span style="color: #ad7fa8; font-style: italic;">'A'</span>] += 1;
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">oddcnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;26;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i] == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i]%2 == 1) oddcnt += 1; 
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (oddcnt &gt; 1) {
+        cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"I'm Sorry Hansoo"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+        <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">char</span>, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt;<span style="color: #8ae234; font-weight: bold;">char</span>&gt; &gt; <span style="color: #ff6347;">pq</span>;
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">mid</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;26;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i] == 0) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+        <span style="color: #729fcf; font-weight: bold;">if</span> (table[i]%2 == 1) {
+            mid = i + <span style="color: #ad7fa8; font-style: italic;">'A'</span>;
+            table[i]--;
+            <span style="color: #729fcf; font-weight: bold;">if</span> (table[i]) {
+                <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;table[i];j++) {
+                    pq.push(i + <span style="color: #ad7fa8; font-style: italic;">'A'</span>);
+                }
+            }
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;table[i];j++) {
+                pq.push(i + <span style="color: #ad7fa8; font-style: italic;">'A'</span>);
+            }
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">lidx</span> = 0;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ridx</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!pq.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">cur</span> = pq.top(); pq.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span>((++cnt)%2 != 0) {
+            a[lidx] = cur;
+            lidx++;
+        } <span style="color: #729fcf; font-weight: bold;">else</span> {
+            ridx++;
+            a[len - ridx] = cur;
+        }
+    } 
+    <span style="color: #729fcf; font-weight: bold;">if</span> (len%2 == 1) {
+        a[len/2] = mid;
+    }
+    a[len] = <span style="color: #ad7fa8; font-style: italic;">'\0'</span>;
+    cout &lt;&lt; a &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8e0aa7" class="outline-2">
+<h2 id="orgd8e0aa7">문제 링크</h2>
+<div class="outline-text-2" id="text-orgd8e0aa7">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1213">https://www.acmicpc.net/problem/1213</a></li>
+</ul>
+</div>
+</div>

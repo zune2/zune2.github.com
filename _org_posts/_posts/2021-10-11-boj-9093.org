@@ -1,0 +1,44 @@
+#+HTML: ---
+#+HTML: title: BOJ 9093 단어 뒤집기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 9093 단어 뒤집기
+
+** 접근하기
+- getline으로 한줄 입력받기
+- istringstream 이용 token으로 분리하기
+- std::reverse를 이용해서 string 뒤집기
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <sstream>
+#include <cstdio>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    cin >> N;
+    char split_char = ' ';
+    for(int i=0;i<N;i++) {
+        string line;
+        getline(cin >> ws, line);
+        istringstream split(line);
+        for(string each; getline(split, each, split_char);) {
+            reverse(each.begin(), each.end());
+            cout << each << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/9093

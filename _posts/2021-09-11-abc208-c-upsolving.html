@@ -1,0 +1,82 @@
+---
+title: C - Fair Candy Distribution
+tags: AtCoder
+---
+
+<div id="outline-container-orgbb818e9" class="outline-2">
+<h2 id="orgbb818e9">C - Fair Candy Distribution</h2>
+</div>
+
+<div id="outline-container-org21003d7" class="outline-2">
+<h2 id="org21003d7">접근하기</h2>
+<div class="outline-text-2" id="text-org21003d7">
+<ul class="org-ul">
+<li>나눈 몫은 모두에게 주고,</li>
+<li>나머지만큼 loop를 돌면서 count함</li>
+<li>sort를 두가지 방식으로 필요함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b7c6ab" class="outline-2">
+<h2 id="org0b7c6ab">코드</h2>
+<div class="outline-text-2" id="text-org0b7c6ab">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">K</span>;
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">ans</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">a</span>[200010];
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">comp1</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (p1.num - p2.num) &lt; 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">comp2</span>(<span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">Node</span>&amp; <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (p1.idx - p2.idx) &lt; 0;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %lld"</span>, &amp;N, &amp;K);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i].num);
+        a[i].idx = i;
+    }
+    sort(a, a+N, comp1);
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">all</span> = K/N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;K%N;i++) {
+        a[i].ans += 1;
+    }
+
+    sort(a, a+N, comp2);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%lld\n"</span>, a[i].ans + all);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8967c17" class="outline-2">
+<h2 id="org8967c17">문제 링크</h2>
+<div class="outline-text-2" id="text-org8967c17">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc208/tasks/abc208_c">https://atcoder.jp/contests/abc208/tasks/abc208_c</a></li>
+</ul>
+</div>
+</div>

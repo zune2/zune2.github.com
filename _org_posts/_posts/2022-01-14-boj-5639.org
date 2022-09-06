@@ -1,0 +1,73 @@
+#+HTML: ---
+#+HTML: title: BOJ 5639 이진 검색 트리
+#+HTML: tags: Tree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 5639 이진 검색 트리
+- 이진 검색 트리의 규칙에 맞게 전위순회가 주어질 때, 후위 순회하기
+
+** 접근하기
+- 전위 순회로 tree구성
+- 후위순회 찍기
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+typedef struct Node
+{
+    int num;
+    Node* left;
+    Node* right;
+} Node;
+
+Node pool[10010];
+int idx;
+
+Node* New() {
+    return &pool[idx++];
+}
+
+void print(Node* ptr)
+{
+    if (ptr) {
+        print(ptr->left);
+        print(ptr->right);
+        printf("%d\n", ptr->num);
+    }
+}
+
+Node* walk(Node* ptr, int num)
+{
+    if (ptr == NULL) {
+        ptr = New();
+        ptr->num = num;
+        ptr->left = NULL;
+        ptr->right = NULL;
+    }
+    else if (num < ptr->num) {
+        ptr->left = walk(ptr->left, num);    
+    } else {
+        ptr->right = walk(ptr->right, num);    
+    }
+
+    return ptr;
+}
+
+int main(int argc, char* argv[])
+{
+    idx = 0;
+
+    int val;
+    Node* root = NULL;
+    while(scanf("%d", &val) != EOF) {
+        root = walk(root, val);     
+    }
+    print(root);
+    return 0;
+}
+
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/5639

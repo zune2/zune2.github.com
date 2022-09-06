@@ -1,0 +1,44 @@
+#+HTML: ---
+#+HTML: title: abc239 C - Night Fork
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Knight Fork 
+
+** 접근하기
+- x1, y1을 기준으로 -2 ~ +2 범위만큼을 완전탐색
+- x2, y2에서는 그 안에 들어오게된다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+ll calc(int x1, int y1, int x2, int y2)
+{
+    return abs(x1 - x2) * abs(x1 - x2) + abs(y1 - y2) * abs(y1 - y2);
+}
+
+int main(int argc, char* argv[])
+{
+    ll x1, y1;
+    ll x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    string ans = "No";
+    for(int y=y1-2;y<=y1+2;y++) {
+        for(int x=x1-2;x<=x1+2;x++) {
+            if ( calc(x1, y1, x, y) == calc(x2, y2, x, y) && calc(x1, y1, x, y) == 5) {
+                ans = "Yes";
+            }
+        } 
+    } 
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc239/tasks/abc239_c

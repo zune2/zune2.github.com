@@ -1,0 +1,109 @@
+---
+title: 3234. 준환이의 양팔저울
+tags: SWEA DP 완전탐색
+---
+
+<div id="outline-container-orgb838780" class="outline-2">
+<h2 id="orgb838780">3234. 준환이의 양팔저울</h2>
+<div class="outline-text-2" id="text-orgb838780">
+<ul class="org-ul">
+<li>양팔저울에 N개의 추를 올림</li>
+<li>올리는 순서의 경우의 수를 구하는 문제</li>
+<li>N&lt;=9 로 작다. 완전탐색이 가능한 문제</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b116df" class="outline-2">
+<h2 id="org3b116df">접근하기</h2>
+<div class="outline-text-2" id="text-org3b116df">
+<ul class="org-ul">
+<li>top-down DP로도 풀수 있다.</li>
+<li>9개의 bit를 조합하기, left, right이용</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd81bf01" class="outline-2">
+<h2 id="orgd81bf01">코드</h2>
+<div class="outline-text-2" id="text-orgd81bf01">
+<ul class="org-ul">
+<li>두 변수에 bit를 더하고도 선택되지 않은 bit일때 상태공간 확장</li>
+<li>오른쪽에 추를 둘 때, 왼쪽보다 더 크지 않아야 한다. (작거나 같아야 함)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[10];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">memo</span>[1&lt;&lt;9][1&lt;&lt;9];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">bt</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">right</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">lsum</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">rsum</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (idx == N) <span style="color: #729fcf; font-weight: bold;">return</span> 1;
+
+    <span style="color: #729fcf; font-weight: bold;">if</span> (memo[left][right]) <span style="color: #729fcf; font-weight: bold;">return</span> memo[left][right];
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> ( ((left | right) &amp; (1&lt;&lt;i)) == 0) {
+            cnt += bt(idx+1, left | (1&lt;&lt;i), right, lsum + a[i], rsum);
+            <span style="color: #729fcf; font-weight: bold;">if</span> (lsum &gt;= rsum + a[i]) {
+                cnt += bt(idx+1, left, right | (1&lt;&lt;i), lsum, rsum + a[i]);
+            }
+        }
+    }
+    memo[left][right] = cnt;
+    <span style="color: #729fcf; font-weight: bold;">return</span> memo[left][right];
+}
+
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>)
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;a[i]);
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;(1&lt;&lt;9);i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;(1&lt;&lt;9);j++) {
+            memo[i][j] = 0;
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ret</span> = bt(0, 0, 0, 0, 0);
+    printf(<span style="color: #ad7fa8; font-style: italic;">"#%d %d\n"</span>,tc, ret);
+}
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    freopen(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve(tc);   
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga25be63" class="outline-2">
+<h2 id="orga25be63">생각해보기</h2>
+<div class="outline-text-2" id="text-orga25be63">
+<ul class="org-ul">
+<li>bottom-up DP로 풀 수 있을까?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7016722" class="outline-2">
+<h2 id="org7016722">문제 링크</h2>
+<div class="outline-text-2" id="text-org7016722">
+<ul class="org-ul">
+<li><a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWAe7XSKfUUDFAUw">문제로 가기</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,65 @@
+#+HTML: ---
+#+HTML: title: BOJ 14400 편의점 2
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 14400 편의점 2
+** 접근하기
+#+BEGIN_EXAMPLE
+n명의 주요 고객들의 위치 (xi,yi)이 주어질 때,
+모든 고객들의 거리 합을 최소로 하는 위치에 편의점을 세우는 위치
+
+-> 중앙값(median)의 점을 찾는다.
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+
+int x[100000];
+int y[100000];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#endif
+    cin >> N;
+    for(int i=0;i<N;i++) {
+        cin >> x[i] >> y[i];
+    }
+
+    sort(x, x+N);
+    sort(y, y+N);
+    int x1 = 0;
+    int y1 = 0;
+    if (N%2 == 1) {
+         x1 = x[N/2]; 
+        y1 = y[N/2]; 
+    } else {
+        x1 = (x[N/2 - 1] + x[N/2]) / 2; 
+        y1 = (y[N/2 - 1] + y[N/2]) / 2; 
+    }
+    ll ans = 0;
+    for(int i=0;i<N;i++) {
+        ans += abs(x1 - x[i]) + abs(y1 - y[i]);
+    }
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+
+** 수학/중앙값 설명
+- https://mathbang.net/116
+
+** 문제 링크
+- https://www.acmicpc.net/problem/14400

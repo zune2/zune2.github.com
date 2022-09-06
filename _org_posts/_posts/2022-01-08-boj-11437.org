@@ -1,0 +1,182 @@
+#+HTML: ---
+#+HTML: title: BOJ 11437 LCA
+#+HTML: tags: dfs LCA
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 11437 LCA 
+- 트리에 두 점이 주어질 때 가장 가까운 부모의 번호를 출력하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. 인접 리스트로 Graph 형태로 받음. N-1번 받는다.
+
+2. dfs로 1번(root)로부터의 거리만큼을 depth 배열에 저장하고, parent의 번호도 저장한다.
+#+END_EXAMPLE
+
+
+** 코드 - dfs로 풀이 (O(N) - 1128 m/s)
+#+BEGIN_SRC cpp
+// 1128 m/s
+#include <bits/stdc++.h>
+using namespace std;
+
+int parent[50010];
+int depth[50010];
+int N;
+int M;
+
+vector<int> G[50010];
+
+void dfs(int idx, int k)
+{
+    depth[idx] = k;
+    for(auto&next :G[idx]) {
+        if (depth[next] == 0) {
+            parent[next] = idx; 
+            dfs(next, k+1);
+        }
+    }
+}
+
+int LCA(int p1, int p2)
+{
+    if (p1 == p2) return p1; 
+
+    if (depth[p1] > depth[p2]) {
+        return LCA(parent[p1], p2); 
+    } else if (depth[p1] < depth[p2]) {
+        return LCA(p1, parent[p2]); 
+    } else if(depth[p1] == depth[p2]) {
+        return LCA(parent[p1], parent[p2]);
+    }
+    return p1;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int p1, p2;
+    for(int i=0;i<N-1;i++) {
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    } 
+    parent[1] = 1; 
+    dfs(1, 1);
+
+    scanf("%d", &M);
+    for(int i=0;i<M;i++) {
+        scanf("%d %d", &p1, &p2); 
+        int ret = LCA(p1, p2);
+        printf("%d\n", ret);
+    }
+    return 0;
+}
+#+END_SRC
+
+** dfs로 풀이 - LCA를 iterative로 1128 m/s
+#+BEGIN_SRC cpp
+int LCA(int p1, int p2)
+{
+    while(p1 != p2) {
+        if (depth[p1] > depth[p2]) {
+            p1 = parent[p1];
+        } else if (depth[p1] < depth[p2]) {
+            p2 = parent[p2];
+        } else if(depth[p1] == depth[p2]) {
+            p1 = parent[p1];
+            p2 = parent[p2];
+        }
+    }
+    return p1;
+}
+#+END_SRC
+
+** sparse table 기법으로 풀이 (32 m/s)
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+vector<int> G[100010];
+
+#define LOG_SIZE 17
+
+int depth[100010];
+int dp[LOG_SIZE+1][100010];
+
+void dfs(int idx, int dep)
+{
+	depth[idx] = dep;
+	for(auto& next:G[idx]) {
+		if (depth[next] == 0) {
+			dp[0][next] = idx;
+			dfs(next, dep + 1);
+		}
+	}
+}
+
+int LCA(int p1, int p2)
+{
+	if (depth[p1] < depth[p2]) {
+		swap(p1, p2);
+	}
+	int diff = depth[p1] - depth[p2];
+
+	// 높이를 맞춤
+	for(int i=LOG_SIZE;i>=0;i--) {
+		if (diff & (1 << i)) {
+			p1 = dp[i][p1];
+		}
+	}
+
+	if (p1 != p2) {
+		for(int j=LOG_SIZE;j>=0;j--) {
+			if (dp[j][p1] != dp[j][p2]) {
+				p1 = dp[j][p1];
+				p2 = dp[j][p2];
+				//break;
+			}
+		}
+		p1 = dp[0][p1];
+		//p2 = dp[0][p2];
+	}
+	return p1;
+}
+
+int main(int argc, char* argv[])
+{
+	scanf("%d", &N);
+	for(int i=0;i<N-1;i++) {
+		int p1, p2;
+		scanf("%d %d", &p1, &p2);
+		G[p1].push_back(p2);
+		G[p2].push_back(p1);
+	}
+	
+	dfs(1, 1);
+
+	for(int i=1;i<=LOG_SIZE;i++) {
+		for(int j=1;j<=N;j++) {
+			int tmp = dp[i-1][j];
+			dp[i][j] = dp[i-1][tmp];
+		}
+	}
+
+	int M;
+	scanf("%d", &M);
+	for(int i=0;i<M;i++) {
+		int p1, p2;
+		scanf("%d %d", &p1, &p2);
+
+		int ret = LCA(p1, p2);
+		printf("%d\n", ret);
+	}
+	return 0;
+}
+#+END_SRC
+** TODO O(1) LCA 적용해보기
+[[http://www.secmem.org/blog/2019/03/27/fast-LCA-with-sparsetable/][- 바로가기]]
+** 문제 링크
+- https://www.acmicpc.net/problem/11437

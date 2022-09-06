@@ -1,0 +1,129 @@
+---
+title: BOJ 11478 서로 다른 부분문자열의 개수
+tags: 서로다른부분문자열 STL
+---
+
+<div id="outline-container-org9e87e29" class="outline-2">
+<h2 id="org9e87e29">BOJ 11478 서로 다른 부분 문자열의 개수</h2>
+</div>
+
+<div id="outline-container-org795c3b6" class="outline-2">
+<h2 id="org795c3b6">접근하기 1</h2>
+<div class="outline-text-2" id="text-org795c3b6">
+<ul class="org-ul">
+<li>2중 loop로 문자열의 부분 문자열 나열하기</li>
+</ul>
+
+<pre class="example">
+ababc
+a, b, a, b, c, ab, ba, ab, bc, aba, bab, abc, abab, babc, ababc
+12개
+</pre>
+</div>
+
+<div id="outline-container-org8ec4a4d" class="outline-3">
+<h3 id="org8ec4a4d">코드 - 이중루프 + STL set</h3>
+<div class="outline-text-3" id="text-org8ec4a4d">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;set&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[1010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++);
+
+    <span style="color: #8ae234; font-weight: bold;">set</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">sp</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;len;i++) {
+        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i;j&lt;len;j++) {
+            tmp += str[j]; 
+            sp.insert(tmp);
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)sp.size());
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6565fd" class="outline-3">
+<h3 id="orgf6565fd">코드 - 이중루프 + STL unordered_set</h3>
+<div class="outline-text-3" id="text-orgf6565fd">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;string&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;unordered_set&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[1010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++);
+
+    <span style="color: #8ae234; font-weight: bold;">unordered_set</span> &lt;<span style="color: #8ae234; font-weight: bold;">string</span>&gt; <span style="color: #ff6347;">sp</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;len;i++) {
+        <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span>;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=i;j&lt;len;j++) {
+            tmp += str[j]; 
+            sp.insert(tmp);
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, (<span style="color: #8ae234; font-weight: bold;">int</span>)sp.size());
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f1ed33" class="outline-2">
+<h2 id="org3f1ed33"><span class="todo TODO">TODO</span> 접근하기 2 : Suffix Array + LCP</h2>
+</div>
+
+<div id="outline-container-org4572c2e" class="outline-2">
+<h2 id="org4572c2e"><span class="todo TODO">TODO</span> 접근하기 3 : Trie</h2>
+<div class="outline-text-2" id="text-org4572c2e">
+<ul class="org-ul">
+<li>트라이에 모든 부분 문자열을 추가하면, 노드의 개수</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org351cd41" class="outline-2">
+<h2 id="org351cd41"><span class="todo TODO">TODO</span> 접근하기 4 : Hashing</h2>
+<div class="outline-text-2" id="text-org351cd41">
+<ul class="org-ul">
+<li>모든 부분문자열을 hash로 숫자로 변환, 추가하면서 uniq를 세기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org62f747f" class="outline-2">
+<h2 id="org62f747f">문제 링크</h2>
+<div class="outline-text-2" id="text-org62f747f">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11478">https://www.acmicpc.net/problem/11478</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5437936" class="outline-2">
+<h2 id="org5437936">참고자료</h2>
+<div class="outline-text-2" id="text-org5437936">
+<ul class="org-ul">
+<li><a href="https://algoshipda.blogspot.com/2017/05/boj-11478.html">https://algoshipda.blogspot.com/2017/05/boj-11478.html</a></li>
+</ul>
+</div>
+</div>

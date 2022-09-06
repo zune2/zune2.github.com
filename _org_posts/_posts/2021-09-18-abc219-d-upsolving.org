@@ -1,0 +1,138 @@
+#+HTML: ---
+#+HTML: title: D - Strange Lunchbox
+#+HTML: tags: AtCoder DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** D - Strange Lunchbox
+- 도시락을 골라야 하는데, 두가지 메뉴가 있음
+- X, Y로 원하는 개수를 주고, 그 이상을 먹을 수 있는 도시락의 수 구하기
+  
+** 접근하기
+- 메뉴가 하나 있는, 도시락을 고르는 DP문제로 생각하고 확장
+
+** 코드 - 3차원 dp로 풀기
+
+#+BEGIN_EXAMPLE
+dp[i][j][k] : i번째 도시락을 먹었을 때, 메뉴1은 j만큼, 메뉴2는 k만큼
+
+dp[0][0][0] = 0
+#+END_EXAMPLE
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+#define INF 987654321
+
+int N;
+int X, Y;
+
+int a[301];
+int b[301];
+int dp[301][301][301];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    scanf("%d %d", &X, &Y);
+    
+    for(int i=1;i<=N;i++) {
+        scanf("%d %d", &a[i], &b[i]);
+    }
+
+    for(int k=0;k<=300;k++) {
+        for(int i=0;i<=300;i++) {
+            for(int j=0;j<=300;j++) {
+                dp[k][i][j] = INF;
+            } 
+        } 
+    }
+
+    dp[0][0][0] = 0; 
+    for(int k=1;k<=N;k++) {
+        for(int i=0;i<=300;i++) {
+            for(int j=0;j<=300;j++) {
+                int x = min(i + a[k], X);
+                int y = min(j + b[k], Y);
+                dp[k][x][y] = min(dp[k][x][y], dp[k-1][i][j] + 1); // 도시락 고름
+                dp[k][i][j] = min(dp[k][i][j], dp[k-1][i][j]);
+            } 
+        } 
+    }
+    
+    int minv = INF;
+    for(int i = X; i<=300; i++){
+        for(int j = Y; j<=300; j++){
+            minv = min(minv,dp[N][i][j]);
+        }
+    }
+    if(minv >= INF) {
+        printf("-1\n");
+    } else {
+        printf("%d\n", minv);
+    }
+    return 0;
+}
+#+END_SRC
+
+
+** 코드 - 2차원 dp로 풀기
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+#define INF 987654321
+
+int N;
+int X, Y;
+
+int a[301];
+int b[301];
+int dp[301][301];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    scanf("%d %d", &X, &Y);
+    
+    for(int i=1;i<=N;i++) {
+        scanf("%d %d", &a[i], &b[i]);
+    }
+
+    for(int i=0;i<=300;i++) {
+        for(int j=0;j<=300;j++) {
+            dp[i][j] = INF;
+        } 
+    } 
+
+    dp[0][0] = 0;
+    for(int k=1;k<=N;k++) {
+        for(int i=X;i>=0;i--) {
+            for(int j=Y;j>=0;j--) {
+                int x = min(i + a[k], X);
+                int y = min(j + b[k], Y);
+                dp[x][y] = min(dp[x][y], dp[i][j] + 1);
+            } 
+        } 
+    }
+    
+    int minv = INF;
+    for(int i = X; i<=300; i++){
+        for(int j = Y; j<=300; j++){
+            minv = min(minv,dp[i][j]);
+        }
+    }
+    if(minv >= INF) {
+        printf("-1\n");
+    } else {
+        printf("%d\n", minv);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc219/tasks/abc219_d
+- [[https://qiita.com/u2dayo/items/36cc4ab4116532d0056c#d%E5%95%8F%E9%A1%8Cstrange-lunchbox][u2dayo 분석]]

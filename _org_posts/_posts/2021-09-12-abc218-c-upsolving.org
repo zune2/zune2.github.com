@@ -1,0 +1,132 @@
+#+HTML: ---
+#+HTML: title: C - Shapes
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Shapes
+- S map, T map을 주고 그 안에 #으로 이뤄진 도형을 줌
+- 90도씩 회전했을때, S와 T가 같은지 판단하는 문제
+
+** 접근하기
+- N의 범위가 작으므로, 완전탐색으로 해볼 수 있다.
+- #의 개수를 세었을 때, 개수가 다르면 다른 도형
+- S도형은 그대로, T도형은 90, 180, 270, 360으로 회전해서 비교
+- 처음 위치가 다를 수 있는데, offset만큼을 이동해서 비교한다.
+  - offset이 양수, 음수와 무관하게 거리를 나타낸다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+#define ARR_SIZE 201
+
+int N;
+
+char S[ARR_SIZE][ARR_SIZE];
+char T[ARR_SIZE][ARR_SIZE];
+char tmp[ARR_SIZE][ARR_SIZE];
+char str[ARR_SIZE];
+
+void rot90(char map[][ARR_SIZE], char tmp[][ARR_SIZE])
+{
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            tmp[j][N-i-1] = map[i][j];
+        }
+    }
+
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<N;j++) {
+            map[i][j] = tmp[i][j];
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+
+    // S map
+    int cnt1 = 0;
+    for(int i=0;i<N;i++) {
+        scanf("%s", str);
+        for(int j=0;str[j];j++) {
+            S[i][j] = str[j];
+            if (S[i][j] == '#') cnt1++;
+        }
+    }
+
+    // T map
+    int cnt2 = 0;
+    for(int i=0;i<N;i++) {
+        scanf("%s", str);
+        for(int j=0;str[j];j++) {
+            T[i][j] = str[j];
+            if (T[i][j] == '#') cnt2++;
+        }
+    }
+
+    if (cnt1 != cnt2) {
+        printf("No\n");
+        return 0;
+    }
+
+    int stop_x, stop_y;
+    int ttop_x, ttop_y;
+
+    stop_x = 0, stop_y = 0; 
+    ttop_x = 0, ttop_y = 0;
+
+    for(int i=0;i<4;i++) {
+
+        rot90(T, tmp);
+        
+        // get top left
+        for(int j=0;j<N;j++) {
+            for(int k=0;k<N;k++) {
+                if (S[j][k] == '#') {
+                    stop_y = j;
+                    stop_x = k;
+                    break;
+                }
+            }
+        }
+
+        // get top left
+        for(int j=0;j<N;j++) {
+            for(int k=0;k<N;k++) {
+                if (T[j][k] == '#') {
+                    ttop_y = j;
+                    ttop_x = k;
+                    break;
+                }
+            }
+        }
+
+        int offset_y = ttop_y - stop_y;
+        int offset_x = ttop_x - stop_x;
+        
+        bool found = true;
+        for(int j=0;j<N;j++) {
+            for(int k=0;k<N;k++) {
+                if (j + offset_y >= 0 && j + offset_y < N && k + offset_x >= 0 && k + offset_x < N) {
+                    if (S[j][k] != T[j + offset_y][k + offset_x]) {
+                        found = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (found) {
+            printf("Yes\n");
+            return 0;
+        }
+    }    
+    printf("No\n");
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc218/tasks/abc218_c

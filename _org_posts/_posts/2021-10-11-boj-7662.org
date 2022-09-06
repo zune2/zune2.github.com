@@ -1,0 +1,83 @@
+#+HTML: ---
+#+HTML: title: BOJ 7662 이중 우선순위 큐
+#+HTML: tags: STL multiset
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 7662 이중 우선순위 큐
+
+** 접근하기
+- STL multiset을 이용해서 풀이
+- 정렬된 순서로 저장함. set과 달리 중복을 허용하는 자료구조
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+int T;
+int N;
+
+void solve()
+{
+    multiset<int, greater<int>> sp;
+
+    scanf("%d", &N);
+    char ch;
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf(" %c %d", &ch, &num);
+
+        if (ch == 'I') {
+            sp.insert(num);
+        } else if (ch == 'D') {
+            if (sp.size() != 0) {
+                if (num == -1) {
+                    auto it = sp.end();
+                    it--;
+                    //cout << "min:" <<  *it << endl;
+                    sp.erase(it);
+                    //cout << "size:" <<  sp.size() << endl;
+                } else if (num == 1) {
+                    auto it = sp.begin();
+                    //cout << "max:" <<  *it << endl;
+                    sp.erase(it);
+                    //cout << "size:" <<  sp.size() << endl;
+                }
+            }
+        }
+    } 
+    
+    if (sp.size() == 0) {
+        printf("EMPTY\n");
+    } else {
+        auto left = sp.begin();
+        printf("%d ", (int)*left);
+        auto right = sp.end();
+        right--; 
+        printf("%d\n", (int)*right);
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &T);
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+** 생각
+- set을 이용해서 풀었는데, 틀림
+- 같은 데이터가 여러번 들어올 수 있겠다.
+
+** TODO min heap / max heap을 조합해서 풀이
+- 풀이방법 생각해보기
+
+** 문제 링크
+- https://www.acmicpc.net/problem/7662

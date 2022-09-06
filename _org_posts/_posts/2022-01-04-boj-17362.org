@@ -1,0 +1,56 @@
+#+HTML: ---
+#+HTML: title: BOJ 17362 수학은 체육과목 입니다. 2
+#+HTML: tags: bfs
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 17362 수학은 체육과목 입니다. 2
+- 규칙성을 찾아야 하는 문제
+
+** 접근하기
+#+BEGIN_EXAMPLE
+// 1엄지 2검지 3중지 4약지 5새끼
+// N % 8 
+// 1 -   n1
+// 2 -   n2
+// 3 -   n3
+// 4 -   n4
+// 5 -   n5
+// 6 -   n4
+// 7 -   n3
+// 8 -  0 n2
+// 9 -  1 n1
+// 10 - 2 n2
+// 11 - 3 n3
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int main(int argc, char* argv[])
+{
+	int N;
+
+	scanf("%d", &N);
+	int ans = 0;
+	switch(N%8)
+	{
+	case 1:ans = 1; break;
+	case 2:ans = 2; break;
+	case 3:ans = 3; break;
+	case 4:ans = 4; break;
+	case 5:ans = 5; break;	
+	case 6:ans = 4; break;	
+	case 7:ans = 3; break;		
+	case 0:ans = 2; break;
+	}
+	printf("%d\n", ans);
+	return 0;
+}
+
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/17362

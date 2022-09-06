@@ -1,0 +1,60 @@
+#+HTML: ---
+#+HTML: title: BOJ 1477 휴게소 세우기
+#+HTML: tags: 이분탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1477 휴게소 세우기
+
+** 접근하기
+#+BEGIN_SRC 
+휴게소가 없는 구간의 길이의 최댓값을 최소
+#+END_SRC
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M, L;
+int a[60];
+
+bool check(int mid)
+{
+    int cnt = 0;
+    for(int i=1;i<N;i++) {
+        int dist = a[i] - a[i-1] - 1; 
+        cnt += (dist / mid);
+    }
+    return cnt <= M;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &N, &M, &L);
+    
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    a[N++] = 0;
+    a[N++] = L;
+    sort(a, a+N);
+
+    int s = 0;
+    int e = L;
+
+    while(s+1 < e){
+        int mid = (s+e)/2;
+        if (check(mid)) {
+            e = mid;        // 최대val의 min
+        } else {
+            s = mid;        // 최소val의 max
+        }
+    }
+    printf("%d\n", e);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1477

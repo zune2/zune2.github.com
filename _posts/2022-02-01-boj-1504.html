@@ -1,0 +1,125 @@
+---
+title: BOJ 1504 특정한 최단경로
+tags: 최단거리
+---
+
+<div id="outline-container-org0e14373" class="outline-2">
+<h2 id="org0e14373">BOJ 1504 특정한 최단 경로</h2>
+<div class="outline-text-2" id="text-org0e14373">
+<ul class="org-ul">
+<li>다익스트라 알고리즘으로 구함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa3840b" class="outline-2">
+<h2 id="orgaa3840b">접근하기</h2>
+<div class="outline-text-2" id="text-orgaa3840b">
+<pre class="example">
+case1) 1 -&gt; A -&gt; B -&gt; N
+
+case2) 1 -&gt; B -&gt; A -&gt; N
+
+두 경우를 모두 다익스트라 알고리즘으로 나눈다.
+
+// 다익스트라 1번
+f(1, A)
+f(1, B)
+
+// 다익스트라 2번 - 양방향이므로 a_b == b_a 임
+f(A, B)
+f(A, N)
+f(B, A)
+
+// 다익스트라 3번
+f(B, N)
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgca98f62" class="outline-2">
+<h2 id="orgca98f62">코드</h2>
+<div class="outline-text-2" id="text-orgca98f62">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">INF</span> 1e9
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">E</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">A</span>, <span style="color: #ff6347;">B</span>;
+
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">G</span>[801];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">d</span>[801];
+
+<span style="color: #8ae234; font-weight: bold;">priority_queue</span> &lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt;, <span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt;, <span style="color: #8ae234; font-weight: bold;">greater</span>&lt; <span style="color: #8ae234; font-weight: bold;">pair</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>, <span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; &gt; <span style="color: #ff6347;">pq</span>;
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">daik</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">start</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;=N;i++) {
+        d[i] = INF;
+    } 
+    d[start] = 0; 
+    pq.emplace(0, start);    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#49884;&#51089;&#51216;</span>
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!pq.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cost</span> = pq.top().first; 
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">id</span> = pq.top().second; 
+        pq.pop();
+        <span style="color: #729fcf; font-weight: bold;">if</span> (d[id] &lt; cost) <span style="color: #729fcf; font-weight: bold;">continue</span>;         
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">i</span>:G[id]) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nid</span> = i.second;       <span style="color: #888a85;">// </span><span style="color: #888a85;">id</span>
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ncost</span> = i.first;      <span style="color: #888a85;">// </span><span style="color: #888a85;">cost</span>
+            <span style="color: #729fcf; font-weight: bold;">if</span> (d[nid] &gt; cost + ncost) {
+                d[nid] = cost + ncost;
+                pq.emplace(d[nid], nid);
+            }
+        }
+    } 
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+    cin &gt;&gt; N &gt;&gt; E; 
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;E;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>, <span style="color: #ff6347;">cost</span>;
+        cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; cost;
+        G[p1].push_back({cost, p2});
+        G[p2].push_back({cost, p1});
+    }
+    cin &gt;&gt; A &gt;&gt; B; 
+    daik(1);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s_a</span> = d[A];
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s_b</span> = d[B];
+
+    daik(A);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a_b</span> = d[B];
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b_a</span> = d[B];
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a_n</span> = d[N];
+
+    daik(B);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b_n</span> = d[N];
+
+    <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #ff6347;">ans</span> = INF;
+    ans = min(ans, (<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span>)(s_a + a_b + b_n));    
+    ans = min(ans, (<span style="color: #8ae234; font-weight: bold;">long</span> <span style="color: #8ae234; font-weight: bold;">long</span>)(s_b + b_a + a_n));    
+    <span style="color: #729fcf; font-weight: bold;">if</span> ( a_b == INF || ans &gt;= INF)
+        cout &lt;&lt; -1 &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        cout &lt;&lt; ans &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb103b7b" class="outline-2">
+<h2 id="orgb103b7b">문제 링크</h2>
+<div class="outline-text-2" id="text-orgb103b7b">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1504">https://www.acmicpc.net/problem/1504</a></li>
+</ul>
+</div>
+</div>

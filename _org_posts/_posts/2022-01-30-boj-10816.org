@@ -1,0 +1,55 @@
+#+HTML: ---
+#+HTML: title: BOJ 10816 숫자카드 2
+#+HTML: tags: 이분탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 10816 숫자 카드 2
+
+** 접근하기
+#+BEGIN_SRC 
+입력
+0 1 2  3  4  5  6   7  8 9
+6 3 2 10 10 10 -10 -10 7 3
+
+sort하면
+  0   1 2 3 4 5 6  7  8  9 
+-10 -10 2 3 3 6 7 10 10 10
+
+lower_bound(10) -> 10이 처음 나타나는 주소
+upper_bound(10) -> val:10의 다음 주소
+
+upper_bound(10) - lower_bound(10) = 10의 개수 = 3
+
+#+END_SRC
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+int N, M;
+int a[500050];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%d", &a[i]);
+    }
+    sort(a, a+N);
+    scanf("%d", &M);
+    int num;
+    for(int i=0;i<M;i++) {
+        scanf("%d", &num);
+        printf("%d ", (int)(upper_bound(a, a+N, num) - lower_bound(a, a+N, num)));
+    }
+    printf("\n");
+     
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/10816

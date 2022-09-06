@@ -1,0 +1,45 @@
+#+HTML: ---
+#+HTML: title: BOJ 1715 카드 정렬하기
+#+HTML: tags: STL priority_queue
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1715 카드 정렬하기
+
+** 접근하기
+- STL priority queue로 Min Heap을 선언해서 사용한다.
+- 작은 값을 두개씩 꺼내서, 계속 더한다. 1개가 남을 때까지
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <queue>
+using namespace std;
+
+int N;
+// int 자료형의 min heap
+priority_queue < int, vector<int>, greater<int> > q;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int num;
+    for(int i=0;i<N;i++) {
+        scanf("%d", &num);
+        q.push(num);
+    }
+
+    int sum = 0;
+    while(q.size() >= 2) {
+        int n1 = q.top(); q.pop();
+        int n2 = q.top(); q.pop();
+        sum += n1 + n2;
+        q.push(n1+n2);
+    } 
+    printf("%d\n", sum);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1715

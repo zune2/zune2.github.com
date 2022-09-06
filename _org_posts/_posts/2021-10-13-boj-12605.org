@@ -1,0 +1,57 @@
+#+HTML: ---
+#+HTML: title: BOJ 12605 단어 순서 뒤집기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 12605 단어 순서 뒤집기
+
+** 접근하기
+- 공백이 있는 문자열을 입력받기
+- 토큰으로 분리 vector에 저장
+- vector를 역순으로 순회
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+int T;
+
+void solve(int tc)
+{
+    string s;
+    getline(cin >> ws, s);
+
+    // 토큰으로 분리, vector에 저장
+    char split_char = ' ';
+    istringstream split(s);
+    vector<string> tok;
+    for(string each; getline(split, each, split_char);) {
+        tok.push_back(each);
+    }
+
+    cout << "Case #" << tc << ": ";
+    // vector를 역순으로 순회
+    for (auto it = tok.rbegin(); it != tok.rend(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+}
+
+int main(int argc, char* argv[])
+{
+    cin >> T;
+    for(int tc=1;tc<=T;tc++) {
+        solve(tc);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/12605

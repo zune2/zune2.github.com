@@ -1,0 +1,120 @@
+#+HTML: ---
+#+HTML: title: BOJ 1251 단어 나누기
+#+HTML: tags: STL
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1251 단어 나누기
+
+** 접근하기
+- 단어를 3개의 조각으로 나누기
+- 처음과 끝을 제외하고, 중간에 두 점을 정한다.
+
+** 코드 - STL string 이용
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+
+string f(int s, int e, string ref)
+{
+    string tmp = ref.substr(s, e-s+1);
+    reverse(tmp.begin(), tmp.end());
+    return tmp;
+}
+
+int main(int argc, char* argv[])
+{
+    char str[60];
+    scanf("%s", str);
+    string input(str);
+    int N = input.length();
+    string prev(N, 'z');
+    for(int i=1;i<N-1;i++) {
+        for(int j=i+1;j<N;j++) {
+            if (N-j>=1) {
+                string tmp = "";
+                tmp += f(0, i-1, input);
+                tmp += f(i, j-1, input);
+                tmp += f(j, N-1, input);
+                if (prev > tmp) {
+                    prev = tmp;
+                }
+            }
+        }
+    }
+    printf("%s\n", prev.c_str());
+    return 0;
+}
+#+END_SRC
+** 코드 - 그냥 구현
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+char str[60];
+char a[60];
+int idx;
+int N; 
+
+int my_strcmp(char* p1, char* p2)
+{
+    while(*p1 != '\0' && *p1 == *p2) {
+        p1++;
+        p2++;
+    }
+    return (int)*p1 - (int)*p2;
+}
+
+void my_strcpy(char* p1, char* p2)
+{
+    while(*p2 != '\0') {
+        *p1 = *p2;
+        p1++;
+        p2++;
+    }
+    *p1 = '\0';
+}
+
+void f(int s, int e)
+{
+    for(int i=e;i>=s;i--) {
+        a[idx++] = str[i];
+    }
+    a[idx] = '\0';
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", str);
+    for(N=0;str[N];N++);
+
+    char ret[60];
+    bool first = true;
+    for(int i=1;i<N-1;i++) {
+        for(int j=i+1;j<N;j++) {
+            if (N-j>=1) {
+                idx = 0;
+                f(0, i-1);
+                f(i, j-1);
+                f(j, N-1);
+                if (first) {
+                    my_strcpy(ret, a);
+                    first = false;
+                } else {
+                    if (my_strcmp(a, ret) < 0) {
+                        my_strcpy(ret, a);
+                    }              
+                }
+            }
+        }
+    }
+    printf("%s\n", ret);
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1251

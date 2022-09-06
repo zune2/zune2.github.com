@@ -1,0 +1,70 @@
+#+HTML: ---
+#+HTML: title: abc238 B - Pizza
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** B - Pizza
+
+** 접근하기
+#+BEGIN_EXAMPLE
+피자를 회전(시계방향)해서 12시 방향에서 cut하기는 생각하기 어렵다.
+
+이미 cut되어 있는 방향을 돌린다고 생각(반시계방향)
+
+처음 위치 ang[0] = 1
+
+ang[0 + p1] = 1
+
+ang[0 + p1 + p2] = 1 
+
+...
+
+(0 + p1 + p2 ...) % 360을 하면, 원래 위치를 넘어서 cut할 수 있다.
+
+1인 두 점 사이의 거리가 가장 큰 것을 구해서 출력x
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N;
+int ang[360];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+
+    ang[0] = 1;
+
+    cin >> N;
+    int cur = 0;
+    int num;
+    for(int i=0;i<N;i++) {
+        cin >> num;
+        cur += num;
+        cur = cur % 360;    // 원형으로 돌리는 것 360 -> 0
+        ang[cur] = 1;
+    }
+
+    int prev = 0;
+    int ans = 0;
+    for(int i=1;i<=360;i++) {
+        if (ang[i%360] != 0) {
+            ans = max(ans, i - prev);
+            prev = i;
+        }
+    }
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+
+** 문제 링크
+- https://atcoder.jp/contests/abc238/tasks/abc238_b

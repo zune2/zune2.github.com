@@ -1,0 +1,94 @@
+---
+title: C - chokudai
+tags: AtCoder DP
+---
+
+<div id="outline-container-org98fb3ad" class="outline-2">
+<h2 id="org98fb3ad">C - chokudai</h2>
+</div>
+
+<div id="outline-container-orge31d837" class="outline-2">
+<h2 id="orge31d837">접근하기</h2>
+<div class="outline-text-2" id="text-orge31d837">
+<ul class="org-ul">
+<li>경우의 수를 구하는 DP 문제</li>
+</ul>
+<pre class="example">
+
+dp[i][j] : S의 i번째 문자까지 str = "chokudai"의 j번째 문자까지를 만드는 경우의 수
+
+dp[i+1][j+1] = dp[i][j+1] 
+  
+  (S[i] != S[j]이면, i문자일 때, j번째 문자를 선택X)
+
+dp[i+1][j+1] = dp[i][j+1] + dp[i][j];
+
+  (S[i] == S[j]이면, i문자일 때, 
+
+     j문자를 선택X ==&gt; dp[i][j+1] 이전 문자에서의 경우의 수
+     j문자를 선택O ==&gt; j일 때의 경우의 수를 더해준다.)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org826a1b6" class="outline-2">
+<h2 id="org826a1b6">코드</h2>
+<div class="outline-text-2" id="text-org826a1b6">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[100010];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp</span>[100010][9];
+
+<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">T</span> = <span style="color: #ad7fa8; font-style: italic;">"chokudai"</span>;
+<span style="color: #729fcf; font-weight: bold;">const</span> <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">MOD</span> = 1000000007;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(;str[len];len++) {
+        dp[len][0] = 1; 
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;len;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;8;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (str[i] != T[j]) {
+                dp[i+1][j+1] = dp[i][j+1];
+            } <span style="color: #729fcf; font-weight: bold;">else</span> {
+                dp[i+1][j+1] = (dp[i][j+1] + dp[i][j]) % MOD;
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, dp[len][8]);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9944938" class="outline-2">
+<h2 id="org9944938">참고자료</h2>
+<div class="outline-text-2" id="text-org9944938">
+<ul class="org-ul">
+<li><a href="https://velog.io/@nala723/210706DP-%EB%B0%8F-%EA%B2%BD%EC%9A%B0%EC%9D%98-%EC%88%98%EC%97%90-%EB%8C%80%ED%95%B4">경우의 수</a>
+<ul class="org-ul">
+<li>합의 법칙 : 사건 A,B가 각각 일어날 경우의 수</li>
+<li>곱의 법칙 : 사건 A,B가 동시에 일어날 경우의 수</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgde9be0a" class="outline-2">
+<h2 id="orgde9be0a">문제 링크</h2>
+<div class="outline-text-2" id="text-orgde9be0a">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc211/tasks/abc211_c">https://atcoder.jp/contests/abc211/tasks/abc211_c</a></li>
+</ul>
+</div>
+</div>

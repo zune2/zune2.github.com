@@ -1,0 +1,39 @@
+#+HTML: ---
+#+HTML: title: BOJ 12813 이진수 연산
+#+HTML: tags: STL bitest
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 12813 이진수 연산
+
+** 접근하기
+- STL bitset을 이용하면, 긴 자리수의 bit연산을 할 수 있다.
+  - 100000 bit이므로 uint등으로는 안됨
+- 각 자리수만 숫자가 바뀌므로, 문자열을 탐색하면서 푸는 것도 가능할 것임
+
+** 코드 : STL bitset을 이용한 풀이
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+#include <bitset>
+#include <string>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+    string str1, str2;
+    cin >> str1 >> str2;
+    bitset<100000> a(str1);
+    bitset<100000> b(str2);
+    cout << (a & b) << endl;
+    cout << (a | b) << endl;
+    cout << (a ^ b) << endl;
+    cout << (~a) << endl;
+    cout << (~b) << endl;
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/12813

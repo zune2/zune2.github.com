@@ -1,0 +1,42 @@
+#+HTML: ---
+#+HTML: title: BOJ 1354 무한 수열 2
+#+HTML: tags: STL DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1354 무한 수열 2
+
+** 접근하기
+- 점화식이 주어질 때, top down DP 작성하기
+- STL map을 이용해서, 큰 범위의 memoization이 가능
+
+** 코드 - 8초가 넘는 풀이
+- 좀 더 빨리 풀려면 어떻게?
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <map>
+using namespace std;
+
+long long N, P, Q, X, Y;
+map<long long, long long> dp;
+
+long long f(long long i)
+{
+    if (i <= 0) return 1;
+    if (dp[i]) return dp[i]; 
+
+    dp[i] = f(i/P-X) + f(i/Q-Y);
+    return dp[i];
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%lld %lld %lld %lld %lld", &N, &P, &Q, &X, &Y);
+    long long ret = f(N);
+    printf("%lld\n", ret);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1354

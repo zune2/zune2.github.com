@@ -1,0 +1,113 @@
+---
+title: BOJ 10822 바구니 순서 바꾸기
+tags: STL
+---
+
+<div id="outline-container-orged84f73" class="outline-2">
+<h2 id="orged84f73">BOJ 10822 바구니 순서 바꾸기</h2>
+</div>
+
+<div id="outline-container-org9223ef9" class="outline-2">
+<h2 id="org9223ef9">접근하기</h2>
+<div class="outline-text-2" id="text-org9223ef9">
+<ul class="org-ul">
+<li>begin, begin + 1, &#x2026; , mid -1 , mid, &#x2026; , end-1, end</li>
+<li>mid, mid+1, &#x2026;, end-1, end, begin, begin+1, mid-1 로 변경</li>
+<li>뒷부분을 앞으로 가져오고, 앞부분을 뒤로 보냄</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a3d332" class="outline-2">
+<h2 id="org9a3d332">코드 - 배열로 풀기</h2>
+<div class="outline-text-2" id="text-org9a3d332">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[101];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">temp</span>[101];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        a[i] = i;
+    } 
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #ff6347;">right</span>, <span style="color: #ff6347;">mid</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;left, &amp;right, &amp;mid);
+
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span> = 1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=mid;j&lt;=right;j++) {
+            temp[k++] = a[j];
+        }
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=left;j&lt;mid;j++) {
+            temp[k++] = a[j];
+        }
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=left, <span style="color: #ff6347;">x</span>=1;j&lt;=right;j++) {
+            a[j] = temp[x++];
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, a[i]);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13cd3d4" class="outline-2">
+<h2 id="org13cd3d4">코드 - STL rotate로 풀기</h2>
+<div class="outline-text-2" id="text-org13cd3d4">
+<ul class="org-ul">
+<li>vector 생성자에서 N을 주면, 배열처럼 사용</li>
+<li>std::rotate로 바꿈</li>
+<li>오른쪽으로 회전</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+    <span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">v</span>(N); 
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        v[i-1] = i;
+    }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">left</span>, <span style="color: #ff6347;">right</span>, <span style="color: #ff6347;">mid</span>;
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d %d"</span>, &amp;left, &amp;right, &amp;mid);
+        rotate(v.begin() + (left-1) , v.begin() + (mid-1), v.begin() + right); 
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">e</span> :v) {
+        printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, e);
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0cedab2" class="outline-2">
+<h2 id="org0cedab2">문제 링크</h2>
+<div class="outline-text-2" id="text-org0cedab2">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/10812">https://www.acmicpc.net/problem/10812</a></li>
+</ul>
+</div>
+</div>

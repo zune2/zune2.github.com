@@ -1,0 +1,46 @@
+#+HTML: ---
+#+HTML: title: abc202 C - Made Up
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Made Up
+
+** 접근하기
+- N이 100000까지이고, Ai, Bi, Ci가 N보다 작거나 같다
+  -  lookup table을 쓸 수 있음
+- 모든 값을 누적할 때, int범위를 넘을 수 있다.
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N;
+
+int B[100010];
+int C[100010];
+int table[100000];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int a;
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &a);    
+        table[a] += 1;
+    }
+    for(int i=1;i<=N;i++)
+        scanf("%d", &B[i]);    
+    for(int i=1;i<=N;i++)
+        scanf("%d", &C[i]);    
+
+    long long cnt = 0;
+    for(int i=1;i<=N;i++) {
+        cnt += table[B[C[i]]];
+    }
+    printf("%lld\n", cnt);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc202/tasks/abc202_c

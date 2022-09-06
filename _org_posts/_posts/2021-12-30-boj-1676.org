@@ -1,0 +1,54 @@
+#+HTML: ---
+#+HTML: title: BOJ 1676 팩토리얼 0의 개수
+#+HTML: tags: 수학
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1676 팩토리얼 0의 개수
+- N!에서 처음 0이 아닌 숫자가 나올때까지 0의 개수 구하기
+** 접근하기
+- 소인수로 2,5 가 만나는 만큼 0이 생긴다. (이 성질을 알아야 풀 수 있는 문제)
+#+BEGIN_EXAMPLE
+1 2 3 4 5 6 7 8 9 10
+--------------------
+  2   2 5     2   2
+      2       2   5 
+              2
+5 2개
+2 7개
+
+이중 작은 개수가 답 2 
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N;
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    
+    int n2 = 0;
+    int n5 = 0;
+
+    for(int i=2;i<=N;i*=2) { // 2 4 8 16 32
+        n2 += N/i;
+    }
+    
+    for(int i=5;i<=N;i*=5) { // 5 25 125 ..
+        n5 += N/i;
+    }
+    if (n5 > n2) 
+        printf("%d\n", n2);
+    else
+        printf("%d\n", n5);    
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/1676
+
+** 풀이 참고
+- https://sihyungyou.github.io/baekjoon-1676/

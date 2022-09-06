@@ -1,0 +1,49 @@
+#+HTML: ---
+#+HTML: title: Emacs26 설치
+#+HTML: tags: Emacs
+#+HTML: ---
+
+** Setting up
+
+#+BEGIN_EXAMPLE
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs26
+#+END_EXAMPLE
+
+** Reinstalling Packages
+
+#+BEGIN_EXAMPLE
+
+emacs 설치된 패키지 upgrade
+
+-M package-list RET
+
+'U' 입력 -> 'x' 실행
+
+#+END_EXAMPLE
+
+** Emacs26을 기본으로 선택하게 하기
+
+#+BEGIN_EXAMPLE
+
+$ sudo update-alternatives --config emacs
+...
+Press <enter> to keep the current choice[*], or type selection number: 2
+update-alternatives: using /usr/bin/emacs26 to provide /usr/bin/emacs (emacs) in manual mode
+$ emacs --version
+GNU Emacs 26.3
+Copyright (C) 2019 Free Software Foundation, Inc.
+GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+You may redistribute copies of GNU Emacs
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING.
+
+#+END_EXAMPLE
+
+
+** Reference
+- http://ubuntuhandbook.org/index.php/2019/02/install-gnu-emacs-26-1-ubuntu-18-04-16-04-18-10/
+
+** 더 할일
+- emacs26이 emacs가 되도록 하기

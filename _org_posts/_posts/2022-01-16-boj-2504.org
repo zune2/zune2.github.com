@@ -1,0 +1,130 @@
+#+HTML: ---
+#+HTML: title: BOJ 2504 괄호의 값
+#+HTML: tags: 자료구조
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2504 괄호의 값
+- 올바른 문자열인지 아닌지 체크
+- 올바른 문자열이라면 계산 값 리턴
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. check에서 string을 모두 stack에서 pair를 맞춰봐서 스택이 비면, 올바른 문자열
+2. 올바른 문자열이면 주어진대로 계산
+#+END_EXAMPLE
+
+** 코드 - 1st
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+// 0 : num
+// [ : 1
+// ] : 2
+// ( : 3
+// ) : 4
+typedef struct Node {
+    int type;           // 1 : [ ( ) ]      // 2 : val
+    int num;
+} Node;
+
+char str[40];
+
+bool check(char str[])
+{
+    stack<char> s;  
+    for(int i=0;str[i];i++) {
+        switch(str[i]) {
+        case '[':
+            s.push(str[i]);
+            break;
+        case '(':
+            s.push(str[i]);
+            break;
+        case ')':
+            if (s.empty()) {
+                s.push(str[i]);
+            }
+            if (!s.empty() && s.top() == '(') {
+                s.pop();
+            }
+            break;
+        case ']':
+            if (s.empty()) {
+                s.push(str[i]);
+            }
+            if (!s.empty() && s.top() == '[') {
+                s.pop();
+            }
+            break;
+        }
+    }
+    return s.empty();
+}
+
+void work(char str[])
+{
+    stack<Node> s;  
+
+    for(int i=0;str[i];i++) {
+        switch(str[i]) {
+        case '(':               // 3
+            s.push({3, 0});
+            break;
+        case ')':               // 4
+            if (!s.empty() && s.top().type == 3) {      // () ->2
+                s.pop();
+                s.push({0, 2});
+            } else if (!s.empty() && s.top().type == 0) {
+                int tot = 0;
+                while (!s.empty() && s.top().type != 3) {      // () ->2
+                    tot = tot + s.top().num;
+                    s.pop();
+                }
+                s.pop();        // remove '('
+                s.push({0, tot*2});
+            }
+            break;
+        case '[':               // 1
+            s.push({1, 0});
+            break;
+        case ']':               // 2
+            if (!s.empty() && s.top().type == 1) {      // [] ->3
+                s.pop();
+                s.push({0, 3});
+            } else if (!s.empty() && s.top().type == 0) {
+                int tot = 0;
+                while (!s.empty() && s.top().type != 1) {      // [] ->2
+                    tot = tot + s.top().num;
+                    s.pop();
+                }
+                s.pop();        // remove '['
+                s.push({0, tot*3});
+            }
+            break;
+        } 
+    }
+
+    int ans = 0;
+    while( !s.empty()) {
+        ans += s.top().num;
+        s.pop();
+    }
+    printf("%d\n", ans);
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", str);
+    if (check(str)) {
+        work(str);
+    } else {
+        printf("0\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2504

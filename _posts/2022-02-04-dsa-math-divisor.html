@@ -1,0 +1,83 @@
+---
+title: 약수 출력하기
+tags: DSA 수학
+---
+
+<div id="outline-container-orgd16168f" class="outline-2">
+<h2 id="orgd16168f">약수 출력하기</h2>
+</div>
+
+<div id="outline-container-org5990ab1" class="outline-2">
+<h2 id="org5990ab1">접근하기</h2>
+<div class="outline-text-2" id="text-org5990ab1">
+<pre class="example">
+N = 100 이면 1 ~ 100으로 %했을 때 0이 나오면 약수
+
+N의 제곱근까지 나눈다.
+
+ - 1 ~ N의 제곱근
+   - k 추가, N/k 추가
+   - ...
+
+1
+2
+4
+5
+10
+20
+25
+50
+100
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc9990a5" class="outline-2">
+<h2 id="orgc9990a5">코드</h2>
+<div class="outline-text-2" id="text-orgc9990a5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    FASTIO
+    <span style="color: #8ae234; font-weight: bold;">set</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">sp</span>;
+    cin &gt;&gt; N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i*i &lt;= N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (N %i == 0) {
+            sp.insert(i);
+            sp.insert(N/i);
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span> <span style="color: #ff6347;">o</span>:sp) {
+        cout &lt;&lt; o &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge2809cf" class="outline-2">
+<h2 id="orge2809cf">설명</h2>
+<div class="outline-text-2" id="text-orge2809cf">
+<ul class="org-ul">
+<li><a href="https://kbw1101.tistory.com/32">https://kbw1101.tistory.com/32</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd8f3e2" class="outline-2">
+<h2 id="orgfd8f3e2">문제 링크</h2>
+<div class="outline-text-2" id="text-orgfd8f3e2">
+<ul class="org-ul">
+<li><a href="http://220.89.64.243/30stair/factor/factor.php?pname=factor">http://220.89.64.243/30stair/factor/factor.php?pname=factor</a></li>
+</ul>
+</div>
+</div>

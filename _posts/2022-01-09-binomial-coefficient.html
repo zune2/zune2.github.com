@@ -1,0 +1,111 @@
+---
+title: Binomial Coefficient(이항계수)란?
+tags: 조합론
+use_math: true
+---
+
+<div id="outline-container-orgce8ad1b" class="outline-2">
+<h2 id="orgce8ad1b">Binomial Coefficient(이항계수)란?</h2>
+<div class="outline-text-2" id="text-orgce8ad1b">
+<ul class="org-ul">
+<li>집합에서 원하는 개수만큼 순서없이 뽑는 조합의 가짓수</li>
+<li>이항 : 하나의 항목에 대해 뽑거나 안뽑거나</li>
+
+<li>원소의 개수 n에서 k개의 항목을 뽑을 때</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4d69888" class="outline-2">
+<h2 id="org4d69888">n개중 k를 선택 가짓수 = n개중 선택안될 (n-k) 가짓수</h2>
+<div class="outline-text-2" id="text-org4d69888">
+<p>
+n=5, k=2일때 10가지가 나옴
+</p>
+<pre class="example">
+1,2
+1,3
+1,4
+1,5
+
+2,3
+2,4
+2,5
+
+3,4
+3,5
+
+4,5
+</pre>
+
+<p>
+n=5, k=3일 때 10가지
+</p>
+<pre class="example">
+1,2,3
+1,2,4
+1,2,5
+
+1,3,4
+1,3,5
+
+1,4,5
+
+2,3,4
+2,3,5
+
+2,4,5
+
+3,4,5
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgcda7ef5" class="outline-2">
+<h2 id="orgcda7ef5">n에서 0가지 고르기 = n에서 n가지 고르기 = 1</h2>
+<div class="outline-text-2" id="text-orgcda7ef5">
+<ul class="org-ul">
+<li>전체 집합에서 아무것도 고르지 않는 가짓수 = 1</li>
+
+<li>전체 집합에서 모두를 선택하는 가짓수 = 1</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6443f5e" class="outline-2">
+<h2 id="org6443f5e">dp 점화식 표현</h2>
+<div class="outline-text-2" id="text-org6443f5e">
+<pre class="example">
+1,2,3,4 중에서 3가지를 고른다고 하면,
+
+1을 골랐으면, 2,3,4중에 2개를 골라야 한다.
+
+1을 안골랐으면, 2,3,4중에 3개를 골라야 한다.
+
+-&gt; dp[4][3] = dp[3][2] + dp[3][3]
+
+-&gt; dp[0][0] = 1;   // n개에서 0가지 고르는 경우의 수 1
+-&gt; dp[N][N] = 1;
+-&gt; dp[i][i] = 1;   // n개에서 n가지 고르는 경우의 수 1
+-&gt; dp[i][j] = dp[i-1][j-1] + dp[i-1][j-1]
+  
+  0 1 2 3 4  (k)
+0 1
+1 1 1
+2 1 2 1 
+3 1 3 3 1
+4 1 4 6 4
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgec786d0" class="outline-2">
+<h2 id="orgec786d0">참고 링크</h2>
+<div class="outline-text-2" id="text-orgec786d0">
+<ul class="org-ul">
+<li><a href="https://haamjamie.tistory.com/6">https://haamjamie.tistory.com/6</a></li>
+<li><a href="https://shoark7.github.io/programming/algorithm/3-ways-to-get-binomial-coefficients">https://shoark7.github.io/programming/algorithm/3-ways-to-get-binomial-coefficients</a></li>
+</ul>
+</div>
+</div>

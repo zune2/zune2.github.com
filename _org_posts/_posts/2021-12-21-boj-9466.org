@@ -1,0 +1,103 @@
+#+HTML: ---
+#+HTML: title: BOJ 9466 텀 프로젝트
+#+HTML: tags: DFS
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 9466 텀프로젝트
+- DFS를 이용해서 cycle을 detect하기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+dfs에서
+visit배열과 함께
+finish 배열을 유지함
+
+f(1) -> f(2) -> f(3)
+
+visit  1 1 1
+finish 1 1 1
+
+f(1) -> f(2) -> f(3) -> f(1) 형태 cycle이 있으면
+
+visit  1 1 1
+finish 0 0 0
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+using namespace std;
+
+int T;
+int N;
+
+#define ARRSIZE 100010
+int a[ARRSIZE];
+
+vector<int> G[ARRSIZE];
+
+int visit[ARRSIZE];
+int finish[ARRSIZE];
+int ans;
+int cnt;
+
+void dfs(int num)
+{
+    visit[num] = cnt++;
+
+    for(int next: G[num]) {
+        if (visit[next] == 0) {
+            dfs(next);
+        } else if (!finish[next]) {
+            ans += visit[num] - visit[next] + 1;
+        }
+    }
+    finish[num] = 1;
+}
+
+void solve()
+{
+    cnt = 0;
+    ans = 0;
+    int num;
+    scanf("%d", &N);
+
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &num);
+        G[i].push_back(num);
+    }
+    
+    for(int i=1;i<=N;i++) {
+        if (visit[i]) dfs(i);
+    }
+    printf("%d\n", N-ans);
+
+    for(int i=1;i<=N;i++) {
+        visit[i] = 0;
+        finish[i] = 0;
+        G[i].clear();
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &T);
+
+    for(int tc=1;tc<=T;tc++) {
+        solve();
+    }
+    return 0;
+}
+#+END_SRC
+
+- 1초 가까운 시간이 걸림
+
+** TODO 최적 풀이 300ms이내
+- boj 답 참고할 것
+
+** 문제 링크
+- https://www.acmicpc.net/problem/9466
+
+

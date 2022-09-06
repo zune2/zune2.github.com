@@ -1,0 +1,74 @@
+---
+title: D - Takahashi Tour
+tags: AtCoder
+---
+
+<div id="outline-container-orgde55f2c" class="outline-2">
+<h2 id="orgde55f2c">D - Takahashi Tour</h2>
+</div>
+
+<div id="outline-container-orge537236" class="outline-2">
+<h2 id="orge537236">접근하기</h2>
+<div class="outline-text-2" id="text-orge537236">
+<ul class="org-ul">
+<li>DFS 순서로 방문, enter를 출력</li>
+<li>leave하는 순서를 출력함</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf72d5b2" class="outline-2">
+<h2 id="orgf72d5b2">코드</h2>
+<div class="outline-text-2" id="text-orgf72d5b2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">vector</span>&lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; &gt; <span style="color: #ff6347;">G</span>; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51064;&#51217;&#47532;&#49828;&#53944;&#47484; &#51060;&#50857;&#54620; graph</span>
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">pre</span>)
+{
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, idx);  <span style="color: #888a85;">// </span><span style="color: #888a85;">enter&#54616;&#45716; &#44221;&#47196;&#47484; &#52636;&#47141;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">next</span>:G[idx]) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (next != pre) {
+            dfs(next, idx);
+            printf(<span style="color: #ad7fa8; font-style: italic;">"%d "</span>, idx); <span style="color: #888a85;">// </span><span style="color: #888a85;">leave&#54616;&#45716; &#44221;&#47196;&#47484; &#52636;&#47141;</span>
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    G.resize(N+1); 
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N-1;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">&#49707;&#51088;&#44032; &#51089;&#51008; node&#48512;&#53552; &#48169;&#47928;&#54616;&#44172; &#54632;</span>
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        sort(G[i].begin(), G[i].end());
+    }
+    dfs(1, 0);
+    printf(<span style="color: #ad7fa8; font-style: italic;">"\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e09d31" class="outline-2">
+<h2 id="org8e09d31">문제 링크</h2>
+<div class="outline-text-2" id="text-org8e09d31">
+<ul class="org-ul">
+<li><a href="https://atcoder.jp/contests/abc213/tasks/abc213_d">https://atcoder.jp/contests/abc213/tasks/abc213_d</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,42 @@
+#+HTML: ---
+#+HTML: title: STL queue 이용
+#+HTML: tags: STL
+#+HTML: ---
+
+
+** STL queue
+- 맨 뒤에 데이터를 추가하고, 맨 앞에서 데이터를 꺼내는 자료구조
+
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    queue< int > q;
+
+    q.push(1); // 맨 뒤에 데이터 추가
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+
+    // 앞에서 3개 꺼내서, 맨 뒤로 차례대로 push하기
+    int cnt = 3;
+    while(cnt-- && !q.empty()) {
+        int cur = q.front();  // 맨 앞에서 데이터 가져오기
+        q.pop();              // 맨 앞 데이터 queue에서 제거
+        q.push(cur);          // queue의 맨 뒤에 추가
+    }
+
+    // queue에서 하나씩 꺼내서 출력하기
+    while(!q.empty()) {
+        int cur = q.front();
+        cout << cur << endl;
+        q.pop();
+    }
+    return 0;
+}
+#+END_SRC

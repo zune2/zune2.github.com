@@ -1,0 +1,54 @@
+#+HTML: ---
+#+HTML: title: STL vector 이용
+#+HTML: tags: STL
+#+HTML: ---
+
+* STL Vector
+- 동적 배열 형태로 사용함.
+- 이번에 정리해서 매번 찾아보지 말자. -_-
+
+** 헤더 추가하기
+#+BEGIN_SRC cpp
+#include <vector>
+using namespace std;
+#+END_SRC
+
+** 1차원 int 배열 초기화
+#+BEGIN_SRC cpp
+vector<int> v = {1, 2, 3, 4, 5};
+#+END_SRC
+
+** int 배열을 loop 하면서 push back으로 추가
+원래 하던 방식
+
+** int 배열을 받아서 vector 초기화
+#+BEGIN_SRC cpp
+vector <int > vt(a, a + sizeof(a)/sizeof(int));
+#+END_SRC
+
+** 1차원 int 배열 iteration
+#+BEGIN_SRC cpp
+for(vector<int>::iterator iter = vt.begin();iter != vt.end();iter++) {
+     cout << *iter << endl;
+}
+#+END_SRC
+
+** 3*3 2차원 배열 형태로 접근하기
+#+BEGIN_SRC cpp
+vector< vector<int> > a(3, vector<int>(3));
+#+END_SRC
+
+이차원 배열 쓰듯, 접근이 가능함
+#+BEGIN_SRC cpp
+int cnt;
+for(int i=0;i<3;i++) {
+    for(int j=0;j<3;j++) {
+        a[i][j] = ++cnt;
+    }
+}
+#+END_SRC
+
+** Reference
+- [[https://stackoverflow.com/questions/2236197/what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-elements][what-is-the-easiest-way-to-initialize-a-stdvector-with-hardcoded-element]]
+
+

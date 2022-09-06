@@ -1,0 +1,81 @@
+#+HTML: ---
+#+HTML: title: BOJ 2583 영역 구하기
+#+HTML: tags: dfs
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2583 영역 구하기
+
+** 접근하기
+- dfs로 0인 영역을 구하고, sort해서 출력
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int M, N, K;
+int map[101][101];
+int visit[101][101];
+int x1, y1, x2, y2;
+
+int dy[4] = {1, -1, 0,  0};
+int dx[4] = {0,  0, 1, -1};
+
+bool safe(int y, int x)
+{
+    return (0<=x && x<N) && (0<=y && y<M);
+}
+
+vector<int> v;
+
+int dfs(int y, int x)
+{
+    int cnt = 1;
+    visit[y][x] = 1;
+    for(int i=0;i<4;i++) {
+        int ny = y + dy[i];
+        int nx = x + dx[i];
+
+        if (safe(ny, nx) && visit[ny][nx] == 0 && map[ny][nx] == 0) {
+            cnt += dfs(ny, nx);    
+        }        
+    }
+    return cnt;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &M, &N, &K);
+
+    for(int i=0;i<K;i++) {
+        scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+        for(int y=y1;y<y2;y++) {
+            for(int x=x1;x<x2;x++) {
+                map[y][x] = 1;
+            }
+        }
+    }
+
+    for(int i=0;i<M;i++) {
+        for(int j=0;j<N;j++) {   
+            if (visit[i][j] == 0 && map[i][j] == 0) {
+                int ret = dfs(i, j);
+                v.push_back(ret);
+                //printf("ret:%d\n", ret);
+            }
+        }        
+    }
+    sort(v.begin(), v.end());
+    printf("%d\n", (int)v.size());
+    for(auto& o:v) {
+        printf("%d ", o);
+    }
+    printf("\n");    
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/2583

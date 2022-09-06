@@ -1,0 +1,226 @@
+#+HTML: ---
+#+HTML: title: BOJ 1753 최단경로
+#+HTML: tags: 최단거리
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1753 최단경로
+- 다익스트라 알고리즘으로 구함
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. 그래프에서 edge의 가중치가 양수
+2. 최단거리를 구하기
+
+-> 다익스트라 알고리즘으로 구할 수 있음
+#+END_EXAMPLE
+
+** 코드 - STL priority queue 이용
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 1e9
+
+int V, E;
+int S;
+
+vector< pair<int, int> > G[20020];
+int d[20020];
+
+priority_queue < pair<int, int>, vector< pair<int, int> >, greater< pair<int, int> > > pq;
+
+int main(int argc, char* argv[])
+{
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    cin >> V >> E; 
+    cin >> S;
+
+    for(int i=0;i<E;i++) {
+        int p1, p2, cost;
+        cin >> p1 >> p2 >> cost;
+        G[p1].push_back({cost, p2});
+    }
+    for(int i=0;i<=V;i++) {
+        d[i] = INF;
+    } 
+    d[S] = 0; 
+    pq.emplace(0, S);    // 시작점
+    while(!pq.empty()) {
+        int cost = pq.top().first; 
+        int id = pq.top().second; 
+        pq.pop();
+        if (d[id] < cost) continue;         
+
+        for(auto& i:G[id]) {
+            int nid = i.second;       // id
+            int ncost = i.first;      // cost
+            if (d[nid] > cost + ncost) {
+                d[nid] = cost + ncost;
+                pq.emplace(d[nid], nid);
+            }
+        }
+    } 
+
+    for(int i=1;i<=V;i++) {
+        if (d[i] == INF)
+            cout << "INF" << '\n';
+        else
+            cout << d[i] << '\n';
+    }
+    return 0;
+}
+#+END_SRC
+** 코드 - heap 직접구현
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int V, E;
+int S;
+
+typedef struct Node
+{
+    int to;
+    int val;
+    Node* next;
+} Node;
+
+#define MAX_V 20001
+#define MAX_E (300010*2)
+Node pool[MAX_E];
+Node* list[MAX_V];
+int d[MAX_V];
+int idx;
+
+Node* CreateNode(int to, int val)
+{
+    Node* ptr = &pool[idx++];
+    ptr->to = to;
+    ptr->val = val;
+    ptr->next = NULL;
+    return ptr;
+}
+
+typedef struct HeapNode
+{
+    int to;
+    int val;
+} HeapNode;
+
+class MinHeap
+{
+private:
+    int heap_size;
+    HeapNode heap[MAX_E];
+public:
+    MinHeap() {
+        heap_size = 0;
+    }
+
+    void push(int to, int val) {
+        int idx = ++heap_size;    
+        heap[idx].to = to;
+        heap[idx].val = val;
+        
+        while(idx != 1 && heap[idx].val < heap[idx/2].val) {
+            HeapNode tmp = heap[idx];
+            heap[idx] = heap[idx/2];
+            heap[idx/2] = tmp;
+
+            idx = idx / 2;
+        }
+    }
+  
+    bool empty()
+    {
+        return heap_size == 0;
+    }
+
+    int size()
+    {
+        return heap_size;
+    }
+
+    HeapNode top() {
+        return heap[1];
+    }
+
+    HeapNode pop() {
+        HeapNode ret = heap[1];
+        heap[1] = heap[heap_size--];
+        
+        int parent = 1;
+        int child = parent * 2;
+        
+        while(child <= heap_size) {
+            if (child+1 <= heap_size && heap[child].val > heap[child+1].val) {
+                child++;
+            }
+
+            if (heap[child].val < heap[parent].val) {
+                HeapNode tmp = heap[child];
+                heap[child] = heap[parent];
+                heap[parent] = tmp;
+            }
+
+            parent = child;
+            child *= 2;
+        }
+        return ret;
+    }
+};
+
+
+int main(int argc, char* argv[])
+{
+    idx = 0;
+    scanf("%d %d", &V, &E);
+    scanf("%d", &S);
+
+    for(int i=0;i<=V;i++) {
+        d[i] = 1e9;
+    }
+    d[S] = 0; 
+    MinHeap q;
+    q.push(S, 0);
+
+    int from, to, val;
+    for(int i=0;i<E;i++) {
+        scanf("%d %d %d", &from, &to, &val);
+        Node* ptr = CreateNode(to, val);
+        ptr->next = list[from];
+        list[from] = ptr;
+    }
+
+
+    while(!q.empty()) {
+        int cur = q.top().to;
+        int val = q.top().val;
+        q.pop();
+
+        if (d[cur] < val) continue;
+
+        Node* ptr = list[cur];
+        while(ptr) {
+            if (d[ptr->to] > val + ptr->val) {
+                d[ptr->to] = val + ptr->val;
+                q.push(ptr->to, val + ptr->val);
+
+            }
+            ptr = ptr->next;
+        }
+    }
+    for(int i=1;i<=V;i++) {
+        if (d[i] == 1e9)
+            printf("INF\n");
+        else
+            printf("%d\n", d[i]);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1753
+
+** 해설 링크
+- https://yabmoons.tistory.com/364

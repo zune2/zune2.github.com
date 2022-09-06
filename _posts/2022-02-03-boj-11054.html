@@ -1,0 +1,92 @@
+---
+title: BOJ 11054 가장 긴 바이토닉 부분 수열
+tags: DP
+---
+
+<div id="outline-container-orgf44c841" class="outline-2">
+<h2 id="orgf44c841">BOJ 11054 가장 긴 바이토닉 부분 수열</h2>
+<div class="outline-text-2" id="text-orgf44c841">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbd399f0" class="outline-2">
+<h2 id="orgbd399f0">접근하기</h2>
+<div class="outline-text-2" id="text-orgbd399f0">
+<pre class="example">
+1. dp LIS 알고리즘으로 구한다.
+
+왼쪽부터 오른쪽으로 한번 LIS - dp table 1
+
+왼쪽에서부터 오른쪽으로 한번 LIS 적용 - dp table 2
+
+ans = max(ans, dp1[k] + dp2[k] - 1) 
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org69ee3f4" class="outline-2">
+<h2 id="org69ee3f4">코드</h2>
+<div class="outline-text-2" id="text-org69ee3f4">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">FASTIO</span> <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>);
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[1010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp1</span>[1010] = {0,};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dp2</span>[1010] = {0,};
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #8ae234; font-weight: bold;">FASTIO</span>
+<span style="color: #729fcf;">#if</span><span style="color: #729fcf;">n</span><span style="color: #729fcf;">def</span> ONLINE_JUDGE
+    <span style="color: #ff6347;">freopen</span>(<span style="color: #ad7fa8; font-style: italic;">"input.txt"</span>, <span style="color: #ad7fa8; font-style: italic;">"r"</span>, stdin);
+<span style="color: #729fcf;">#endif</span>
+
+    cin &gt;&gt; N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        cin &gt;&gt; a[i];
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        dp1[i] = 1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=1;j&lt;=i;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[j] &lt; a[i] &amp;&amp; dp1[i] &lt; dp1[j] + 1) {
+                dp1[i] = dp1[j] + 1;
+            }
+        }
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=N;i&gt;=1;i--) {
+        dp2[i] = 1;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=N;j&gt;=i;j--) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (a[j] &lt; a[i] &amp;&amp; dp2[i] &lt; dp2[j] + 1) {
+                dp2[i] = dp2[j] + 1;
+            }
+        }
+    }
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        ans = max(ans, dp1[i] + dp2[i] - 1);
+    }
+    cout &lt;&lt; ans &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">'\n'</span>;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org472fd0e" class="outline-2">
+<h2 id="org472fd0e">문제 링크</h2>
+<div class="outline-text-2" id="text-org472fd0e">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/11054">https://www.acmicpc.net/problem/11054</a></li>
+</ul>
+</div>
+</div>

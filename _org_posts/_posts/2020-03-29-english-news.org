@@ -1,0 +1,20 @@
+#+HTML: ---
+#+HTML: title: 영어듣기 자료 + 자막
+#+HTML: tags: English
+#+HTML: ---
+
+* Youtube
+- PBS news - 자막 있음 공부하기 좋다.
+- ABC Prime - 1시간 길이의 영어 뉴스
+- TED ed - 5분 분량 자막 좋음
+- CNBC Explains - 자막 있음, 주로 비즈니스
+- Bob the canadian
+
+* Podcast
+- NBC Nightly News
+- ABC World News
+- Meet The Press
+- Good Morning Seoul
+- VOA IE
+- Up First
+

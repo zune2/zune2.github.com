@@ -1,0 +1,81 @@
+#+HTML: ---
+#+HTML: title: BOJ 1949 우수 마을
+#+HTML: tags: DP dfs Tree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1949 우수 마을
+- tree 구조에서 DP를 적용하는 문제 
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. Graph를 인접 리스트로 구성한다 -> Tree가 나옴
+
+2. 1번부터 dfs로 이동한다.
+
+3. 방문한 노드에서 우수마을일때/아닐때를 나눠서 우수마을 주민수를 count한다
+
+    dp[k][0] : k 노드가 일반마을이라고 생각했을때, 최대 우수마을 주민수 총합
+               -> 다음 방문할 마을은 일반마을/우수마을 모두 가능함.
+               -> 두 경우에서 max의 값을 누적하면 된다.
+
+    dp[k][1] : k 노드가 우수마을이라고 생각했을때, 최대 우수마을 주민수 총합
+               -> 인접한 마을은 모두 '일반'마을 이어야 한다.
+               -> 우수마을일 수 없음(조건에 위배)
+
+4. dfs가 마무리되면, 1번의 dp[1][1], dp[1][0]에
+   각각 1번 노드가 우수마을 or 일반마을로 지정했을 때
+   값이 들어있음. max값을 출력
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+//#include <cstdio>
+//#include <vector>
+using namespace std;
+
+int N;
+int a[10010];         // 주민수
+vector<int> G[10010]; // 마을간 연관을 graph 표시
+int done[10010];
+int dp[10010][2];
+
+void dfs(int num)
+{
+    done[num] = 1;
+
+    // 시작
+    dp[num][0] = 0;         // 일반마을이면 0
+    dp[num][1] = a[num];    // 우수마을이면 인구수 추가
+    
+    for(auto& next:G[num]) {
+        if (!done[next]) {
+            dfs(next);
+            dp[num][0] += max(dp[next][0], dp[next][1]);
+            dp[num][1] += dp[next][0];
+        }
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    for(int i=1;i<=N;i++) {
+        scanf("%d", &a[i]);
+    }
+    for(int i=0;i<N;i++) {
+        int p1, p2;
+        scanf("%d %d", &p1, &p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+    dfs(1);
+    printf("%d\n", max(dp[1][0], dp[1][1]));
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1949

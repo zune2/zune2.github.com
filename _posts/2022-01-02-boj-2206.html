@@ -1,0 +1,134 @@
+---
+title: BOJ 2206 벽 부수고 이동하기
+tags: bfs 그래프
+---
+
+<div id="outline-container-org0423771" class="outline-2">
+<h2 id="org0423771">BOJ 2206 벽 부수고 이동하기</h2>
+<div class="outline-text-2" id="text-org0423771">
+<ul class="org-ul">
+<li>NxM 맵에서 0은 이동 가능하다. 0, 0 에서 N-1, M-1로 이동하는 최단거리 구하기</li>
+<li>이 때, 한번은 벽(1)을 부수고 이동할 수 있다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4c0a465" class="outline-2">
+<h2 id="org4c0a465">접근하기</h2>
+<div class="outline-text-2" id="text-org4c0a465">
+<pre class="example">
+visit[y][x][2]로 확장
+ 0 : (y, x)에 0인 상태로 방문, 기존에 벽을 부수거나 안 부수거나 상관없이 진행
+ 1 : (y, x)에 1인 상태로 방문, 앞으로는 벽을 부술 수 없음
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org796b8a7" class="outline-2">
+<h2 id="org796b8a7">코드</h2>
+<div class="outline-text-2" id="text-org796b8a7">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+
+<span style="color: #729fcf;">#define</span> <span style="color: #ff6347;">SIZE</span> 1010
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">map</span>[SIZE][SIZE];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[SIZE][SIZE][2];
+
+<span style="color: #729fcf; font-weight: bold;">typedef</span> <span style="color: #729fcf; font-weight: bold;">struct</span> <span style="color: #8ae234; font-weight: bold;">Node</span> {
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">broke</span>;
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span>;
+} <span style="color: #8ae234; font-weight: bold;">Node</span>;
+
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">start</span>;
+<span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">dest</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dy</span>[4] = {1, -1, 0, 0};
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dx</span>[4] = {0, 0, 1, -1};
+
+<span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #edd400; font-weight: bold;">safe</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">y</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">x</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">return</span> (0&lt;=x &amp;&amp; x&lt;M) &amp;&amp; (0&lt;=y &amp;&amp; y&lt;N);
+}
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ans</span>;
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">bfs</span>()
+{
+    <span style="color: #8ae234; font-weight: bold;">queue</span>&lt;<span style="color: #8ae234; font-weight: bold;">Node</span>&gt; <span style="color: #ff6347;">q</span>;
+    visit[0][0][0] = 1;
+    q.push({0, 0, 0, 1}); 
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">Node</span> <span style="color: #ff6347;">cur</span> = q.front(); q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">if</span> (cur.y == dest.y &amp;&amp; cur.x == dest.x) {
+            ans = cur.dist;
+            <span style="color: #729fcf; font-weight: bold;">return</span>;
+        }
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;4;i++) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">ny</span> = cur.y + dy[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">nx</span> = cur.x + dx[i];
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">broke</span> = cur.broke;
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">dist</span> = cur.dist;
+            <span style="color: #729fcf; font-weight: bold;">if</span> (safe(ny, nx)) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (<span style="color: #8ae234; font-weight: bold;">map</span>[ny][nx] == 0 &amp;&amp; !visit[ny][nx][broke]) {
+                    visit[ny][nx][broke] = 1;
+                    q.push({ny, nx, broke, dist + 1});
+                } <span style="color: #729fcf; font-weight: bold;">else</span> <span style="color: #729fcf; font-weight: bold;">if</span> (<span style="color: #8ae234; font-weight: bold;">map</span>[ny][nx] == 1 &amp;&amp; broke == 0) {
+                    visit[ny][nx][1] = 1;
+                    q.push({ny, nx, 1, dist + 1});
+                }
+            }
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    ans = -1;
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;N, &amp;M);
+    <span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[1010];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;str[j];j++) {
+            <span style="color: #8ae234; font-weight: bold;">map</span>[i][j] = str[j] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>;
+        }
+    }
+
+    start.y = 0;
+    start.x = 0;
+
+    dest.y = N-1;
+    dest.x = M-1;
+
+    bfs();
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, ans);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga91b016" class="outline-2">
+<h2 id="orga91b016">문제 링크</h2>
+<div class="outline-text-2" id="text-orga91b016">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/2206">https://www.acmicpc.net/problem/2206</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org26c7537" class="outline-2">
+<h2 id="org26c7537">풀이/해설참고</h2>
+<div class="outline-text-2" id="text-org26c7537">
+<ul class="org-ul">
+<li><a href="https://yabmoons.tistory.com/73">https://yabmoons.tistory.com/73</a></li>
+</ul>
+</div>
+</div>

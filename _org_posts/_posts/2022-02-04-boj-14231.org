@@ -1,0 +1,66 @@
+#+HTML: ---
+#+HTML: title: BOJ 14231 박스 포장
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 14231 박스 포장
+- dp로 LIS풀기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+i앞에 있는 박스가 뒤에 있는 박스보다 작아야지만, 뒤에 있는 박스에 넣을 수 있다.
+
+LIS(N) - N까지의 값이 증가하는 최대 수열
+
+a[j] < a[i] && dp[i] < dp[j] + 1
+  => dp[i] = dp[j] + 1
+#+END_EXAMPLE
+
+** 코드 - DP로 풀이
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+#define ARRSIZE 5050
+
+ll N;
+ll a[ARRSIZE];
+ll dp[ARRSIZE];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+    cin >> N;
+    for(int i=1;i<=N;i++) {
+        cin >> a[i];
+    }
+
+    for(int i=1;i<=N;i++) {
+        dp[i] = 1;
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=i;j++) {
+            if (a[i] > a[j] && dp[i] < dp[j] + 1) {
+                dp[i] = dp[j] + 1;
+            }
+        }
+    }
+    ll ans = dp[1];
+    for(int i=1;i<=N;i++) {
+        ans = max(ans, dp[i]);
+    }
+
+    cout << ans << '\n';
+    return 0;
+}
+#+END_SRC
+
+** TODO 코드 - lower_bound로 풀이
+
+** 문제 링크
+- https://www.acmicpc.net/problem/14231

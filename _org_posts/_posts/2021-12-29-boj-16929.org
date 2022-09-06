@@ -1,0 +1,86 @@
+#+HTML: ---
+#+HTML: title: BOJ 16929 Two Dots
+#+HTML: tags: dfs
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 16929 Two Dots
+
+** 접근하기
+- 2차원 맵에서 dfs를 하면서, cycle을 찾는다.
+- dfs로 4번 이상 이동했는데, 처음 위치로 돌아올 수 있으면, cycle인 성질에 착안 
+- visit 대신 stack변수로 cycle을 찾을 수 있음
+
+** 코드- dfs(y, x, color, nmove) 이용
+#+BEGIN_SRC cpp
+#include <cstdio>
+
+int N, M;
+
+char map[52][52];
+int stack[52][52];
+
+int dy[4] = {1, -1, 0, 0};
+int dx[4] = {0, 0, 1, -1};
+
+int org_x, org_y;
+
+bool safe(int y, int x)
+{
+    return (0<=y && y<N) && (0<=x && x<M);
+}
+
+int loop;
+
+void dfs(int y, int x, char color, int nmove)
+{
+    stack[y][x] = 1;
+    for(int i=0;i<4;i++) {
+        int ny = y + dy[i];
+        int nx = x + dx[i];
+        if (safe(ny, nx) && map[ny][nx] == color && stack[ny][nx] == 0)
+        {
+            dfs(ny, nx, color, nmove+1);
+        } else if(org_y == ny && org_x == nx && nmove >= 4) {
+            loop += 1;
+            // exit(0) 하면, 16m/s에 종료, 안하면 600m/s
+        }
+    }
+
+    stack[y][x] = 0;
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    loop = 0;
+    scanf("%d %d", &N, &M);
+    char str[52];
+    int cnt = 0;
+    for(int i=0;i<N;i++) {
+        scanf("%s", str);
+        for(int j=0;str[j];j++) {
+            map[i][j] = str[j];
+        }
+    }
+
+    for(int i=0;i<N;i++) {
+        for(int j=0;j<M;j++) {
+            if (stack[i][j] == 0) {
+                org_y = i;
+                org_x = j;
+                dfs(i, j, map[i][j], 1);
+                stack[i][j] = 1;
+            }
+        }        
+    }
+    if (loop)
+        printf("Yes\n");
+    else
+        printf("No\n");
+
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/16929

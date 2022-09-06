@@ -1,0 +1,79 @@
+---
+title: BOJ 1769 3의 배수
+tags: 수학
+---
+
+<div id="outline-container-org2aecb56" class="outline-2">
+<h2 id="org2aecb56">3의 배수</h2>
+<div class="outline-text-2" id="text-org2aecb56">
+<ul class="org-ul">
+<li>모든 자릿수의 수를 더해서 3의 배수이면, 3의 배수</li>
+<li>1자리의 수가 될 때까지 반복문</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge11e55e" class="outline-2">
+<h2 id="orge11e55e">접근하기</h2>
+<div class="outline-text-2" id="text-orge11e55e">
+<pre class="example">
+문자열을 sum에 담음
+sum을 이용해서 반복
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc882f4b" class="outline-2">
+<h2 id="orgc882f4b"><span class="todo TODO">TODO</span> 코드 - 재귀를 이용해서 풀어볼 것</h2>
+</div>
+<div id="outline-container-orgea01ece" class="outline-2">
+<h2 id="orgea01ece"><span class="todo TODO">TODO</span> 코드 - 좀 더 간결히 풀 것</h2>
+<div class="outline-text-2" id="text-orgea01ece">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[1000010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">sum</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;str[i];i++) {
+        sum += str[i] - <span style="color: #ad7fa8; font-style: italic;">'0'</span>;    
+    }
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">org</span> = sum;
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">123</span>
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">while</span>(sum / 10 != 0) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tmp</span> = sum;
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">printf("sum:%d\n", sum);</span>
+        sum = 0;
+        <span style="color: #729fcf; font-weight: bold;">while</span>(tmp) {
+            <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">num</span> = tmp % 10;
+            sum += num;
+            tmp = tmp / 10;
+        } 
+        cnt += 1;
+    }
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum != org) cnt++;
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">if</span> (sum % 3 == 0)
+        printf(<span style="color: #ad7fa8; font-style: italic;">"YES\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">else</span>
+        printf(<span style="color: #ad7fa8; font-style: italic;">"NO\n"</span>);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org92bc687" class="outline-2">
+<h2 id="org92bc687">문제 링크</h2>
+<div class="outline-text-2" id="text-org92bc687">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/1769">https://www.acmicpc.net/problem/1769</a></li>
+</ul>
+</div>
+</div>

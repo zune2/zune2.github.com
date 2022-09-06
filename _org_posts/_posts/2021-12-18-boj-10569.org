@@ -1,0 +1,28 @@
+#+HTML: ---
+#+HTML: title: BOJ 10569 다면체
+#+HTML: tags: 최적화
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 10569 다면체
+- 주어진 공식 변형
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int N;
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    int a, b;
+    for(int i=0;i<N;i++) {
+        scanf("%d %d", &a, &b);
+        printf("%d\n", b + 2 - a);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/10569

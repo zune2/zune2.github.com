@@ -1,0 +1,59 @@
+---
+title: 카운팅소트
+tags: 정렬
+---
+
+<div id="outline-container-org8e8d2e3" class="outline-2">
+<h2 id="org8e8d2e3">카운팅 소트</h2>
+<div class="outline-text-2" id="text-org8e8d2e3">
+<ul class="org-ul">
+<li>0, 양의 정수만으로 이뤄진 수를 정렬할 때 이용 가능</li>
+<li>O(N)</li>
+<li>수들이 특정 범위 안에 좁게 몰려 있을 때 좋다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabf0905" class="outline-2">
+<h2 id="orgabf0905">코드</h2>
+<div class="outline-text-2" id="text-orgabf0905">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;iostream&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">a</span>[1010];   <span style="color: #888a85;">// </span><span style="color: #888a85;">1000&#44620;&#51648;&#51032; &#48176;&#50676;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">b</span>[10010];  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#44050;&#51032; &#48276;&#50948;&#44032; 0 ~ 10000&#44620;&#51648;</span>
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">c</span>[1010];
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    cin &gt;&gt; N; 
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">maxv</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        cin &gt;&gt; a[i];
+        <span style="color: #729fcf; font-weight: bold;">if</span> (maxv &lt; a[i]) maxv = a[i];
+        b[a[i]]++;  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#47337;&#50629;&#48176;&#50676;&#50640; &#52852;&#50868;&#54021;</span>
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=maxv;i++) {
+         b[i] += b[i-1];  <span style="color: #888a85;">// </span><span style="color: #888a85;">&#45572;&#51201;&#54633;</span>
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) { <span style="color: #888a85;">// </span><span style="color: #888a85;">c&#48176;&#50676;&#50640; &#51221;&#47148;&#54644;&#49436; &#45812;&#44592;</span>
+        c[b[a[i]]] = a[i];
+        b[a[i]] -= 1;
+    }
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=1;i&lt;=N;i++) {
+        cout &lt;&lt; c[i] &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">" "</span>;
+    }
+    cout &lt;&lt; endl;
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>

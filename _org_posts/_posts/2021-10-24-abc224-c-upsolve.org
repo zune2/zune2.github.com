@@ -1,0 +1,59 @@
+#+HTML: ---
+#+HTML: title: abc224 C - Triangle?
+#+HTML: tags: AtCoder
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Triangle?
+
+** 접근하기
+- N이 300이하, 3중 루프로 다른 세점을 뽑아서, 삼각형판별 조건을 확인해도 됨
+- 300 x 300 x 300 = 27000000 (2700만)
+
+- 삼각형 판별은 editorial로 확인함
+- 삼각형 면적 공식에서 이용함
+#+BEGIN_EXAMPLE
+1/2 * | (x2 - x1)(y3 - y1) - (x3 - x1)(y2 - y1) | 
+#+END_EXAMPLE
+- value가 0이면, 세개의 점이 같은 라인에 있음을 의미한다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int N;
+
+typedef struct Node {
+    int x;
+    int y;
+} Node;
+
+Node pool[310];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    for(int i=0;i<N;i++) {
+        scanf("%d %d", &pool[i].x, &pool[i].y);
+    }
+
+    int ans = 0;
+    for(int i=0;i<N-2;i++) {
+        for(int j=i+1;j<N-1;j++) {
+            for(int k=j+1;k<N;k++) {
+                if (((pool[j].x - pool[i].x) * (pool[k].y - pool[i].y) -  
+                (pool[k].x - pool[i].x) * (pool[j].y - pool[i].y)) != 0) {
+                    ans++;
+                }
+            }
+        }
+    }
+    printf("%d\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc224/tasks/abc224_c

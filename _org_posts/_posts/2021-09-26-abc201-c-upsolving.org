@@ -1,0 +1,67 @@
+#+HTML: ---
+#+HTML: title: C - Secret Number
+#+HTML: tags: AtCoder 완전탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** C - Secret Number
+
+** 접근하기
+- 0~9999까지 loop를 돌면서, 각 숫자를 체크
+- o가 4개 있으면, 그 숫자로만 써야 한다.
+- 0이 포함되지 않으면, 모두 제외해준다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+char str[11];
+
+int main(int argc, char* argv[])
+{
+    scanf("%s", str);
+    
+    int cnt = 0;
+    for(int i=0;i<=9999;i++) {
+
+        unsigned int table = 0;
+        for(int j=0;str[j];j++) {
+            if (str[j] == 'o') {
+                table |= (1 << j);
+            }
+        }
+        // 0001처럼 앞에 0이 있으면, table에서 마크
+        if (table & (1<<0)) {
+            if (i < 1000) table &= ~(1 << 0);
+        }
+
+        int num = i; 
+        int bok = true;
+        while(num) {
+            int k = num%10;
+            if (str[k] == 'x') {
+                bok = false;
+                break;
+            } else if (str[k] == 'o') {
+                table &= ~(1 << k);
+            }
+            num = num / 10;
+        }
+        
+        if (table == 0 && bok) {
+            if (str[0] == 'x') {
+                if (i >= 1000) {
+                    cnt += 1;
+                }
+            } else {
+                cnt += 1;
+            }
+        }
+    }
+    printf("%d\n", cnt); 
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://atcoder.jp/contests/abc201/tasks/abc201_c

@@ -1,0 +1,75 @@
+#+HTML: ---
+#+HTML: title: BOJ 1493 박스 채우기
+#+HTML: tags: 분할정복
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1493 박스채우기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+입체 박스에서 정육면체를 하나 떼어내면, 3방향이 나옴
+
+3방향은 작아진 박스가 나옴 -> 분할정복으로 표현이 됨
+
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int L, W, H;
+int N;
+
+typedef struct Node {
+    int length;
+    int cnt;
+} Node;
+int ans;
+Node cube[22];
+bool failed;
+
+void f(int length, int width, int height, int idx)
+{
+    if (length == 0 || width == 0 || height == 0) return;
+
+    for(int i=idx;i>=0;i--) {
+        if (cube[i].cnt > 0 && (cube[i].length <= length && cube[i].length <= width && cube[i].length <= height)) {
+            cube[i].cnt -= 1;
+            ans += 1;
+            f(cube[i].length, width - cube[i].length, cube[i].length, i);
+            f(length - cube[i].length, width, cube[i].length, i);
+            f(length, width, height - cube[i].length, i);
+            return;
+        }
+    }
+    failed = true;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d %d", &L, &W, &H);
+    scanf("%d", &N);
+
+    for(int i=0;i<N;i++) {
+        int len, cnt;
+        scanf("%d %d", &len, &cnt);
+        cube[i].length = (1 << len);
+        cube[i].cnt = cnt;
+    }
+
+    f(L, W, H, N-1);
+    if (failed) {
+        printf("-1\n");
+    } else {
+        printf("%d\n", ans);
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1493
+
+** 설명/코드 참고
+- [[https://velog.io/@hhj3258/%EB%B0%B1%EC%A4%80%EB%B6%84%ED%95%A0%EC%A0%95%EB%B3%B5C-1493%EB%B2%88-%EB%B0%95%EC%8A%A4-%EC%B1%84%EC%9A%B0%EA%B8%B0][jjh3258 설명]]

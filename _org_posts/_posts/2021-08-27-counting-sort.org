@@ -1,0 +1,52 @@
+#+HTML: ---
+#+HTML: title: 카운팅소트
+#+HTML: tags: 정렬
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 카운팅 소트
+- 0, 양의 정수만으로 이뤄진 수를 정렬할 때 이용 가능
+- O(N)
+- 수들이 특정 범위 안에 좁게 몰려 있을 때 좋다.
+
+** 코드
+#+BEGIN_SRC cpp
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int N;
+
+int a[1010];   // 1000까지의 배열
+int b[10010];  // 값의 범위가 0 ~ 10000까지
+int c[1010];
+
+int main(int argc, char* argv[])
+{
+    cin >> N; 
+    int maxv = 0;
+    for(int i=0;i<N;i++) {
+        cin >> a[i];
+        if (maxv < a[i]) maxv = a[i];
+        b[a[i]]++;  // 룩업배열에 카운팅
+    }
+
+    for(int i=1;i<=maxv;i++) {
+         b[i] += b[i-1];  // 누적합
+    }
+    
+    for(int i=0;i<N;i++) { // c배열에 정렬해서 담기
+        c[b[a[i]]] = a[i];
+        b[a[i]] -= 1;
+    }
+
+    for(int i=1;i<=N;i++) {
+        cout << c[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+#+END_SRC
+
+
+

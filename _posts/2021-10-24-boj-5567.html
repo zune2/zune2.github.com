@@ -1,0 +1,156 @@
+---
+title: BOJ 5567 결혼식
+tags: DFS
+---
+
+<div id="outline-container-org8f810cf" class="outline-2">
+<h2 id="org8f810cf">BOJ 5567 결혼식</h2>
+</div>
+
+<div id="outline-container-org8ad5968" class="outline-2">
+<h2 id="org8ad5968">접근하기</h2>
+<div class="outline-text-2" id="text-org8ad5968">
+<ul class="org-ul">
+<li>DFS로 두 단계를 내려간다.</li>
+<li>BFS에서 depth를 잰다.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge90526e" class="outline-2">
+<h2 id="orge90526e">코드 - DFS</h2>
+<div class="outline-text-2" id="text-orge90526e">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;algorithm&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>, <span style="color: #ff6347;">M</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[501];
+<span style="color: #8ae234; font-weight: bold;">vector</span>&lt; <span style="color: #8ae234; font-weight: bold;">int</span> &gt; <span style="color: #ff6347;">vp</span>[501];
+<span style="color: #888a85;">//</span><span style="color: #888a85;">int ans;</span>
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">dfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">k</span>, <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">depth</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">if</span> (depth &gt;= 2) <span style="color: #729fcf; font-weight: bold;">return</span>;
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">next</span>:vp[k]) {
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">if (visit[next] == 0) { // &#53952;&#47548;</span>
+        visit[next] = 1;
+        dfs(next, depth + 1);
+        <span style="color: #888a85;">//</span><span style="color: #888a85;">}</span>
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;M);
+
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+        vp[p1].push_back(p2);
+        vp[p2].push_back(p1);
+    }
+
+    dfs(1, 0);
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=2;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span>(visit[i]) cnt++;
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbc37613" class="outline-2">
+<h2 id="orgbc37613">코드 - BFS</h2>
+<div class="outline-text-2" id="text-orgbc37613">
+<pre class="example">
+visit[1] = 1 이면 1번
+visit[2] = visit[1] + 1 = 2   // depth 1 : 친구
+visit[3] = visit[1] + 1 = 2   // depth 1 : 친구
+visit[4] = visit[3] + 1 = 3   // depth 2 : 친구의 친구
+visit[5] = visit[4] + 1 = 4
+</pre>
+<ul class="org-ul">
+<li>2와 3을 세면 된다.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;cstdio&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;queue&gt;</span>
+<span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;vector&gt;</span>
+
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">M</span>;
+
+<span style="color: #8ae234; font-weight: bold;">vector</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">G</span>[501]; <span style="color: #888a85;">// </span><span style="color: #888a85;">&#51064;&#51217; &#47532;&#49828;&#53944;&#47196; &#44396;&#54788;</span>
+<span style="color: #8ae234; font-weight: bold;">queue</span> &lt;<span style="color: #8ae234; font-weight: bold;">int</span>&gt; <span style="color: #ff6347;">q</span>;      
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">idx</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">visit</span>[501];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">bfs</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">start</span>)
+{
+    idx = 0;
+    visit[1] = 1;
+    q.push(start);       <span style="color: #888a85;">// </span><span style="color: #888a85;">1&#48264;&#51012; Q&#50640; &#45347;&#44592;</span>
+
+    <span style="color: #729fcf; font-weight: bold;">while</span>(!q.empty()) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">current</span> = q.front();
+        q.pop();
+
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #729fcf; font-weight: bold;">auto</span>&amp; <span style="color: #ff6347;">next</span>:G[current]) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (visit[next] == 0) {
+                visit[next] = visit[current] + 1;
+                q.push(next);
+            }     
+        }
+    }
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;M);
+
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;M;i++) {
+        <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">p1</span>, <span style="color: #ff6347;">p2</span>;    
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%d %d"</span>, &amp;p1, &amp;p2);
+        G[p1].push_back(p2);
+        G[p2].push_back(p1);
+    }
+
+    bfs(1);    
+    <span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">cnt</span> = 0;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=2;i&lt;=N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">if</span> (visit[i] == 2 || visit[i] == 3) {
+            cnt += 1;
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"%d\n"</span>, cnt);
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ef9aa4" class="outline-2">
+<h2 id="org9ef9aa4">문제 링크</h2>
+<div class="outline-text-2" id="text-org9ef9aa4">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/5567">https://www.acmicpc.net/problem/5567</a></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,71 @@
+#+HTML: ---
+#+HTML: title: BOJ 17069 파이프 옮기기 2
+#+HTML: tags: DP
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 17069 파이프 옮기기 2
+- 오른쪽 방향으로 가로,세로,대각선 이동하고 N,N에 도착가능한 경우의 수 세기
+
+** 접근하기
+#+BEGIN_EXAMPLE
+dp[i][j][3]  // 0가로 1세로 2대각선으로 생각하기
+
+a[i][j] == 0 일때만 전 상태에서 현재 상태로 이동하도록 함
+
+dp 테이블에 여분을 두어서 N+1등의 예외처리 조심하기
+#+END_EXAMPLE
+
+** 코드
+#+BEGIN_SRC cpp
+#include <stdio.h>
+
+int N;
+
+int a[33][33];
+long long dp[33][33][3];
+
+int main(int argc, char* argv[])
+{
+    scanf("%d", &N);
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            scanf("%d", &a[i][j]);
+        } 
+    } 
+    dp[1][2][0] = 1;    // 왼쪽에서 연결
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            if (i == 1 && j == 1) continue;
+            if (a[i][j] == 1) continue;
+            
+            // 오른쪽으로
+            if (a[i][j+1] == 0)
+                dp[i][j+1][0] = dp[i][j][0] + dp[i][j][2];
+
+            // 아래로
+            if (a[i+1][j] == 0)
+                dp[i+1][j][1] = dp[i][j][1] + dp[i][j][2];
+            
+            // 대각선 아래로
+            if (a[i+1][j+1] == 0 && a[i][j+1] == 0 && a[i+1][j] == 0)
+                dp[i+1][j+1][2] = dp[i][j][0] + dp[i][j][1] + dp[i][j][2];
+        }
+    } 
+
+#if 0
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            printf("%d ", dp[i][j][0] + dp[i][j][1] + dp[i][j][2]); 
+        } 
+        printf("\n"); 
+    }
+#endif 
+    printf("%lld\n", dp[N][N][0] + dp[N][N][1] + dp[N][N][2]); 
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/17069

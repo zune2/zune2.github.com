@@ -1,0 +1,90 @@
+
+#+HTML: ---
+#+HTML: title: BOJ 1922 네트워크 연결
+#+HTML: tags: MST UnionFind
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** 네트워크 연결
+Minimum spanning tree를 구현하는 문제
+
+** 문제 링크
+- https://www.acmicpc.net/problem/1922
+
+** 코드
+- 크루스컬 알고리즘을 이용해서 구현함
+
+#+BEGIN_SRC cpp
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+typedef struct Node {
+    int value;
+    int start;
+    int end;
+
+    bool operator<(const Node & b) {
+        return value < b.value;
+    }
+} Node;
+
+Node pool[100010];
+int V, E;
+
+// Union find
+int parent[10010];
+
+int find(int num)
+{
+    if (num == parent[num])
+        return num;
+    else
+        return parent[num] = find(parent[num]); 
+}
+
+void unite(int n1, int n2)
+{
+    int num1 = find(n1);
+    int num2 = find(n2);
+
+    if (num1 > num2) {
+        parent[num1] = n2;
+    } else {
+        parent[num2] = n1;
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    scanf("%d %d", &V, &E);
+   
+    for(int i=1;i<10001;i++) {
+        parent[i] = i; 
+    }
+
+    for(int i=0;i<E;i++) {
+        scanf("%d %d %d", &pool[i].start, &pool[i].end, &pool[i].value);
+    }
+
+    sort(pool, pool+E);
+
+    long long ans = 0;
+    for(int i=0;i<E;i++) {
+        int n1 = find(pool[i].start);
+        int n2 = find(pool[i].end);
+        int v = pool[i].value;
+        if (n1 != n2) {
+            unite(n1, n2);
+            ans += v;
+        } 
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
+#+END_SRC
+
+** 참고자료
+- [[https://www.apexcel.blog/algorithm/graph/union-find/union-find/][유니온 파인드]]
+- [[https://m.blog.naver.com/kks227/220791837179][Ries - Union Find]]
+- [[https://m.blog.naver.com/kks227/220799105543][Ries - Minimum Spanning Tree]]

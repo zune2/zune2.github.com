@@ -1,0 +1,62 @@
+#+HTML: ---
+#+HTML: title: BOJ 2792 보석 상자
+#+HTML: tags: 이분탐색
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 2792 보석 상자
+
+** 접근하기
+#+BEGIN_SRC 
+4개 (RRRR)
+파란 보석이 7개 (BBBBBBB)
+
+mid로 나누어 떨어지면, cnt
+나누어 떨어지지 않으면 cnt + 1
+
+질투심 최대가 최소가 되게 보석을 나누어주는 방법
+#+END_SRC
+
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+
+int N, M;
+int kind[300030];
+
+bool check(long long mid)
+{
+    long long cnt = 0;
+    for(int i=0;i<M;i++) {
+        cnt += kind[i]/mid; 
+        if (kind[i]%mid != 0) cnt += 1;
+    }
+
+    return cnt <= N;
+}
+
+int main(int argc, char* argv[])
+{
+    scanf("%d %d", &N, &M);
+    for(int i=0;i<M;i++) {
+        scanf("%d", &kind[i]);
+    }
+
+    long long s = 0;
+    long long e = 1000000000;
+
+    while(s + 1 < e) {
+        long long mid = (s+e)/2;
+        if (check(mid)) {
+            e = mid;    // 질투심 최대가 최소
+        } else {
+            s = mid;
+        }
+    }
+    printf("%lld\n", e);
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/2792

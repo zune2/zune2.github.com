@@ -1,0 +1,86 @@
+#+HTML: ---
+#+HTML: title: BOJ 1719 택배
+#+HTML: tag: 최단거리
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 1719 택배
+- 경로표는 한 집하장에서 다른 집하장으로 최단경로로 화물을 이동시키기 위해 가장 먼저 거쳐야 하는 집하장
+
+** 접근하기
+#+BEGIN_EXAMPLE
+1. 플로이드 와샬 알고리즘으로 table구성
+
+i -> k -> j 이면 a[i][j] = a[i][k]를 담으면 됨
+#+END_EXAMPLE
+
+
+** TODO 코드 - 다익스트라
+
+** 코드 - 플로이드 와샬
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define FASTIO ios_base::sync_with_stdio(false); cin.tie(NULL);
+typedef long long ll;
+#define INF 1e9
+
+int N, M;
+
+int dp[202][202];
+int arr[202][202];
+
+int main(int argc, char* argv[])
+{
+    FASTIO
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#endif
+    cin >> N >> M;
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            if (i != j) dp[i][j] = INF;
+            arr[i][j] = INF;
+        }
+    }
+
+    int a, b, c;
+    for(int i=0;i<M;i++) {
+        cin >> a >> b >> c;
+        dp[a][b] = c;
+        dp[b][a] = c;
+        arr[a][b] = b;
+        arr[b][a] = a;
+    }
+
+    for(int k=1;k<=N;k++) {
+        for(int i=1;i<=N;i++) {
+            for(int j=1;j<=N;j++) {
+                if (dp[i][j] > dp[i][k] + dp[k][j]) {
+                    dp[i][j] = dp[i][k] + dp[k][j];
+                    arr[i][j] = arr[i][k];
+                }
+            }
+        }
+    }
+
+    for(int i=1;i<=N;i++) {
+        for(int j=1;j<=N;j++) {
+            if (arr[i][j] == INF )
+                cout << '-' << " ";
+            else
+                cout << arr[i][j] << " ";
+        }
+        cout << '\n';
+    }
+
+    return 0;
+}
+#+END_SRC
+** 문제 링크
+- https://www.acmicpc.net/problem/1719
+
+** 풀이 해설
+- https://beginthread.tistory.com/63
+- https://ongveloper.tistory.com/181

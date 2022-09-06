@@ -1,0 +1,54 @@
+#+HTML: ---
+#+HTML: title: BOJ 9934 완전 이진트리
+#+HTML: tags: Tree
+#+HTML: ---
+#+OPTIONS: ^:nil
+
+** BOJ 9934 완전이진트리
+- 중위순회를 떠올리기
+** 접근하기
+- 가운데 숫자가 root
+- 반씩 나누면서, 좌우를 타고 내려감 -> 분할정복
+** 코드
+#+BEGIN_SRC cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+int a[2000];
+
+vector<int> G[10];
+
+void f(int depth, int s, int e)
+{
+    if ( s < e) {
+        int m = (s+e)/2;
+        G[depth].push_back(a[m]);
+        f(depth+1, s, m);
+        f(depth+1, m+1, e);
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    freopen("input.txt", "r", stdin);
+    scanf("%d", &N);
+    int len = pow(2, N) - 1;
+    for(int i=0;i<len;i++) {
+        scanf("%d", &a[i]);
+    }
+
+    f(0, 0, len);
+
+    for(int i=0;i<N;i++) {
+        for(auto& o:G[i]) {
+            printf("%d ", o);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+#+END_SRC
+
+** 문제 링크
+- https://www.acmicpc.net/problem/9934

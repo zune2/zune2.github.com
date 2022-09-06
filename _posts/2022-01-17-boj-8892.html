@@ -1,0 +1,152 @@
+---
+title: BOJ 8892 팰린드롬
+tags: 완전탐색 문자열
+---
+
+<div id="outline-container-org0a759de" class="outline-2">
+<h2 id="org0a759de">BOJ 8892 팰린드롬</h2>
+<div class="outline-text-2" id="text-org0a759de">
+<ul class="org-ul">
+<li>문자열을 조합해서 팰린드롬인지 알아내기</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org45d1435" class="outline-2">
+<h2 id="org45d1435">접근하기</h2>
+<div class="outline-text-2" id="text-org45d1435">
+<pre class="example">
+N이 100 N*N을 해도 10000번 반복
+두 문자열을 붙여서 팰린드롬인지 체크한다.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdab860b" class="outline-2">
+<h2 id="orgdab860b">코드 - STL 24 m/s</h2>
+<div class="outline-text-2" id="text-orgdab860b">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;bits/stdc++.h&gt;</span>
+<span style="color: #729fcf; font-weight: bold;">using</span> <span style="color: #729fcf; font-weight: bold;">namespace</span> <span style="color: #8ae234;">std</span>;
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+<span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">str</span>[101];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    cin &gt;&gt; N;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++)
+        cin &gt;&gt; str[i];
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i == j) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+            <span style="color: #8ae234; font-weight: bold;">string</span> <span style="color: #ff6347;">tmp</span> = str[i] + str[j];
+            <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">same</span> = <span style="color: #8ae234;">true</span>;
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s</span>=0, <span style="color: #ff6347;">e</span>=(<span style="color: #8ae234; font-weight: bold;">int</span>)tmp.size()-1; s &lt; e &amp;&amp; s&lt;(<span style="color: #8ae234; font-weight: bold;">int</span>)tmp.size() &amp;&amp; e&gt;=0;s++, e--) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (tmp[s] != tmp[e]) {
+                    same = <span style="color: #8ae234;">false</span>;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (same) {
+                cout &lt;&lt; tmp &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+                <span style="color: #729fcf; font-weight: bold;">return</span>;
+            }
+        }
+    }
+    cout &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"0"</span> &lt;&lt; <span style="color: #ad7fa8; font-style: italic;">"\n"</span>;
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    <span style="color: #888a85;">// </span><span style="color: #888a85;">28 m/s&#50688;&#51004;&#45208;, &#50500;&#47000;&#47484; &#52628;&#44032;&#54616;&#47732; 4 m/s &#44048;&#49548;</span>
+    <span style="color: #8ae234;">ios_base</span>::sync_with_stdio(<span style="color: #8ae234;">false</span>); cin.tie(<span style="color: #8ae234;">NULL</span>); cout.tie(<span style="color: #8ae234;">NULL</span>);
+    cin &gt;&gt; T;
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org920fcca" class="outline-2">
+<h2 id="org920fcca">코드 - 구현 8 m/s</h2>
+<div class="outline-text-2" id="text-org920fcca">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #729fcf;">#include</span> <span style="color: #ad7fa8; font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">T</span>;
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">N</span>;
+
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">str</span>[101][10001];
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">len</span>[101];
+<span style="color: #8ae234; font-weight: bold;">char</span> <span style="color: #ff6347;">tmp</span>[10010];
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">my_strcpy</span>(<span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">p1</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">p2</span>)
+{
+    <span style="color: #729fcf; font-weight: bold;">while</span>(*p2 != <span style="color: #ad7fa8; font-style: italic;">'\0'</span>) {
+        *p1 = *p2;
+        p1++;
+        p2++;
+    }
+    *p1 = <span style="color: #ad7fa8; font-style: italic;">'\0'</span>;
+}
+
+<span style="color: #8ae234; font-weight: bold;">void</span> <span style="color: #edd400; font-weight: bold;">solve</span>()
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;N);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        scanf(<span style="color: #ad7fa8; font-style: italic;">"%s"</span>, str[i]);
+
+        len[i] = 0;
+        <span style="color: #729fcf; font-weight: bold;">for</span>(;str[i][len[i]];len[i]++); }
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">i</span>=0;i&lt;N;i++) {
+        <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">j</span>=0;j&lt;N;j++) {
+            <span style="color: #729fcf; font-weight: bold;">if</span> (i == j) <span style="color: #729fcf; font-weight: bold;">continue</span>;
+
+            my_strcpy(tmp, str[i]);
+            my_strcpy(tmp+len[i], str[j]);
+            <span style="color: #8ae234; font-weight: bold;">bool</span> <span style="color: #ff6347;">same</span> = <span style="color: #8ae234;">true</span>;
+            <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">s</span>=0, <span style="color: #ff6347;">e</span>=(<span style="color: #8ae234; font-weight: bold;">int</span>)(len[i]+len[j]-1); s &lt; e &amp;&amp; s&lt;(<span style="color: #8ae234; font-weight: bold;">int</span>)(len[i]+len[j]) &amp;&amp; e&gt;=0;s++, e--) {
+                <span style="color: #729fcf; font-weight: bold;">if</span> (tmp[s] != tmp[e]) {
+                    same = <span style="color: #8ae234;">false</span>;
+                    <span style="color: #729fcf; font-weight: bold;">break</span>;
+                }
+            }
+
+            <span style="color: #729fcf; font-weight: bold;">if</span> (same) {
+                printf(<span style="color: #ad7fa8; font-style: italic;">"%s\n"</span>, tmp);
+                <span style="color: #729fcf; font-weight: bold;">return</span>;
+            }
+        }
+    }
+    printf(<span style="color: #ad7fa8; font-style: italic;">"0\n"</span>);
+}
+
+<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #edd400; font-weight: bold;">main</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">argc</span>, <span style="color: #8ae234; font-weight: bold;">char</span>* <span style="color: #ff6347;">argv</span>[])
+{
+    scanf(<span style="color: #ad7fa8; font-style: italic;">"%d"</span>, &amp;T);
+    <span style="color: #729fcf; font-weight: bold;">for</span>(<span style="color: #8ae234; font-weight: bold;">int</span> <span style="color: #ff6347;">tc</span>=1;tc&lt;=T;tc++) {
+        solve();
+    }
+    <span style="color: #729fcf; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf265db2" class="outline-2">
+<h2 id="orgf265db2">문제 링크</h2>
+<div class="outline-text-2" id="text-orgf265db2">
+<ul class="org-ul">
+<li><a href="https://www.acmicpc.net/problem/8892">https://www.acmicpc.net/problem/8892</a></li>
+</ul>
+</div>
+</div>
