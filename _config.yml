@@ -22,7 +22,7 @@ locale                   : "ko-KR"
 title                    : "Zune2"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "MyoungJune Park"
+name                     : "Zune2"
 description              : "Life Note"
 url                      : "https://zune2.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -107,7 +107,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "MyoungJune Park"
+  name             : "Zune2"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Life Log"
   location         : "Somewhere"
