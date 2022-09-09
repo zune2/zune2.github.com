@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 20155 우리 집 밑에 편의점이 있는데
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

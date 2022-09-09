@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 14496 그대 그머가 되어
 #+HTML: tags: BFS
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

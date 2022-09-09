@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1213 팰린드롬 만들기
 #+HTML: tags: 수학 구현
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc238 B - Pizza
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

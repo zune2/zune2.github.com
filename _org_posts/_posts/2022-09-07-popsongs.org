@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 팝송 몇 곡 정리
 #+HTML: tags: Pops
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

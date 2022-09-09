@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 14400 편의점 2
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

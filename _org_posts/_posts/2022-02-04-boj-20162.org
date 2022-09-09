@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 20162 간식 파티
 #+HTML: tags: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

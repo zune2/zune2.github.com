@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: vim에서 template.cpp코드 불러오기
 #+HTML: tags: vim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

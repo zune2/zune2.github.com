@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2357 농구 골대 세우기
 #+HTML: tags: 수학, 중앙값
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

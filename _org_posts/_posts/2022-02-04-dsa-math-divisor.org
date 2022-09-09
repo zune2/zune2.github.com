@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 약수 출력하기
 #+HTML: tags: DSA 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

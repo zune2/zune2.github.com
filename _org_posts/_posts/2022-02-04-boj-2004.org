@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2004 조합
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

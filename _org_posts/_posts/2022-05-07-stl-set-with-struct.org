@@ -1,7 +1,8 @@
 #+HTML: ---
 #+HTML: title: STL set에 struct pointer 이용
 #+HTML: tag: STL
-#+HTML: last_modified_at: 2022-09-07T08:06:00-05:00
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 
