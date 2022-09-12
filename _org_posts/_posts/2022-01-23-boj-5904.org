@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 5904 Moo 게임
 #+HTML: tag: 분할정복
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

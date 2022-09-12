@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11478 서로 다른 부분문자열의 개수
 #+HTML: tags: 서로다른부분문자열 STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc207 C - Many Segments
 #+HTML: tags: AtCoder
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

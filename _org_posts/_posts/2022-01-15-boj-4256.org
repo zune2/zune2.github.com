@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 4256 트리
 #+HTML: tags: 분할정복 Tree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

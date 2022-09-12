@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 9461 파도반 수열
 #+HTML: tag: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

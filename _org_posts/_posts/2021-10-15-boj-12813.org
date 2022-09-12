@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 12813 이진수 연산
 #+HTML: tags: STL bitest
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

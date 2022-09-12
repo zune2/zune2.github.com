@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11437 LCA
 #+HTML: tags: dfs LCA
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

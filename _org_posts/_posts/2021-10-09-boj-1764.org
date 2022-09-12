@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1764 듣보잡
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

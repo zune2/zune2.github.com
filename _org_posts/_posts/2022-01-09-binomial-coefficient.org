@@ -2,6 +2,8 @@
 #+HTML: title: Binomial Coefficient(이항계수)란?
 #+HTML: tags: 조합론
 #+HTML: use_math: true
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 #+OPTIONS: tex:dvipng

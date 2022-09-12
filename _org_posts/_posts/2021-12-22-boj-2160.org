@@ -2,6 +2,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2160 그림 비교
 #+HTML: tags: 구현 비트연산
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

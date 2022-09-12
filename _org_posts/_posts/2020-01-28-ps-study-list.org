@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Problem solving 토픽
 #+HTML: tags: ProblemSolving
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * 주제별 분류

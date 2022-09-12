@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1003 피보나치 함수
 #+HTML: tags: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

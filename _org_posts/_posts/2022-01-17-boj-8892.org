@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 8892 팰린드롬
 #+HTML: tags: 완전탐색 문자열
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

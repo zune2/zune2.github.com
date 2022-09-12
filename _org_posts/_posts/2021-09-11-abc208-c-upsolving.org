@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: C - Fair Candy Distribution
 #+HTML: tags: AtCoder
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

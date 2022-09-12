@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2979 트럭 주차
 #+HTML: tags: 구현
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

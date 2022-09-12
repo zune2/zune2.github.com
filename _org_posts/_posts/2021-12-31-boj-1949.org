@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1949 우수 마을
 #+HTML: tags: DP dfs Tree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

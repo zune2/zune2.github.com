@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2635 수 이어가기
 #+HTML: tags: 수학 dfs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

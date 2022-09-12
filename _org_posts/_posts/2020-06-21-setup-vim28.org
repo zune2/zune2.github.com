@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Vim28 설치하기
 #+HTML: tags: vim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** Setting up

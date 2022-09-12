@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1715 카드 정렬하기
 #+HTML: tags: STL priority_queue
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

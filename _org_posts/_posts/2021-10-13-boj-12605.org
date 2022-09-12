@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 12605 단어 순서 뒤집기
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

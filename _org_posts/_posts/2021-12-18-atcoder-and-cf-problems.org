@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Atcoder / Codeforces 문제 list
 #+HTML: tags: ProblemList
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

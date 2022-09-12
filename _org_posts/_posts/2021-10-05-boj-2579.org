@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2579 계단 오르기
 #+HTML: tags: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 달의 연인(보보경심 려)
 #+HTML: tags: culture
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

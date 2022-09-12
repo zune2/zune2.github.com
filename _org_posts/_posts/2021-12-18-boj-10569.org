@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 10569 다면체
 #+HTML: tags: 최적화
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

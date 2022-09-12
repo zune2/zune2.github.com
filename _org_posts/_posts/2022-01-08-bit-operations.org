@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Bit operation 정리
 #+HTML: tags: bit연산
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

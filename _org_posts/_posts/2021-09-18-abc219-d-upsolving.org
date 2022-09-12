@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: D - Strange Lunchbox
 #+HTML: tags: AtCoder DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

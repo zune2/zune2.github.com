@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 13305 주유소
 #+HTML: tags: 그리디
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

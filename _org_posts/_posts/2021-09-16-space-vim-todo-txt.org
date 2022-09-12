@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: SpaceVim에 todo.txt 설치
 #+HTML: tags: SpaceVim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -2,6 +2,8 @@
 #+HTML: title:  "hello.py 인터프리터에서 실행하기"
 #+HTML: date:   2021-07-03 22:32:54
 #+HTML: categories: python
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * 예제

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1351 무한 수열
 #+HTML: tags: STL DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

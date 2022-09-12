@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: A. Way Too Long Word
 #+HTML: tags: CodeForces
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: C - Neo-lexicographic Ordering
 #+HTML: tags: AtCoder
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

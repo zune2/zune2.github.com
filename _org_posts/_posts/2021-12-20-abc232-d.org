@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: D - Weak Takhashi
 #+HTML: tags: AtCoder Graph
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

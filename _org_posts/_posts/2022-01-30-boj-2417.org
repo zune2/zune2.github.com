@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2417 정수 제곱근
 #+HTML: tags: 이분탐색 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

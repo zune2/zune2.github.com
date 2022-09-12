@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc235 D - Multiply and Rotate
 #+HTML: tags: AtCoder BFS
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: todo.txt 이용하기
 #+HTML: tags: vim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** todo.txt-vim

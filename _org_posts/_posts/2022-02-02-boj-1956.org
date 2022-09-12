@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1956 운동
 #+HTML: tags: 최단거리
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

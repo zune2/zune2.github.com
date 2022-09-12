@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 16561 3의 배수
 #+HTML: tags: 최적화
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

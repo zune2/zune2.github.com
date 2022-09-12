@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 14231 박스 포장
 #+HTML: tags: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

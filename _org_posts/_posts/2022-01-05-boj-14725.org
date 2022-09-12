@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 14725 개미굴
 #+HTML: tags: dfs Trie
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

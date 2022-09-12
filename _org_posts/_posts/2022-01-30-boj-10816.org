@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 10816 숫자카드 2
 #+HTML: tags: 이분탐색
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

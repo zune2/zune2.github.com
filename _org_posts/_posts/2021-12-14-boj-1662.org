@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1662 압축
 #+HTML: tags: 스택
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

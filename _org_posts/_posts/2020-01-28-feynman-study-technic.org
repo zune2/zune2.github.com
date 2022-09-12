@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 파인만의 공부하는 방법
 #+HTML: tags: life
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** 파인만이 제시한 공부방법

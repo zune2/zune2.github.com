@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 6359 만취한 상범
 #+HTML: tags: DP 
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

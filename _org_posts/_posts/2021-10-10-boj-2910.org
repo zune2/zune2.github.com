@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2910 빈도정렬
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

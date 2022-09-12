@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11404 플로이드
 #+HTML: tags: 최단거리
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

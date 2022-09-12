@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 9655 돌게임
 #+HTML: tags: DP 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

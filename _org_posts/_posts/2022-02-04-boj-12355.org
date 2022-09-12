@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 12355 Ocean View (Large)
 #+HTML: tags: DP
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

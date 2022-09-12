@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 20040 사이클 게임
 #+HTML: tags: UnionFind
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 8595 히든넘버
 #+HTML: tags: 배열
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

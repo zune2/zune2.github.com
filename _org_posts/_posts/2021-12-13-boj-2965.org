@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2965 캥거루 세마리
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: TODO E - LEQ
 #+HTML: tags: AtCoder SegmentTree BinaryIndexTree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

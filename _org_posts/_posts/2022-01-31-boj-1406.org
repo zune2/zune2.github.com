@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1406 에디터
 #+HTML: tags: STL 리스트
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

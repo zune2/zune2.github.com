@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 16929 Two Dots
 #+HTML: tags: dfs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 대본이 제공되는 Podcast
 #+HTML: tags: StudyEnglish
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * 대본이 있는 포드캐스트

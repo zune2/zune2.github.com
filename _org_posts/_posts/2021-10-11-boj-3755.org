@@ -1,6 +1,8 @@
 #+Html: ---
 #+HTML: title: BOJ 3755 Double Queue
 #+HTML: tags: STL multiset
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

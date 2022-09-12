@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc231 E - Minimal payments
 #+HTML: tags: DP dfs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

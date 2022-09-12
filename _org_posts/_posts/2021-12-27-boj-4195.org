@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 4195 친구 네트워크
 #+HTML: tags: UnionFind
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

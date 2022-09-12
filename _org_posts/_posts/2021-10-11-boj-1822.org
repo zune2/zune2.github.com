@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1822 차집합
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 10818 최소, 최대
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

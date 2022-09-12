@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11723 집합
 #+HTML: tags: STL bitest
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

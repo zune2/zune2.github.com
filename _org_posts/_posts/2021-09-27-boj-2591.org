@@ -2,6 +2,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2951 숫자카드
 #+HTML: tags: DP 경우의수
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

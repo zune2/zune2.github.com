@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 5635 생일
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

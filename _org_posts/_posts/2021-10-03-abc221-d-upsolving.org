@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc221 D - Online games
 #+HTML: tags: AtCoder Greedy
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

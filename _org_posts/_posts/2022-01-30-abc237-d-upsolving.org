@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc237 D - LR insertion
 #+HTML: tags: AtCoder STL 리스트
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

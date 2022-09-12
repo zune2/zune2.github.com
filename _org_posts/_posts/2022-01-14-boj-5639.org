@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 5639 이진 검색 트리
 #+HTML: tags: Tree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

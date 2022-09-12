@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc210 C - Colorful Candies
 #+HTML: tags: AtCoder
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

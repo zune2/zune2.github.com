@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 17362 수학은 체육과목 입니다. 2
 #+HTML: tags: bfs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

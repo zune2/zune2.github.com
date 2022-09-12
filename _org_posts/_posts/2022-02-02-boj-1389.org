@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1389 케빈 베이컨의 6단계 법칙
 #+HTML: tags: 최단거리
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

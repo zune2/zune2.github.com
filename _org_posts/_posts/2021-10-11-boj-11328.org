@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11328 Strfry
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

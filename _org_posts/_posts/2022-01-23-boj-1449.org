@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1449 수리공 항승
 #+HTML: tags: 그리디
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

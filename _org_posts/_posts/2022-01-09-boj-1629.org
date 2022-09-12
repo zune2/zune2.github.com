@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1629 곱셈
 #+HTML: tags: 분할정복
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

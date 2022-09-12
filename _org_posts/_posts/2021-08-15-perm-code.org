@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: permutation을 구하는 코드
 #+HTML: tags: coding
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 

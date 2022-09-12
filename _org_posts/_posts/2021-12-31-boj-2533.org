@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2533 사회망 서비스(SNS)
 #+HTML: tags: DP dfs Tree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 20501 Facebook
 #+HTML: tags: STL bitset
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

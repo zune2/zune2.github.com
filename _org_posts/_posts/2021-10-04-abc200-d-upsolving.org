@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc200 D - Happy Birthday! 2
 #+HTML: tags: AtCoder
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: STL binary search
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** STL binary search

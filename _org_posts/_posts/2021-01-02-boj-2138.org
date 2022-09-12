@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2138 전구와 스위치
 #+HTML: tags: 그리디
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: org mode와 deft를 같이 쓰기
 #+HTML: tags: deft
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 #+OPTIONS: tex:dvipng

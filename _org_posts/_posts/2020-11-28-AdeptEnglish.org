@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: AdeptEnglish Pod
 #+HTML: tags: StudyEnglish
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * Adept English pod

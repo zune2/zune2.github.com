@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1761 정점들의 거리
 #+HTML: tags: SparseTable
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

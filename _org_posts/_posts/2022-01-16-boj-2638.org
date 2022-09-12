@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 2638 치즈
 #+HTML: tags: BFS
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+Html: ---
 #+HTML: title: BOJ 3078 좋은 친구
 #+HTML: tags: STL queue
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

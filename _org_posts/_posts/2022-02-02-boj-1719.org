@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1719 택배
 #+HTML: tag: 최단거리
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: TODO abc225 D - Play Train
 #+HTML: tags: AtCoder TODO
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

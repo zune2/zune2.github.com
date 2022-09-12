@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Emacs26 설치
 #+HTML: tags: Emacs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** Setting up

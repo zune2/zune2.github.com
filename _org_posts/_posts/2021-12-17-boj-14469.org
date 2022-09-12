@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 14469 소가 길을 건너간 이유 3
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

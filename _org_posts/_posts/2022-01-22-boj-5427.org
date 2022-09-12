@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 5427 불
 #+HTML: tag: BFS
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

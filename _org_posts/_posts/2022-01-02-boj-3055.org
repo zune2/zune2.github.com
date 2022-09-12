@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 3055 탈출
 #+HTML: tags: bfs 그래프
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

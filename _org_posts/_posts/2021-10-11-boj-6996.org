@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 6996 에너그램
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

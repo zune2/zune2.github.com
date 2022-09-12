@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 영어듣기 자료 + 자막
 #+HTML: tags: English
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * Youtube

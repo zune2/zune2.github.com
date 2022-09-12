@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11497 통나무 건너뛰기
 #+HTML: tags: 그리디
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: 20년 영어듣기
 #+HTML: tags: StudyEnglish
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * Oct

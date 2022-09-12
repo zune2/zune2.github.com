@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1676 팩토리얼 0의 개수
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

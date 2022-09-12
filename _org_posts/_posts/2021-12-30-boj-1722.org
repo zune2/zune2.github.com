@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1722 순열의 순서
 #+HTML: tags: 조합
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

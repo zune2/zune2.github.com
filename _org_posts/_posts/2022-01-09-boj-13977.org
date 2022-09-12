@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 13977 이항계수와 쿼리
 #+HTML: tags: 분할정복 조합론
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

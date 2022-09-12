@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: STL priority queue
 #+HTML: tag: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** STL priority queue

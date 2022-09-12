@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: vim에서 C++14 파일 compile
 #+HTML: tags: vim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

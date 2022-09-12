@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: org-babel로 script 구동하기
 #+HTML: tags: org-mode
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

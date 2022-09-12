@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 15681 트리와 쿼리
 #+HTML: tags: DP Tree
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

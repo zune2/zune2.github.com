@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Space Vim 설치
 #+HTML: tags: SpaceVim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * SpaceVim 설치

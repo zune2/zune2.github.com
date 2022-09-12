@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: bit shift 예제
 #+HTML: tags: coding
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 

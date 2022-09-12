@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Emacs Deft 설치
 #+HTML: tags: Emacs Deft
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 * Emacs Deft 설치

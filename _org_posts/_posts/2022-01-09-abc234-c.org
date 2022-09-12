@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: abc234 C - Happy New Year!
 #+HTML: tags: AtCoder 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

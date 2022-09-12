@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 18870 좌표압축
 #+HTML: tags: 좌표압축
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

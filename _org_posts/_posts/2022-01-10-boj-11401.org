@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 11403 이항계수 3
 #+HTML: tags: 수학
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

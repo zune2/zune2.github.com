@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 15688 수 정렬하기 5
 #+HTML: tags: STL
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

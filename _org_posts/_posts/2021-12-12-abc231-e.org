@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: TODO E - Minimal payments
 #+HTML: tags: AtCoder DP TODO
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

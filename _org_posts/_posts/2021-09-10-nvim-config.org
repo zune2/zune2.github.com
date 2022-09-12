@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: Nvim 설치하기
 #+HTML: tags: nvim
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** NeoVim

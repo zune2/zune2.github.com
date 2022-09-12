@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 17478 재귀함수가 뭔가요?
 #+HTML: tags: 재귀
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

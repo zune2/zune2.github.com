@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: BOJ 1058 친구
 #+HTML: tags: dfs
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 #+OPTIONS: ^:nil
 

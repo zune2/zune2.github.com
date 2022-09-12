@@ -1,6 +1,8 @@
 #+HTML: ---
 #+HTML: title: ox-gfm으로 org를 markdown변환하기
 #+HTML: tags: org-mode
+#+HTML: toc: true
+#+HTML: toc_sticky: true
 #+HTML: ---
 
 ** org mode로 markdown page export 시도
